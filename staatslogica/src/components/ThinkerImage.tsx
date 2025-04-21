@@ -22,12 +22,6 @@ export const ThinkerImage = ({ name }: ThinkerImageProps) => {
           alt={`Silhouet van ${name}`}
           layout="fill"
           objectFit="cover"
-          // Optional: Add a placeholder or fallback
-          onError={(e) => {
-            // Optional: Handle image loading errors, e.g., show a default silhouette
-            console.error(`Failed to load image for ${name} at ${src}`);
-            // e.target.src = '/images/thinkers/default-silhouette.png'; // Example fallback
-          }}
         />
       </div>
     </div>

@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 // Article Page Component - Updated with styling and components
 export default async function ArticlePage({ params }: { params: Params }) {
+    // Revert to using params.slug directly
     const article = getArticleBySlug(params.slug);
 
     // Handle case where article is not found
