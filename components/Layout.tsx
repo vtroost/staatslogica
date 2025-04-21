@@ -5,7 +5,9 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-export default function Layout({ children }: LayoutProps) {
+// This is the main layout structure component, different from app/layout.tsx
+// It might be used within specific page layouts if needed, but is not the RootLayout.
+export default function SiteLayout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-gray-800 text-white shadow-md">

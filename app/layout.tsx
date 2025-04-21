@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Layout from "@/components/Layout";
+// Verwijder expliciete globals.css import; Next.js importeert app/globals.css automatisch.
+// import "./globals.css";
+import SiteLayout from "@/components/Layout"; // Use the component we moved
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={inter.className}>
-        <Layout>{children}</Layout>
+        {/* We use SiteLayout here, assuming it provides header/footer etc. */}
+        <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
   );
