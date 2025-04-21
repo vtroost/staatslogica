@@ -82,6 +82,20 @@ const thinkersData: Record<string, ThinkerData> = {
     works: ['The Revolution: A Manifesto', 'End the Fed'],
     quote: 'Waarheid is verraad in het rijk der leugens.'
   },
+  'lysander-spooner': {
+    slug: 'lysander-spooner',
+    name: 'Lysander Spooner',
+    bio: 'Lysander Spooner was een 19e-eeuwse Amerikaanse individualistische anarchist, advocaat en abolitionist, bekend om zijn argumenten tegen de legitimiteit van de Amerikaanse grondwet en zijn verdediging van natuurrecht en vrije markten.',
+    works: ['No Treason: The Constitution of No Authority', 'Vices Are Not Crimes'],
+    quote: 'Maar of de Grondwet nu wel of niet door "het Volk" is ingesteld, doet er weinig toe. Zij bestaat al die tijd, en ze is goed of slecht om wat ze op zichzelf is; niet omdat zoveel mensen het wel of niet leuk vonden.'
+  },
+  'henry-hazlitt': {
+    slug: 'henry-hazlitt',
+    name: 'Henry Hazlitt',
+    bio: 'Henry Hazlitt was een Amerikaanse journalist en econoom van de Oostenrijkse School, bekend om het populariseren van economische principes door werken als "Economie in één les", waarbij hij de onzichtbare gevolgen van economisch beleid benadrukte.',
+    works: ['Economics in One Lesson', 'The Failure of the \'New Economics\''],
+    quote: 'De kunst van de economie bestaat erin niet alleen naar de onmiddellijke, maar ook naar de langetermijneffecten van een handeling of beleid te kijken; het bestaat erin de gevolgen van dat beleid niet alleen voor één groep, maar voor alle groepen te traceren.'
+  },
   'unknown': {
     slug: 'unknown',
     name: 'Unknown Thinker',
@@ -194,31 +208,53 @@ function generateSlug(name: string): string {
 export function getAllThinkers(): ThinkerData[] {
   const articles = getAllArticles();
   const thinkersFromArticles = new Map<string, ThinkerData>();
+  const predefinedThinkersByName = new Map<string, ThinkerData>(
+    Object.values(thinkersData).map(t => [t.name.toLowerCase(), t])
+  );
 
   articles.forEach(article => {
     if (article.thinker) {
+      const articleThinkerNameLower = article.thinker.toLowerCase();
       const slug = generateSlug(article.thinker);
+      
+      // Check if we already have this thinker by slug OR if a predefined thinker exists with the same name
       if (!thinkersFromArticles.has(slug)) {
-        // Use predefined data if available, otherwise create a basic entry
-        const predefinedData = thinkersData[slug];
-        thinkersFromArticles.set(slug, predefinedData || {
-          slug: slug,
-          name: article.thinker, // Use the name from frontmatter
-          bio: `Articles related to ${article.thinker}. More info coming soon.`, // Default bio
-          works: [],
-        });
+          const predefinedDataByName = predefinedThinkersByName.get(articleThinkerNameLower);
+          const predefinedDataBySlug = thinkersData[slug];
+
+          // Prioritize predefined data if found either by matching name or slug
+          const finalData = predefinedDataByName || predefinedDataBySlug;
+
+          if (finalData) {
+            // If using predefined data found by name, ensure we use ITS slug, not the potentially different one from the article
+            if (!thinkersFromArticles.has(finalData.slug)) { 
+                thinkersFromArticles.set(finalData.slug, finalData);
+            }
+          } else {
+             // Only create a basic entry if NO predefined match is found by slug or name
+             thinkersFromArticles.set(slug, {
+                slug: slug,
+                name: article.thinker, // Use the name from frontmatter
+                bio: `Articles related to ${article.thinker}. More info coming soon.`, // Default bio
+                works: [],
+             });
+          }
       }
     }
   });
 
-  // Also add any predefined thinkers that might not have articles yet
+  // Also add any predefined thinkers that might not have articles yet (and aren't already added)
   Object.values(thinkersData).forEach(thinker => {
     if (!thinkersFromArticles.has(thinker.slug)) {
         thinkersFromArticles.set(thinker.slug, thinker);
     }
   });
 
-  return Array.from(thinkersFromArticles.values());
+  // Filter out the 'Unknown Thinker' before returning
+  const finalThinkers = Array.from(thinkersFromArticles.values())
+                         .filter(thinker => thinker.slug !== 'unknown');
+
+  return finalThinkers;
 }
 
 /**

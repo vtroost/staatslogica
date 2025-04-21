@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { buildArticlePrompt } from '@/lib/prompts';
+import { getAllThinkers, ThinkerData } from '@/lib/mdx';
 // Verwijder de directe import van openai
 // import { openai } from '@/lib/openai';
 
@@ -14,41 +15,46 @@ function slugify(str: string): string {
     .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
 }
 
-const thinkers = [
-  'Ayn Rand',
-  'Ludwig von Mises',
-  'Murray Rothbard',
-  'Thomas Sowell',
-  'Frédéric Bastiat',
-  // Voeg hier meer denkers toe indien nodig
-];
-
 export default function GeneratePage() {
   const router = useRouter();
   const [url, setUrl] = useState('');
-  const [thinker, setThinker] = useState(thinkers[0]); // Default to the first thinker
+  const [selectedThinkerName, setSelectedThinkerName] = useState('');
+  const [thinkersList, setThinkersList] = useState<ThinkerData[]>([]);
   const [extraInstruction, setExtraInstruction] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isListLoading, setIsListLoading] = useState(true);
+
+  useEffect(() => {
+    try {
+      const fetchedThinkers = getAllThinkers();
+      fetchedThinkers.sort((a, b) => a.name.localeCompare(b.name));
+      setThinkersList(fetchedThinkers);
+      if (fetchedThinkers.length > 0) {
+        setSelectedThinkerName(fetchedThinkers[0].name);
+      }
+    } catch (error) {
+      console.error("Error fetching thinkers:", error);
+    } finally {
+      setIsListLoading(false);
+    }
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
 
-    // Slugify helper (simple version)
+    if (!selectedThinkerName) {
+        alert('Please select a thinker.');
+        setIsLoading(false);
+        return;
+    }
+
     const todayDate = new Date().toISOString().split('T')[0];
-    const thinkerSlug = slugify(thinker);
-    // const slug = "placeholder"; // No longer needed here directly
+    const selectedThinkerData = thinkersList.find(t => t.name === selectedThinkerName);
+    const thinkerSlug = selectedThinkerData ? selectedThinkerData.slug : slugify(selectedThinkerName);
 
-    // Refined prompt with stricter JSON instructions - MOVED TO HELPER
-    /* Remove the old apiPrompt definition
-    const apiPrompt: string = `
-    ... multiline template literal ...
-    `;
-    */
-
-    // Use the helper function to build the prompt
     const apiPrompt = buildArticlePrompt({
-      thinker,
+      thinker: selectedThinkerName,
       thinkerSlug,
       date: todayDate,
       url,
@@ -58,49 +64,41 @@ export default function GeneratePage() {
     console.log("Generated Prompt (Refined):", apiPrompt);
 
     try {
-      // Maak een fetch request naar de API route
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt: apiPrompt }), // Stuur de prompt mee in de body
+        body: JSON.stringify({ prompt: apiPrompt }),
       });
 
-      // Controleer of de request succesvol was
       if (!response.ok) {
-        // Probeer de foutmelding uit de response body te halen
         const errorData = await response.json().catch(() => ({ error: 'Unknown error fetching data' }));
         throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
 
-      // Haal de AI response uit de JSON body
       const data = await response.json();
-      const generatedContent = data.response; // Assuming this is the string containing potential JSON
+      const generatedContent = data.response;
 
-      console.log('Raw API Route response:', generatedContent); // Log the raw response
+      console.log('Raw API Route response:', generatedContent);
 
-      // Attempt to parse the JSON string
       let articleData;
       try {
-          // Trim whitespace that might interfere with parsing
           articleData = JSON.parse(generatedContent.trim());
       } catch (parseError) {
           console.error("Failed to parse generated content as JSON:", parseError);
-          console.error("Invalid JSON string received:", generatedContent); // Log the problematic string
-          // Type check for error message
+          console.error("Invalid JSON string received:", generatedContent);
           const errorMessage = parseError instanceof Error ? parseError.message : String(parseError);
           throw new Error(`Received invalid JSON data from the generation API. Please check the AI response format. Error: ${errorMessage}`);
       }
 
-      // Construct URL with query parameter for app router
       const queryString = new URLSearchParams({ articleData: JSON.stringify(articleData) }).toString();
       router.push(`/generate/preview?${queryString}`);
 
     } catch (error) {
       console.error("Error during generation or redirect:", error);
       const alertMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      alert(`Error: ${alertMessage}`); // Simple alert for now
+      alert(`Error: ${alertMessage}`);
     } finally {
       setIsLoading(false);
     }
@@ -134,15 +132,22 @@ export default function GeneratePage() {
             <select
               id="thinker"
               name="thinker"
-              value={thinker}
-              onChange={(e) => setThinker(e.target.value)}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              value={selectedThinkerName}
+              onChange={(e) => setSelectedThinkerName(e.target.value)}
+              disabled={isListLoading}
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md disabled:bg-gray-100"
             >
-              {thinkers.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
+              {isListLoading ? (
+                <option>Laden...</option>
+              ) : thinkersList.length === 0 ? (
+                 <option>Geen denkers gevonden</option>
+              ) : (
+                thinkersList.map((thinker) => (
+                  <option key={thinker.slug} value={thinker.name}>
+                    {thinker.name}
+                  </option>
+                ))
+              )}
             </select>
           </div>
 
@@ -164,10 +169,10 @@ export default function GeneratePage() {
           <div>
             <button
               type="submit"
-              disabled={isLoading} // Disable button when loading
+              disabled={isLoading}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Genereren...' : 'Genereer Concept'} {/* Change button text when loading */}
+              {isLoading ? 'Genereren...' : 'Genereer Concept'}
             </button>
           </div>
         </form>

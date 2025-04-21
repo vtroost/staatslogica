@@ -82,7 +82,14 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
                                 </Link>
                             </h2>
                             <div className="text-sm text-gray-500 mb-3 space-x-2">
-                                <span>{article.date}</span>
+                                {/* Format date and attempt to show time */}
+                                <span>
+                                    {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })} 
+                                    {/* Check if time is meaningful (not midnight) before showing */}
+                                    {new Date(article.date).getHours() !== 0 || new Date(article.date).getMinutes() !== 0 || new Date(article.date).getSeconds() !== 0 
+                                        ? ` om ${new Date(article.date).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`
+                                        : ''}
+                                </span>
                                 {article.thinker && (
                                     <>
                                         <span>|</span>
