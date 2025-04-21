@@ -22,7 +22,7 @@ Lever je analyse aan in **exact** de JSON-structuur hieronder. Het is cruciaal d
 
 JSON Structuur:
 {
-  "slug": "placeholder", 
+  "slug": "korte-nederlandse-slug-gebaseerd-op-titel", 
   "title": "Scherpe, pakkende titel in het Nederlands",
   "date": "${date}",
   "tags": ["nederlandse-tag1", "nederlandse-tag2"], 
