@@ -1,0 +1,15 @@
+{
+  "slug": "example-article-3",
+  "title": "Derde Voorbeeld: Decentralisatie en Technologie",
+  "date": "2025-04-23",
+  "tags": ["technologie", "decentralisatie", "privacy"],
+  "thinker": "Lysander Spooner",
+  "image": {
+    "url": "/images/spooner-placeholder.jpg",
+    "alt": "Illustratie van Lysander Spooner"
+  },
+  "spin": "Hoe nieuwe technologieën individuen kunnen empoweren en staatsmacht kunnen omzeilen.",
+  "libertarianAnalysis": "Technologische vooruitgang, met name op het gebied van encryptie en gedecentraliseerde netwerken, biedt krachtige tools voor individuele soevereiniteit en het beschermen van privacy tegen staatsinmenging.",
+  "anarchistAnalysis": "Technologie kan helpen bij het creëren van alternatieve, vrijwillige sociale structuren en economieën die volledig buiten de controle van de staat opereren, waardoor de staat irrelevant wordt.",
+  "quote": "“Maar of de slavernij nu door één man of door miljoenen wordt opgelegd, of het nu door één meester of door miljoenen meesters wordt opgelegd, degenen die eraan onderworpen zijn, zijn niettemin slaven.”"
+} 

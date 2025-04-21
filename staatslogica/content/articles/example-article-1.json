@@ -1,0 +1,15 @@
+{
+  "slug": "example-article-1",
+  "title": "Eerste Voorbeeld Artikel: Inflatie en Vrijheid",
+  "date": "2025-04-21",
+  "tags": ["economie", "vrijheid", "inflatie"],
+  "thinker": "Ludwig von Mises",
+  "image": {
+    "url": "/images/mises-placeholder.jpg",
+    "alt": "Illustratie van Ludwig von Mises"
+  },
+  "spin": "Een kritische blik op het recente monetaire beleid en de impact op individuele vrijheid.",
+  "libertarianAnalysis": "Vanuit een libertarisch perspectief ondermijnt overheidsingrijpen in de geldhoeveelheid de economische stabiliteit en persoonlijke autonomie. Inflatie is een verkapte belasting die spaarders bestraft.",
+  "anarchistAnalysis": "Centrale banken en staatscontrole over geld zijn inherent vormen van dwang. Een vrije markt zou gedecentraliseerde en vrijwillige vormen van valuta voortbrengen.",
+  "quote": "“Inflatie is het opium van het volk.”"
+} 
