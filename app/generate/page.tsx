@@ -20,13 +20,48 @@ export default function GeneratePage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Voorkom standaard formulierinzending
 
-    const formData = {
-      url: url,
-      thinker: thinker,
-      extra: extraInstruction,
-    };
+    // Slugify helper (simple version)
+    const slugify = (str: string) =>
+      str
+        .toLowerCase()
+        .trim()
+        .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word chars and hyphens with a single hyphen
+        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
 
-    console.log(JSON.stringify(formData, null, 2));
+    const todayDate = new Date().toISOString().split('T')[0];
+    const thinkerSlug = slugify(thinker);
+    const slug = "placeholder"; // Hardcoded for now
+
+    const prompt = `
+You are a libertarian thinker, inspired by ${thinker}.
+Please analyze the following news article critically. Focus on identifying the central "spin", why this is a government-created problem, what assumptions the article makes, and what a free-market or voluntary alternative would be.
+
+Output your analysis in this exact JSON structure:
+
+{
+  "slug": "${slug}",
+  "title": "Sharp, punchy title",
+  "date": "${todayDate}",
+  "tags": ["tag1", "tag2"],
+  "thinker": "${thinker}",
+  "image": {
+    "url": "/images/og/${thinkerSlug}.jpg",
+    "alt": "${thinker}"
+  },
+  "spin": "Short cynical summary of the article's core message",
+  "libertarianAnalysis": "...",
+  "anarchistAnalysis": "...",
+  "quote": "A relevant quote from ${thinker}"
+}
+
+Article URL:
+${url}
+
+Optional instruction from editor:
+${extraInstruction || 'None'}
+`;
+
+    console.log(prompt);
     // In een latere stap voegen we hier de backend call toe
   };
 
