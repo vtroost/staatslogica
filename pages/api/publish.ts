@@ -18,6 +18,7 @@ interface PublishRequestBody {
 interface SuccessResponse {
   success: true;
   message: string;
+  slug: string;
 }
 
 interface ErrorResponse {
@@ -148,7 +149,11 @@ ${body.anarchistAnalysis || 'N/A'}
     });
 
     console.log(`Article '${body.slug}.mdx' committed to GitHub branch '${branch}'.`);
-    return res.status(200).json({ success: true, message: `Article '${body.slug}.mdx' committed to GitHub.` });
+    return res.status(200).json({ 
+        success: true, 
+        message: `Article '${body.slug}.mdx' committed to GitHub.`,
+        slug: body.slug
+    });
 
   } catch (error: any) {
     console.error('GitHub commit failed:', error);
