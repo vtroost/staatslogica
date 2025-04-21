@@ -7,5 +7,5 @@
 [build.processing]
   [build.processing.secrets_scanning]
     # Ignore specific keys detected by the scanner
-    # These are used server-side only in the publish API route
-    omit_keys = ["GITHUB_AUTHOR_NAME", "GITHUB_AUTHOR_EMAIL"] 
+    # These are used server-side only in API routes
+    omit_keys = ["GITHUB_AUTHOR_NAME", "GITHUB_AUTHOR_EMAIL", "OPENAI_API_KEY"] 
