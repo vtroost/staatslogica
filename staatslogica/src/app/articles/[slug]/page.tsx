@@ -1,53 +1,40 @@
 import { getAllArticleSlugs, getArticleBySlug } from '@/lib/articles';
 import { Metadata } from 'next';
-import Image from 'next/image'; // Import next/image
-import { notFound } from 'next/navigation'; // Import notFound
-import { ThinkerImage } from '@/components/ThinkerImage'; // Import ThinkerImage
-import { TagBadge } from '@/components/TagBadge'; // Import TagBadge
-
-// Define params type
-type Params = {
-    slug: string;
-};
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { ThinkerImage } from '@/components/ThinkerImage';
+import { TagBadge } from '@/components/TagBadge';
 
 // Generate params for all articles
-export async function generateStaticParams(): Promise<Params[]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
     const slugs = getAllArticleSlugs();
     return slugs.map((slug) => ({ slug }));
 }
 
-// Optional: Generate metadata for SEO
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    // Destructure slug from params FIRST
+// Enable generateMetadata again
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const { slug } = params;
     const article = getArticleBySlug(slug);
-
     if (!article) {
-        return {
-            title: 'Artikel niet gevonden',
-        };
+        return { title: 'Artikel niet gevonden' };
     }
-
     return {
         title: `${article.title} | Staatslogica`,
-        description: article.spin, // Use spin as description
-        // Add other metadata fields as needed
+        description: article.spin,
     };
 }
 
-// Article Page Component - Updated with styling and components
-export default async function ArticlePage({ params }: { params: Params }) {
-    // Destructure slug from params FIRST
+// Restore original Article Page Component logic (synchronous)
+export default function ArticlePage({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const article = getArticleBySlug(slug);
 
-    // Handle case where article is not found
     if (!article) {
-        notFound(); // Trigger 404 page
+        notFound();
     }
 
     return (
-        <main className="max-w-4xl mx-auto py-8 px-4"> {/* Slightly wider max-width */}
+        <main className="max-w-4xl mx-auto py-8 px-4">
             <article>
                 {/* Thinker Image */}
                 <ThinkerImage name={article.thinker} />
@@ -58,7 +45,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
 
                 {/* Main Image */}
                 {article.image?.url && (
-                    <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden shadow-md"> {/* Added shadow */}
+                    <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden shadow-md">
                         <Image
                             src={article.image.url}
                             alt={article.image.alt}
