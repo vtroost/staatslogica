@@ -1,78 +1,83 @@
-import { getAllArticleSlugs, getArticleBySlug } from '@/lib/articles';
+import fs from 'fs'; // Needed for generateStaticParams
+import path from 'path'; // Needed for generateStaticParams and getArticleBySlug
+import matter from 'gray-matter'; // Keep if getArticleBySlug is not used directly
+import { getArticleBySlug } from '@/lib/mdx'; // Use the new MDX utility
 import { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ThinkerImage } from '@/components/ThinkerImage';
-import { TagBadge } from '@/components/TagBadge';
+import { MDXRemote } from 'next-mdx-remote/rsc'; // Import for RSC
+// Keep other imports like ThinkerImage, TagBadge if needed for layout
+// import { ThinkerImage } from '@/components/ThinkerImage';
+// import { TagBadge } from '@/components/TagBadge';
 
-// Generate params for all articles
+const articlesDirectory = path.join(process.cwd(), 'content', 'articles');
+
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-    const slugs = getAllArticleSlugs();
-    return slugs.map((slug) => ({ slug }));
+  try {
+      const files = fs.readdirSync(articlesDirectory);
+      return files
+        .filter(f => f.endsWith('.mdx'))
+        .map(file => ({ slug: file.replace(/\.mdx$/, '') }));
+  } catch (error) {
+      console.error("Error reading articles directory for static params:", error);
+      return []; // Return empty array on error
+  }
 }
 
-// Enable generateMetadata again
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const { slug } = params;
-    const article = getArticleBySlug(slug);
-    if (!article) {
+    const articleData = getArticleBySlug(slug); // Fetch data using the new utility
+    
+    if (!articleData) {
         return { title: 'Artikel niet gevonden' };
     }
     return {
-        title: `${article.title} | Staatslogica`,
-        description: article.spin,
+        title: `${articleData.data.title} | Staatslogica`,
+        description: articleData.data.spin || 'Libertarische analyse', // Use spin or fallback description
+        // Add other metadata like open graph image if available in frontmatter
+        // openGraph: {
+        //     images: [articleData.data.image?.url || '/default-og-image.jpg'],
+        // },
     };
 }
 
-// Restore original Article Page Component logic (synchronous)
-export default function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const article = getArticleBySlug(slug);
+    const article = getArticleBySlug(slug); // Use the utility to get parsed data and content
 
     if (!article) {
-        notFound();
+        notFound(); // Trigger 404 if article doesn't exist or fails to parse
     }
 
+    const { data, content } = article; // Destructure frontmatter data and MDX content
+
     return (
-        <article>
-            {/* Thinker Image */}
-            <ThinkerImage name={article.thinker} />
+        // Apply prose styling to the main article container
+        <article className="prose prose-lg mx-auto px-4 py-8 max-w-3xl"> 
+            {/* Optional: Add ThinkerImage or other components back if needed */}
+            {/* <ThinkerImage name={data.thinker} /> */}
 
-            {/* Main Image */}
-            {article.image?.url && (
-                <div>
-                    <Image
-                        src={article.image.url}
-                        alt={article.image.alt}
-                        layout="fill"
-                        objectFit="cover"
-                        priority
-                    />
-                </div>
-            )}
+            <h1>{data.title}</h1>
+            <p className="text-gray-500 text-sm">Gepubliceerd op: {data.date}</p>
+            
+            {/* Display optional frontmatter fields */}
+            {data.spin && <blockquote className="italic">{data.spin}</blockquote>}
+            {data.quote && <p className="text-sm"><strong>Quote:</strong> {data.quote}</p>}
+            {data.thinker && <p className="text-sm"><strong>Denker:</strong> {data.thinker}</p>}
+            
+            {/* Render the MDX content */}
+            <MDXRemote source={content} />
 
-             {/* Article Content with Prose Styling */}
-            <div>
-                <h1>{article.title}</h1>
-                <p>{article.date}</p>
-                <blockquote>{article.spin}</blockquote>
-                <h2>Libertaire Analyse</h2>
-                <p>{article.libertarianAnalysis}</p>
-                <h2>Anarchistische Analyse</h2>
-                <p>{article.anarchistAnalysis}</p>
-                <blockquote>{article.quote}</blockquote>
-             </div>
-
-            {/* Footer Metadata: Thinker and Tags */}
-            <div>
-                <p><strong>Denker:</strong> {article.thinker}</p>
-                <div>
+            {/* Optional: Add Tags back if needed */}
+            {/* 
+            {data.tags && data.tags.length > 0 && (
+                <div className="mt-8 border-t pt-4">
                     <strong>Tags:</strong>
-                    {article.tags.map((tag: string) => (
+                    {data.tags.map((tag: string) => (
                         <TagBadge key={tag} tag={tag} />
                     ))}
                 </div>
-            </div>
+            )}
+            */}
         </article>
     );
 } 
