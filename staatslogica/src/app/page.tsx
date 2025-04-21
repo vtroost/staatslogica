@@ -1,6 +1,13 @@
 import { getAllArticles } from '@/lib/articles';
 import Link from 'next/link';
 import { TagBadge } from '@/components/TagBadge';
+import { Metadata } from 'next';
+
+// Add static metadata for the homepage
+export const metadata: Metadata = {
+  title: 'Staatslogica | Libertarische daganalyse',
+  description: 'Dagelijkse libertarische en anarchistische analyses van overheidsnieuws en politiek. Kritisch, satirisch, principieel.',
+};
 
 export default function HomePage() {
     // Get all articles, already sorted by date descending by getAllArticles
