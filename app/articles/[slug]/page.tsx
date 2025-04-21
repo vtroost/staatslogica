@@ -91,7 +91,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             href: `/denkbeelden/${generateSlug(frontmatter.thinker)}`,
         });
     }
-    breadcrumbItems.push({ label: frontmatter.title }); // Current article, no link
+    breadcrumbItems.push({ label: frontmatter.title, href: '#' }); // Current article, marked as non-navigable
 
     return (
         <article className="max-w-3xl mx-auto px-4 py-12 md:py-16">
