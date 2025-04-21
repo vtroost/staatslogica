@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-import path from 'path';
+import { Octokit } from 'octokit';
 
-// Define an interface for the expected request body
+// Types for incoming request
 interface PublishRequestBody {
   slug: string;
   title: string;
@@ -13,17 +12,15 @@ interface PublishRequestBody {
   spin: string;
   libertarianAnalysis: string;
   anarchistAnalysis: string;
-  // Add other fields from ArticleData if necessary
 }
 
-// Define the expected success response structure
-type SuccessResponse = {
+// Success/Failure response types
+interface SuccessResponse {
   success: true;
   message: string;
 }
 
-// Define the expected error response structure
-type ErrorResponse = {
+interface ErrorResponse {
   success: false;
   error: string;
 }
@@ -32,62 +29,127 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SuccessResponse | ErrorResponse>
 ) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
-    res.setHeader('Allow', ['POST']);
-    return res.status(405).json({ success: false, error: `Method ${req.method} Not Allowed` });
+    return res.status(405).json({ success: false, error: 'Method Not Allowed' });
   }
 
-  try {
-    const body: PublishRequestBody = req.body; // In Pages API routes, body is already parsed
+  const body = req.body as PublishRequestBody;
 
-    // Basic validation (can be expanded)
-    if (!body.slug || !body.title || !body.date || !body.tags || !body.thinker) {
-      return res.status(400).json({ success: false, error: "Missing required article fields." });
-    }
+  // Validate required fields (consider adding more checks as needed)
+  if (!body.slug || !body.title || !body.date || !body.tags || !body.thinker) {
+    return res.status(400).json({ success: false, error: 'Missing required fields.' });
+  }
 
-    // Destructure required fields
-    const { slug, title, date, tags, thinker, quote, spin, libertarianAnalysis, anarchistAnalysis } = body;
-
-    // Escape quotes for frontmatter
-    const formattedQuote = quote ? quote.replace(/"/g, '\"') : '';
-    const formattedSpin = spin ? spin.replace(/"/g, '\"') : '';
-
-    // Create MDX frontmatter and content
-    const mdxContent = `---
-title: "${title}"
-date: "${date}"
-tags: [${tags.map((tag: string) => `"${tag}"`).join(', ')}]
-thinker: "${thinker}"
-quote: "${formattedQuote}"
-spin: "${formattedSpin}"
+  // Format the MDX content
+  const mdxContent = `---
+title: "${body.title}"
+date: "${body.date}"
+tags: [${Array.isArray(body.tags) ? body.tags.map(tag => `"${tag}"`).join(', ') : ''}]
+thinker: "${body.thinker || 'Unknown'}"
+quote: "${body.quote ? body.quote.replace(/"/g, '\"') : ''}"
+spin: "${body.spin ? body.spin.replace(/"/g, '\"') : ''}"
 ---
 
 ## Libertarian Analyse
 
-${libertarianAnalysis || 'N/A'}
+${body.libertarianAnalysis || 'N/A'}
 
 ## Anarchistische Analyse
 
-${anarchistAnalysis || 'N/A'}
+${body.anarchistAnalysis || 'N/A'}
 `;
 
-    // Determine file path
-    const articlesDir = path.join(process.cwd(), 'content', 'articles');
-    // Ensure the directory exists
-    if (!fs.existsSync(articlesDir)) {
-      fs.mkdirSync(articlesDir, { recursive: true });
-    }
-    const filePath = path.join(articlesDir, `${slug}.mdx`);
+  // --- GitHub Commit Logic ---
+  const githubToken = process.env.GITHUB_TOKEN;
+  const repo = process.env.GITHUB_REPO; // e.g., 'YourUsername/YourRepoName'
+  const branch = process.env.GITHUB_BRANCH || 'main';
+  const authorName = process.env.GITHUB_AUTHOR_NAME || 'Staatslogica Bot';
+  const authorEmail = process.env.GITHUB_AUTHOR_EMAIL || 'bot@staatslogica.nl';
 
-    // Write file (works locally)
-    fs.writeFileSync(filePath, mdxContent, 'utf8');
+  // Validate GitHub environment variables
+  if (!githubToken) {
+      return res.status(500).json({ success: false, error: 'GitHub token environment variable (GITHUB_TOKEN) is not configured.' });
+  }
+  if (!repo || !repo.includes('/')) {
+      return res.status(500).json({ success: false, error: 'GitHub repository environment variable (GITHUB_REPO) is missing or invalid (e.g., owner/repo).'});
+  }
 
-    console.log(`Article saved to: ${filePath}`);
-    return res.status(200).json({ success: true, message: `Article ${slug}.mdx saved successfully.` });
+  const octokit = new Octokit({ auth: githubToken });
+  const [owner, repoName] = repo.split('/');
+  const filePath = `content/articles/${body.slug}.mdx`;
+
+  try {
+    // Check if file already exists (optional, to prevent overwrite or use update logic)
+    // Note: A simple commit will overwrite. For advanced merging or conflict handling, 
+    // you might need to fetch the existing file SHA.
+    // const { data: existingFile } = await octokit.rest.repos.getContent({ owner, repo: repoName, path: filePath, ref: branch }).catch(e => null);
+
+    // Get latest commit SHA & base tree
+    const { data: refData } = await octokit.rest.git.getRef({
+      owner,
+      repo: repoName,
+      ref: `heads/${branch}`,
+    });
+    const latestCommitSha = refData.object.sha;
+
+    const { data: commitData } = await octokit.rest.git.getCommit({
+      owner,
+      repo: repoName,
+      commit_sha: latestCommitSha,
+    });
+    const baseTreeSha = commitData.tree.sha;
+
+    // Create blob (file content)
+    const { data: blobData } = await octokit.rest.git.createBlob({
+      owner,
+      repo: repoName,
+      content: mdxContent,
+      encoding: 'utf-8',
+    });
+
+    // Create new tree
+    const { data: treeData } = await octokit.rest.git.createTree({
+      owner,
+      repo: repoName,
+      base_tree: baseTreeSha,
+      tree: [
+        {
+          path: filePath,
+          mode: '100644', // file mode
+          type: 'blob',
+          sha: blobData.sha, // Use sha from created blob
+        },
+      ],
+    });
+
+    // Create new commit
+    const { data: newCommitData } = await octokit.rest.git.createCommit({
+      owner,
+      repo: repoName,
+      message: `Publish article: ${body.slug}`, // Commit message
+      tree: treeData.sha, // Use sha from created tree
+      parents: [latestCommitSha], // Set parent commit
+      author: {
+        name: authorName,
+        email: authorEmail,
+      },
+    });
+
+    // Update the reference (branch pointer)
+    await octokit.rest.git.updateRef({
+      owner,
+      repo: repoName,
+      ref: `heads/${branch}`,
+      sha: newCommitData.sha, // Point branch to the new commit
+    });
+
+    console.log(`Article '${body.slug}.mdx' committed to GitHub branch '${branch}'.`);
+    return res.status(200).json({ success: true, message: `Article '${body.slug}.mdx' committed to GitHub.` });
 
   } catch (error: any) {
-    console.error('Publish API error:', error);
-    return res.status(500).json({ success: false, error: error.message || 'An unknown error occurred.' });
+    console.error('GitHub commit failed:', error);
+    // Provide more specific error messages if possible
+    const errorMessage = error.response?.data?.message || error.message || 'Unknown GitHub API error';
+    return res.status(500).json({ success: false, error: `GitHub commit failed: ${errorMessage}` });
   }
 } 

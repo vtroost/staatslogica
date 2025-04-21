@@ -21,44 +21,51 @@ export default function GeneratePage() {
   const [extraInstruction, setExtraInstruction] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  function slugify(str: string): string {
+    return str
+        .toLowerCase()
+        .trim()
+        .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word chars and hyphens with a single hyphen
+        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+  }
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
 
     // Slugify helper (simple version)
-    const slugify = (str: string) =>
-      str
-        .toLowerCase()
-        .trim()
-        .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word chars and hyphens with a single hyphen
-        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
-
     const todayDate = new Date().toISOString().split('T')[0];
     const thinkerSlug = slugify(thinker);
-    const slug = "placeholder"; // Hardcoded for now
+    const slug = "placeholder"; // Still placeholder, consider generating from title later?
 
-    // Updated prompt with Dutch instructions
-    const prompt = `
+    // Refined prompt with stricter JSON instructions
+    const apiPrompt = `
 Je bent een libertarische denker, geïnspireerd door ${thinker}.
 Analyseer het volgende nieuwsartikel kritisch. Focus op het identificeren van de centrale "spin", waarom dit een door de overheid gecreëerd probleem is, welke aannames het artikel maakt, en wat een vrijemarkt- of vrijwillig alternatief zou zijn.
 
-Lever je analyse aan in **exact** deze JSON-structuur, met **Nederlandstalige** waarden:
+Lever je analyse aan in **exact** de JSON-structuur hieronder. Het is cruciaal dat het output een **valide JSON** string is. 
+**Gebruik ALTIJD dubbele aanhalingstekens ("") rond alle keys en string-waarden.** Gebruik GEEN single quotes ('') of backticks (``). Zorg ervoor dat alle strings correct zijn escaped indien nodig.
 
+JSON Structuur:
+'''json
 {
-  "slug": "${slug}", // Placeholder, mag je later invullen of genereren
+  "slug": "${slug}", 
   "title": "Scherpe, pakkende titel in het Nederlands",
   "date": "${todayDate}",
-  "tags": ["nederlandse-tag1", "nederlandse-tag2"], // Relevante Nederlandse tags
+  "tags": ["nederlandse-tag1", "nederlandse-tag2"], 
   "thinker": "${thinker}",
   "image": {
     "url": "/images/og/${thinkerSlug}.jpg",
     "alt": "${thinker}"
   },
-  "spin": "Korte cynische samenvatting van de kernboodschap van het artikel (Nederlands)",
+  "spin": "Korte cynische samenvatting (Nederlands)",
   "libertarianAnalysis": "Libertarische analyse in het Nederlands...",
-  "anarchistAnalysis": "Anarchistische analyse (of alternatief perspectief) in het Nederlands...",
-  "quote": "Een relevant citaat van ${thinker} (indien mogelijk vertaald naar Nederlands, anders origineel)"
+  "anarchistAnalysis": "Anarchistische analyse in het Nederlands...",
+  "quote": "Een relevant citaat van ${thinker} (vertaald of origineel)"
 }
+'''
+
+Let op: De output MOET beginnen met { en eindigen met }, zonder enige tekst ervoor of erna. Het moet direct parseerbaar zijn met JSON.parse().
 
 Artikel URL:
 ${url}
@@ -67,7 +74,7 @@ Optionele instructie van redacteur:
 ${extraInstruction || 'Geen'}
 `;
 
-    console.log("Generated Prompt (Dutch Instructions):", prompt);
+    console.log("Generated Prompt (Refined):", apiPrompt);
 
     try {
       // Maak een fetch request naar de API route
@@ -76,7 +83,7 @@ ${extraInstruction || 'Geen'}
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt }), // Stuur de prompt mee in de body
+        body: JSON.stringify({ prompt: apiPrompt }), // Stuur de prompt mee in de body
       });
 
       // Controleer of de request succesvol was
@@ -88,33 +95,31 @@ ${extraInstruction || 'Geen'}
 
       // Haal de AI response uit de JSON body
       const data = await response.json();
-      // The API returns the generated content within a 'response' field
-      const generatedContent = data.response;
+      const generatedContent = data.response; // Assuming this is the string containing potential JSON
 
-      console.log('API Route response:', generatedContent); // Log API response
+      console.log('Raw API Route response:', generatedContent); // Log the raw response
 
-      // Attempt to parse the JSON string from the API response
+      // Attempt to parse the JSON string
       let articleData;
       try {
-          articleData = JSON.parse(generatedContent);
+          // Trim whitespace that might interfere with parsing
+          articleData = JSON.parse(generatedContent.trim());
       } catch (parseError) {
           console.error("Failed to parse generated content as JSON:", parseError);
-          // Handle the error appropriately - maybe show a message to the user
-          // For now, we'll throw an error to stop the process
-          throw new Error("Received invalid JSON data from the generation API.");
+          console.error("Invalid JSON string received:", generatedContent); // Log the problematic string
+          // Type check for error message
+          const errorMessage = parseError instanceof Error ? parseError.message : String(parseError);
+          throw new Error(`Received invalid JSON data from the generation API. Please check the AI response format. Error: ${errorMessage}`);
       }
 
       // Construct URL with query parameter for app router
-      const queryString = new URLSearchParams({ 
-          articleData: JSON.stringify(articleData) 
-      }).toString();
-      
+      const queryString = new URLSearchParams({ articleData: JSON.stringify(articleData) }).toString();
       router.push(`/generate/preview?${queryString}`);
 
     } catch (error) {
       console.error("Error during generation or redirect:", error);
-      // Keep displaying error messages if needed, maybe in a dedicated error state
-      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`); // Simple alert for now
+      const alertMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`Error: ${alertMessage}`); // Simple alert for now
     } finally {
       setIsLoading(false);
     }
