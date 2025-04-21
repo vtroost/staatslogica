@@ -47,7 +47,41 @@ const thinkersData: Record<string, ThinkerData> = {
     works: ['Man, Economy, and State', 'For a New Liberty'],
     quote: "It is easy to be conspicuously 'compassionate' if others are being forced to pay the cost."
   },
-  // Add other thinkers here...
+  'mises': {
+    slug: 'mises',
+    name: 'Ludwig von Mises',
+    bio: 'Ludwig von Mises was een leidende figuur in de Oostenrijkse School van economie en een fervent voorstander van economisch liberalisme. Hij betoogde dat economische calculatie onmogelijk is onder socialisme en verdedigde het belang van vrije marktprijzen. Zijn werk legde de basis voor de moderne libertarische economische theorie.',
+    works: ['Human Action', 'Socialism: An Economic and Sociological Analysis'],
+    quote: 'De overheid is de enige instelling die een nuttig product zoals papier kan nemen, er wat inkt op kan slaan en het volledig waardeloos kan maken.'
+  },
+  'hayek': {
+    slug: 'hayek',
+    name: 'Friedrich Hayek',
+    bio: 'Friedrich Hayek was een Oostenrijks-Britse econoom en filosoof bekend om zijn verdediging van het klassiek liberalisme. Hij benadrukte de rol van spontane orde in markten en waarschuwde voor de gevaren van centrale planning. Zijn ideeën hebben het moderne libertarische en conservatieve denken diepgaand beïnvloed.',
+    works: ['The Road to Serfdom', 'The Constitution of Liberty'],
+    quote: 'Hoe meer de staat "plant", hoe moeilijker planning wordt voor het individu.'
+  },
+  'bastiat': {
+    slug: 'bastiat',
+    name: 'Frédéric Bastiat',
+    bio: 'Frédéric Bastiat was een 19e-eeuwse Franse econoom en schrijver, vooral bekend om zijn heldere en geestige kritieken op overheidsingrijpen. Hij pionierde het concept van alternatieve kosten en populariseerde de drogreden van het gebroken raam. Zijn geschriften zijn fundamenteel in het klassiek liberale economische denken.',
+    works: ['The Law', 'That Which is Seen, and That Which is Not Seen'],
+    quote: 'De staat is de grote fictie waardoor iedereen probeert te leven ten koste van iedereen.'
+  },
+  'larken-rose': {
+    slug: 'larken-rose',
+    name: 'Larken Rose',
+    bio: 'Larken Rose is een Amerikaanse auteur en spreker bekend om zijn onverbloemde kritiek op overheidsgezag. Hij pleit voor voluntarisme en vreedzame anarchie, met het argument dat het geloof in "autoriteit" de wortel is van het meeste maatschappelijke geweld. Zijn toon is vaak provocerend en radicaal individualistisch.',
+    works: ['The Most Dangerous Superstition', 'How to Be a Successful Tyrant'],
+    quote: 'Het geloof in autoriteit is het gevaarlijkste bijgeloof in de geschiedenis van de wereld.'
+  },
+  'ron-paul': {
+    slug: 'ron-paul',
+    name: 'Ron Paul',
+    bio: 'Ron Paul is een Amerikaanse arts, auteur en voormalig congreslid die een prominente stem werd voor vrijheid, gezond geld en non-interventionisme. Bekend om zijn consistentie en principiële standpunten, ontketende hij een wereldwijde libertarische jeugdbeweging via zijn presidentiële campagnes.',
+    works: ['The Revolution: A Manifesto', 'End the Fed'],
+    quote: 'Waarheid is verraad in het rijk der leugens.'
+  },
   'unknown': {
     slug: 'unknown',
     name: 'Unknown Thinker',
