@@ -12,11 +12,11 @@ export const ThinkerImage = ({ name }: ThinkerImageProps) => {
     .replace(/\s+/g, '-') // Replace spaces with hyphens
     .replace(/[^a-z0-9-]/g, ''); // Remove invalid characters
 
-  const src = `/images/thinkers/${filename}.png`;
+  const src = `/images/thinkers/${filename}.jpg`;
 
   return (
-    <div className="flex justify-center mb-6"> {/* Increased margin bottom */}
-      <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-gray-300 overflow-hidden"> {/* Container for Image */}
+    <div className="flex justify-center mb-4">
+      <div className="relative w-28 h-28 rounded-full border border-gray-300 overflow-hidden">
         <Image
           src={src}
           alt={`Silhouet van ${name}`}

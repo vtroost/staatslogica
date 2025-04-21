@@ -34,14 +34,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <main className="max-w-4xl mx-auto py-8 px-4">
+        <main className="max-w-3xl mx-auto px-4 py-8">
             <article>
                 {/* Thinker Image */}
                 <ThinkerImage name={article.thinker} />
-
-                {/* Article Header */}
-                <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">{article.title}</h1>
-                <p className="text-sm text-gray-500 text-center mb-6">Gepubliceerd op: {article.date}</p>
 
                 {/* Main Image */}
                 {article.image?.url && (
@@ -56,28 +52,17 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                     </div>
                 )}
 
-                {/* Spin Quote */}
-                <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-700 mb-8 text-lg md:text-xl">
-                    {article.spin}
-                </blockquote>
-
-                {/* Analyses Section - using prose for typography */}
-                <div className="prose prose-lg lg:prose-xl max-w-none mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <section>
-                        <h2 className="text-xl font-semibold mb-3 border-b pb-1">Libertaire Analyse</h2>
-                        <p>{article.libertarianAnalysis}</p>
-                    </section>
-                    <section>
-                        <h2 className="text-xl font-semibold mb-3 border-b pb-1">Anarchistische Analyse</h2>
-                        <p>{article.anarchistAnalysis}</p>
-                    </section>
-                </div>
-
-                {/* Thinker Quote */}
-                <blockquote className="text-center border-l-4 border-gray-400 px-4 py-4 italic text-gray-800 my-10 bg-gray-50 rounded-md">
-                    <p className="mb-2">"{article.quote}"</p>
-                    <cite className="not-italic text-sm">- {article.thinker}</cite>
-                </blockquote>
+                 {/* Article Content with Prose Styling */}
+                <div className="prose prose-neutral max-w-none">
+                    <h1>{article.title}</h1>
+                    <p className="lead text-sm text-gray-500">Gepubliceerd op: {article.date}</p>
+                    <blockquote>{article.spin}</blockquote>
+                    <h2>Libertaire Analyse</h2>
+                    <p>{article.libertarianAnalysis}</p>
+                    <h2>Anarchistische Analyse</h2>
+                    <p>{article.anarchistAnalysis}</p>
+                    <blockquote>{article.quote}</blockquote>
+                 </div>
 
                 {/* Footer Metadata: Thinker and Tags */}
                 <div className="text-sm text-gray-600 mt-8 border-t pt-6">

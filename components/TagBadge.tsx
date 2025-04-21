@@ -11,8 +11,7 @@ export const TagBadge = ({ tag }: TagBadgeProps) => {
   return (
     <Link
       href={`/tags/${slug}`} // Link to the tag page (implement later)
-      className="inline-block bg-blue-100 text-blue-800 text-xs font-medium mr-2 mb-2 px-3 py-1 rounded-full hover:bg-blue-200 transition-colors duration-150 ease-in-out"
-      // Added mb-2 for spacing when tags wrap
+      className="inline-block bg-gray-200 text-gray-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full"
     >
       #{tag}
     </Link>
