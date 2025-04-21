@@ -1,7 +1,8 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 
@@ -28,6 +29,9 @@ interface GeneratedArticleData {
 
 function PreviewContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   
   // Add null check for searchParams
   if (!searchParams) {
@@ -55,6 +59,44 @@ function PreviewContent() {
 
   // Destructure for easier access
   const { title, date, thinker, tags, quote, spin, analysisContent, imageUrl, sourceUrl } = articleData;
+
+  // --- Handle Publish --- 
+  const handlePublish = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+        const response = await fetch('/api/publish', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(articleData), // Send the whole data
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        // Assuming the API returns the slug of the newly created article
+        if (result.slug) {
+             // Redirect to the new article page on success
+             const newArticlePath = `/articles/${result.slug}`;
+             router.push(newArticlePath);
+             // Optionally show a success message before redirecting, maybe via toast
+        } else {
+            throw new Error("Publishing succeeded but no slug was returned.");
+        }
+
+    } catch (err: any) {
+        console.error("Failed to publish article:", err);
+        setError(err.message || "An unknown error occurred during publishing.");
+    } finally {
+        setIsLoading(false);
+    }
+  };
 
   // --- Render the preview using similar structure as the final article page --- 
   return (
@@ -126,14 +168,19 @@ function PreviewContent() {
           )}
       </div>
 
-      {/* Publish Button Placeholder */}
+      {/* Publish Button */}
       <div className="mt-12 border-t pt-6 text-center">
-          <button 
-              // Add onClick handler for publishing logic later
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded shadow-md transition-colors duration-150"
+          <button
+              onClick={handlePublish}
+              disabled={isLoading}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded shadow-md transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-              ✓ Publish Article
+              {isLoading ? 'Bezig met publiceren...' : '✓ Publish Article'}
           </button>
+          {/* Display Error Message */}
+          {error && (
+              <p className="mt-4 text-red-600 text-sm">Error: {error}</p>
+          )}
       </div>
     </article>
   );
