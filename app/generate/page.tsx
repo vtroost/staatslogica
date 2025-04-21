@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // Verwijder de directe import van openai
 // import { openai } from '@/lib/openai';
@@ -15,16 +15,15 @@ const thinkers = [
 ];
 
 export default function GeneratePage() {
+  const router = useRouter();
   const [url, setUrl] = useState('');
   const [thinker, setThinker] = useState(thinkers[0]); // Default to the first thinker
   const [extraInstruction, setExtraInstruction] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
-    setAiResponse(null); // Clear previous response
 
     // Slugify helper (simple version)
     const slugify = (str: string) =>
@@ -89,14 +88,33 @@ ${extraInstruction || 'Geen'}
 
       // Haal de AI response uit de JSON body
       const data = await response.json();
-      const responseContent = data.response;
+      // The API returns the generated content within a 'response' field
+      const generatedContent = data.response;
 
-      console.log('API Route response:', responseContent); // Log API response
-      setAiResponse(responseContent || 'No content received from API');
+      console.log('API Route response:', generatedContent); // Log API response
+
+      // Attempt to parse the JSON string from the API response
+      let articleData;
+      try {
+          articleData = JSON.parse(generatedContent);
+      } catch (parseError) {
+          console.error("Failed to parse generated content as JSON:", parseError);
+          // Handle the error appropriately - maybe show a message to the user
+          // For now, we'll throw an error to stop the process
+          throw new Error("Received invalid JSON data from the generation API.");
+      }
+
+      // Construct URL with query parameter for app router
+      const queryString = new URLSearchParams({ 
+          articleData: JSON.stringify(articleData) 
+      }).toString();
+      
+      router.push(`/generate/preview?${queryString}`);
 
     } catch (error) {
-      console.error("Error calling API route:", error);
-      setAiResponse(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error("Error during generation or redirect:", error);
+      // Keep displaying error messages if needed, maybe in a dedicated error state
+      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`); // Simple alert for now
     } finally {
       setIsLoading(false);
     }
@@ -167,16 +185,6 @@ ${extraInstruction || 'Geen'}
             </button>
           </div>
         </form>
-
-        {/* Display AI response */}
-        {aiResponse && (
-          <div className="mt-8 border-t pt-6">
-            <h2 className="text-lg font-medium text-gray-900 mb-3">AI Resultaat:</h2>
-            <pre className="bg-gray-100 p-4 rounded text-sm whitespace-pre-wrap break-words">
-              {aiResponse}
-            </pre>
-          </div>
-        )}
       </div>
     </div>
   );
