@@ -12,6 +12,9 @@ interface PublishRequestBody {
   spin: string;
   libertarianAnalysis: string;
   anarchistAnalysis: string;
+  imageUrl?: string;
+  sourceUrl?: string;
+  analysisContent?: string;
 }
 
 // Success/Failure response types
@@ -36,29 +39,31 @@ export default async function handler(
 
   const body = req.body as PublishRequestBody;
 
-  // Validate required fields (consider adding more checks as needed)
-  if (!body.slug || !body.title || !body.date || !body.tags || !body.thinker) {
-    return res.status(400).json({ success: false, error: 'Missing required fields.' });
+  // Validate required fields 
+  // Make sure the incoming date potentially includes time, although we overwrite it
+  if (!body.slug || !body.title || !body.date /* keep validation */ || !body.tags || !body.thinker || !body.analysisContent /* Added based on preview page */ ) {
+    return res.status(400).json({ success: false, error: 'Missing required fields (slug, title, date, tags, thinker, analysisContent).' });
   }
 
-  // Format the MDX content
+  // Use the current timestamp in ISO format for the article date
+  const publicationTimestamp = new Date().toISOString();
+
+  // Format the MDX content - using publicationTimestamp for the date field
+  // Also ensuring imageUrl and sourceUrl are included if present in body
   const mdxContent = `---
 title: "${body.title}"
-date: "${body.date}"
+date: "${publicationTimestamp}" # Use full timestamp
+imageUrl: "${body.imageUrl || ''}" # Include imageUrl
+sourceUrl: "${body.sourceUrl || ''}" # Include sourceUrl
 tags: [${Array.isArray(body.tags) ? body.tags.map(tag => `"${tag}"`).join(', ') : ''}]
 thinker: "${body.thinker || 'Unknown'}"
 quote: "${body.quote ? body.quote.replace(/"/g, '\"') : ''}"
 spin: "${body.spin ? body.spin.replace(/"/g, '\"') : ''}"
 ---
 
-## Libertarian Analyse
-
-${body.libertarianAnalysis || 'N/A'}
-
-## Anarchistische Analyse
-
-${body.anarchistAnalysis || 'N/A'}
+${body.analysisContent || 'Geen inhoud gegenereerd.'}
 `;
+  // Removed old Libertarian/Anarchist sections, assuming analysisContent holds the main text
 
   // --- GitHub Commit Logic ---
   const githubToken = process.env.GITHUB_TOKEN;

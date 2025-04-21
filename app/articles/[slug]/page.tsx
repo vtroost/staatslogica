@@ -10,6 +10,8 @@ import Link from 'next/link'; // Import Link for thinker link
 // import { ThinkerImage } from '@/components/ThinkerImage';
 // import { TagBadge } from '@/components/TagBadge';
 
+const DEFAULT_IMAGE_URL = '/images/placeholder.jpg'; // Define placeholder path
+
 // Helper function to generate slug (needed for thinker link)
 function generateSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
@@ -79,6 +81,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
     // No need to cast here anymore
     const { data: frontmatter, content } = article;
+    const imageUrl = frontmatter.imageUrl || DEFAULT_IMAGE_URL; // Use default if missing
 
     // Prepare breadcrumb items
     const breadcrumbItems = [
@@ -98,18 +101,17 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             {/* Add Breadcrumbs */}
             <Breadcrumb items={breadcrumbItems} />
 
-            {/* 1. Feature Image */}
-            {frontmatter.imageUrl && (
-                <div className="mb-8 aspect-video relative overflow-hidden rounded-lg">
-                    <Image
-                        src={frontmatter.imageUrl}
-                        alt={frontmatter.title || 'Article feature image'}
-                        fill
-                        className="object-cover"
-                        priority // Prioritize loading for LCP
-                    />
-                </div>
-            )}
+            {/* 1. Feature Image (Always render container, use placeholder if needed) */}
+            <div className="mb-8 aspect-video relative overflow-hidden rounded-lg bg-gray-100"> {/* Added bg for placeholder */}
+                <Image
+                    src={imageUrl} // Use the variable with potential default
+                    alt={frontmatter.title || 'Article feature image'}
+                    fill
+                    className="object-cover" // Ensure placeholder covers well
+                    priority={!!frontmatter.imageUrl} // Only prioritize if it's the actual image
+                    unoptimized={!frontmatter.imageUrl} // Avoid optimizing the placeholder maybe?
+                />
+            </div>
 
             {/* Article Header */}
             <header className="mb-8">
@@ -124,7 +126,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                     )}
                 </div>
 
-                {/* 2. Link to original source */}
+                {/* 2. Link to original source (Conditional) */}
                 {frontmatter.sourceUrl && (
                     <p className="text-sm text-gray-600 mt-4 bg-gray-100 p-3 rounded inline-block">
                         Gebaseerd op:&nbsp;
