@@ -5,6 +5,9 @@ import { NextResponse } from 'next/server';
 // export const runtime = 'edge';
 
 export async function POST(request: Request) {
+  // Add runtime logging for the API key
+  console.log('API key loaded?', !!process.env.OPENAI_API_KEY);
+
   try {
     // Haal de prompt uit de request body
     const body = await request.json();
