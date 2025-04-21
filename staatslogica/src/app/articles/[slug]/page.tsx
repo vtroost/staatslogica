@@ -18,7 +18,9 @@ export async function generateStaticParams(): Promise<Params[]> {
 
 // Optional: Generate metadata for SEO
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    const article = getArticleBySlug(params.slug);
+    // Destructure slug from params FIRST
+    const { slug } = params;
+    const article = getArticleBySlug(slug);
 
     if (!article) {
         return {
@@ -35,8 +37,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 // Article Page Component - Updated with styling and components
 export default async function ArticlePage({ params }: { params: Params }) {
-    // Revert to using params.slug directly
-    const article = getArticleBySlug(params.slug);
+    // Destructure slug from params FIRST
+    const { slug } = params;
+    const article = getArticleBySlug(slug);
 
     // Handle case where article is not found
     if (!article) {
