@@ -1,4 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Staatslogica AI Article Generator
+
+This is a Next.js application designed to generate critical analyses of news articles from a libertarian perspective, inspired by selected thinkers.
+
+## Overview
+
+The application provides a simple interface where users can:
+1.  Input the URL of a news article (intended for NOS articles).
+2.  Select a libertarian thinker (e.g., Ayn Rand, Ludwig von Mises) to frame the analysis.
+3.  Optionally provide extra instructions for the AI.
+
+Upon submission, the application constructs a detailed prompt and sends it to a backend API (`/api/generate`). This API (presumably interacting with an AI model like GPT) generates an analysis structured in a specific JSON format.
+The resulting JSON data is then passed to a preview page for review.
+
+## Features
+
+*   **Article Input:** Accepts URL input for news articles.
+*   **Thinker Selection:** Dropdown to choose an inspirational thinker.
+*   **Custom Instructions:** Optional field for guiding the AI generation.
+*   **AI-Powered Analysis:** Generates content including:
+    *   A catchy title and slug.
+    *   Date and relevant tags.
+    *   Details about the chosen thinker.
+    *   Identification of the article's "spin".
+    *   Libertarian and Anarchist analyses.
+    *   A relevant quote from the thinker.
+*   **Structured Output:** Delivers the analysis in a predictable JSON format.
+*   **Preview:** Displays the generated article data before further use.
+
+## Tech Stack
+
+*   **Framework:** Next.js (App Router)
+*   **Language:** TypeScript
+*   **UI:** React
+*   **Styling:** Tailwind CSS (based on class names used)
+*   **AI Backend:** (Presumed) Interaction with an AI service via the `/api/generate` route.
+
+## Project Structure
+
+*   `app/generate/page.tsx`: The main page with the input form.
+*   `app/generate/preview/page.tsx`: (Presumed) The page to display the generated preview.
+*   `lib/prompts.ts`: Contains helper functions for building AI prompts (`buildArticlePrompt`).
+*   `pages/api/generate.ts`: (Presumed) The API route that handles communication with the AI model.
+
+## Setup and Running
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd <repository-name>
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+3.  **Environment Variables:** Create a `.env.local` file in the root directory. If the API route requires authentication (e.g., an OpenAI API key), add it here:
+    ```env
+    # Example: If using OpenAI
+    OPENAI_API_KEY=your_api_key_here 
+    ```
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+5.  Open [http://localhost:3000/generate](http://localhost:3000/generate) in your browser.
+
+## How it Works
+
+1.  The user fills out the form on `/generate`.
+2.  On submit, `app/generate/page.tsx` calls the `buildArticlePrompt` function from `lib/prompts.ts` to create the prompt string.
+3.  A POST request is made to `/api/generate` with the prompt.
+4.  The API route `/api/generate` processes the prompt (likely sending it to an external AI service).
+5.  The API route returns the AI-generated JSON string.
+6.  The frontend parses the JSON string.
+7.  The user is redirected to `/generate/preview` with the parsed article data passed as a query parameter.
 
 ## Getting Started
 
