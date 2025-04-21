@@ -1,16 +1,15 @@
 # Staatslogica AI Article Generator
 
-This is a Next.js application designed to generate critical analyses of news articles from a libertarian perspective, inspired by selected thinkers.
+This is a Next.js application designed to generate critical analyses of news articles from a libertarian perspective, inspired by selected thinkers, and publish them to a GitHub repository.
 
 ## Overview
 
-The application provides a simple interface where users can:
-1.  Input the URL of a news article (intended for NOS articles).
-2.  Select a libertarian thinker (e.g., Ayn Rand, Ludwig von Mises) to frame the analysis.
-3.  Optionally provide extra instructions for the AI.
-
-Upon submission, the application constructs a detailed prompt and sends it to a backend API (`/api/generate`). This API (presumably interacting with an AI model like GPT) generates an analysis structured in a specific JSON format.
-The resulting JSON data is then passed to a preview page for review.
+The application provides a simple workflow:
+1.  **Generate:** Input a news article URL, select an inspirational thinker, and optionally add instructions on the `/generate` page.
+2.  **AI Analysis:** The backend `/api/generate` route interacts with an AI (presumably GPT via OpenAI API) to produce a structured JSON analysis based on the chosen thinker.
+3.  **Preview:** The generated content (title, slug, analysis, etc.) is displayed on the `/generate/preview` page.
+4.  **Publish:** If satisfied, clicking "Publish Article" sends the article data to the `/api/publish` route.
+5.  **GitHub Commit:** The `/api/publish` route formats the content as MDX and commits it directly to the configured GitHub repository (specified via environment variables) within the `content/articles/` directory using the generated slug as the filename.
 
 ## Features
 
@@ -18,29 +17,34 @@ The resulting JSON data is then passed to a preview page for review.
 *   **Thinker Selection:** Dropdown to choose an inspirational thinker.
 *   **Custom Instructions:** Optional field for guiding the AI generation.
 *   **AI-Powered Analysis:** Generates content including:
-    *   A catchy title and slug.
+    *   A catchy title and a generated slug (e.g., `mijn-artikel-slug`).
     *   Date and relevant tags.
     *   Details about the chosen thinker.
     *   Identification of the article's "spin".
     *   Libertarian and Anarchist analyses.
     *   A relevant quote from the thinker.
-*   **Structured Output:** Delivers the analysis in a predictable JSON format.
-*   **Preview:** Displays the generated article data before further use.
+*   **Structured JSON Output:** AI delivers the analysis in a predictable JSON format.
+*   **Preview Page:** Displays the formatted, generated article data before publishing.
+*   **Direct GitHub Publishing:** Commits the final article as an MDX file to a specified GitHub repository branch.
 
 ## Tech Stack
 
-*   **Framework:** Next.js (App Router)
+*   **Framework:** Next.js (using both App Router and Pages Router features)
 *   **Language:** TypeScript
 *   **UI:** React
 *   **Styling:** Tailwind CSS (based on class names used)
-*   **AI Backend:** (Presumed) Interaction with an AI service via the `/api/generate` route.
+*   **AI Backend:** Interaction with OpenAI API via the `/api/generate` route.
+*   **Publishing:** Octokit library for GitHub API interaction in the `/api/publish` route.
 
 ## Project Structure
 
-*   `app/generate/page.tsx`: The main page with the input form.
-*   `app/generate/preview/page.tsx`: (Presumed) The page to display the generated preview.
+*   `app/generate/page.tsx`: (App Router) The main page with the input form.
+*   `pages/generate/preview.tsx`: (Pages Router) The page to display the generated preview and trigger publishing.
 *   `lib/prompts.ts`: Contains helper functions for building AI prompts (`buildArticlePrompt`).
-*   `pages/api/generate.ts`: (Presumed) The API route that handles communication with the AI model.
+*   `pages/api/generate.ts`: (Pages Router) API route that handles communication with the AI model.
+*   `pages/api/publish.ts`: (Pages Router) API route that formats MDX and commits to GitHub.
+*   `content/articles/`: Directory in the GitHub repository where published `.mdx` files are stored.
+*   `netlify.toml`: Configuration for Netlify deployment, including build settings and secrets scanning exclusions.
 
 ## Setup and Running
 
@@ -55,10 +59,17 @@ The resulting JSON data is then passed to a preview page for review.
     # or
     yarn install
     ```
-3.  **Environment Variables:** Create a `.env.local` file in the root directory. If the API route requires authentication (e.g., an OpenAI API key), add it here:
+3.  **Environment Variables:** Create a `.env.local` file in the root directory with the necessary secrets:
     ```env
-    # Example: If using OpenAI
-    OPENAI_API_KEY=your_api_key_here 
+    # Required for AI generation
+    OPENAI_API_KEY=your_openai_api_key
+
+    # Required for GitHub publishing
+    GITHUB_TOKEN=your_github_personal_access_token_with_repo_permissions
+    GITHUB_REPO=YourGitHubUsername/YourTargetRepositoryName
+    GITHUB_BRANCH=main # Or the branch you want to commit to
+    GITHUB_AUTHOR_NAME="Your Commit Author Name" # e.g., Staatslogica Bot
+    GITHUB_AUTHOR_EMAIL=your@email.com # e.g., bot@staatslogica.nl
     ```
 4.  **Run the development server:**
     ```bash
@@ -68,15 +79,18 @@ The resulting JSON data is then passed to a preview page for review.
     ```
 5.  Open [http://localhost:3000/generate](http://localhost:3000/generate) in your browser.
 
-## How it Works
+## Deployment (Netlify)
 
-1.  The user fills out the form on `/generate`.
-2.  On submit, `app/generate/page.tsx` calls the `buildArticlePrompt` function from `lib/prompts.ts` to create the prompt string.
-3.  A POST request is made to `/api/generate` with the prompt.
-4.  The API route `/api/generate` processes the prompt (likely sending it to an external AI service).
-5.  The API route returns the AI-generated JSON string.
-6.  The frontend parses the JSON string.
-7.  The user is redirected to `/generate/preview` with the parsed article data passed as a query parameter.
+This project is configured for deployment on Netlify.
+
+*   The `netlify.toml` file specifies the build command (`npm run build`) and publish directory (`.next`).
+*   Environment variables listed above must also be configured in the Netlify UI (**Site configuration > Environment variables**) for the production build and functions to work correctly.
+*   Secrets scanning is configured via `netlify.toml` to ignore certain paths where environment variable values might appear in build artifacts (`.netlify/**`) or source code (`pages/api/publish.ts`). *Note: This was necessary as `omit_keys` did not work reliably.* Consider enabling `SECRETS_SCAN_ENABLED=false` in Netlify environment variables if build failures persist due to scanning.
+
+## Notes
+
+*   The distinction between App Router (`/app`) and Pages Router (`/pages`) components/APIs is important. This project uses both.
+*   Ensure the GitHub Personal Access Token has the necessary permissions (`repo` scope) to commit to the target repository.
 
 ## Getting Started
 
@@ -150,8 +164,8 @@ This project includes a workflow for generating libertarian analysis articles ba
     *   Contains the "Publish Article" button.
     *   Calls the `/api/publish` endpoint on button click.
     *   Displays status messages (loading, success, error) for the publish action.
-*   **Publish API (`app/api/publish/route.ts`):**
-    *   A Next.js API Route Handler (App Router).
+*   **Publish API (`pages/api/publish.ts`):**
+    *   A Next.js API Route Handler (Pages Router).
     *   Accepts a `POST` request with the article data (JSON body).
     *   Validates the incoming data.
     *   Formats the data into an MDX string with YAML frontmatter and content sections.
