@@ -47,8 +47,8 @@ const thinkersData: Record<string, ThinkerData> = {
     works: ['Man, Economy, and State', 'For a New Liberty'],
     quote: "It is easy to be conspicuously 'compassionate' if others are being forced to pay the cost."
   },
-  'mises': {
-    slug: 'mises',
+  'ludwig-von-mises': {
+    slug: 'ludwig-von-mises',
     name: 'Ludwig von Mises',
     bio: 'Ludwig von Mises was een leidende figuur in de Oostenrijkse School van economie en een fervent voorstander van economisch liberalisme. Hij betoogde dat economische calculatie onmogelijk is onder socialisme en verdedigde het belang van vrije marktprijzen. Zijn werk legde de basis voor de moderne libertarische economische theorie.',
     works: ['Human Action', 'Socialism: An Economic and Sociological Analysis'],
@@ -291,5 +291,43 @@ export function getArticlesByThinker(thinkerSlug: string): Article[] {
   const allArticles = getAllArticles();
   return allArticles.filter(article =>
     article.thinker && generateSlug(article.thinker) === thinkerSlug
+  );
+}
+
+/**
+ * Retrieves all unique tags from articles.
+ */
+export interface TagData {
+  name: string;
+  slug: string;
+}
+
+export function getAllTags(): TagData[] {
+  const articles = getAllArticles();
+  const allTags = new Map<string, TagData>();
+
+  articles.forEach(article => {
+    if (Array.isArray(article.tags)) {
+      article.tags.forEach(tagName => {
+        const slug = generateSlug(tagName); // Reuse the existing slug function
+        if (!allTags.has(slug)) {
+          allTags.set(slug, { name: tagName, slug: slug });
+        }
+      });
+    }
+  });
+
+  return Array.from(allTags.values()).sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically
+}
+
+// Optional: Add a function to get articles by tag slug if needed elsewhere
+/**
+ * Filters articles by tag slug.
+ */
+export function getArticlesByTag(tagSlug: string): Article[] {
+  const allArticles = getAllArticles();
+  return allArticles.filter(article => 
+    Array.isArray(article.tags) && 
+    article.tags.some(tagName => generateSlug(tagName) === tagSlug)
   );
 } 
