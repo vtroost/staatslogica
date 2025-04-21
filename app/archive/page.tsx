@@ -50,8 +50,7 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
             {/* Filter Section - Needs adjustment for server component */}
             {/* We'll use Links or a simple form to change the URL param */}
             <div className="mb-8 flex justify-end">
-                {/* Simple Link-based filter buttons (Example) */}
-                <div className="flex space-x-2 border border-gray-300 rounded p-1 bg-white">
+                <div className="flex flex-wrap justify-end gap-2 border border-gray-300 rounded p-1 bg-white">
                     <Link 
                         href="/archive"
                         className={`px-3 py-1 rounded text-sm ${selectedThinker === 'all' ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}
@@ -62,9 +61,15 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
                         <Link 
                             key={thinker.slug} 
                             href={`/archive?thinker=${thinker.slug}`}
-                            className={`px-3 py-1 rounded text-sm ${selectedThinker === thinker.slug ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}
+                            className={`flex items-center space-x-1.5 px-3 py-1 rounded text-sm ${selectedThinker === thinker.slug ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}
                         >
-                            {thinker.name}
+                            <span>{thinker.name}</span>
+                            {/* Add badge only if count > 0 */}
+                            {thinker.articleCount > 0 && (
+                                <span className="inline-block bg-gray-400 text-white text-xs font-semibold px-1.5 py-0.5 rounded-full">
+                                    {thinker.articleCount}
+                                </span>
+                            )}
                         </Link>
                     ))}
                 </div>
