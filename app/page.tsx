@@ -15,7 +15,7 @@ export default function HomePage() {
     const articlesToShow = 10; // Number of articles to display on homepage
 
     return (
-        <main className="max-w-3xl mx-auto py-8 px-4">
+        <main className="prose prose-slate lg:prose-xl max-w-3xl mx-auto py-8 px-4">
             <h1 className="text-3xl font-bold mb-8 text-center">Welkom bij Staatslogica</h1>
             <p className="text-lg text-center text-gray-600 mb-10">
                 Satirische nieuwsanalyses door de lens van libertarische denkers.
@@ -24,11 +24,11 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold mb-6 border-b pb-2">Laatste analyses</h2>
 
             {articles.length > 0 ? (
-                <div className="space-y-10"> {/* Increased spacing */}
+                <div className="mt-8">
                     {articles.slice(0, articlesToShow).map((article) => (
-                        <div key={article.slug} className="pb-6 border-b last:border-b-0">
+                        <div key={article.slug} className="py-4 mb-6 border-b last:border-b-0">
                             <h3 className="text-xl font-semibold mb-1">
-                                <Link href={`/articles/${article.slug}`} className="text-blue-700 hover:underline">
+                                <Link href={`/articles/${article.slug}`} className="text-blue-700 hover:underline no-underline prose-a:no-underline">
                                     {article.title}
                                 </Link>
                             </h3>
