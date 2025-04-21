@@ -5,6 +5,14 @@ import { useState } from 'react';
 // Verwijder de directe import van openai
 // import { openai } from '@/lib/openai';
 
+function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word chars and hyphens with a single hyphen
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
+
 const thinkers = [
   'Ayn Rand',
   'Ludwig von Mises',
@@ -21,14 +29,6 @@ export default function GeneratePage() {
   const [extraInstruction, setExtraInstruction] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  function slugify(str: string): string {
-    return str
-        .toLowerCase()
-        .trim()
-        .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word chars and hyphens with a single hyphen
-        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
-  }
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
@@ -39,7 +39,7 @@ export default function GeneratePage() {
     const slug = "placeholder"; // Still placeholder, consider generating from title later?
 
     // Refined prompt with stricter JSON instructions
-    const apiPrompt = `
+    const apiPrompt: string = `
 Je bent een libertarische denker, geïnspireerd door ${thinker}.
 Analyseer het volgende nieuwsartikel kritisch. Focus op het identificeren van de centrale "spin", waarom dit een door de overheid gecreëerd probleem is, welke aannames het artikel maakt, en wat een vrijemarkt- of vrijwillig alternatief zou zijn.
 
@@ -47,7 +47,6 @@ Lever je analyse aan in **exact** de JSON-structuur hieronder. Het is cruciaal d
 **Gebruik ALTIJD dubbele aanhalingstekens ("") rond alle keys en string-waarden.** Gebruik GEEN single quotes ('') of backticks (``). Zorg ervoor dat alle strings correct zijn escaped indien nodig.
 
 JSON Structuur:
-'''json
 {
   "slug": "${slug}", 
   "title": "Scherpe, pakkende titel in het Nederlands",
@@ -63,7 +62,6 @@ JSON Structuur:
   "anarchistAnalysis": "Anarchistische analyse in het Nederlands...",
   "quote": "Een relevant citaat van ${thinker} (vertaald of origineel)"
 }
-'''
 
 Let op: De output MOET beginnen met { en eindigen met }, zonder enige tekst ervoor of erna. Het moet direct parseerbaar zijn met JSON.parse().
 
