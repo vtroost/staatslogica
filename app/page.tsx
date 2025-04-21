@@ -15,24 +15,24 @@ export default function HomePage() {
     const articlesToShow = 10; // Number of articles to display on homepage
 
     return (
-        <main className="max-w-3xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8 text-center">Welkom bij Staatslogica</h1>
-            <p className="text-lg text-center text-gray-600 mb-10">
+        <>
+            <h1>Welkom bij Staatslogica</h1>
+            <p>
                 Satirische nieuwsanalyses door de lens van libertarische denkers.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-6 border-b pb-2">Laatste analyses</h2>
+            <h2>Laatste analyses</h2>
 
             {articles.length > 0 ? (
-                <div className="mt-8">
+                <div>
                     {articles.slice(0, articlesToShow).map((article) => (
-                         <div key={article.slug} className="mb-6 border p-4 rounded hover:shadow transition">
-                            <h2 className="text-xl font-semibold">
+                         <div key={article.slug}>
+                            <h2>
                                 <Link href={`/articles/${article.slug}`}>{article.title}</Link>
                             </h2>
-                            <p className="text-sm text-gray-500 mb-2">{article.date}</p>
-                            <p className="italic">{article.spin}</p>
-                            <div className="mt-2">
+                            <p>{article.date}</p>
+                            <p>{article.spin}</p>
+                            <div>
                                 {article.tags.map((tag) => (
                                 <TagBadge key={tag} tag={tag} />
                                 ))}
@@ -45,11 +45,11 @@ export default function HomePage() {
             )}
 
             {articles.length > articlesToShow && (
-                 <div className="mt-10 text-center">
+                 <div>
                       {/* Optional: Link to an archive page later */}
-                      <p className="text-gray-500">Meer artikelen...</p>
+                      <p>Meer artikelen...</p>
                  </div>
             )}
-        </main>
+        </>
     );
 } 

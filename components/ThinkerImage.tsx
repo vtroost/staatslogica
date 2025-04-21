@@ -15,8 +15,8 @@ export const ThinkerImage = ({ name }: ThinkerImageProps) => {
   const src = `/images/thinkers/${filename}.jpg`;
 
   return (
-    <div className="flex justify-center mb-4">
-      <div className="relative w-28 h-28 rounded-full border border-gray-300 overflow-hidden">
+    <div>
+      <div>
         <Image
           src={src}
           alt={`Silhouet van ${name}`}

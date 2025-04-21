@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl">
-      <body className={inter.className}>
+      <body>
         {/* We use SiteLayout here, assuming it provides header/footer etc. */}
         <SiteLayout>{children}</SiteLayout>
       </body>

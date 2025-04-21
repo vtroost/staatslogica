@@ -34,47 +34,45 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <main className="max-w-3xl mx-auto px-4 py-8">
-            <article>
-                {/* Thinker Image */}
-                <ThinkerImage name={article.thinker} />
+        <article>
+            {/* Thinker Image */}
+            <ThinkerImage name={article.thinker} />
 
-                {/* Main Image */}
-                {article.image?.url && (
-                    <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden shadow-md">
-                        <Image
-                            src={article.image.url}
-                            alt={article.image.alt}
-                            layout="fill"
-                            objectFit="cover"
-                            priority
-                        />
-                    </div>
-                )}
-
-                 {/* Article Content with Prose Styling */}
-                <div className="prose prose-neutral max-w-none">
-                    <h1>{article.title}</h1>
-                    <p className="lead text-sm text-gray-500">Gepubliceerd op: {article.date}</p>
-                    <blockquote>{article.spin}</blockquote>
-                    <h2>Libertaire Analyse</h2>
-                    <p>{article.libertarianAnalysis}</p>
-                    <h2>Anarchistische Analyse</h2>
-                    <p>{article.anarchistAnalysis}</p>
-                    <blockquote>{article.quote}</blockquote>
-                 </div>
-
-                {/* Footer Metadata: Thinker and Tags */}
-                <div className="text-sm text-gray-600 mt-8 border-t pt-6">
-                    <p className="mb-3"><strong>Denker:</strong> {article.thinker}</p>
-                    <div>
-                        <strong className="mr-2">Tags:</strong>
-                        {article.tags.map((tag: string) => (
-                            <TagBadge key={tag} tag={tag} />
-                        ))}
-                    </div>
+            {/* Main Image */}
+            {article.image?.url && (
+                <div>
+                    <Image
+                        src={article.image.url}
+                        alt={article.image.alt}
+                        layout="fill"
+                        objectFit="cover"
+                        priority
+                    />
                 </div>
-            </article>
-        </main>
+            )}
+
+             {/* Article Content with Prose Styling */}
+            <div>
+                <h1>{article.title}</h1>
+                <p>{article.date}</p>
+                <blockquote>{article.spin}</blockquote>
+                <h2>Libertaire Analyse</h2>
+                <p>{article.libertarianAnalysis}</p>
+                <h2>Anarchistische Analyse</h2>
+                <p>{article.anarchistAnalysis}</p>
+                <blockquote>{article.quote}</blockquote>
+             </div>
+
+            {/* Footer Metadata: Thinker and Tags */}
+            <div>
+                <p><strong>Denker:</strong> {article.thinker}</p>
+                <div>
+                    <strong>Tags:</strong>
+                    {article.tags.map((tag: string) => (
+                        <TagBadge key={tag} tag={tag} />
+                    ))}
+                </div>
+            </div>
+        </article>
     );
 } 
