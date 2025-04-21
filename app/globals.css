@@ -1,31 +1,56 @@
-/* Remove Tailwind directives */
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
+@import "tailwindcss";
 
-/* Keep custom variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Define CSS variables for colors */
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 243, 244, 246; /* Light gray like bg-gray-100 */
+  --background-end-rgb: 255, 255, 255;
+  --accent-color: 239, 68, 68; /* Soft Red (Tailwind red-500) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Remove dark mode styles if not needed */
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  /* Reset basic font */
-  font-family: sans-serif;
-} 
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-end-rgb)); /* Use white as the base background */
+  font-family: 'Inter', sans-serif; /* Ensure Inter is applied */
+}
+
+/* Remove Next.js specific starter styles if desired */
+/* @layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */
+
+/* Add smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Define an accent color utility class */
+.text-accent {
+  color: rgb(var(--accent-color));
+}
+.bg-accent {
+  background-color: rgb(var(--accent-color));
+}
+
+/* Remove default browser focus outlines for a cleaner look, 
+   ensure custom focus styles are provided for accessibility */
+*:focus {
+  outline: none;
+}
+
+/* Example of adding a custom focus style (optional) */
+/* a:focus-visible, button:focus-visible {
+  outline: 2px solid rgb(var(--accent-color));
+  outline-offset: 2px;
+} */ 

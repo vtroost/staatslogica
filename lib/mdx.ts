@@ -4,20 +4,57 @@ import matter from 'gray-matter';
 
 // Define the expected structure of the article frontmatter
 // Adjust this interface based on the actual fields in your MDX files
-interface ArticleFrontmatter {
+export interface ArticleFrontmatter {
   title: string;
   date: string;
   tags?: string[];
   thinker?: string;
   quote?: string;
   spin?: string;
+  imageUrl?: string;
+  sourceUrl?: string;
   // Add any other fields you expect in the frontmatter
 }
 
 // Define the structure of the returned article object
-interface Article extends ArticleFrontmatter {
+export interface Article extends ArticleFrontmatter {
   slug: string;
 }
+
+// --- Thinker Data (Placeholder) ---
+// Ideally, this data would come from a separate source (CMS, JSON files, etc.)
+// For now, we define it here. The key is the 'slug'.
+export interface ThinkerData {
+  slug: string;
+  name: string;
+  bio: string;
+  works: string[];
+  quote?: string;
+}
+
+const thinkersData: Record<string, ThinkerData> = {
+  'ayn-rand': {
+    slug: 'ayn-rand',
+    name: 'Ayn Rand',
+    bio: 'Ayn Rand was a Russian-American writer and philosopher known for her philosophy of Objectivism. She advocated reason as the only means of acquiring knowledge and rejected faith and religion. Her political philosophy emphasized laissez-faire capitalism based on individual rights.',
+    works: ['Atlas Shrugged', 'The Fountainhead'],
+    quote: "The question isn't who is going to let me; it's who is going to stop me."
+  },
+  'murray-rothbard': {
+    slug: 'murray-rothbard',
+    name: 'Murray Rothbard',
+    bio: 'Murray Rothbard was an American economist of the Austrian School, a historian, and a political theorist. A central figure in the 20th-century American libertarian movement, he synthesized Austrian economics with classical liberalism and anarcho-capitalism.',
+    works: ['Man, Economy, and State', 'For a New Liberty'],
+    quote: "It is easy to be conspicuously 'compassionate' if others are being forced to pay the cost."
+  },
+  // Add other thinkers here...
+  'unknown': {
+    slug: 'unknown',
+    name: 'Unknown Thinker',
+    bio: 'Information about this thinker is not yet available.',
+    works: [],
+  }
+};
 
 const articlesDirectory = path.join(process.cwd(), 'content', 'articles');
 
@@ -107,4 +144,82 @@ export function getArticleBySlug(slug: string): { data: ArticleFrontmatter, cont
         console.error(`Error reading or parsing article file: ${filePath}`, error);
         return null;
     }
+}
+
+/**
+ * Generates a slug from a thinker's name (e.g., "Ayn Rand" -> "ayn-rand")
+ */
+function generateSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
+/**
+ * Retrieves all unique thinkers mentioned in articles.
+ * This version derives thinkers from article frontmatter and merges with predefined data.
+ */
+export function getAllThinkers(): ThinkerData[] {
+  const articles = getAllArticles();
+  const thinkersFromArticles = new Map<string, ThinkerData>();
+
+  articles.forEach(article => {
+    if (article.thinker) {
+      const slug = generateSlug(article.thinker);
+      if (!thinkersFromArticles.has(slug)) {
+        // Use predefined data if available, otherwise create a basic entry
+        const predefinedData = thinkersData[slug];
+        thinkersFromArticles.set(slug, predefinedData || {
+          slug: slug,
+          name: article.thinker, // Use the name from frontmatter
+          bio: `Articles related to ${article.thinker}. More info coming soon.`, // Default bio
+          works: [],
+        });
+      }
+    }
+  });
+
+  // Also add any predefined thinkers that might not have articles yet
+  Object.values(thinkersData).forEach(thinker => {
+    if (!thinkersFromArticles.has(thinker.slug)) {
+        thinkersFromArticles.set(thinker.slug, thinker);
+    }
+  });
+
+  return Array.from(thinkersFromArticles.values());
+}
+
+/**
+ * Retrieves thinker details by slug.
+ */
+export function getThinkerBySlug(slug: string): ThinkerData | null {
+  // First, try the predefined data
+  if (thinkersData[slug]) {
+    return thinkersData[slug];
+  }
+
+  // As a fallback, try to find a match based on article frontmatter
+  // (This is less reliable as formatting might differ)
+  const articles = getAllArticles();
+  const foundArticle = articles.find(article => article.thinker && generateSlug(article.thinker) === slug);
+
+  if (foundArticle && foundArticle.thinker) {
+    // Return a basic structure if found via articles but not predefined
+    return {
+        slug: slug,
+        name: foundArticle.thinker,
+        bio: `Articles related to ${foundArticle.thinker}. More info coming soon.`, // Default bio
+        works: [],
+    };
+  }
+
+  return null; // Not found
+}
+
+/**
+ * Filters articles by thinker slug.
+ */
+export function getArticlesByThinker(thinkerSlug: string): Article[] {
+  const allArticles = getAllArticles();
+  return allArticles.filter(article =>
+    article.thinker && generateSlug(article.thinker) === thinkerSlug
+  );
 } 
