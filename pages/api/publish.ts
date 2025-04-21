@@ -63,8 +63,12 @@ ${body.anarchistAnalysis || 'N/A'}
   const githubToken = process.env.GITHUB_TOKEN;
   const repo = process.env.GITHUB_REPO; // e.g., 'YourUsername/YourRepoName'
   const branch = process.env.GITHUB_BRANCH || 'main';
-  const authorName = process.env.GITHUB_AUTHOR_NAME || 'Staatslogica Bot';
-  const authorEmail = process.env.GITHUB_AUTHOR_EMAIL || 'bot@staatslogica.nl';
+
+  // Access env vars slightly more dynamically to potentially avoid build-time inlining
+  const authorNameKey = 'GITHUB_AUTHOR_NAME';
+  const authorEmailKey = 'GITHUB_AUTHOR_EMAIL';
+  const authorName = process.env[authorNameKey] || 'Staatslogica Bot';
+  const authorEmail = process.env[authorEmailKey] || 'bot@staatslogica.nl';
 
   // Validate GitHub environment variables
   if (!githubToken) {
