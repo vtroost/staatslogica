@@ -1,6 +1,7 @@
-'use client'; // Needed for useState and event handlers
+// Remove 'use client'; - This is now a Server Component
 
-import { useState, useMemo, useEffect } from 'react';
+// Remove client-side hooks
+// import { useState, useMemo, useEffect } from 'react'; 
 import { getAllArticles, getAllThinkers, Article, ThinkerData } from '@/lib/mdx';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -10,77 +11,68 @@ function generateSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
-// Note: We can't generate static metadata in a 'use client' component directly.
-// If needed, generate metadata in a parent layout or use a separate server component.
-/*
+// Metadata can be static again
 export const metadata: Metadata = {
   title: 'Archief | Staatslogica',
   description: 'Blader door alle gepubliceerde artikelen en analyses van Staatslogica.',
 };
-*/
 
-export default function ArchivePage() {
-    // State for articles, thinkers, and filter
-    const [articles, setArticles] = useState<Article[]>([]);
-    const [thinkers, setThinkers] = useState<ThinkerData[]>([]);
-    const [selectedThinker, setSelectedThinker] = useState<string>('all'); // 'all' or thinker slug
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+// Accept searchParams as a prop for Server Components
+interface ArchivePageProps {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-    // Fetch data on component mount
-    useEffect(() => {
-        // Fetching data client-side since this is interactive
-        const fetchedArticles = getAllArticles();
-        const fetchedThinkers = getAllThinkers();
+export default function ArchivePage({ searchParams }: ArchivePageProps) {
+    // Fetch data directly on the server
+    const allArticles = getAllArticles();
+    const thinkers = getAllThinkers();
 
-        // Sort articles by date initially
-        fetchedArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        // Sort thinkers for the dropdown
-        fetchedThinkers.sort((a, b) => a.name.localeCompare(b.name));
+    // Sort data
+    allArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    thinkers.sort((a, b) => a.name.localeCompare(b.name));
 
-        setArticles(fetchedArticles);
-        setThinkers(fetchedThinkers);
-        setIsLoading(false);
-    }, []);
+    // Get selected thinker from URL query parameters
+    const selectedThinker = typeof searchParams?.thinker === 'string' ? searchParams.thinker : 'all';
 
     // Filter articles based on selected thinker
-    const filteredArticles = useMemo(() => {
-        if (selectedThinker === 'all') {
-            return articles;
-        }
-        return articles.filter(article =>
+    const filteredArticles = selectedThinker === 'all'
+        ? allArticles
+        : allArticles.filter(article =>
             article.thinker && generateSlug(article.thinker) === selectedThinker
-        );
-    }, [articles, selectedThinker]);
+          );
 
-    const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedThinker(event.target.value);
-    };
+    // No need for isLoading state
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 border-b pb-4">Archief</h1>
 
-            {/* Filter Section */}
+            {/* Filter Section - Needs adjustment for server component */}
+            {/* We'll use Links or a simple form to change the URL param */}
             <div className="mb-8 flex justify-end">
-                <select
-                    value={selectedThinker}
-                    onChange={handleFilterChange}
-                    className="border border-gray-300 rounded px-4 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-gray-400"
-                    aria-label="Filter artikelen per denker"
-                >
-                    <option value="all">Alle denkers</option>
+                {/* Simple Link-based filter buttons (Example) */}
+                <div className="flex space-x-2 border border-gray-300 rounded p-1 bg-white">
+                    <Link 
+                        href="/archive"
+                        className={`px-3 py-1 rounded text-sm ${selectedThinker === 'all' ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}
+                    >
+                        Alle
+                    </Link>
                     {thinkers.map(thinker => (
-                        <option key={thinker.slug} value={thinker.slug}>
+                        <Link 
+                            key={thinker.slug} 
+                            href={`/archive?thinker=${thinker.slug}`}
+                            className={`px-3 py-1 rounded text-sm ${selectedThinker === thinker.slug ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}
+                        >
                             {thinker.name}
-                        </option>
+                        </Link>
                     ))}
-                </select>
+                </div>
+                {/* Alternative: Keep <select> but wrap in a client component or use a form */}
             </div>
 
-            {/* Article List */}
-            {isLoading ? (
-                <p className="text-center text-gray-500">Artikelen laden...</p>
-            ) : filteredArticles.length > 0 ? (
+            {/* Article List (remains mostly the same) */}
+            {filteredArticles.length > 0 ? (
                 <div className="space-y-6">
                     {filteredArticles.map((article) => (
                         <div key={article.slug} className="border border-gray-200 rounded-lg p-6 bg-white shadow-sm">
