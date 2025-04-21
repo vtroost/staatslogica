@@ -3,15 +3,14 @@
 
 // Remove type annotation
 const nextConfig = {
-  // Configure static export for Netlify compatibility
-  output: 'export',
-  // Optional: Ensure trailing slashes for static paths (often helpful)
-  trailingSlash: true,
+  // Remove static export configuration to enable API routes
+  // output: 'export',
+  // trailingSlash: true, // Likely not needed without static export
 
-  // Ensure images configured for static export if using next/image
-  images: {
-    unoptimized: true, // Required for static export with next/image
-  }
+  // Keep images config if still using next/image, otherwise remove
+  // images: {
+  //   unoptimized: true,
+  // }
 
   /* other config options can go here */
 };
