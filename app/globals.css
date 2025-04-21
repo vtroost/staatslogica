@@ -1,5 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Keep custom variables, but standard directives are needed */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,5 +25,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family can be set via Tailwind config or kept here if needed */
+  /* font-family: Arial, Helvetica, sans-serif; */
 } 
