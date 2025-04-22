@@ -1,5 +1,5 @@
 ---
-title: "# Lysander Spooner (1808–1887)"
+title: Lysander Spooner (1808–1887)
 ---
 
 Amerikaans jurist, ondernemer en anarchist avant la lettre — de man die de staat juridisch en moreel ontmantelde
