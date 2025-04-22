@@ -26,10 +26,10 @@ export default function HomePage() {
             <section className="w-full bg-gray-100 py-16 md:py-24">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        Kritische denkers. Heldere analyses. Geen overheidsfluff.
+                        Waar de staat ophoudt, begint het denken.
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 mb-8">
-                        Dagelijkse AI-gegenereerde nieuwsanalyses vanuit het perspectief van grote denkers.
+                    Dagelijks verzet tegen collectieve waanzin — scherp, ironisch en libertair tot op het bot.
                     </p>
                     <a
                         href="#latest-articles" // Anchor link to the article grid
