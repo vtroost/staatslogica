@@ -1,4 +1,6 @@
-# Henry Hazlitt (1894–1993)
+---
+title: "# Henry Hazlitt (1894–1993)"
+---
 Amerikaans econoom, journalist en meester in economische helderheid
 
 Henry Hazlitt was een autodidactisch econoom en scherpzinnig schrijver die economie toegankelijk maakte voor miljoenen lezers. Hij was geen academische professor, maar een man van de praktijk — journalist bij The Wall Street Journal, The New York Times en Newsweek — en bovenal een onvermoeibaar verdediger van de vrije markt en individuele vrijheid.
