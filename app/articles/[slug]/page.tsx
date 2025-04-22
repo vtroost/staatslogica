@@ -117,7 +117,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             <header className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{frontmatter.title}</h1>
                 <div className="text-sm text-gray-500 space-x-2">
-                    <span>Gepubliceerd op: {frontmatter.date}</span>
+                    <span>Gepubliceerd op: {new Date(frontmatter.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                     {frontmatter.thinker && (
                         <>
                             <span>|</span>
