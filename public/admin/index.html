@@ -5,27 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager</title>
-  <script 
-    src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.1/dist/decap-cms.js" 
-    onerror="console.error('!!! Failed to load decap-cms.js script !!!')">
+  <script
+    src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.1/dist/decap-cms.js"
+    onerror="console.error('!!! Failed to load decap-cms.js script !!!', event)">
   </script>
   <script>
-    console.log('Browser processed decap-cms.js script tag.');
+    // Attempt to initialize immediately after main script execution
+    console.log('Attempting to init CMS immediately. window.CMS object:', window.CMS);
+    if (window.CMS) {
+      window.CMS.init();
+    } else {
+      console.error('Immediate init failed: window.CMS is not defined.');
+    }
   </script>
 </head>
 <body>
   <div id="nc-root"></div>
-  <!-- Initialize the CMS -->
-  <script defer>
-    window.onload = function() {
-      console.log('window.onload fired. Attempting to init CMS. window.CMS object:', window.CMS);
-      // Try initializing without explicitly loading config file
-      if (window.CMS) {
-        window.CMS.init();
-      } else {
-        console.error('window.CMS is not defined. Cannot initialize CMS.');
-      }
-    };
-  </script>
+  <!-- Removed initialization script from here -->
 </body>
 </html> 
