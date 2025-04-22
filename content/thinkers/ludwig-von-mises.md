@@ -1,5 +1,5 @@
 ---
-title: "# Ludwig von Mises (1881–1973)"
+title: Ludwig von Mises (1881–1973)
 ---
 
 Weens econoom, onverzettelijke verdediger van het laissez-faire-kapitalisme en geestelijk vader van de Oostenrijkse School in haar moderne vorm
