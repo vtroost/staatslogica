@@ -5,7 +5,7 @@
 
 backend:
   name: git-gateway # Use Netlify Identity Git Gateway for auth
-  # branch: main # Optional: specify the branch to work on, defaults to master
+  branch: main # Specify the branch to work on
 
 media_folder: "public/uploads" # Location where uploaded media files are stored
 public_folder: "/uploads" # The src attribute for uploaded media files
