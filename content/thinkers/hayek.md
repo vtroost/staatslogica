@@ -1,4 +1,6 @@
-# Friedrich A. von Hayek (1899–1992)
+---
+title: "# Friedrich A. von Hayek (1899–1992)"
+---
 Oostenrijks-Britse econoom, rechtsfilosoof en onvermoeibare verdediger van spontane orde
 
 Friedrich Hayek was een sleutelfiguur in de 20e-eeuwse strijd tussen vrije markten en centrale planning. Geboren in Wenen en opgeleid onder Ludwig von Mises, groeide Hayek uit tot één van de meest invloedrijke economen en denkers van zijn tijd. Hij ontving in 1974 de Nobelprijs voor de Economie voor zijn werk over conjunctuurschommelingen en de interrelatie tussen economische en institutionele structuren.
