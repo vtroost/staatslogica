@@ -1,26 +1,28 @@
-<!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-  <script
-    src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.1/dist/decap-cms.js" 
-    onerror="console.error('!!! Failed to load decap-cms.js from CDN !!!', event)">
-  </script>
-</head>
-<body>
-  <div id="nc-root"></div>
-  <script>
-    // Check if nc-root exists right before init attempt
-    console.log('Checking for #nc-root:', document.getElementById('nc-root'));
-    // Attempt to initialize immediately after main script execution
-    console.log('Attempting to init CMS immediately. window.CMS object:', window.CMS);
-    if (window.CMS) {
-      window.CMS.init();
-    } else {
-      console.error('Immediate init failed: window.CMS is not defined.');
-    }
-  </script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Staatslogica CMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <!-- ✅ Loads the correct bundled version with consistent internal modules -->
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.1/dist/decap-cms.js"></script>
+  </head>
+  <body>
+    <div id="nc-root"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Checking for #nc-root:", document.getElementById("nc-root"));
+        if (window.CMS) {
+          console.log("Attempting to init CMS. window.CMS object:", window.CMS);
+          window.CMS.init();
+        } else {
+          console.error("Immediate init failed: window.CMS is not defined.");
+        }
+      });
+    </script>
+  </body>
 </html> 
