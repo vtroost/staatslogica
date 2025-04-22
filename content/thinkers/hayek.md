@@ -1,5 +1,5 @@
 ---
-title: "# Friedrich A. von Hayek (1899–1992)"
+title: Friedrich A. von Hayek (1899–1992)
 ---
 Oostenrijks-Britse econoom, rechtsfilosoof en onvermoeibare verdediger van spontane orde
 
