@@ -1,5 +1,5 @@
 ---
-title: "# Larken Rose (geboren 1969)"
+title: Larken Rose (geboren 1969)
 ---
 Amerikaans schrijver, anarcho-libertariër en onvermoeibare ontheiligingskampioen van de staat
 
