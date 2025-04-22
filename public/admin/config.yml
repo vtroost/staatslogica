@@ -19,7 +19,8 @@ collections:
     fields:
       # Since there's no front matter, the primary field is the body.
       # The filename (e.g., 'about') serves as the identifier.
-      # We might need a 'title' field if we want to manage it separately from the filename/first heading.
+      # Add a title field for the CMS UI, even if files don't have it initially.
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "articles"
@@ -57,12 +58,12 @@ collections:
           # A simpler approach for now might be using the 'code' widget to edit raw JSON.
           - {label: "Thinkers Data (Raw JSON)", name: "thinkers_raw", widget: "code", default_language: "json"}
 
-  - name: "thinkers" # For individual thinker files in the thinkers/ directory
+  - name: "thinkers"
     label: "Thinkers (Pages)"
     folder: "content/thinkers"
     create: true
     slug: "{{slug}}" # Filename will be the slug
     fields:
-      # Similar to pages, the main content is in the body.
-      # Consider adding a 'name' field if you want it managed separately.
-      - {label: "Body", name: "body", widget: "markdown"} 
+      # Add a title field for the CMS UI.
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}

@@ -10,7 +10,9 @@
 <body>
   <!-- Initialize the CMS -->
   <script>
-    window.CMS.init({ config: { load_config_file: true } });
+    document.addEventListener('DOMContentLoaded', function() {
+      window.CMS.init({ config: { load_config_file: true } });
+    });
   </script>
 </body>
 </html> 
