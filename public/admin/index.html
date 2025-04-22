@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="nl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,8 @@
   <script>
     window.onload = function() {
       console.log('Attempting to init CMS. window.CMS object:', window.CMS);
-      window.CMS.init({ config: { load_config_file: true } });
+      // Try initializing without explicitly loading config file
+      window.CMS.init(); 
     };
   </script>
 </body>
