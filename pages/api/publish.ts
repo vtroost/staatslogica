@@ -10,8 +10,6 @@ interface PublishRequestBody {
   thinker: string;
   quote: string;
   spin: string;
-  libertarianAnalysis: string;
-  anarchistAnalysis: string;
   imageUrl?: string;
   sourceUrl?: string;
   analysisContent?: string;
