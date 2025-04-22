@@ -35,10 +35,21 @@ export async function generateMetadata({ params }: ThinkerPageProps): Promise<Me
     };
   }
 
+  // Generate description: Prioritize bioContent, then JSON bio, then default
+  let description = `Artikelen en analyse vanuit het perspectief van ${thinker.name}.`; // Default
+  if (thinker.bioContent) {
+      // Basic excerpt from Markdown content
+      description = thinker.bioContent.substring(0, 160).replace(/\s+/g, ' ').trim() + '...'; 
+      // Remove potential markdown headers from excerpt start
+      description = description.replace(/^#+\s+/, ''); 
+  } else if (thinker.bio) {
+      // Fallback to JSON bio if it exists (safer access)
+      description = thinker.bio.split('.')[0] + '.';
+  }
+
   return {
     title: `${thinker.name} | Staatslogica`,
-    // Use first sentence of bio or a default description
-    description: thinker.bio.split('.')[0] + '.' || `Artikelen en analyse vanuit het perspectief van ${thinker.name}.`,
+    description: description, // Use the determined description
   };
 }
 

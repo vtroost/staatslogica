@@ -1,0 +1,68 @@
+# Decap CMS Configuration
+# See https://decapcms.org/docs/configuration-options/
+
+# This file will be configured in the next steps. 
+
+backend:
+  name: git-gateway # Use Netlify Identity Git Gateway for auth
+  # branch: main # Optional: specify the branch to work on, defaults to master
+
+media_folder: "public/uploads" # Location where uploaded media files are stored
+public_folder: "/uploads" # The src attribute for uploaded media files
+
+collections:
+  - name: "pages" # Used in routes, e.g., /admin/collections/pages
+    label: "Pages" # Used in the UI
+    folder: "content/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields:
+      # Since there's no front matter, the primary field is the body.
+      # The filename (e.g., 'about') serves as the identifier.
+      # We might need a 'title' field if we want to manage it separately from the filename/first heading.
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "articles"
+    label: "Articles"
+    folder: "content/articles"
+    extension: "mdx" # Specify the file extension
+    format: "frontmatter" # Specify that files have front matter
+    create: true
+    slug: "{{slug}}" # Filename based on slug
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss.SSSZ", date_format: "YYYY-MM-DD", time_format: "HH:mm:ss"} # Configure datetime format
+      - {label: "Image URL", name: "imageUrl", widget: "string", required: false}
+      - {label: "Source URL", name: "sourceUrl", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false} # List widget for arrays
+      - {label: "Thinker", name: "thinker", widget: "string", required: false} # Might relate this later
+      - {label: "Quote", name: "quote", widget: "text", required: false}
+      - {label: "Spin", name: "spin", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"} # Use markdown widget for MDX (basic support)
+
+  - name: "thinkers_list"
+    label: "Thinkers List (JSON)"
+    files:
+      - label: "Thinkers Data"
+        name: "thinkers_json"
+        file: "content/thinkers.json"
+        # Use the object widget for the top-level JSON structure
+        widget: "object" # This widget might not work well with dynamic keys
+        fields:
+          # Define a field for each thinker slug (key) in the JSON object
+          # This might be tricky if the slugs change often.
+          # An alternative is a 'list' widget if the JSON was an array.
+          # For now, let's represent one entry as an example; you'd need to replicate this pattern
+          # OR consider restructuring the JSON to be an array for easier CMS management.
+          # A simpler approach for now might be using the 'code' widget to edit raw JSON.
+          - {label: "Thinkers Data (Raw JSON)", name: "thinkers_raw", widget: "code", default_language: "json"}
+
+  - name: "thinkers" # For individual thinker files in the thinkers/ directory
+    label: "Thinkers (Pages)"
+    folder: "content/thinkers"
+    create: true
+    slug: "{{slug}}" # Filename will be the slug
+    fields:
+      # Similar to pages, the main content is in the body.
+      # Consider adding a 'name' field if you want it managed separately.
+      - {label: "Body", name: "body", widget: "markdown"} 
