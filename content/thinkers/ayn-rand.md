@@ -1,5 +1,5 @@
 ---
-title: "# Ayn Rand (1905–1982)"
+title: Ayn Rand (1905–1982)
 ---
 Russisch-Amerikaanse filosofe, romanschrijfster en grondlegger van het objectivisme
 
