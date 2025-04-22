@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
   <title>Content Manager</title>
   <script
     src="/admin/decap-cms.js" 
     onerror="console.error('!!! Failed to load local decap-cms.js script !!!', event)">
   </script>
   <script>
+    // Check if nc-root exists right before init attempt
+    console.log('Checking for #nc-root:', document.getElementById('nc-root'));
     // Attempt to initialize immediately after main script execution
     console.log('Attempting to init CMS immediately. window.CMS object:', window.CMS);
     if (window.CMS) {
@@ -21,6 +22,6 @@
 </head>
 <body>
   <div id="nc-root"></div>
-  <!-- Removed initialization script from here -->
+  <!-- Removed script from here -->
 </body>
 </html> 
