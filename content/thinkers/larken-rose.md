@@ -1,4 +1,6 @@
-# Larken Rose (geboren 1969)
+---
+title: "# Larken Rose (geboren 1969)"
+---
 Amerikaans schrijver, anarcho-libertariër en onvermoeibare ontheiligingskampioen van de staat
 
 Larken Rose is geen academische denker, geen universiteitsprofessor en al helemaal geen compromissensmid. Hij is een autodidactisch radicaal — een man met een scherpe tong, een nog scherpere pen en een onbuigzaam geloof in de volstrekte illegitimiteit van heerschappij. In de wereld van libertarisme en vrijwilligheid staat hij als een baken van morele helderheid: onbeschaamd, onvermijdelijk en niet te negeren.
