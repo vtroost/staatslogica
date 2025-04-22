@@ -89,7 +89,8 @@ export default async function TagPage({ params }: { params: Params }) {
                         <div key={article.slug} className="border p-4 rounded hover:shadow transition"> {/* Consistent styling */}
                            <Link href={`/articles/${article.slug}`} className="block group">
                                 <h2 className="text-xl font-semibold group-hover:text-blue-600">{article.title}</h2>
-                                <p className="text-sm text-gray-500 mt-1 mb-2">{article.date}</p>
+                                {/* Format the date */}
+                                <p className="text-sm text-gray-500 mt-1 mb-2">{new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                 {/* Display spin if it exists */}
                                 {article.spin && <p className="italic text-sm text-gray-600 mb-2">{article.spin}</p>}
                            </Link>

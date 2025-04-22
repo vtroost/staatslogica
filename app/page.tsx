@@ -67,7 +67,8 @@ export default function HomePage() {
                                         <p className="text-gray-600 text-sm mb-4 flex-grow">{article.spin}</p>
                                     )}
                                     <div className="mt-auto flex justify-between items-center">
-                                        <p className="text-xs text-gray-400">{article.date}</p>
+                                        {/* Format the date */}
+                                        <p className="text-xs text-gray-400">{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                                         <Link href={`/articles/${article.slug}`} className="text-sm font-medium text-black hover:underline">
                                             Lees artikel →
                                         </Link>
