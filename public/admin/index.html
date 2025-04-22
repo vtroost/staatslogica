@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager</title>
-  <script src="https://unpkg.com/decap-cms@3.6.2/dist/decap-cms.js"></script>
+  <script 
+    src="https://unpkg.com/decap-cms@3.6.1/dist/decap-cms.js" 
+    onerror="console.error('!!! Failed to load decap-cms.js script !!!')">
+  </script>
+  <script>
+    console.log('Browser processed decap-cms.js script tag.');
+  </script>
 </head>
 <body>
   <!-- Initialize the CMS -->
   <script>
     window.onload = function() {
-      console.log('Attempting to init CMS. window.CMS object:', window.CMS);
+      console.log('window.onload fired. Attempting to init CMS. window.CMS object:', window.CMS);
       // Try initializing without explicitly loading config file
-      window.CMS.init(); 
+      if (window.CMS) {
+        window.CMS.init();
+      } else {
+        console.error('window.CMS is not defined. Cannot initialize CMS.');
+      }
     };
   </script>
 </body>
