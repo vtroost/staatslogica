@@ -2,70 +2,60 @@
   "ayn-rand": {
     "slug": "ayn-rand",
     "name": "Ayn Rand",
-    "bio": "Ayn Rand was a Russian-American writer and philosopher known for her philosophy of Objectivism. She advocated reason as the only means of acquiring knowledge and rejected faith and religion. Her political philosophy emphasized laissez-faire capitalism based on individual rights.",
     "works": ["Atlas Shrugged", "The Fountainhead"],
     "quote": "The question isn't who is going to let me; it's who is going to stop me."
   },
   "murray-rothbard": {
     "slug": "murray-rothbard",
     "name": "Murray Rothbard",
-    "bio": "Murray Rothbard was an American economist of the Austrian School, a historian, and a political theorist. A central figure in the 20th-century American libertarian movement, he synthesized Austrian economics with classical liberalism and anarcho-capitalism.",
     "works": ["Man, Economy, and State", "For a New Liberty"],
     "quote": "It is easy to be conspicuously 'compassionate' if others are being forced to pay the cost."
   },
   "ludwig-von-mises": {
     "slug": "ludwig-von-mises",
     "name": "Ludwig von Mises",
-    "bio": "Ludwig von Mises was een leidende figuur in de Oostenrijkse School van economie en een fervent voorstander van economisch liberalisme. Hij betoogde dat economische calculatie onmogelijk is onder socialisme en verdedigde het belang van vrije marktprijzen. Zijn werk legde de basis voor de moderne libertarische economische a.",
     "works": ["Human Action", "Socialism: An Economic and Sociological Analysis"],
     "quote": "De overheid is de enige instelling die een nuttig product zoals papier kan nemen, er wat inkt op kan slaan en het volledig waardeloos kan maken."
   },
   "hayek": {
     "slug": "hayek",
     "name": "Friedrich Hayek",
-    "bio": "Friedrich Hayek was een Oostenrijks-Britse econoom en filosoof bekend om zijn verdediging van het klassiek liberalisme. Hij benadrukte de rol van spontane orde in markten en waarschuwde voor de gevaren van centrale planning. Zijn ideeën hebben het moderne libertarische en conservatieve denken diepgaand beïnvloed.",
     "works": ["The Road to Serfdom", "The Constitution of Liberty"],
     "quote": "Hoe meer de staat \"plant\", hoe moeilijker planning wordt voor het individu."
   },
   "bastiat": {
     "slug": "bastiat",
     "name": "Frédéric Bastiat",
-    "bio": "Frédéric Bastiat was een 19e-eeuwse Franse econoom en schrijver, vooral bekend om zijn heldere en geestige kritieken op overheidsingrijpen. Hij pionierde het concept van alternatieve kosten en populariseerde de drogreden van het gebroken raam. Zijn geschriften zijn fundamenteel in het klassiek liberale economische denken.",
     "works": ["The Law", "That Which is Seen, and That Which is Not Seen"],
     "quote": "De staat is de grote fictie waardoor iedereen probeert te leven ten koste van iedereen."
   },
   "larken-rose": {
     "slug": "larken-rose",
     "name": "Larken Rose",
-    "bio": "Larken Rose is een Amerikaanse auteur en spreker bekend om zijn onverbloemde kritiek op overheidsgezag. Hij pleit voor voluntarisme en vreedzame anarchie, met het argument dat het geloof in \"autoriteit\" de wortel is van het meeste maatschappelijke geweld. Zijn toon is vaak provocerend en radicaal individualistisch.",
     "works": ["The Most Dangerous Superstition", "How to Be a Successful Tyrant"],
     "quote": "Het geloof in autoriteit is het gevaarlijkste bijgeloof in de geschiedenis van de wereld."
   },
   "ron-paul": {
     "slug": "ron-paul",
     "name": "Ron Paul",
-    "bio": "Ron Paul is een Amerikaanse arts, auteur en voormalig congreslid die een prominente stem werd voor vrijheid, gezond geld en non-interventionisme. Bekend om zijn consistentie en principiële standpunten, ontketende hij een wereldwijde libertarische jeugdbeweging via zijn presidentiële campagnes.",
     "works": ["The Revolution: A Manifesto", "End the Fed"],
     "quote": "Waarheid is verraad in het rijk der leugens."
   },
   "lysander-spooner": {
     "slug": "lysander-spooner",
     "name": "Lysander Spooner",
-    "bio": "Lysander Spooner was een 19e-eeuwse Amerikaanse individualistische anarchist, advocaat en abolitionist, bekend om zijn argumenten tegen de legitimiteit van de Amerikaanse grondwet en zijn verdediging van natuurrecht en vrije markten.",
     "works": ["No Treason: The Constitution of No Authority", "Vices Are Not Crimes"],
     "quote": "Maar of de Grondwet nu wel of niet door \"het Volk\" is ingesteld, doet er weinig toe. Zij bestaat al die tijd, en ze is goed of slecht om wat ze op zichzelf is; niet omdat zoveel mensen het wel of niet leuk vonden."
   },
   "henry-hazlitt": {
     "slug": "henry-hazlitt",
     "name": "Henry Hazlitt",
-    "bio": "Henry Hazlitt was een Amerikaanse journalist en econoom van de Oostenrijkse School, bekend om het populariseren van economische principes door werken als \"Economie in één les\", waarbij hij de onzichtbare gevolgen van economisch beleid benadrukte.",
     "works": ["Economics in One Lesson", "The Failure of the \"New Economics\""],
     "quote": "De kunst van de economie bestaat erin niet alleen naar de onmiddellijke, maar ook naar de langetermijneffecten van een handeling of beleid te kijken; het bestaat erin de gevolgen van dat beleid niet alleen voor één groep, maar voor alle groepen te traceren."
   },
   "unknown": {
     "slug": "unknown",
     "name": "Unknown Thinker",
-    "bio": "Information about this thinker is not yet available.",
     "works": []
   }
 } 
