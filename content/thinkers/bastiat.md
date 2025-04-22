@@ -1,4 +1,6 @@
-# Frédéric Bastiat (1801–1850)
+---
+title: "# Frédéric Bastiat (1801–1850)"
+---
 Frans econoom, politicus, en tijdloos polemist
 
 Frédéric Bastiat was een klassiek liberale denker uit het zuidwesten van Frankrijk die pas op latere leeftijd nationale bekendheid verwierf — maar desondanks een diepe en blijvende invloed heeft gehad op het economische en politieke denken, met name binnen het libertarisme en de Oostenrijkse school.
