@@ -1,5 +1,5 @@
 ---
-title: "# Frédéric Bastiat (1801–1850)"
+title: Frédéric Bastiat (1801–1850)
 ---
 Frans econoom, politicus, en tijdloos polemist
 
