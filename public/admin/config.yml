@@ -10,6 +10,9 @@ backend:
 media_folder: "public/uploads" # Location where uploaded media files are stored
 public_folder: "/uploads" # The src attribute for uploaded media files
 
+# Tell Decap CMS to load the global CSS for previews
+registerPreviewStyle: "/app/globals.css"
+
 collections:
   - name: "pages" # Used in routes, e.g., /admin/collections/pages
     label: "Pages" # Used in the UI

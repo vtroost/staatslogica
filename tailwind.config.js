@@ -56,11 +56,38 @@ module.exports = {
               content: '""', // Remove default backticks
             },
             a: {
-              color: '#000000', // Black links in prose
+              color: '#374151', // text-gray-700 (was black)
               textDecoration: 'underline',
+              fontWeight: '500', // Add slightly more weight
               '&:hover': {
-                color: '#555555', // Dark gray hover
+                color: '#000000', // black hover (was dark gray)
               },
+            },
+            strong: {
+              color: 'inherit', // Ensure bold text uses parent color
+              fontWeight: '600', // Default is often 700, 600 is slightly softer
+            },
+            ul: {
+              listStyleType: 'disc',
+              marginTop: '1.25em',
+              marginBottom: '1.25em',
+              paddingLeft: '1.625em',
+            },
+            ol: {
+              listStyleType: 'decimal',
+              marginTop: '1.25em',
+              marginBottom: '1.25em',
+              paddingLeft: '1.625em',
+            },
+            li: {
+              marginTop: '0.5em',
+              marginBottom: '0.5em',
+            },
+            'ul > li::marker': { // Style list markers
+              color: '#6b7280', // gray-500
+            },
+            'ol > li::marker': { // Style list markers
+              color: '#6b7280', // gray-500
             },
             // Add other element styles as needed (ul, ol, li, etc.)
           },
