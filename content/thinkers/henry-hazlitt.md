@@ -1,5 +1,5 @@
 ---
-title: "# Henry Hazlitt (1894–1993)"
+title: Henry Hazlitt (1894–1993)
 ---
 Amerikaans econoom, journalist en meester in economische helderheid
 
