@@ -1,11 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Adjusted to include mdx
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    // Or if using `src` directory:
-    // "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -67,6 +65,20 @@ module.exports = {
             // Add other element styles as needed (ul, ol, li, etc.)
           },
         },
+        lg: { // Target the prose-lg variant
+          css: {
+            h2: {
+              fontWeight: 'bold', // Ensure h2 is bold
+              // You can add other h2 styles here if needed
+            },
+            // You could add customizations for other elements here too
+          },
+        },
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
