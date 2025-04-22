@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 // Verwijder expliciete globals.css import; Next.js importeert app/globals.css automatisch.
 import "./globals.css";
 import SiteLayout from "@/components/Layout"; // Use the component we moved
-import Script from 'next/script'; // Import next/script
+// import Script from 'next/script'; // No longer needed here
+import NetlifyIdentityWidget from "./components/NetlifyIdentityWidget"; // Use relative path
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,14 +26,8 @@ export default function RootLayout({
       <body>
         {/* We use SiteLayout here, assuming it provides header/footer etc. */}
         <SiteLayout>{children}</SiteLayout>
-        {/* Add Netlify Identity Widget script */}
-        <Script 
-          strategy="beforeInteractive" 
-          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-          onError={(e) => {
-            console.error('Netlify Identity Widget failed to load:', e);
-          }}
-        />
+        {/* Render the Netlify Identity Widget client component */}
+        <NetlifyIdentityWidget />
       </body>
     </html>
   );
