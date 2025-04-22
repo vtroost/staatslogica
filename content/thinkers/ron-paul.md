@@ -1,4 +1,7 @@
-# Ron Paul (geboren 1935)
+---
+title: Ron Paul (geboren 1935)
+---
+
 Amerikaans arts, congreslid en de man die vrijheid opnieuw op de politieke kaart zette
 
 Ron Paul is een anomalie in de politiek — een man die zijn morele kompas nooit verruilde voor partijlijnen, peilingen of macht. Als Republikeins congreslid stemde hij keer op keer tegen zijn eigen partij, zijn eigen regering, en zelfs tegen wetten die “populair” waren — omdat hij geloofde dat de vrijheid geen populariteitswedstrijd is.

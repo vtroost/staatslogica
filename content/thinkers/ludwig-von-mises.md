@@ -1,4 +1,7 @@
-# Ludwig von Mises (1881–1973)
+---
+title: Ludwig von Mises (1881–1973)
+---
+
 Weens econoom, onverzettelijke verdediger van het laissez-faire-kapitalisme en geestelijk vader van de Oostenrijkse School in haar moderne vorm
 
 Ludwig von Mises was de meester onder de meesters. Geboren in het Habsburgse Rijk en gevormd door het liberale Weense intellectuele klimaat, werd hij een bastion van rationeel en principieel economisch denken, precies op het moment dat de wereld collectief haar verstand leek te verliezen. In een tijdperk dat overspoeld werd door socialisme, interventionisme en economische planning, hield Mises koppig vast aan één centrale waarheid: de vrije markt is niet alleen efficiënt, maar moreel noodzakelijk.

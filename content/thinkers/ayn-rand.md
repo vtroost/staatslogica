@@ -1,4 +1,6 @@
-# Ayn Rand (1905–1982)
+---
+title: Ayn Rand (1905–1982)
+---
 Russisch-Amerikaanse filosofe, romanschrijfster en grondlegger van het objectivisme
 
 Ayn Rand werd geboren als Alisa Zinovjevna Rosenbaum in het tsaristische Rusland. Haar vroege confrontatie met de Russische Revolutie en het communistische regime waarin haar familie alles verloor, vormde de kern van haar ideologische verzet tegen collectivisme. Na haar emigratie naar de Verenigde Staten in 1926 begon ze aan een carrière als scenarioschrijfster en romanschrijfster — maar uiteindelijk zou ze haar grootste impact maken als radicale denker in de filosofie en politieke economie.
@@ -47,3 +49,5 @@ Haar verzet tegen collectieve dwang en morele schuldgevoelens is een krachtige t
 Ze biedt een principieel en onwankelbaar moreel kader voor vrijheid, in tegenstelling tot pragmatische of utilitaristische verdedigingen.
 
 Haar romanpersonages inspireren een houding van persoonlijke verantwoordelijkheid, trots, en creatief eigenaarschap over het eigen leven.
+
+![](/uploads/ayn-rand.png)

@@ -1,4 +1,7 @@
-# Lysander Spooner (1808–1887)
+---
+title: Lysander Spooner (1808–1887)
+---
+
 Amerikaans jurist, ondernemer en anarchist avant la lettre — de man die de staat juridisch en moreel ontmantelde
 
 Lysander Spooner was zijn tijd vér vooruit. In de 19e eeuw, terwijl de VS zich nog opwierp als bastion van vrijheid en vooruitgang, schreef Spooner in heldere, compromisloze taal waarom zelfs deze republiek gestoeld was op leugens. Als jurist met een scherp oog voor logica en rechtvaardigheid, fileerde hij zowel slavernij als belastingheffing, zowel het monopolie op post als het geloof in de Amerikaanse Grondwet. Voor Spooner was gezag nooit vanzelfsprekend — het moest elke dag zijn bestaansrecht bewijzen, en meestal faalde het daarin jammerlijk.
