@@ -1,4 +1,7 @@
-# Murray N. Rothbard (1926–1995)
+---
+title: Murray N. Rothbard (1926–1995)
+---
+
 Amerikaans econoom, historicus, filosoof en architect van het modern anarcho-kapitalisme
 
 Murray Rothbard was een intellectuele wervelwind: even thuis in economische theorie als in geschiedenis, politieke filosofie en morele logica. Hij bracht de Oostenrijkse School naar de frontlinie van het libertarisch denken en radicaliseerde haar fundamenten — tot voorbij de minimale staat, tot aan een wereld zonder staat. Waar Mises het klassiek-liberale erfgoed herstelde, zette Rothbard het op z’n kop, schudde het uit, en bouwde er iets radicalers van: anarcho-kapitalisme.
