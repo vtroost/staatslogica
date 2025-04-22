@@ -1,6 +1,6 @@
 # Over Staatslogica
 
-Staatslogica is een dagelijkse oefening in helder denken. We becommentariëren nieuws dat vaak gedachteloos het staatsnarratief herhaalt — berichten die dwang normaal maken, controle als vooruitgang verkopen, en collectieve offers verheerlijken. Wij zetten daar iets radicaal eenvoudigs tegenover: logica, consistentie en het non-agressieprincipe.
+Staatslogica TEST is een dagelijkse oefening in helder denken. We becommentariëren nieuws dat vaak gedachteloos het staatsnarratief herhaalt — berichten die dwang normaal maken, controle als vooruitgang verkopen, en collectieve offers verheerlijken. Wij zetten daar iets radicaal eenvoudigs tegenover: logica, consistentie en het non-agressieprincipe.
 
 Onze analyses grijpen terug op de ideeën van denkers als Mises, Rothbard, Spooner, Hazlitt en Rand. Geen mainstream namen, wel glasheldere geesten. Hun inzichten vormen het intellectuele kompas waarmee we door de mist van politiek taalgebruik navigeren.
 
