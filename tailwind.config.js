@@ -19,6 +19,7 @@ module.exports = {
               marginTop: '2.5rem',
               marginBottom: '1rem',
               fontSize: '1.5rem', // Equivalent to text-2xl
+              fontWeight: '700',
             },
             h3: {
               marginTop: '2rem',
