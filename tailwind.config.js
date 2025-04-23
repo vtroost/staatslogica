@@ -96,8 +96,10 @@ module.exports = {
         lg: { // Target the prose-lg variant
           css: {
             h2: {
-              fontWeight: 'bold', // Ensure h2 is bold
-              // You can add other h2 styles here if needed
+              marginTop: '2.5rem',
+              marginBottom: '1rem',
+              fontSize: '1.5rem',
+              fontWeight: '700',
             },
             // You could add customizations for other elements here too
           },
