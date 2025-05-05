@@ -88,72 +88,83 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         { label: 'Home', href: '/' },
         { label: 'Denkbeelden', href: '/denkbeelden' },
     ];
-    if (frontmatter.thinker) {
+    if (frontmatter.thinker && frontmatter.thinkerSlug) {
         breadcrumbItems.push({
             label: frontmatter.thinker,
-            href: `/denkbeelden/${generateSlug(frontmatter.thinker)}`,
+            href: `/denkbeelden/${frontmatter.thinkerSlug}`,
         });
     }
     breadcrumbItems.push({ label: frontmatter.title, href: '#' }); // Current article, marked as non-navigable
 
     return (
-        <article className="max-w-3xl mx-auto px-4 py-12 md:py-16">
-            {/* Add Breadcrumbs */}
-            <Breadcrumb items={breadcrumbItems} />
+        <article className="max-w-2xl mx-auto px-4 py-12 md:py-16 font-sans">
+            {/* Improved Breadcrumbs */}
+            <nav aria-label="Breadcrumb" className="mb-6 text-xs text-gray-400">
+                <ol className="flex items-center space-x-1">
+                    {breadcrumbItems.map((item, index) => (
+                        <li key={index} className="flex items-center">
+                            {index > 0 && <span className="mx-1">/</span>}
+                            {item.href ? (
+                                <Link href={item.href} className="hover:underline hover:text-black">{item.label}</Link>
+                            ) : (
+                                <span className="font-medium text-gray-500">{item.label}</span>
+                            )}
+                        </li>
+                    ))}
+                </ol>
+            </nav>
 
-            {/* 1. Feature Image (Always render container, use placeholder if needed) */}
-            <div className="mb-8 aspect-video relative overflow-hidden rounded-lg bg-gray-100"> {/* Added bg for placeholder */}
-                <Image
-                    src={imageUrl} // Use the variable with potential default
-                    alt={frontmatter.title || 'Article feature image'}
-                    fill
-                    className="object-cover" // Ensure placeholder covers well
-                    priority={!!frontmatter.imageUrl} // Only prioritize if it's the actual image
-                    unoptimized={!frontmatter.imageUrl} // Avoid optimizing the placeholder maybe?
-                />
-            </div>
+            {/* Only render image if present and non-empty */}
+            {frontmatter.imageUrl && frontmatter.imageUrl.trim() !== '' && (
+                <div className="mb-8 aspect-video relative overflow-hidden rounded-lg bg-gray-100">
+                    <Image
+                        src={frontmatter.imageUrl}
+                        alt={frontmatter.title || 'Article feature image'}
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                </div>
+            )}
 
             {/* Article Header */}
             <header className="mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{frontmatter.title}</h1>
-                <div className="text-sm text-gray-500 space-x-2">
-                    <span>Gepubliceerd op: {new Date(frontmatter.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                    {frontmatter.thinker && (
-                        <>
-                            <span>|</span>
-                            <span>Denker: <Link href={`/denkbeelden/${generateSlug(frontmatter.thinker)}`} className="hover:underline text-black font-medium">{frontmatter.thinker}</Link></span>
-                        </>
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">{frontmatter.title}</h1>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 mb-2">
+                    <span className="flex items-center gap-1">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" /></svg>
+                        {new Date(frontmatter.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                    {frontmatter.thinker && frontmatter.thinkerSlug && (
+                        <span className="flex items-center gap-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+                            Denker: <Link href={`/denkbeelden/${frontmatter.thinkerSlug}`} className="hover:underline text-black font-medium">{frontmatter.thinker}</Link>
+                        </span>
+                    )}
+                    {frontmatter.sourceUrl && (
+                        <span className="flex items-center gap-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 19v-6m0 0V5m0 8l-4-4m4 4l4-4" /></svg>
+                            <a href={frontmatter.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-black">Bron</a>
+                            <span className="text-xs text-gray-400">({new URL(frontmatter.sourceUrl).hostname})</span>
+                        </span>
                     )}
                 </div>
-
-                {/* 2. Link to original source (Conditional) */}
-                {frontmatter.sourceUrl && (
-                    <p className="text-sm text-gray-600 mt-4 bg-gray-100 p-3 rounded inline-block">
-                        Gebaseerd op:&nbsp;
-                        <a href={frontmatter.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-black">
-                            Origineel artikel
-                        </a>
-                         ({new URL(frontmatter.sourceUrl).hostname}) {/* Show domain */}
-                    </p>
-                )}
             </header>
 
             {/* Optional Spin/Quote */}
             {frontmatter.spin && (
-                <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 mb-8">
+                <blockquote className="border-l-4 border-blue-400 pl-4 italic text-gray-700 mb-10 bg-blue-50 py-2 px-3 rounded">
                     {frontmatter.spin}
                 </blockquote>
             )}
 
-            {/* 3. Single Analysis Block */}
+            {/* Article Content */}
             <div className="mb-8">
                 {frontmatter.thinker && (
-                    <h2 className="text-xl font-semibold mb-4 border-t pt-6">
-                        Analyse vanuit het perspectief van {frontmatter.thinker}
-                    </h2>
+                    <h2 className="text-xl font-semibold mb-4 border-t pt-6">Analyse vanuit het perspectief van {frontmatter.thinker}</h2>
                 )}
-                {/* 4. Apply prose styling to the MDX content area */}
-                <div className="prose prose-lg max-w-none">
+                {/* Prose styling for MDX content, with improved blockquote and conclusion styles */}
+                <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:bg-blue-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:px-3 prose-blockquote:rounded prose-blockquote:text-gray-700 prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:mb-5">
                     <MDXRemote source={content} />
                 </div>
             </div>

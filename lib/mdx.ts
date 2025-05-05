@@ -9,6 +9,7 @@ export interface ArticleFrontmatter {
   date: string;
   tags?: string[];
   thinker?: string;
+  thinkerSlug?: string;
   quote?: string;
   spin?: string;
   imageUrl?: string;
@@ -30,6 +31,7 @@ export interface ThinkerData {
   quote?: string;
   articleCount: number;
   bioContent?: string;
+  title?: string;
 }
 
 // --- Load Thinker Data from JSON (contains base info) ---
@@ -153,15 +155,15 @@ function generateSlug(name: string): string {
 }
 
 // --- Function to read Markdown bio content ---
-function getThinkerBioContent(slug: string): string | null {
+function getThinkerBioFrontmatter(slug: string): { title?: string, content: string } | null {
   const filePath = path.join(thinkersContentDirectory, `${slug}.md`);
   try {
     if (!fs.existsSync(filePath)) {
       return null; // Bio file doesn't exist
     }
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { content } = matter(fileContents); // Extract content
-    return content;
+    const { data, content } = matter(fileContents); // Extract frontmatter and content
+    return { title: data.title, content };
   } catch (error) {
     console.error(`Error reading thinker bio file: ${filePath}`, error);
     return null;
@@ -179,10 +181,23 @@ export function getAllThinkers(): ThinkerData[] {
   const thinkersFromArticles = new Map<string, ThinkerData>();
   const articleCounts = new Map<string, number>();
 
-  // Count articles per thinker slug
+  // Helper to get title from markdown frontmatter
+  function getTitleFromBio(slug: string): string | undefined {
+    const filePath = path.join(thinkersContentDirectory, `${slug}.md`);
+    try {
+      if (!fs.existsSync(filePath)) return undefined;
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContents);
+      return data.title;
+    } catch {
+      return undefined;
+    }
+  }
+
+  // Count articles per thinkerSlug (prefer explicit field)
   articles.forEach(article => {
-    if (article.thinker) {
-      const slug = generateSlug(article.thinker);
+    const slug = article.thinkerSlug || (article.thinker ? generateSlug(article.thinker) : undefined);
+    if (slug) {
       articleCounts.set(slug, (articleCounts.get(slug) || 0) + 1);
     }
   });
@@ -194,12 +209,11 @@ export function getAllThinkers(): ThinkerData[] {
 
   // Consolidate thinker data and add counts
   articles.forEach(article => {
-    if (article.thinker) {
+    const slug = article.thinkerSlug || (article.thinker ? generateSlug(article.thinker) : undefined);
+    if (article.thinker && slug) {
       const articleThinkerNameLower = article.thinker.toLowerCase();
-      const generatedSlug = generateSlug(article.thinker);
-
       const predefinedDataByName = predefinedThinkersByName.get(articleThinkerNameLower);
-      const predefinedDataBySlug = thinkersJsonData[generatedSlug]; // Use JSON data
+      const predefinedDataBySlug = thinkersJsonData[slug]; // Use JSON data
 
       const finalDataTemplate = predefinedDataByName || predefinedDataBySlug;
       let thinkerSlugToUse: string;
@@ -209,7 +223,7 @@ export function getAllThinkers(): ThinkerData[] {
         thinkerSlugToUse = finalDataTemplate.slug;
         thinkerBaseData = { ...finalDataTemplate }; 
       } else {
-        thinkerSlugToUse = generatedSlug;
+        thinkerSlugToUse = slug;
         thinkerBaseData = {
           slug: thinkerSlugToUse,
           name: article.thinker,
@@ -217,18 +231,20 @@ export function getAllThinkers(): ThinkerData[] {
           works: [], 
         };
       }
-      
+      // Get title from bio frontmatter
+      const titleFromBio = getTitleFromBio(thinkerSlugToUse);
       if (!thinkersFromArticles.has(thinkerSlugToUse)) {
-          const count = articleCounts.get(generatedSlug) || 0; 
+          const count = articleCounts.get(thinkerSlugToUse) || 0; 
           thinkersFromArticles.set(thinkerSlugToUse, {
               ...thinkerBaseData,
-              articleCount: count 
+              articleCount: count,
+              title: titleFromBio // Add title
               // bioContent is NOT loaded here
           });
       } else {
            const existingThinker = thinkersFromArticles.get(thinkerSlugToUse);
-           if (existingThinker && generatedSlug !== thinkerSlugToUse) {
-               const countFromThisVariation = articleCounts.get(generatedSlug) || 0;
+           if (existingThinker && slug !== thinkerSlugToUse) {
+               const countFromThisVariation = articleCounts.get(slug) || 0;
                existingThinker.articleCount += countFromThisVariation;
            }
       }
@@ -238,7 +254,9 @@ export function getAllThinkers(): ThinkerData[] {
   // Add predefined thinkers from loaded JSON data who might not have articles yet
   Object.values(thinkersJsonData).forEach(thinker => {
     if (!thinkersFromArticles.has(thinker.slug)) {
-        thinkersFromArticles.set(thinker.slug, { ...thinker, articleCount: 0 });
+        // Get title from bio frontmatter
+        const titleFromBio = getTitleFromBio(thinker.slug);
+        thinkersFromArticles.set(thinker.slug, { ...thinker, articleCount: 0, title: titleFromBio });
     }
   });
 
@@ -255,26 +273,29 @@ export function getAllThinkers(): ThinkerData[] {
 export function getThinkerBySlug(slug: string): ThinkerData | null {
   // Try loaded predefined JSON data first
   const baseData = thinkersJsonData[slug];
-  
+  let titleFromBio: string | undefined = undefined;
+  let bioContent: string | undefined = undefined;
+  const bioFrontmatter = getThinkerBioFrontmatter(slug);
+  if (bioFrontmatter) {
+    titleFromBio = bioFrontmatter.title;
+    bioContent = bioFrontmatter.content;
+  }
   if (baseData) {
     // Found base data, now try to get bio content and article count
-    const bioContent = getThinkerBioContent(slug);
     const articles = getArticlesByThinker(slug);
     return {
        ...baseData, 
        articleCount: articles.length, 
-       bioContent: bioContent || undefined // Assign content or undefined
+       bioContent: bioContent || undefined, // Assign content or undefined
+       title: titleFromBio // Add title from bio frontmatter
     };
   }
-
   // Fallback: Try finding via articles (less ideal, may lack full JSON data)
   // This part might become less relevant if thinkers.json is comprehensive
   const articles = getAllArticles();
   const foundArticle = articles.find(article => article.thinker && generateSlug(article.thinker) === slug);
-
   if (foundArticle && foundArticle.thinker) {
     const articlesForThisThinker = getArticlesByThinker(slug);
-    const bioContent = getThinkerBioContent(slug); // Also attempt to get bio here
     return {
         slug: slug,
         name: foundArticle.thinker,
@@ -282,10 +303,10 @@ export function getThinkerBySlug(slug: string): ThinkerData | null {
         bio: undefined, // No short bio from articles
         quote: undefined, // No quote info from articles
         articleCount: articlesForThisThinker.length,
-        bioContent: bioContent || undefined
+        bioContent: bioContent || undefined,
+        title: titleFromBio // Add title from bio frontmatter
     };
   }
-
   return null; // Not found
 }
 

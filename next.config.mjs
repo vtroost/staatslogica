@@ -13,21 +13,20 @@ const withMDX = nextMDX({
   },
 });
 
-// Remove type annotation
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove static export configuration to enable API routes
-  // output: 'export',
-  // trailingSlash: true, // Likely not needed without static export
-
-  // Keep images config if still using next/image, otherwise remove
-  // images: {
-  //   unoptimized: true,
-  // }
-
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'], // Add md/mdx extensions
-
-  /* other config options can go here */
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  // Remove any API routes or dynamic features
+  experimental: {
+    // Disable any experimental features
+  }
 };
 
 // Combine the MDX config with your existing Next.js config
+// Temporarily export the config directly without withMDX
+// export default withMDX(nextConfig);
+// Re-enable withMDX
 export default withMDX(nextConfig);
