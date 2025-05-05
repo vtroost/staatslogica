@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteLayout from "@/components/Layout"; // Use the component we moved
 // import Script from 'next/script'; // No longer needed here
-import NetlifyIdentityWidget from "./components/NetlifyIdentityWidget"; // Use relative path
+import NetlifyIdentityWidget from "@/components/NetlifyIdentityWidget"; // Update path
 
 const inter = Inter({ subsets: ["latin"] });
 
