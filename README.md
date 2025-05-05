@@ -32,9 +32,10 @@ The application provides a simple workflow:
 *   **Framework:** Next.js (using both App Router and Pages Router features)
 *   **Language:** TypeScript
 *   **UI:** React
-*   **Styling:** Tailwind CSS (based on class names used)
+*   **Styling:** Tailwind CSS v3 (`tailwindcss@^3`, `@tailwindcss/typography@^0.5`, `postcss@^8`, `autoprefixer@^10`)
 *   **AI Backend:** Interaction with OpenAI API via the `/api/generate` route.
 *   **Publishing:** Octokit library for GitHub API interaction in the `/api/publish` route.
+*   **PostCSS Config:** Uses `postcss.config.mjs` with `tailwindcss` and `autoprefixer` plugins.
 
 ## Project Structure
 

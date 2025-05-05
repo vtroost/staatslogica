@@ -145,12 +145,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 </blockquote>
             )}
 
-            {/* TEST: Static prose block to verify prose styles */}
-            <div className="prose prose-lg max-w-none mb-8 bg-yellow-50 p-4 rounded">
-                <h2>Test Prose H2</h2>
-                <p>Test paragraph. This should be styled by Tailwind Typography.</p>
-            </div>
-
             {/* 3. Single Analysis Block */}
             <div className="mb-8">
                 {frontmatter.thinker && (
