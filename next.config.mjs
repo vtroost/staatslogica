@@ -15,7 +15,7 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // Comment out for local development
+  output: 'export', // Uncomment for static export build
   reactStrictMode: false, // Disable Strict Mode for testing CMS compatibility
   images: {
     unoptimized: true,
