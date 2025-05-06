@@ -1,4 +1,6 @@
-import { getAllArticles } from '@/lib/mdx'; // Updated import path
+import { getAllArticles } from '@/lib/articles'; 
+import { getAllTags } from '@/lib/tags'; // Need this for getting tag data if used for display validation
+import type { Article, TagData } from '@/lib/types'; 
 // Remove Article type import if not explicitly needed or redefine based on mdx.ts structure
 // import { Article } from '@/lib/articles'; 
 import Link from 'next/link';
@@ -13,10 +15,10 @@ type Params = {
 
 // Generate static params for all unique tags
 export async function generateStaticParams(): Promise<Params[]> {
-    const articles = getAllArticles(); // Use new function
+    const articles: Article[] = getAllArticles(); // Add type
     const uniqueTags = new Set<string>();
 
-    articles.forEach(article => {
+    articles.forEach((article: Article) => { // Add type
         // Ensure tags exist and is an array before iterating
         if (Array.isArray(article.tags)) {
             article.tags.forEach(tag => {
@@ -33,7 +35,7 @@ export async function generateStaticParams(): Promise<Params[]> {
 // Optional: Generate metadata for Tag page
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
     const tagName = decodeURIComponent(params.tag);
-    const allArticles = getAllArticles(); // Use new function
+    const allArticles: Article[] = getAllArticles(); // Add type
     let displayTagName = tagName; 
 
     for (const article of allArticles) {
@@ -56,10 +58,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 // Tag Page Component
 export default async function TagPage({ params }: { params: Params }) {
     const requestedTagSlug = params.tag.toLowerCase();
-    const allArticles = getAllArticles(); // Use new function
+    const allArticles: Article[] = getAllArticles(); // Add type
 
     // Filter articles: match requested slug against normalized slugs of article tags
-    const articles = allArticles.filter((article) =>
+    const articles: Article[] = allArticles.filter((article: Article) => // Add type
         Array.isArray(article.tags) && article.tags.some(tag => tag.toLowerCase().replace(/\s+/g, '-') === requestedTagSlug)
     );
 
@@ -85,7 +87,7 @@ export default async function TagPage({ params }: { params: Params }) {
             </h1>
             {articles.length > 0 ? (
                 <div className="space-y-6"> 
-                    {articles.map((article) => (
+                    {articles.map((article: Article) => ( // Add type
                         <div key={article.slug} className="border p-4 rounded hover:shadow transition"> {/* Consistent styling */}
                            <Link href={`/articles/${article.slug}`} className="block group">
                                 <h2 className="text-xl font-semibold group-hover:text-blue-600">{article.title}</h2>

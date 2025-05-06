@@ -2,7 +2,11 @@
 
 // Remove client-side hooks
 // import { useState, useMemo, useEffect } from 'react'; 
-import { getAllArticles, getAllThinkers, Article, ThinkerData } from '@/lib/mdx';
+
+// Update imports for refactored modules
+import { getAllArticles } from '@/lib/articles';
+import { getAllThinkers } from '@/lib/thinkers';
+import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
@@ -24,8 +28,8 @@ export const metadata: Metadata = {
 
 export default function ArchivePage() {
     // Fetch data directly on the server
-    const allArticles = getAllArticles();
-    const thinkers = getAllThinkers();
+    const allArticles: Article[] = getAllArticles();
+    const thinkers: ThinkerData[] = getAllThinkers();
 
     // Sort data
     allArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -39,7 +43,7 @@ export default function ArchivePage() {
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-4">Denkbeelden</h2>
                 <div className="flex flex-wrap gap-2">
-                    {thinkers.map(thinker => (
+                    {thinkers.map((thinker: ThinkerData) => (
                         <Link 
                             key={thinker.slug} 
                             href={`/denkbeelden/${thinker.slug}`}
@@ -58,7 +62,7 @@ export default function ArchivePage() {
 
             {/* All Articles List */}
             <div className="space-y-6">
-                {allArticles.map((article) => (
+                {allArticles.map((article: Article) => (
                     <div key={article.slug} className="border border-gray-200 rounded-lg p-6 bg-white shadow-sm">
                         <h2 className="text-xl font-semibold mb-2">
                             <Link href={`/articles/${article.slug}`} className="hover:underline">
