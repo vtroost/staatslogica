@@ -1,4 +1,6 @@
-import { getAllArticles, getAllThinkers, getThinkerBySlug, Article, ThinkerData } from '@/lib/mdx';
+import { getAllArticles } from '@/lib/articles';
+import { getAllThinkers, getThinkerBySlug } from '@/lib/thinkers';
+import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';

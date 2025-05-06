@@ -1,4 +1,5 @@
 ---
+name: Frédéric Bastiat
 title: Frédéric Bastiat (1801–1850)
 ---
 

@@ -1,6 +1,7 @@
 import fs from 'fs'; // Needed for generateStaticParams
 import path from 'path'; // Needed for generateStaticParams and getArticleBySlug
-import { getArticleBySlug, ArticleFrontmatter } from '@/lib/mdx'; // Use the new MDX utility and import interface
+import { getArticleBySlug } from '@/lib/articles'; 
+import type { ArticleFrontmatter } from '@/lib/types'; 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc'; // Import for RSC

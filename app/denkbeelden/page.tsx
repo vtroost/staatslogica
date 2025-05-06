@@ -1,4 +1,4 @@
-import { getAllThinkers } from '@/lib/mdx';
+import { getAllThinkers } from '@/lib/thinkers';
 import Link from 'next/link';
 import { Metadata } from 'next';
 

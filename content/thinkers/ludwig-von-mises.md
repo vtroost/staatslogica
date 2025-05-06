@@ -1,4 +1,5 @@
 ---
+name: Ludwig von Mises
 title: Ludwig von Mises (1881–1973)
 ---
 

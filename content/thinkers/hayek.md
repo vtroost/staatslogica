@@ -1,4 +1,5 @@
 ---
+name: Friedrich A. von Hayek
 title: Friedrich A. von Hayek (1899–1992)
 ---
 

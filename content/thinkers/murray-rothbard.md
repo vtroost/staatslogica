@@ -1,4 +1,5 @@
 ---
+name: Murray Rothbard
 title: Murray N. Rothbard (1926–1995)
 ---
 

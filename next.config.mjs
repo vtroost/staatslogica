@@ -15,10 +15,17 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Comment out for local development
+  reactStrictMode: false, // Disable Strict Mode for testing CMS compatibility
   images: {
     unoptimized: true,
   },
+  // Explicitly tell Next.js to transpile these packages
+  transpilePackages: [
+    'decap-cms-lib-util',
+    'decap-cms-core'
+    // Add other decap-cms packages here if similar errors occur
+  ],
   // Remove any API routes or dynamic features
   experimental: {
     // Disable any experimental features

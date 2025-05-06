@@ -1,4 +1,5 @@
 ---
+name: Ayn Rand
 title: Ayn Rand (1905–1982)
 ---
 

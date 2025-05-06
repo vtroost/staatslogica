@@ -1,0 +1,71 @@
+# Decap CMS Configuration
+# See https://decapcms.org/docs/configuration-options/
+
+# This file will be configured in the next steps. 
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Optional: Set if you want to enable editorial workflow
+# publish_mode: editorial_workflow
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Tell Decap CMS to load the global CSS for previews
+registerPreviewStyle: "/app/globals.css"
+
+collections:
+  - name: "articles"
+    label: "Artikelen"
+    folder: "content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Publicatiedatum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Denker", name: "thinker", widget: "string", required: false }
+      - { 
+          label: "Denker (Koppeling)", 
+          name: "thinkerSlug", 
+          widget: "relation", 
+          collection: "thinkers",
+          search_fields: ["name", "title"],
+          value_field: "slug",
+          display_fields: ["name"],
+          required: false 
+        }
+      - { label: "Quote", name: "quote", widget: "text", required: false }
+      - { label: "Spin", name: "spin", widget: "text", required: false }
+      - { label: "Afbeelding", name: "imageUrl", widget: "image", required: false }
+      - { label: "Bron URL", name: "sourceUrl", widget: "string", required: false }
+      - { label: "Inhoud", name: "body", widget: "markdown" }
+
+  - name: "thinkers"
+    label: "Denkers (Bio Pagina's)"
+    label_singular: "Denker Bio"
+    folder: "content/thinkers"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "slug"
+    fields:
+      - { label: "Slug (Bestandsnaam)", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en koppeltekens"] }
+      - { label: "Weergavenaam (in CMS)", name: "name", widget: "string" }
+      - { label: "Titel (in Bio)", name: "title", widget: "string", required: false }
+      - { label: "Belangrijkste Werken", name: "works", widget: "list", required: false }
+      - { label: "Representatieve Quote", name: "quote", widget: "text", required: false }
+      - { label: "Bio Inhoud", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pagina's"
+    label_singular: "Pagina"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Inhoud", name: "body", widget: "markdown" }

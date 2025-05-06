@@ -1,4 +1,5 @@
 ---
+name: Lysander Spooner
 title: Lysander Spooner (1808–1887)
 ---
 

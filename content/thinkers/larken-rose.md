@@ -1,4 +1,5 @@
 ---
+name: Larken Rose
 title: Larken Rose (geboren 1969)
 ---
 

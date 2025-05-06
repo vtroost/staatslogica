@@ -1,4 +1,5 @@
 ---
+name: Henry Hazlitt
 title: Henry Hazlitt (1894–1993)
 ---
 

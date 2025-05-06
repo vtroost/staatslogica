@@ -1,4 +1,5 @@
-import { getAllArticles, Article } from '@/lib/mdx';
+import { getAllArticles } from '@/lib/articles';
+import type { Article } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
