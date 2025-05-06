@@ -76,7 +76,7 @@ export default function ArchivePage() {
                             {article.thinker && article.thinkerSlug && (
                                 <>
                                     <span>|</span>
-                                    <span>Door: <Link href={`/denkbeelden/${article.thinkerSlug}`} className="hover:underline text-black font-medium">{article.thinker}</Link></span>
+                                    <span>Perspectief: <Link href={`/denkbeelden/${article.thinkerSlug}`} className="hover:underline text-black font-medium">{article.thinker}</Link></span>
                                 </>
                             )}
                         </div>
