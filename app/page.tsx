@@ -37,14 +37,31 @@ export default function HomePage() {
         if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
         return (
             <span>
-                Perspectief: {thinkerSlugs.map((slug, idx) => {
-                    const thinker = allThinkers.find(t => t.slug === slug);
-                    const name = thinker ? thinker.name : slug;
+                Perspectief: {thinkerSlugs.map((slugOrObject, idx) => {
+                    let currentSlug: string;
+                    let displayName: string;
+                    let key: string;
+
+                    if (typeof slugOrObject === 'string') {
+                        currentSlug = slugOrObject;
+                        key = slugOrObject;
+                        const thinker = allThinkers.find(t => t.slug === currentSlug);
+                        displayName = thinker ? thinker.name : currentSlug;
+                    } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
+                        // Attempt to gracefully handle an object, likely from incorrect MDX
+                        currentSlug = (slugOrObject as any).slug || 'unknown-thinker';
+                        displayName = (slugOrObject as any).name || 'Unknown Thinker';
+                        key = currentSlug + '-' + idx; // Ensure key is unique if slug is missing
+                    } else {
+                        // Skip if it's neither string nor object (e.g. null/undefined in array)
+                        return null;
+                    }
+
                     return (
-                        <React.Fragment key={slug}>
+                        <React.Fragment key={key}>
                             {idx > 0 && ', '}
-                            <Link href={`/denkers/${slug}`} className={linkClassName}>
-                                {name}
+                            <Link href={`/denkers/${currentSlug}`} className={linkClassName}>
+                                {displayName}
                             </Link>
                         </React.Fragment>
                     );

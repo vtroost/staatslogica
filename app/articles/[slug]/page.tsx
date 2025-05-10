@@ -82,9 +82,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     let thinkerNames = 'een denker';
     if (frontmatter.thinkers && frontmatter.thinkers.length > 0) {
         const allThinkersData = getAllThinkers();
-        const names = frontmatter.thinkers.map(slug => {
-            const thinker = allThinkersData.find(t => t.slug === slug);
-            return thinker ? thinker.name : slug;
+        const names = frontmatter.thinkers.map(slugOrObject => {
+            let currentSlug: string;
+            let displayName: string;
+            if (typeof slugOrObject === 'string') {
+                currentSlug = slugOrObject;
+                const thinker = allThinkersData.find(t => t.slug === currentSlug);
+                displayName = thinker ? thinker.name : currentSlug;
+            } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
+                displayName = (slugOrObject as any).name || 'Unknown Thinker';
+            } else {
+                displayName = 'Unknown';
+            }
+            return displayName;
         });
         if (names.length > 0) thinkerNames = names.join(', ');
     }
@@ -123,21 +133,44 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         { label: 'Denkers', href: '/denkers' },
     ];
     if (frontmatter.thinkers && frontmatter.thinkers.length > 0) {
-        const firstThinkerSlug = frontmatter.thinkers[0];
-        const firstThinker = allThinkersData.find(t => t.slug === firstThinkerSlug);
-        if (firstThinker) {
-            breadcrumbItems.push({
-                label: firstThinker.name, 
-                href: `/denkers/${firstThinker.slug}`,
-            });
+        const firstThinkerInput = frontmatter.thinkers[0];
+        let firstThinkerSlug: string | undefined;
+
+        if (typeof firstThinkerInput === 'string') {
+            firstThinkerSlug = firstThinkerInput;
+        } else if (typeof firstThinkerInput === 'object' && firstThinkerInput !== null) {
+            firstThinkerSlug = (firstThinkerInput as any).slug;
+        }
+
+        if (firstThinkerSlug) {
+            const firstThinker = allThinkersData.find(t => t.slug === firstThinkerSlug);
+            if (firstThinker) {
+                breadcrumbItems.push({
+                    label: firstThinker.name, 
+                    href: `/denkers/${firstThinker.slug}`,
+                });
+            }
         }
     }
     breadcrumbItems.push({ label: frontmatter.title, href: '#' });
 
     const thinkersToDisplay = frontmatter.thinkers
-        ? frontmatter.thinkers.map(slug => {
-              const thinker = allThinkersData.find(t => t.slug === slug);
-              return thinker ? { name: thinker.name, slug: thinker.slug } : { name: slug, slug: slug };
+        ? frontmatter.thinkers.map((slugOrObject, idx) => {
+            let currentSlug: string;
+            let displayName: string;
+
+            if (typeof slugOrObject === 'string') {
+                currentSlug = slugOrObject;
+                const thinker = allThinkersData.find(t => t.slug === currentSlug);
+                displayName = thinker ? thinker.name : currentSlug;
+            } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
+                currentSlug = (slugOrObject as any).slug || `unknown-thinker-${idx}`;
+                displayName = (slugOrObject as any).name || 'Unknown Thinker';
+            } else {
+                currentSlug = `unknown-thinker-${idx}`;
+                displayName = 'Unknown';
+            }
+            return { name: displayName, slug: currentSlug };
           })
         : [];
 

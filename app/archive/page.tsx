@@ -78,14 +78,29 @@ export default function ArchivePage() {
                                 <>
                                     <span>|</span>
                                     <span>
-                                        Perspectief: {article.thinkers.map((slug, idx) => {
-                                            const thinker = thinkers.find(t => t.slug === slug);
-                                            const name = thinker ? thinker.name : slug;
+                                        Perspectief: {article.thinkers.map((slugOrObject, idx) => {
+                                            let currentSlug: string;
+                                            let displayName: string;
+                                            let key: string;
+
+                                            if (typeof slugOrObject === 'string') {
+                                                currentSlug = slugOrObject;
+                                                key = slugOrObject;
+                                                const thinker = thinkers.find(t => t.slug === currentSlug);
+                                                displayName = thinker ? thinker.name : currentSlug;
+                                            } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
+                                                currentSlug = (slugOrObject as any).slug || `unknown-archive-${idx}`;
+                                                displayName = (slugOrObject as any).name || 'Unknown Thinker';
+                                                key = currentSlug + '-' + idx; 
+                                            } else {
+                                                return null; // Skip if not string or object
+                                            }
+                                            
                                             return (
-                                                <React.Fragment key={slug}>
+                                                <React.Fragment key={key}>
                                                     {idx > 0 && ', '}
-                                                    <Link href={`/denkers/${slug}`} className="hover:underline text-black font-medium">
-                                                        {name}
+                                                    <Link href={`/denkers/${currentSlug}`} className="hover:underline text-black font-medium">
+                                                        {displayName}
                                                     </Link>
                                                 </React.Fragment>
                                             );
