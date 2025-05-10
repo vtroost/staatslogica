@@ -74,13 +74,13 @@ export default function ArchivePage() {
                             <span>
                                 {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </span>
-                            {article.thinkerSlugs && article.thinkerSlugs.length > 0 && (
+                            {article.thinkers && article.thinkers.length > 0 && (
                                 <>
                                     <span>|</span>
                                     <span>
-                                        Perspectief: {article.thinkerSlugs.map((slug, idx) => {
+                                        Perspectief: {article.thinkers.map((slug, idx) => {
                                             const thinker = thinkers.find(t => t.slug === slug);
-                                            const name = thinker ? thinker.name : slug; // Fallback to slug
+                                            const name = thinker ? thinker.name : slug;
                                             return (
                                                 <React.Fragment key={slug}>
                                                     {idx > 0 && ', '}

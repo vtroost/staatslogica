@@ -66,7 +66,7 @@ export default function HomePage() {
                             {/* Metadata Row Below Title */}
                             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-blue-200 mb-4">
                                 <span>{new Date(latest.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                {renderThinkerLinks(latest.thinkerSlugs, "hover:underline text-white font-medium")}
+                                {renderThinkerLinks(latest.thinkers, "hover:underline text-white font-medium")}
                                 {latest.sourceUrl && (
                                     <span>
                                         Bron: <a href={latest.sourceUrl} className="underline hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">{new URL(latest.sourceUrl).hostname}</a> 
@@ -106,7 +106,7 @@ export default function HomePage() {
                                 {/* Metadata row */} 
                                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 mb-3">
                                     <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                    {renderThinkerLinks(article.thinkerSlugs, "hover:underline text-gray-700 font-medium")}
+                                    {renderThinkerLinks(article.thinkers, "hover:underline text-gray-700 font-medium")}
                                     {/* Simplified Source Link */} 
                                     {article.sourceUrl && (
                                         <span>

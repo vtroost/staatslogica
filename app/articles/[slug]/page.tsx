@@ -80,11 +80,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     // Fetch thinker names for description
     let thinkerNames = 'een denker';
-    if (frontmatter.thinkerSlugs && frontmatter.thinkerSlugs.length > 0) {
-        const allThinkers = getAllThinkers(); // Fetch all thinkers
-        const names = frontmatter.thinkerSlugs.map(slug => {
-            const thinker = allThinkers.find(t => t.slug === slug);
-            return thinker ? thinker.name : slug; // Fallback to slug if name not found
+    if (frontmatter.thinkers && frontmatter.thinkers.length > 0) {
+        const allThinkersData = getAllThinkers();
+        const names = frontmatter.thinkers.map(slug => {
+            const thinker = allThinkersData.find(t => t.slug === slug);
+            return thinker ? thinker.name : slug;
         });
         if (names.length > 0) thinkerNames = names.join(', ');
     }
@@ -116,15 +116,15 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
     const whatsappShareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 
-    const allThinkers = getAllThinkers(); // Fetch all thinkers once for this page
+    const allThinkersData = getAllThinkers();
 
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
         { label: 'Denkers', href: '/denkers' },
     ];
-    if (frontmatter.thinkerSlugs && frontmatter.thinkerSlugs.length > 0) {
-        const firstThinkerSlug = frontmatter.thinkerSlugs[0];
-        const firstThinker = allThinkers.find(t => t.slug === firstThinkerSlug);
+    if (frontmatter.thinkers && frontmatter.thinkers.length > 0) {
+        const firstThinkerSlug = frontmatter.thinkers[0];
+        const firstThinker = allThinkersData.find(t => t.slug === firstThinkerSlug);
         if (firstThinker) {
             breadcrumbItems.push({
                 label: firstThinker.name, 
@@ -134,11 +134,10 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     }
     breadcrumbItems.push({ label: frontmatter.title, href: '#' });
 
-    // Prepare thinker data for rendering
-    const thinkersToDisplay = frontmatter.thinkerSlugs
-        ? frontmatter.thinkerSlugs.map(slug => {
-              const thinker = allThinkers.find(t => t.slug === slug);
-              return thinker ? { name: thinker.name, slug: thinker.slug } : { name: slug, slug: slug }; // Fallback to slug if not found
+    const thinkersToDisplay = frontmatter.thinkers
+        ? frontmatter.thinkers.map(slug => {
+              const thinker = allThinkersData.find(t => t.slug === slug);
+              return thinker ? { name: thinker.name, slug: thinker.slug } : { name: slug, slug: slug };
           })
         : [];
 

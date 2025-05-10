@@ -67,9 +67,9 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
 
   // Get articles for this thinker
   const allArticles = getAllArticles();
-  // Filter articles where the current thinker's slug is in the article's thinkerSlugs array
+  // Filter articles where the current thinker's slug is in the article's thinkers array
   const thinkerArticles = allArticles.filter(article => 
-    article.thinkerSlugs && article.thinkerSlugs.includes(slug)
+    article.thinkers && article.thinkers.includes(slug)
   );
   thinkerArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
