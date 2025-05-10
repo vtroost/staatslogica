@@ -9,6 +9,7 @@ import { getAllThinkers } from '@/lib/thinkers';
 import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import React from 'react';
 
 // Helper function to generate slug (consistent across pages)
 function generateSlug(name: string): string {
@@ -41,12 +42,12 @@ export default function ArchivePage() {
 
             {/* Thinkers Navigation */}
             <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4">Denkbeelden</h2>
+                <h2 className="text-xl font-semibold mb-4">Denkers</h2>
                 <div className="flex flex-wrap gap-2">
                     {thinkers.map((thinker: ThinkerData) => (
                         <Link 
                             key={thinker.slug} 
-                            href={`/denkbeelden/${thinker.slug}`}
+                            href={`/denkers/${thinker.slug}`}
                             className="flex items-center space-x-1.5 px-3 py-1 rounded text-sm bg-gray-100 hover:bg-gray-200"
                         >
                             <span>{thinker.name}</span>
@@ -73,10 +74,23 @@ export default function ArchivePage() {
                             <span>
                                 {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </span>
-                            {article.thinker && article.thinkerSlug && (
+                            {article.thinkerSlugs && article.thinkerSlugs.length > 0 && (
                                 <>
                                     <span>|</span>
-                                    <span>Perspectief: <Link href={`/denkbeelden/${article.thinkerSlug}`} className="hover:underline text-black font-medium">{article.thinker}</Link></span>
+                                    <span>
+                                        Perspectief: {article.thinkerSlugs.map((slug, idx) => {
+                                            const thinker = thinkers.find(t => t.slug === slug);
+                                            const name = thinker ? thinker.name : slug; // Fallback to slug
+                                            return (
+                                                <React.Fragment key={slug}>
+                                                    {idx > 0 && ', '}
+                                                    <Link href={`/denkers/${slug}`} className="hover:underline text-black font-medium">
+                                                        {name}
+                                                    </Link>
+                                                </React.Fragment>
+                                            );
+                                        })}
+                                    </span>
                                 </>
                             )}
                         </div>

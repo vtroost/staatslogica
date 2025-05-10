@@ -2,10 +2,10 @@ import { getAllThinkers } from '@/lib/thinkers';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
-// Metadata for the Denkbeelden page
+// Metadata for the Denkers page
 export const metadata: Metadata = {
-  title: 'Denkbeelden | Staatslogica',
-  description: 'Ontdek de verschillende denkbeelden en perspectieven die Staatslogica analyseert.',
+  title: 'Denkers | Staatslogica',
+  description: 'Ontdek de verschillende denkers en perspectieven die Staatslogica analyseert.',
 };
 
 export default function ThinkersPage() {
@@ -33,7 +33,7 @@ export default function ThinkersPage() {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 border-b pb-4">Denkbeelden</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 border-b pb-4">Denkers</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {thinkers.map(thinker => {
@@ -46,7 +46,7 @@ export default function ThinkersPage() {
                     return (
                         <Link 
                             key={thinker.slug}
-                            href={`/denkbeelden/${thinker.slug}`}
+                            href={`/denkers/${thinker.slug}`}
                             className="group block p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-lg transition-shadow text-center flex flex-col items-center"
                         >
                             <img

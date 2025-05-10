@@ -1,12 +1,14 @@
 import fs from 'fs'; // Needed for generateStaticParams
 import path from 'path'; // Needed for generateStaticParams and getArticleBySlug
 import { getArticleBySlug } from '@/lib/articles'; 
-import type { ArticleFrontmatter } from '@/lib/types'; 
+import { getAllThinkers, getThinkerBySlug } from '@/lib/thinkers'; // Ensure this is imported
+import type { ArticleFrontmatter, ThinkerData } from '@/lib/types'; 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc'; // Import for RSC
 import Image from 'next/image'; // Import Next.js Image component
 import Link from 'next/link'; // Import Link for thinker link
+import React from 'react'; // Import React for React.Fragment
 // Keep other imports like ThinkerImage, TagBadge if needed for layout
 // import { ThinkerImage } from '@/components/ThinkerImage';
 // import { TagBadge } from '@/components/TagBadge';
@@ -15,7 +17,7 @@ const DEFAULT_IMAGE_URL = '/images/placeholder.jpg'; // Define placeholder path
 
 // Helper function to generate slug (needed for thinker link)
 function generateSlug(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  return (name || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
 const articlesDirectory = path.join(process.cwd(), 'content', 'articles');
@@ -67,24 +69,31 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const { slug } = params;
-    const articleData = getArticleBySlug(slug); 
+    const articleData = getArticleBySlug(slug);
     
     if (!articleData) {
         return { title: 'Artikel niet gevonden' };
     }
 
-    const frontmatter = articleData.data; 
-    // Define the base URL for metadata resolution (e.g., OG images)
-    // Use an environment variable for the site URL
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'; // Fallback for local dev
+    const frontmatter = articleData.data;
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    
+    // Fetch thinker names for description
+    let thinkerNames = 'een denker';
+    if (frontmatter.thinkerSlugs && frontmatter.thinkerSlugs.length > 0) {
+        const allThinkers = getAllThinkers(); // Fetch all thinkers
+        const names = frontmatter.thinkerSlugs.map(slug => {
+            const thinker = allThinkers.find(t => t.slug === slug);
+            return thinker ? thinker.name : slug; // Fallback to slug if name not found
+        });
+        if (names.length > 0) thinkerNames = names.join(', ');
+    }
 
     return {
-        // Add metadataBase
         metadataBase: new URL(siteUrl),
         title: `${frontmatter.title} | Staatslogica`,
-        description: frontmatter.spin || `Analyse vanuit het perspectief van ${frontmatter.thinker || 'een denker'}`,
+        description: frontmatter.spin || `Analyse vanuit het perspectief van ${thinkerNames}`,
         openGraph: {
-            // images should be relative to metadataBase or absolute URLs
             images: [frontmatter.imageUrl || '/default-og-image.jpg'],
         },
     };
@@ -92,38 +101,46 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const article = getArticleBySlug(slug); // Use the utility to get parsed data and content
+    const article = getArticleBySlug(slug);
 
     if (!article) {
-        notFound(); // Trigger 404 if article doesn't exist or fails to parse
+        notFound();
     }
 
-    // No need to cast here anymore
     const { data: frontmatter, content } = article;
-    const imageUrl = frontmatter.imageUrl || DEFAULT_IMAGE_URL; // Use default if missing
-
-    // Construct full URL for sharing
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'; // Fallback for local dev
+    const imageUrl = frontmatter.imageUrl || DEFAULT_IMAGE_URL;
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const articleUrl = `${siteUrl}/articles/${slug}`;
     const encodedUrl = encodeURIComponent(articleUrl);
     const encodedTitle = encodeURIComponent(frontmatter.title);
-
-    // Construct Share URLs
     const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
     const whatsappShareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 
-    // Prepare breadcrumb items
+    const allThinkers = getAllThinkers(); // Fetch all thinkers once for this page
+
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'Denkbeelden', href: '/denkbeelden' },
+        { label: 'Denkers', href: '/denkers' },
     ];
-    if (frontmatter.thinker && frontmatter.thinkerSlug) {
-        breadcrumbItems.push({
-            label: frontmatter.thinker,
-            href: `/denkbeelden/${frontmatter.thinkerSlug}`,
-        });
+    if (frontmatter.thinkerSlugs && frontmatter.thinkerSlugs.length > 0) {
+        const firstThinkerSlug = frontmatter.thinkerSlugs[0];
+        const firstThinker = allThinkers.find(t => t.slug === firstThinkerSlug);
+        if (firstThinker) {
+            breadcrumbItems.push({
+                label: firstThinker.name, 
+                href: `/denkers/${firstThinker.slug}`,
+            });
+        }
     }
-    breadcrumbItems.push({ label: frontmatter.title, href: '#' }); // Current article, marked as non-navigable
+    breadcrumbItems.push({ label: frontmatter.title, href: '#' });
+
+    // Prepare thinker data for rendering
+    const thinkersToDisplay = frontmatter.thinkerSlugs
+        ? frontmatter.thinkerSlugs.map(slug => {
+              const thinker = allThinkers.find(t => t.slug === slug);
+              return thinker ? { name: thinker.name, slug: thinker.slug } : { name: slug, slug: slug }; // Fallback to slug if not found
+          })
+        : [];
 
     return (
         <article className="max-w-2xl mx-auto px-4 py-12 md:py-16 font-sans">
@@ -164,10 +181,18 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" /></svg>
                         {new Date(frontmatter.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </span>
-                    {frontmatter.thinker && frontmatter.thinkerSlug && (
+                    {thinkersToDisplay.length > 0 && (
                         <span className="flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
-                            Perspectief: <Link href={`/denkbeelden/${frontmatter.thinkerSlug}`} className="hover:underline text-black font-medium">{frontmatter.thinker}</Link>
+                            Perspectief: 
+                            {thinkersToDisplay.map((thinker, index) => (
+                                <React.Fragment key={thinker.slug}>
+                                    {index > 0 && <>, </>}
+                                    <Link href={`/denkers/${thinker.slug}`} className="hover:underline text-black font-medium">
+                                        {thinker.name}
+                                    </Link>
+                                </React.Fragment>
+                            ))}
                         </span>
                     )}
                     {frontmatter.sourceUrl && (
@@ -198,8 +223,8 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
             {/* Article Content */}
             <div className="mb-8">
-                {frontmatter.thinker && (
-                    <h2 className="text-xl font-semibold mb-4 border-t pt-6">Analyse vanuit het perspectief van {frontmatter.thinker}</h2>
+                {thinkersToDisplay.length > 0 && (
+                    <h2 className="text-xl font-semibold mb-4 border-t pt-6">Analyse vanuit het perspectief van {thinkersToDisplay.map(thinker => thinker.name).join(', ')}</h2>
                 )}
                 {/* Prose styling for MDX content, with improved blockquote and conclusion styles */}
                 <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:bg-blue-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:px-3 prose-blockquote:rounded prose-blockquote:text-gray-700 prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:mb-5">
@@ -208,7 +233,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             </div>
 
             {/* Add Tags back if needed (Optional) */}
-            {/*
             {frontmatter.tags && frontmatter.tags.length > 0 && (
                 <div className="mt-12 border-t pt-6">
                     <strong className="text-sm text-gray-500">Tags:</strong>
@@ -222,7 +246,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                     </div>
                 </div>
             )}
-            */}
         </article>
     );
 } 

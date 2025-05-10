@@ -28,18 +28,15 @@ collections:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Publicatiedatum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Denker", name: "thinker", widget: "string", required: false }
-      - { 
-          label: "Denker (Koppeling)", 
-          name: "thinkerSlug", 
-          widget: "relation", 
-          collection: "thinkers",
-          search_fields: ["name", "title"],
-          value_field: "slug",
-          display_fields: ["name"],
-          required: false 
-        }
-      - { label: "Quote", name: "quote", widget: "text", required: false }
+      - label: "Denkers"
+        name: "thinkers"
+        widget: "relation"
+        collection: "thinkers"
+        search_fields: ["name", "title"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        multiple: true
+        required: false
       - { label: "Spin", name: "spin", widget: "text", required: false }
       - { label: "Afbeelding", name: "imageUrl", widget: "image", required: false }
       - { label: "Bron URL", name: "sourceUrl", widget: "string", required: false }

@@ -70,15 +70,24 @@ function getAllThinkerFileData(): ({ frontmatter: ThinkerFrontmatter, content: s
  */
 export function getAllThinkers(): ThinkerData[] {
   const allThinkerFiles = getAllThinkerFileData();
-  const articles = getAllArticles();
+  const articles = getAllArticles(); // Ensure Article type here includes thinkers/thinkerSlugs
   const articleCounts = new Map<string, number>();
 
   // Count articles per thinkerSlug
   articles.forEach(article => {
-    const slug = article.thinkerSlug || (article.thinker ? generateSlug(article.thinker) : undefined);
-    if (slug) {
-      articleCounts.set(slug, (articleCounts.get(slug) || 0) + 1);
+    const slugsToCount: string[] = [];
+    if (article.thinkerSlugs && article.thinkerSlugs.length > 0) {
+      slugsToCount.push(...article.thinkerSlugs);
+    } else if (article.thinkers && article.thinkers.length > 0) {
+      // Fallback if only thinkers (names) are present, generate slugs
+      slugsToCount.push(...article.thinkers.map(name => generateSlug(name)));
     }
+
+    slugsToCount.forEach(slug => {
+      if (slug) {
+        articleCounts.set(slug, (articleCounts.get(slug) || 0) + 1);
+      }
+    });
   });
 
   const thinkers = allThinkerFiles.map(fileData => {
@@ -127,10 +136,16 @@ export function getThinkerBySlug(slug: string): ThinkerData | null {
 /**
  * Filters articles by thinker slug.
  */
-export function getArticlesByThinker(thinkerSlug: string): Article[] {
+export function getArticlesByThinker(thinkerSlugToFilter: string): Article[] {
   const allArticles = getAllArticles(); 
-  return allArticles.filter(article =>
-    article.thinkerSlug === thinkerSlug || 
-    (!article.thinkerSlug && article.thinker && generateSlug(article.thinker) === thinkerSlug)
-  );
+  return allArticles.filter(article => {
+    if (article.thinkerSlugs && article.thinkerSlugs.length > 0) {
+      return article.thinkerSlugs.includes(thinkerSlugToFilter);
+    }
+    // Fallback: if no thinkerSlugs, try to match generated slugs from thinkers (names)
+    if (article.thinkers && article.thinkers.length > 0) {
+      return article.thinkers.map(name => generateSlug(name)).includes(thinkerSlugToFilter);
+    }
+    return false;
+  });
 } 

@@ -1,9 +1,11 @@
 import { getAllArticles } from '@/lib/articles';
-import type { Article } from '@/lib/types';
+import { getAllThinkers } from '@/lib/thinkers';
+import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { useMemo } from 'react';
+import React from 'react';
 
 // Add static metadata for the homepage
 export const metadata: Metadata = {
@@ -13,6 +15,7 @@ export const metadata: Metadata = {
 
 // Helper function to generate slug (consistent with the thinker page)
 function generateSlug(name: string): string {
+  if (typeof name !== 'string' || !name) return '';
   return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
@@ -27,6 +30,29 @@ export default function HomePage() {
     const articlesToShow = 6;
     const [latest, ...rest] = articles as ArticleWithSourceTitle[];
 
+    const allThinkers = getAllThinkers();
+
+    // Helper to render thinker links
+    const renderThinkerLinks = (thinkerSlugs: string[] | undefined, linkClassName: string) => {
+        if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
+        return (
+            <span>
+                Perspectief: {thinkerSlugs.map((slug, idx) => {
+                    const thinker = allThinkers.find(t => t.slug === slug);
+                    const name = thinker ? thinker.name : slug;
+                    return (
+                        <React.Fragment key={slug}>
+                            {idx > 0 && ', '}
+                            <Link href={`/denkers/${slug}`} className={linkClassName}>
+                                {name}
+                            </Link>
+                        </React.Fragment>
+                    );
+                })}
+            </span>
+        );
+    };
+
     return (
         <>
             {/* Blauwe hero met nieuwste artikel */}
@@ -40,11 +66,7 @@ export default function HomePage() {
                             {/* Metadata Row Below Title */}
                             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-blue-200 mb-4">
                                 <span>{new Date(latest.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                {latest.thinker && latest.thinkerSlug && (
-                                    <span>
-                                        Perspectief: <Link href={`/denkbeelden/${latest.thinkerSlug}`} className="hover:underline text-white font-medium">{latest.thinker}</Link>
-                                    </span>
-                                )}
+                                {renderThinkerLinks(latest.thinkerSlugs, "hover:underline text-white font-medium")}
                                 {latest.sourceUrl && (
                                     <span>
                                         Bron: <a href={latest.sourceUrl} className="underline hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">{new URL(latest.sourceUrl).hostname}</a> 
@@ -84,11 +106,7 @@ export default function HomePage() {
                                 {/* Metadata row */} 
                                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 mb-3">
                                     <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                    {article.thinker && article.thinkerSlug && (
-                                        <span>
-                                            Perspectief: <Link href={`/denkbeelden/${article.thinkerSlug}`} className="hover:underline text-gray-700 font-medium">{article.thinker}</Link>
-                                        </span>
-                                    )}
+                                    {renderThinkerLinks(article.thinkerSlugs, "hover:underline text-gray-700 font-medium")}
                                     {/* Simplified Source Link */} 
                                     {article.sourceUrl && (
                                         <span>

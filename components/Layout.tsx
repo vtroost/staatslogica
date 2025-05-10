@@ -30,7 +30,7 @@ export default function SiteLayout({ children }: LayoutProps) {
             {/* Menu Items */}
             <div className="hidden sm:flex space-x-6">
               <Link href="/" className="text-gray-700 hover:text-black hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-colors duration-150">Artikelen</Link>
-              <Link href="/denkbeelden" className="text-gray-700 hover:text-black hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-colors duration-150">Denkbeelden</Link>
+              <Link href="/denkers" className="text-gray-700 hover:text-black hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-colors duration-150">Denkers</Link>
               <Link href="/about" className="text-gray-700 hover:text-black hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-colors duration-150">Over</Link>
             </div>
 

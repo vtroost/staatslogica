@@ -4,9 +4,7 @@ export interface ArticleFrontmatter {
   title: string;
   date: string;
   tags?: string[];
-  thinker?: string;
-  thinkerSlug?: string;
-  quote?: string;
+  thinkerSlugs?: string[];
   spin?: string;
   imageUrl?: string;
   sourceUrl?: string;
