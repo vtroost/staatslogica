@@ -60,7 +60,18 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
       const files = fs.readdirSync(articlesDirectory);
       return files
         .filter(f => f.endsWith('.mdx'))
-        .map(file => ({ slug: file.replace(/\.mdx$/, '') }));
+        .map(file => {
+          let slug = file.replace(/\.mdx$/, '');
+          // Normalize the slug further to handle potential special characters in filenames
+          // This aims to match common slugification practices more closely.
+          slug = slug.toLowerCase()
+                     .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove accents
+                     .replace(/[^a-z0-9\s-]/g, '') // Remove special chars except alphanumeric, space, hyphen
+                     .trim()
+                     .replace(/\s+/g, '-') // Replace spaces (and multiple spaces) with single hyphen
+                     .replace(/-+/g, '-'); // Replace multiple hyphens with a single hyphen
+          return { slug };
+        });
   } catch (error) {
       console.error("Error reading articles directory for static params:", error);
       return []; // Return empty array on error
