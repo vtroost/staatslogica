@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
+import TagCloud from './TagCloud'; // Import the new TagCloud component
 
 // Add an icon component or import one if you have a library
 const SearchIcon = () => (
@@ -34,18 +35,6 @@ export default function SiteLayout({ children }: LayoutProps) {
               <Link href="/about" className="text-gray-700 hover:text-black hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-colors duration-150">Over</Link>
             </div>
 
-            {/* Search Bar Placeholder (UI Only) */}
-            <div className="relative hidden md:block"> {/* Hide on smaller screens initially */}
-              <input
-                type="search"
-                placeholder="Zoeken..." // Placeholder text
-                className="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent transition-colors duration-150"
-                // No onChange or value needed yet
-              />
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <SearchIcon />
-              </div>
-            </div>
             {/* Consider adding a mobile menu toggle here later */}
           </div>
         </nav>
@@ -59,6 +48,7 @@ export default function SiteLayout({ children }: LayoutProps) {
       {/* Footer */}
       <footer className="bg-gray-50 border-t border-gray-200 mt-12 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <TagCloud /> {/* Add the TagCloud component here */}
             © {new Date().getFullYear()} Staatslogica - Alle rechten voorbehouden (Satire)
             <div className="mt-2 space-x-4">
                 <Link href="/about" className="hover:underline">Over Staatslogica</Link>
