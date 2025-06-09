@@ -111,7 +111,11 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         : [];
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+        <>
+            {/* Yellow accent strip */}
+            <div className="w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
+            
+            <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
             <div className="flex flex-col lg:flex-row gap-8">
                 {/* Main Article Content */}
                 <article className="flex-1 max-w-2xl font-sans">
@@ -139,10 +143,10 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                                 {new Date(frontmatter.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </span>
                             <div className="flex items-center gap-3">
-                                <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" title="Deel op X" className="text-gray-400 hover:text-black transition-colors">
+                                <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" title="Deel op X" className="text-gray-400 hover:text-yellow-600 transition-colors">
                                     <XIcon />
                                 </a>
-                                <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer" title="Deel via WhatsApp" className="text-gray-400 hover:text-green-600 transition-colors">
+                                <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer" title="Deel via WhatsApp" className="text-gray-400 hover:text-yellow-600 transition-colors">
                                     <WhatsAppIcon />
                                 </a>
                             </div>
@@ -153,7 +157,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                             <div className="text-sm text-gray-500">
                                 <span className="flex items-center gap-1">
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
-                                    <a href={frontmatter.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-black font-medium">
+                                    <a href={frontmatter.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-600 font-medium">
                                         {(() => {
                                             const hostname = new URL(frontmatter.sourceUrl).hostname;
                                             const sourceName = hostname === 'nos.nl' ? 'NOS' : 
@@ -173,14 +177,14 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
                     {/* Spin */}
                     {frontmatter.spin && (
-                        <blockquote className="border-l-4 border-blue-400 pl-4 italic text-gray-700 mb-10 bg-blue-50 py-2 px-3 rounded">
+                        <blockquote className="border-l-4 border-yellow-500 pl-4 italic text-gray-800 mb-10 bg-yellow-50 py-3 px-4 rounded-lg font-medium">
                             {frontmatter.spin}
                         </blockquote>
                     )}
 
                     {/* Article Content */}
                     <div className="mb-8">
-                        <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:bg-blue-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:px-3 prose-blockquote:rounded prose-blockquote:text-gray-700 prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:mb-5">
+                        <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-yellow-400 prose-blockquote:bg-yellow-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-lg prose-blockquote:text-gray-800 prose-blockquote:font-medium prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:mb-5 prose-a:text-yellow-600 prose-a:font-medium hover:prose-a:text-yellow-700">
                             <MDXRemote source={content} />
                         </div>
                     </div>
@@ -191,7 +195,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                             <strong className="text-sm text-gray-500">Tags:</strong>
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {frontmatter.tags.map((tag: string) => (
-                                    <span key={tag} className="inline-block bg-gray-200 px-2 py-1 text-xs rounded">
+                                    <span key={tag} className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 text-sm rounded-full font-medium">
                                         {tag}
                                     </span>
                                 ))}
@@ -214,7 +218,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                                     >
                                         <div className="text-center">
                                             {/* Thinker Image */}
-                                            <div className="relative w-32 h-32 mx-auto mb-3 rounded-full overflow-hidden bg-gray-100 group-hover:scale-105 transition-transform duration-200">
+                                            <div className="relative w-32 h-32 mx-auto mb-3 rounded-full overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-500 group-hover:scale-105 transition-transform duration-200 flex items-center justify-center">
                                                 <Image
                                                     src={`/uploads/${thinker.slug}.png`}
                                                     alt={thinker.name}
@@ -224,7 +228,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                                                 />
                                             </div>
                                             {/* Thinker Name */}
-                                            <h3 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
+                                            <h3 className="font-bold text-gray-900 group-hover:text-yellow-600 transition-colors">
                                                 {thinker.name}
                                             </h3>
                                         </div>
@@ -236,5 +240,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 )}
             </div>
         </div>
+        </>
     );
 } 

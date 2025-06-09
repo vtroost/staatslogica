@@ -79,7 +79,7 @@ export default function HomePage() {
         <>
             {/* Featured Article - Full Width */}
             {featuredArticle && (
-                <section className="w-full bg-gradient-to-r from-red-600 to-orange-500 relative overflow-hidden">
+                <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 relative overflow-hidden">
                     {/* Background Image */}
                     {featuredArticle.imageUrl && (
                         <div className="absolute inset-0">
@@ -98,26 +98,26 @@ export default function HomePage() {
                             {/* Main Tag */}
                             {getMainTag(featuredArticle.tags) && (
                                 <div className="mb-4">
-                                    <span className="inline-block bg-white bg-opacity-20 text-white px-3 py-1 text-sm font-medium uppercase tracking-wide rounded">
+                                    <span className="inline-block bg-black bg-opacity-20 text-black px-3 py-1 text-sm font-bold uppercase tracking-wide rounded">
                                         {getMainTag(featuredArticle.tags)}
                                     </span>
                                 </div>
                             )}
                             
                             {/* Title */}
-                            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                            <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
                                 {featuredArticle.title}
                             </h1>
                             
                             {/* Metadata */}
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white text-opacity-90 mb-6">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-black text-opacity-90 mb-6">
                                 <span>{new Date(featuredArticle.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                {renderThinkerLinks(featuredArticle.thinkers, "hover:underline text-white font-medium")}
+                                {renderThinkerLinks(featuredArticle.thinkers, "hover:underline text-black font-bold")}
                             </div>
 
                             {/* Spin/Description */}
                             {featuredArticle.spin && (
-                                <p className="text-lg text-white text-opacity-95 mb-8 leading-relaxed">
+                                <p className="text-lg text-black text-opacity-90 mb-8 leading-relaxed font-medium">
                                     {featuredArticle.spin}
                                 </p>
                             )}
@@ -125,7 +125,7 @@ export default function HomePage() {
                             {/* Read More Button */}
                             <Link
                                 href={`/articles/${featuredArticle.slug}`}
-                                className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+                                className="inline-block bg-black text-yellow-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-800 transition-colors shadow-lg"
                             >
                                 Lees analyse
                             </Link>

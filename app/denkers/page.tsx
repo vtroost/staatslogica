@@ -68,22 +68,41 @@ export default async function ThinkersPage() {
     });
 
     return (
-        <div className="w-full bg-gray-50 min-h-screen">
-            {/* Header Section */}
-            <section className="w-full bg-white border-b">
-                <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Denkers</h1>
-                    <p className="text-lg text-gray-600 max-w-3xl">
-                        In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
-                    </p>
-                    <p className="text-lg text-gray-600 max-w-3xl mt-4">
-                        Deze denkers bieden perspectieven die mainstream media zelden belichten: van Bastiat's waarschuwingen tegen legale plundering tot Rothbard's ontmaskering van staatsmacht, van Mises' economische inzichten tot Spooner's juridische rebellie. Ontdek waarom hun ideeën relevanter zijn dan ooit.
-                    </p>
+        <div className="w-full min-h-screen">
+            {/* Enhanced Header Section with Gadsden Flag Colors */}
+            <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 relative overflow-hidden">
+                {/* Background Pattern/Texture */}
+                <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                
+                <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
+                    <div className="max-w-4xl">
+                        {/* Category Badge */}
+                        <div className="mb-6">
+                            <span className="inline-block bg-black bg-opacity-20 text-black px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
+                                Intellectuele Vrijheid
+                            </span>
+                        </div>
+                        
+                        {/* Title */}
+                        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+                            Denkers
+                        </h1>
+                        
+                        {/* Description */}
+                        <div className="text-lg text-black text-opacity-90 space-y-4 leading-relaxed font-medium">
+                            <p>
+                                In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
+                            </p>
+                            <p>
+                                Deze denkers bieden perspectieven die mainstream media zelden belichten: van Bastiat's waarschuwingen tegen legale plundering tot Rothbard's ontmaskering van staatsmacht, van Mises' economische inzichten tot Spooner's juridische rebellie. Ontdek waarom hun ideeën relevanter zijn dan ooit.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* Thinkers Grid */}
-            <section className="w-full py-12 md:py-16">
+            <section className="w-full bg-gray-50 py-12 md:py-16">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {thinkersWithTaglines.map(thinker => {
@@ -101,7 +120,7 @@ export default async function ThinkersPage() {
                                     className="group block bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
                                 >
                                     {/* Silhouette Image Section */}
-                                    <div className="relative h-48 bg-gradient-to-br from-blue-900 to-indigo-800 flex items-center justify-center">
+                                    <div className="relative h-48 bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">
                                         <div className="relative w-24 h-24 md:w-28 md:h-28">
                                             <Image
                                                 src={`/uploads/${thinker.slug}.png`}
@@ -116,7 +135,7 @@ export default async function ThinkersPage() {
                                         {/* Years overlay */}
                                         {years && (
                                             <div className="absolute top-3 right-3">
-                                                <span className="inline-block bg-white bg-opacity-20 text-white px-3 py-1 text-xs font-medium rounded">
+                                                <span className="inline-block bg-black bg-opacity-30 text-black px-3 py-1 text-xs font-bold rounded">
                                                     {years}
                                                 </span>
                                             </div>
@@ -126,7 +145,7 @@ export default async function ThinkersPage() {
                                     {/* Content Section */}
                                     <div className="p-6">
                                         {/* Name */}
-                                        <h2 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-700 transition-colors">
+                                        <h2 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-yellow-600 transition-colors">
                                             {thinker.name}
                                         </h2>
                                         
@@ -140,7 +159,7 @@ export default async function ThinkersPage() {
                                         {/* Article Count */}
                                         <div className="flex items-center justify-between text-sm">
                                             {thinker.articleCount > 0 ? (
-                                                <span className="text-blue-700 font-medium">
+                                                <span className="text-yellow-600 font-bold">
                                                     {thinker.articleCount} artikel{thinker.articleCount !== 1 ? 'en' : ''}
                                                 </span>
                                             ) : (
@@ -149,7 +168,7 @@ export default async function ThinkersPage() {
                                                 </span>
                                             )}
                                             
-                                            <span className="text-blue-700 group-hover:text-blue-900 font-medium">
+                                            <span className="text-yellow-600 group-hover:text-yellow-700 font-bold">
                                                 Lees meer →
                                             </span>
                                         </div>
