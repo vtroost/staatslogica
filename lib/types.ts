@@ -8,6 +8,7 @@ export interface ArticleFrontmatter {
   spin?: string;
   imageUrl?: string;
   sourceUrl?: string;
+  sourceTitle?: string;
   // Add any other fields you expect in the frontmatter
 }
 

@@ -1,7 +1,7 @@
 ---
 title: Over Staatslogica
 ---
-## Over staatslogica.nl
+## Over Staatslogica
 
 Staatslogica is een dagelijkse oefening in helder denken. We becommentariëren nieuws dat vaak gedachteloos het staatsnarratief herhaalt — berichten die dwang normaal maken, controle als vooruitgang verkopen, en collectieve offers verheerlijken. Wij zetten daar iets radicaal eenvoudigs tegenover: logica, consistentie en het non-agressieprincipe.
 
