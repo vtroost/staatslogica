@@ -78,18 +78,18 @@ export default async function ThinkersPage() {
                     <div className="max-w-4xl">
                         {/* Category Badge */}
                         <div className="mb-6">
-                            <span className="inline-block bg-black bg-opacity-20 text-black px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
+                            <span className="inline-block bg-black bg-opacity-30 text-white px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
                                 Intellectuele Vrijheid
                             </span>
                         </div>
                         
                         {/* Title */}
-                        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                             Denkers
                         </h1>
                         
                         {/* Description */}
-                        <div className="text-lg text-black text-opacity-90 space-y-4 leading-relaxed font-medium">
+                        <div className="text-lg text-white text-opacity-95 space-y-4 leading-relaxed font-medium">
                             <p>
                                 In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
                             </p>

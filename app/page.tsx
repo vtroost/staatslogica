@@ -98,26 +98,26 @@ export default function HomePage() {
                             {/* Main Tag */}
                             {getMainTag(featuredArticle.tags) && (
                                 <div className="mb-4">
-                                    <span className="inline-block bg-black bg-opacity-20 text-black px-3 py-1 text-sm font-bold uppercase tracking-wide rounded">
+                                    <span className="inline-block bg-black bg-opacity-30 text-white px-3 py-1 text-sm font-bold uppercase tracking-wide rounded">
                                         {getMainTag(featuredArticle.tags)}
                                     </span>
                                 </div>
                             )}
                             
                             {/* Title */}
-                            <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
+                            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
                                 {featuredArticle.title}
                             </h1>
                             
                             {/* Metadata */}
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-black text-opacity-90 mb-6">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white text-opacity-95 mb-6">
                                 <span>{new Date(featuredArticle.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                {renderThinkerLinks(featuredArticle.thinkers, "hover:underline text-black font-bold")}
+                                {renderThinkerLinks(featuredArticle.thinkers, "hover:underline text-white font-bold hover:text-gray-200")}
                             </div>
 
                             {/* Spin/Description */}
                             {featuredArticle.spin && (
-                                <p className="text-lg text-black text-opacity-90 mb-8 leading-relaxed font-medium">
+                                <p className="text-lg text-white text-opacity-95 mb-8 leading-relaxed font-medium">
                                     {featuredArticle.spin}
                                 </p>
                             )}
@@ -135,9 +135,12 @@ export default function HomePage() {
             )}
 
             {/* Articles Grid */}
-            <section className="w-full bg-gray-50 py-12 md:py-16">
+            <section className="w-full bg-gray-50 py-12 md:py-16 border-t-4 border-yellow-400">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Nieuwste artikelen</h2>
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-yellow-500"></div>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Nieuwste artikelen</h2>
+                    </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {restArticles.slice(0, 9).map((article: ArticleWithSourceTitle) => (
@@ -152,8 +155,8 @@ export default function HomePage() {
                                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                     ) : (
-                                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                                            <div className="text-white text-4xl font-bold opacity-50">
+                                        <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">
+                                            <div className="text-black text-4xl font-bold opacity-70">
                                                 {article.title.charAt(0)}
                                             </div>
                                         </div>
@@ -162,7 +165,7 @@ export default function HomePage() {
                                     {/* Main Tag Overlay */}
                                     {getMainTag(article.tags) && (
                                         <div className="absolute top-3 left-3">
-                                            <span className="inline-block bg-black bg-opacity-75 text-white px-3 py-1 text-xs font-medium uppercase tracking-wide rounded">
+                                            <span className="inline-block bg-yellow-500 text-black px-3 py-1 text-xs font-bold uppercase tracking-wide rounded shadow-md">
                                                 {getMainTag(article.tags)}
                                             </span>
                                         </div>
@@ -175,7 +178,7 @@ export default function HomePage() {
                                     <h3 className="text-xl font-bold mb-3 leading-tight">
                                         <Link 
                                             href={`/articles/${article.slug}`} 
-                                            className="text-gray-900 hover:text-blue-700 transition-colors"
+                                            className="text-gray-900 hover:text-yellow-600 transition-colors"
                                         >
                                             {article.title}
                                         </Link>
@@ -184,7 +187,7 @@ export default function HomePage() {
                                     {/* Metadata */}
                                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-3">
                                         <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}</span>
-                                        {renderThinkerLinks(article.thinkers, "hover:underline text-gray-700 font-medium")}
+                                        {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-bold")}
                                     </div>
                                     
                                     {/* Spin/Description */}
@@ -197,7 +200,7 @@ export default function HomePage() {
                                     {/* Read More */}
                                     <Link 
                                         href={`/articles/${article.slug}`} 
-                                        className="text-blue-700 hover:text-blue-900 font-medium text-sm transition-colors"
+                                        className="text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
                                     >
                                         Lees meer →
                                     </Link>
