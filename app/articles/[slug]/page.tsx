@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 
     const frontmatter = articleData.data;
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://staatslogica.nl';
     
     // Fetch thinker names for description
     let thinkerNames = 'een denker';
@@ -130,7 +130,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
     const { data: frontmatter, content } = article;
     const imageUrl = frontmatter.imageUrl || DEFAULT_IMAGE_URL;
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://staatslogica.nl';
     const articleUrl = `${siteUrl}/articles/${slug}`;
     const encodedUrl = encodeURIComponent(articleUrl);
     const encodedTitle = encodeURIComponent(frontmatter.title);
@@ -257,7 +257,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 </div>
             </header>
 
-            {/* Optional Spin/Quote */}
+            {/* Spin */}
             {frontmatter.spin && (
                 <blockquote className="border-l-4 border-blue-400 pl-4 italic text-gray-700 mb-10 bg-blue-50 py-2 px-3 rounded">
                     {frontmatter.spin}
@@ -266,9 +266,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
             {/* Article Content */}
             <div className="mb-8">
-                {thinkersToDisplay.length > 0 && (
-                    <h2 className="text-xl font-semibold mb-4 border-t pt-6">Analyse vanuit het perspectief van {thinkersToDisplay.map(thinker => thinker.name).join(', ')}</h2>
-                )}
                 {/* Prose styling for MDX content, with improved blockquote and conclusion styles */}
                 <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-blue-300 prose-blockquote:bg-blue-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:px-3 prose-blockquote:rounded prose-blockquote:text-gray-700 prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:mb-5">
                     <MDXRemote source={content} />

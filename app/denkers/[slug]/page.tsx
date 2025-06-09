@@ -126,7 +126,7 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
       {/* Sticky Sidebar: Article List */}
       <aside className="w-full lg:w-80 flex-shrink-0 lg:pl-6">
         <div className="lg:sticky lg:top-24">
-          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen van {thinker.name}</h2>
+          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
           {thinkerArticles.length > 0 ? (
             <ul className="space-y-4">
               {thinkerArticles.map(article => (
@@ -144,7 +144,7 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">Geen artikelen gevonden voor {thinker.name}.</p>
+            <p className="text-gray-500">Geen artikelen gevonden die aansluiten bij het gedachtegoed van {thinker.name}.</p>
           )}
         </div>
       </aside>

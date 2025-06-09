@@ -26,9 +26,8 @@ export default function HomePage() {
     const articles = getAllArticles();
     articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    // Laatste 6 artikelen voor een 2x3 grid op desktop
-    const articlesToShow = 6;
-    const [latest, ...rest] = articles as ArticleWithSourceTitle[];
+    // Laatste artikel als featured, rest voor de grid
+    const [featuredArticle, ...restArticles] = articles as ArticleWithSourceTitle[];
 
     const allThinkers = getAllThinkers();
 
@@ -70,82 +69,144 @@ export default function HomePage() {
         );
     };
 
+    // Helper to get main tag for display
+    const getMainTag = (tags: string[] | undefined) => {
+        if (!tags || tags.length === 0) return null;
+        return tags[0]; // Return the first tag as the main one
+    };
+
     return (
         <>
-            {/* Blauwe hero met nieuwste artikel */}
-            <section className="w-full bg-blue-900 py-16 md:py-20">
-                <div className="max-w-3xl mx-auto px-4 text-left">
-                    {latest && (
-                        <>
-                            {/* Title First */}
-                            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">{latest.title}</h1>
-                            
-                            {/* Metadata Row Below Title */}
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-blue-200 mb-4">
-                                <span>{new Date(latest.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                {renderThinkerLinks(latest.thinkers, "hover:underline text-white font-medium")}
-                                {latest.sourceUrl && (
-                                    <span>
-                                        Bron: <a href={latest.sourceUrl} className="underline hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">{new URL(latest.sourceUrl).hostname}</a> 
+            {/* Featured Article - Full Width */}
+            {featuredArticle && (
+                <section className="w-full bg-gradient-to-r from-red-600 to-orange-500 relative overflow-hidden">
+                    {/* Background Image */}
+                    {featuredArticle.imageUrl && (
+                        <div className="absolute inset-0">
+                            <Image
+                                src={featuredArticle.imageUrl}
+                                alt={featuredArticle.title}
+                                fill
+                                className="object-cover opacity-30"
+                            />
+                            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                        </div>
+                    )}
+                    
+                    <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-24">
+                        <div className="max-w-3xl">
+                            {/* Main Tag */}
+                            {getMainTag(featuredArticle.tags) && (
+                                <div className="mb-4">
+                                    <span className="inline-block bg-white bg-opacity-20 text-white px-3 py-1 text-sm font-medium uppercase tracking-wide rounded">
+                                        {getMainTag(featuredArticle.tags)}
                                     </span>
-                                )}
+                                </div>
+                            )}
+                            
+                            {/* Title */}
+                            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                                {featuredArticle.title}
+                            </h1>
+                            
+                            {/* Metadata */}
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white text-opacity-90 mb-6">
+                                <span>{new Date(featuredArticle.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                                {renderThinkerLinks(featuredArticle.thinkers, "hover:underline text-white font-medium")}
                             </div>
 
-                            {/* Spin/Description */} 
-                            {latest.spin && <p className="text-lg text-blue-100 mb-8">{latest.spin}</p>}
+                            {/* Spin/Description */}
+                            {featuredArticle.spin && (
+                                <p className="text-lg text-white text-opacity-95 mb-8 leading-relaxed">
+                                    {featuredArticle.spin}
+                                </p>
+                            )}
                             
-                            {/* Button */} 
-                            <a
-                                href={`/articles/${latest.slug}`}
-                                className="inline-block bg-white text-blue-900 px-6 py-3 rounded font-semibold hover:bg-blue-100 border border-white transition-colors"
+                            {/* Read More Button */}
+                            <Link
+                                href={`/articles/${featuredArticle.slug}`}
+                                className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
                             >
                                 Lees analyse
-                            </a>
-                        </>
-                    )}
-                </div>
-            </section>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            )}
 
-            {/* Overige artikelen als lijst */}
-            <section className="w-full bg-white py-12 md:py-16">
-                <div className="max-w-3xl mx-auto px-4">
-                    <h2 className="text-2xl font-bold mb-8 text-left">Nieuwste artikelen</h2>
-                    <ul className="space-y-8">
-                        {rest.slice(0, articlesToShow - 1).map((article: ArticleWithSourceTitle) => (
-                            // Wrap each item in a card
-                            <li key={article.slug} className="border border-gray-200 rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                {/* Article Title first and prominent */} 
-                                <h3 className="text-xl font-semibold mb-2">
-                                    <Link href={`/articles/${article.slug}`} className="text-gray-900 hover:text-blue-700 transition-colors">
-                                        {article.title}
-                                    </Link>
-                                </h3>
-                                {/* Metadata row */} 
-                                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 mb-3">
-                                    <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                    {renderThinkerLinks(article.thinkers, "hover:underline text-gray-700 font-medium")}
-                                    {/* Simplified Source Link */} 
-                                    {article.sourceUrl && (
-                                        <span>
-                                            Bron: <a href={article.sourceUrl} className="underline hover:text-gray-700" target="_blank" rel="noopener noreferrer">{new URL(article.sourceUrl).hostname}</a>
-                                        </span>
+            {/* Articles Grid */}
+            <section className="w-full bg-gray-50 py-12 md:py-16">
+                <div className="max-w-6xl mx-auto px-4">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Nieuwste artikelen</h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {restArticles.slice(0, 9).map((article: ArticleWithSourceTitle) => (
+                            <article key={article.slug} className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
+                                {/* Article Image */}
+                                <div className="relative h-48 bg-gray-200">
+                                    {article.imageUrl ? (
+                                        <Image
+                                            src={article.imageUrl}
+                                            alt={article.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                            <div className="text-white text-4xl font-bold opacity-50">
+                                                {article.title.charAt(0)}
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    {/* Main Tag Overlay */}
+                                    {getMainTag(article.tags) && (
+                                        <div className="absolute top-3 left-3">
+                                            <span className="inline-block bg-black bg-opacity-75 text-white px-3 py-1 text-xs font-medium uppercase tracking-wide rounded">
+                                                {getMainTag(article.tags)}
+                                            </span>
+                                        </div>
                                     )}
                                 </div>
-                                {/* Spin/Intro text */} 
-                                {article.spin && <p className="text-gray-700 mb-4">{article.spin}</p>}
-                                {/* Read More Link */} 
-                                <div> {/* Wrapper div for alignment if needed */}
-                                    <Link href={`/articles/${article.slug}`} className="text-sm font-medium text-blue-700 hover:text-blue-900 transition-colors">
-                                        Lees analyse →
+                                
+                                {/* Article Content */}
+                                <div className="p-6">
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold mb-3 leading-tight">
+                                        <Link 
+                                            href={`/articles/${article.slug}`} 
+                                            className="text-gray-900 hover:text-blue-700 transition-colors"
+                                        >
+                                            {article.title}
+                                        </Link>
+                                    </h3>
+                                    
+                                    {/* Metadata */}
+                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-3">
+                                        <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}</span>
+                                        {renderThinkerLinks(article.thinkers, "hover:underline text-gray-700 font-medium")}
+                                    </div>
+                                    
+                                    {/* Spin/Description */}
+                                    {article.spin && (
+                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                            {article.spin.length > 120 ? `${article.spin.substring(0, 120)}...` : article.spin}
+                                        </p>
+                                    )}
+                                    
+                                    {/* Read More */}
+                                    <Link 
+                                        href={`/articles/${article.slug}`} 
+                                        className="text-blue-700 hover:text-blue-900 font-medium text-sm transition-colors"
+                                    >
+                                        Lees meer →
                                     </Link>
                                 </div>
-                            </li>
+                            </article>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             </section>
-
-            {/* Footer is handled by Layout.tsx */}
         </>
     );
 } 
