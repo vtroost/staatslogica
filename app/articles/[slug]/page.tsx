@@ -208,7 +208,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 {thinkersToDisplay.length > 0 && (
                     <aside className="lg:w-80 flex-shrink-0">
                         <div className="sticky top-8">
-                            <h2 className="text-lg font-semibold mb-6 text-gray-900">Perspectieven van:</h2>
+                            <h2 className="text-lg font-semibold mb-6 text-gray-900 text-center">Geïnspireerd door</h2>
                             <div className="space-y-6">
                                 {thinkersToDisplay.map((thinker) => (
                                     <Link
@@ -224,7 +224,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                                                     alt={thinker.name}
                                                     fill
                                                     className="object-cover opacity-90"
-                                                    style={{ filter: 'brightness(0) invert(1)' }}
+                                                    style={{ filter: 'brightness(0)' }}
                                                 />
                                             </div>
                                             {/* Thinker Name */}

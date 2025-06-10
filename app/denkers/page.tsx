@@ -117,7 +117,7 @@ export default async function ThinkersPage() {
                                 <Link 
                                     key={thinker.slug}
                                     href={`/denkers/${thinker.slug}`}
-                                    className="group block bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
+                                    className="group block bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full"
                                 >
                                     {/* Silhouette Image Section */}
                                     <div className="relative h-48 bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">
@@ -128,7 +128,7 @@ export default async function ThinkersPage() {
                                                 width={112}
                                                 height={112}
                                                 className="object-contain opacity-90 group-hover:scale-105 transition-transform duration-300"
-                                                style={{ filter: 'brightness(0) invert(1)' }}
+                                                style={{ filter: 'brightness(0)' }}
                                             />
                                         </div>
                                         
@@ -143,21 +143,23 @@ export default async function ThinkersPage() {
                                     </div>
                                     
                                     {/* Content Section */}
-                                    <div className="p-6">
+                                    <div className="p-6 flex flex-col flex-grow">
                                         {/* Name */}
                                         <h2 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-yellow-600 transition-colors">
                                             {thinker.name}
                                         </h2>
                                         
                                         {/* Tagline */}
-                                        {thinker.tagline && (
-                                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                                {thinker.tagline.length > 120 ? `${thinker.tagline.substring(0, 120)}...` : thinker.tagline}
-                                            </p>
-                                        )}
+                                        <div className="flex-grow mb-4">
+                                            {thinker.tagline && (
+                                                <p className="text-gray-600 text-sm leading-relaxed">
+                                                    {thinker.tagline.length > 120 ? `${thinker.tagline.substring(0, 120)}...` : thinker.tagline}
+                                                </p>
+                                            )}
+                                        </div>
                                         
-                                        {/* Article Count */}
-                                        <div className="flex items-center justify-between text-sm">
+                                        {/* Article Count - Always at bottom */}
+                                        <div className="flex items-center justify-between text-base mt-auto pt-4 border-t border-gray-100">
                                             {thinker.articleCount > 0 ? (
                                                 <span className="text-yellow-600 font-bold">
                                                     {thinker.articleCount} artikel{thinker.articleCount !== 1 ? 'en' : ''}

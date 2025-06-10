@@ -40,6 +40,7 @@ collections:
       - { label: "Spin", name: "spin", widget: "text", required: false }
       - { label: "Afbeelding", name: "imageUrl", widget: "image", required: false }
       - { label: "Bron URL", name: "sourceUrl", widget: "string", required: false }
+      - { label: "Bron Titel", name: "sourceTitle", widget: "string", required: false }
       - { label: "Inhoud", name: "body", widget: "markdown" }
 
   - name: "thinkers"

@@ -146,7 +146,7 @@ export default function HomePage() {
                         {restArticles.slice(0, 9).map((article: ArticleWithSourceTitle) => (
                             <article key={article.slug} className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
                                 {/* Article Image */}
-                                <div className="relative h-48 bg-gray-200">
+                                <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
                                     {article.imageUrl ? (
                                         <Image
                                             src={article.imageUrl}
@@ -164,13 +164,13 @@ export default function HomePage() {
                                     
                                     {/* Main Tag Overlay */}
                                     {getMainTag(article.tags) && (
-                                        <div className="absolute top-3 left-3">
+                                        <div className="absolute top-3 left-3 z-10">
                                             <span className="inline-block bg-yellow-500 text-black px-3 py-1 text-xs font-bold uppercase tracking-wide rounded shadow-md">
                                                 {getMainTag(article.tags)}
                                             </span>
                                         </div>
                                     )}
-                                </div>
+                                </Link>
                                 
                                 {/* Article Content */}
                                 <div className="p-6">
