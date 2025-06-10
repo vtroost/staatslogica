@@ -128,7 +128,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             "url": siteUrl,
             "logo": {
                 "@type": "ImageObject",
-                "url": `${siteUrl}/favicon.png`
+                "url": `${siteUrl}/favicon.svg`
             }
         },
         "datePublished": frontmatter.date,
