@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://staatslogica.nl/sitemap.xml
+
+# Optional: Block specific paths if needed (none for now)
+# Disallow: /private/
+# Disallow: /admin/ 

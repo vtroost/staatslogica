@@ -110,8 +110,48 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           })
         : [];
 
+    // Create structured data for the article
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": frontmatter.title,
+        "description": frontmatter.spin || `Analyse vanuit het perspectief van ${thinkersToDisplay.map(t => t.name).join(', ')}`,
+        "image": frontmatter.imageUrl || `${siteUrl}/og-image.jpg`,
+        "author": {
+            "@type": "Organization",
+            "name": "Staatslogica",
+            "url": siteUrl
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Staatslogica",
+            "url": siteUrl,
+            "logo": {
+                "@type": "ImageObject",
+                "url": `${siteUrl}/favicon.ico`
+            }
+        },
+        "datePublished": frontmatter.date,
+        "dateModified": frontmatter.date,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": articleUrl
+        },
+        "keywords": frontmatter.tags?.join(', ') || '',
+        "articleSection": "Political Analysis",
+        "inLanguage": "nl-NL"
+    };
+
     return (
         <>
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(structuredData)
+                }}
+            />
+            
             {/* Yellow accent strip */}
             <div className="w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
             
