@@ -4,6 +4,9 @@ Allow: /
 # Sitemap location
 Sitemap: https://staatslogica.nl/sitemap.xml
 
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
 # Optional: Block specific paths if needed (none for now)
 # Disallow: /private/
 # Disallow: /admin/ 
