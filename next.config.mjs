@@ -15,7 +15,7 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Uncomment for static export build
+  // output: 'export', // Commented out to enable server-side functionality for sitemap
   reactStrictMode: false, // Disable Strict Mode for testing CMS compatibility
   images: {
     unoptimized: true,
