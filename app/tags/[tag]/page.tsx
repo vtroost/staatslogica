@@ -32,13 +32,11 @@ export async function generateStaticParams(): Promise<Params[]> {
     return Array.from(uniqueTags).map(tag => ({ tag }));
 }
 
-// Generate metadata for Tag page
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    const tagName = decodeURIComponent(params.tag);
-    const allArticles: Article[] = getAllArticles();
-    let displayTagName = tagName; 
-
-    for (const article of allArticles) {
+// Optimized metadata generation - reuse articles from function parameter
+function findDisplayTagName(articles: Article[], tagName: string): string {
+    let displayTagName = tagName;
+    
+    for (const article of articles) {
         if (Array.isArray(article.tags)) {
             const foundTag = article.tags.find(t => t.toLowerCase().replace(/\s+/g, '-') === tagName);
             if (foundTag) {
@@ -47,6 +45,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
             }
         }
     }
+    
+    return displayTagName;
+}
+
+// Generate metadata for Tag page
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const tagName = decodeURIComponent(params.tag);
+    const allArticles: Article[] = getAllArticles(); // Single call here
+    const displayTagName = findDisplayTagName(allArticles, tagName);
 
     return {
         title: `${displayTagName} | Staatslogica`,
@@ -57,7 +64,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 // Tag Page Component
 export default async function TagPage({ params }: { params: Params }) {
     const requestedTagSlug = params.tag.toLowerCase();
-    const allArticlesData: Article[] = getAllArticles();
+    const allArticlesData: Article[] = getAllArticles(); // Single call for the entire component
     const allThinkers = getAllThinkers();
 
     // Filter articles: match requested slug against normalized slugs of article tags
@@ -69,13 +76,7 @@ export default async function TagPage({ params }: { params: Params }) {
     articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     // Find the original tag name (with original casing) for display
-    let displayTagName = requestedTagSlug;
-    if (articles.length > 0 && Array.isArray(articles[0].tags)) {
-         const foundTag = articles[0].tags.find(t => t.toLowerCase().replace(/\s+/g, '-') === requestedTagSlug);
-         if (foundTag) {
-            displayTagName = foundTag;
-         }
-    }
+    const displayTagName = findDisplayTagName(articles.length > 0 ? [articles[0]] : allArticlesData, requestedTagSlug);
 
     // If no articles found, show 404
     if (articles.length === 0) {

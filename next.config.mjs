@@ -16,9 +16,21 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export', // Commented out to enable server-side functionality for sitemap
-  reactStrictMode: false, // Disable Strict Mode for testing CMS compatibility
+  reactStrictMode: true, // Re-enable Strict Mode for better performance and error catching
   images: {
-    unoptimized: true,
+    // Re-enable image optimization for better performance
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+  },
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   // Explicitly tell Next.js to transpile these packages
   transpilePackages: [
@@ -28,8 +40,17 @@ const nextConfig = {
   ],
   // Remove any API routes or dynamic features
   experimental: {
-    // Disable any experimental features
-  }
+    scrollRestoration: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/nieuws',
+        destination: '/categorieen',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 // Combine the MDX config with your existing Next.js config

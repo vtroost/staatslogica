@@ -42,4 +42,5 @@ export interface ThinkerJsonData {
 export interface TagData {
   name: string;
   slug: string;
+  count?: number; // Optional count for performance tracking
 } 

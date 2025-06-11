@@ -7,6 +7,11 @@ import { getAllArticles } from './articles'; // Import article functions
 
 const thinkersContentDirectory = path.join(process.cwd(), 'content', 'thinkers');
 
+// Cache for thinkers to avoid re-reading files
+let thinkersCache: ThinkerData[] | null = null;
+let thinkersCacheTimestamp = 0;
+const CACHE_DURATION = 60000; // 1 minute cache duration
+
 // Interface matching the FRONTMATTER of thinker MD files now
 interface ThinkerFrontmatter {
   slug?: string; // Can be derived from filename if not present
@@ -69,6 +74,13 @@ function getAllThinkerFileData(): ({ frontmatter: ThinkerFrontmatter, content: s
  * Retrieves all unique thinkers based on MD files and calculates article counts.
  */
 export function getAllThinkers(): ThinkerData[] {
+  const now = Date.now();
+  
+  // Return cached thinkers if cache is still valid
+  if (thinkersCache && (now - thinkersCacheTimestamp) < CACHE_DURATION) {
+    return thinkersCache;
+  }
+
   const allThinkerFiles = getAllThinkerFileData();
   const articles = getAllArticles(); 
   const articleCounts = new Map<string, number>();
@@ -99,7 +111,13 @@ export function getAllThinkers(): ThinkerData[] {
   });
   
   // Filter out any potential 'unknown' slug from files if it exists
-  return thinkers.filter(thinker => thinker.slug !== 'unknown');
+  const filteredThinkers = thinkers.filter(thinker => thinker.slug !== 'unknown');
+  
+  // Update cache
+  thinkersCache = filteredThinkers;
+  thinkersCacheTimestamp = now;
+
+  return filteredThinkers;
 }
 
 /**

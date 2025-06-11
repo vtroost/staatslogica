@@ -31,6 +31,45 @@ export default function HomePage() {
 
     const allThinkers = getAllThinkers();
 
+    // Structured data for the homepage articles
+    const siteUrl = 'https://staatslogica.nl';
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Staatslogica Artikelen",
+        "description": "Laatste analyses van politieke gebeurtenissen vanuit libertarisch perspectief",
+        "url": siteUrl,
+        "numberOfItems": Math.min(articles.length, 10),
+        "itemListElement": articles.slice(0, 10).map((article, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "Article",
+                "@id": `${siteUrl}/articles/${article.slug}`,
+                "headline": article.title,
+                "description": article.spin || `Libertarische analyse over ${article.title.toLowerCase()}`,
+                "url": `${siteUrl}/articles/${article.slug}`,
+                "datePublished": article.date,
+                "dateModified": article.date,
+                "author": {
+                    "@type": "Organization",
+                    "name": "Staatslogica"
+                },
+                "publisher": {
+                    "@type": "Organization", 
+                    "name": "Staatslogica",
+                    "logo": `${siteUrl}/favicon.svg`
+                },
+                "image": article.imageUrl || `${siteUrl}/og-image.jpg`,
+                "keywords": article.tags?.join(', ') || 'politiek, analyse',
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": `${siteUrl}/articles/${article.slug}`
+                }
+            }
+        }))
+    };
+
     // Helper to render thinker links
     const renderThinkerLinks = (thinkerSlugs: string[] | undefined, linkClassName: string) => {
         if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
@@ -77,6 +116,14 @@ export default function HomePage() {
 
     return (
         <>
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(structuredData)
+                }}
+            />
+            
             {/* Featured Article - Full Width */}
             {featuredArticle && (
                 <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 relative overflow-hidden">
@@ -153,6 +200,8 @@ export default function HomePage() {
                                             alt={article.title}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            loading="lazy"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                     ) : (
                                         <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">

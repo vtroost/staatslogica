@@ -94,7 +94,7 @@ export default function OnderwerpenPage() {
             </h1>
             <p className="text-xl text-black text-opacity-90 max-w-3xl mx-auto leading-relaxed">
               Ontdek de meest besproken thema's in onze analyses. Hoe groter het onderwerp, 
-              hoe vaker we erover hebben geschreven.
+              hoe vaker we erover hebben geschreven. Klik op een onderwerp om alle gerelateerde artikelen te zien.
             </p>
           </div>
         </div>

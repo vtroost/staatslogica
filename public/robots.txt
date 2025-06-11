@@ -4,6 +4,9 @@ Allow: /
 # Sitemap location
 Sitemap: https://staatslogica.nl/sitemap.xml
 
+# RSS Feed
+# RSS: https://staatslogica.nl/feed.xml
+
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 

@@ -60,6 +60,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
       },
       {
+        url: `${baseUrl}/categorieen`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/onderwerpen`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      },
+      {
         url: `${baseUrl}/denkers`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,

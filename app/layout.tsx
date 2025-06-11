@@ -60,9 +60,12 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: '16x16' },
     ],
-    apple: '/favicon.svg',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
     shortcut: '/favicon.svg',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -81,26 +84,82 @@ export default function RootLayout({
       "logo": "https://staatslogica.nl/favicon.svg",
       "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
       "foundingDate": "2024",
-      "sameAs": []
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "editorial",
+        "email": "redactie@staatslogica.nl"
+      }
     },
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
+      "@type": ["WebSite", "NewsWebSite"],
       "name": "StaatsLogica",
       "alternateName": "Staatslogica",
       "url": "https://staatslogica.nl",
       "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
       "publisher": {
         "@type": "Organization",
-        "name": "StaatsLogica"
+        "name": "StaatsLogica",
+        "logo": "https://staatslogica.nl/favicon.svg"
       },
-      "inLanguage": "nl-NL"
+      "inLanguage": "nl-NL",
+      "about": {
+        "@type": "Thing",
+        "name": "Politieke Analyse"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Nederland"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Politieke Analyses",
+        "description": "Libertarische analyses van actuele gebeurtenissen"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://staatslogica.nl"
+        },
+        {
+          "@type": "ListItem", 
+          "position": 2,
+          "name": "Archief",
+          "item": "https://staatslogica.nl/archive"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3, 
+          "name": "Denkers",
+          "item": "https://staatslogica.nl/denkers"
+        }
+      ]
     }
   ];
 
   return (
     <html lang="nl">
       <head>
+        {/* RSS Feed */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Staatslogica RSS Feed"
+          href="/feed.xml"
+        />
+        {/* iOS Safari meta tags */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Staatslogica" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="mask-icon" href="/favicon.svg" color="#FFD700" />
         {/* Structured data for organization and website */}
         <script
           type="application/ld+json"

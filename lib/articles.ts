@@ -5,11 +5,23 @@ import type { Article, ArticleFrontmatter } from './types'; // Import types
 
 const articlesDirectory = path.join(process.cwd(), 'content', 'articles');
 
+// Cache for articles to avoid re-reading files
+let articlesCache: Article[] | null = null;
+let cacheTimestamp = 0;
+const CACHE_DURATION = 60000; // 1 minute in production, shorter for development
+
 /**
  * Reads all .mdx files from the articles directory, parses their frontmatter,
- * and returns an array of article objects.
+ * and returns an array of article objects with caching for performance.
  */
 export function getAllArticles(): Article[] {
+  const now = Date.now();
+  
+  // Return cached articles if cache is still valid
+  if (articlesCache && (now - cacheTimestamp) < CACHE_DURATION) {
+    return articlesCache;
+  }
+
   let files: string[] = [];
   try {
     // Check if the directory exists before reading
@@ -24,7 +36,7 @@ export function getAllArticles(): Article[] {
       return []; // Return empty array on error
   }
 
-  return files.map(filename => {
+  const articles = files.map(filename => {
     const filePath = path.join(articlesDirectory, filename);
     const slug = filename.replace(/\.mdx$/, '');
     try {
@@ -52,6 +64,12 @@ export function getAllArticles(): Article[] {
         return { slug, title: 'Error Loading Article', date: 'Unknown Date' } as Article;
     }
   }).filter(article => article.title !== 'Error Loading Article' && article.title !== 'Untitled'); // Filter out articles with errors/missing data
+
+  // Update cache
+  articlesCache = articles;
+  cacheTimestamp = now;
+
+  return articles;
 }
 
 /**
