@@ -4,7 +4,7 @@ import { getAllArticles } from './articles'; // Import article function
 import type { Article } from './types';
 
 // Cache for tags to avoid recalculation
-let tagsCache: { name: string; slug: string; count: number }[] | null = null;
+let tagsCache: TagData[] | null = null;
 let tagsCacheTimestamp = 0;
 const CACHE_DURATION = 60000; // 1 minute cache duration
 
@@ -26,8 +26,13 @@ export function getAllTags(): TagData[] {
     if (Array.isArray(article.tags)) {
       article.tags.forEach(tagName => {
         const slug = generateSlug(tagName); // Reuse the existing slug function
-        if (slug && !allTags.has(slug)) { // Ensure slug is generated and not empty
-          allTags.set(slug, { name: tagName, slug: slug });
+        if (slug) { // Ensure slug is generated and not empty
+          if (!allTags.has(slug)) {
+            allTags.set(slug, { name: tagName, slug: slug, count: 1 });
+          } else {
+            const existingTag = allTags.get(slug)!;
+            allTags.set(slug, { ...existingTag, count: (existingTag.count || 0) + 1 });
+          }
         }
       });
     }
