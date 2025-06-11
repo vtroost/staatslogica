@@ -10,7 +10,7 @@ import React from 'react';
 // Add static metadata for the homepage
 export const metadata: Metadata = {
   title: 'Staatslogica | Kritische denkers. Heldere analyses.',
-  description: 'Dagelijkse AI-gegenereerde nieuwsanalyses vanuit het perspectief van grote denkers. Kritisch, satirisch, principieel.',
+  description: 'Doorzie staatspropaganda met scherpe analyses vanuit het perspectief van grote libertarische denkers. Elke dag nieuwe inzichten die mainstream media verzwijgt.',
 };
 
 // Helper function to generate slug (consistent with the thinker page)

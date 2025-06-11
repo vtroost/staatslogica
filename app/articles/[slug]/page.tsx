@@ -234,11 +234,18 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                         <div className="mt-12 border-t pt-6">
                             <strong className="text-sm text-gray-500">Tags:</strong>
                             <div className="flex flex-wrap gap-2 mt-2">
-                                {frontmatter.tags.map((tag: string) => (
-                                    <span key={tag} className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 text-sm rounded-full font-medium">
-                                        {tag}
-                                    </span>
-                                ))}
+                                {frontmatter.tags.map((tag: string) => {
+                                    const tagSlug = tag.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                                    return (
+                                        <Link 
+                                            key={tag} 
+                                            href={`/tags/${tagSlug}`}
+                                            className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 text-sm rounded-full font-medium hover:bg-yellow-200 hover:text-yellow-900 transition-colors cursor-pointer"
+                                        >
+                                            {tag}
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
@@ -264,7 +271,11 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                                                     alt={thinker.name}
                                                     fill
                                                     className="object-cover opacity-90"
-                                                    style={{ filter: 'brightness(0)' }}
+                                                    style={{ 
+                                                        filter: thinker.slug === 'saifedean-ammous' 
+                                                            ? 'contrast(1000%) brightness(1.5) hue-rotate(45deg) saturate(10)' 
+                                                            : 'brightness(0)' 
+                                                    }}
                                                 />
                                             </div>
                                             {/* Thinker Name */}

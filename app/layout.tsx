@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Staatslogica | Libertarische Daganalyse',
+    default: 'Staatslogica | Kritische denkers. Heldere analyses.',
     template: '%s | Staatslogica',
   },
-  description: "Dagelijkse libertarische en anarchistische analyses van overheidsnieuws en politiek. Kritisch, satirisch, principieel.",
+  description: "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.",
   keywords: ["libertarisme", "anarchisme", "staatstheorie", "politieke filosofie", "nederland", "nieuwsanalyse", "ludwig von mises", "ayn rand", "bastiat"],
   authors: [{ name: "Staatslogica" }],
   creator: "Staatslogica",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'nl_NL',
     url: 'https://staatslogica.nl',
-    siteName: 'Staatslogica',
-    title: 'Staatslogica | Libertarische Daganalyse',
-    description: 'Dagelijkse libertarische en anarchistische analyses van overheidsnieuws en politiek. Kritisch, satirisch, principieel.',
+    siteName: 'StaatsLogica',
+    title: 'Staatslogica | Kritische denkers. Heldere analyses.',
+    description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.',
     images: [
       {
         url: '/og-image.jpg',
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Staatslogica | Libertarische Daganalyse',
-    description: 'Dagelijkse libertarische en anarchistische analyses van overheidsnieuws en politiek.',
+    title: 'Staatslogica | Kritische denkers. Heldere analyses.',
+    description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -56,7 +56,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '16x16' },
+    ],
     apple: '/favicon.svg',
     shortcut: '/favicon.svg',
   },
@@ -67,8 +70,45 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Structured data for the organization and website
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "StaatsLogica",
+      "alternateName": "Staatslogica",
+      "url": "https://staatslogica.nl",
+      "logo": "https://staatslogica.nl/favicon.svg",
+      "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
+      "foundingDate": "2024",
+      "sameAs": []
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "StaatsLogica",
+      "alternateName": "Staatslogica",
+      "url": "https://staatslogica.nl",
+      "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "StaatsLogica"
+      },
+      "inLanguage": "nl-NL"
+    }
+  ];
+
   return (
     <html lang="nl">
+      <head>
+        {/* Structured data for organization and website */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData)
+          }}
+        />
+      </head>
       <body>
         {/* We use SiteLayout here, assuming it provides header/footer etc. */}
         <SiteLayout>{children}</SiteLayout>

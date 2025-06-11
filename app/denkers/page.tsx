@@ -128,7 +128,11 @@ export default async function ThinkersPage() {
                                                 width={112}
                                                 height={112}
                                                 className="object-contain opacity-90 group-hover:scale-105 transition-transform duration-300"
-                                                style={{ filter: 'brightness(0)' }}
+                                                style={{ 
+                                                    filter: thinker.slug === 'saifedean-ammous' 
+                                                        ? 'contrast(1000%) brightness(1.5) hue-rotate(45deg) saturate(10)' 
+                                                        : 'brightness(0)' 
+                                                }}
                                             />
                                         </div>
                                         
