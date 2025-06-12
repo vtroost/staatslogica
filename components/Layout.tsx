@@ -71,8 +71,8 @@ export default function SiteLayout({ children }: LayoutProps) {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="sm:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-black bg-opacity-20 rounded-lg mt-2 mb-4">
+            <div className="sm:hidden flex flex-col items-end">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white bg-opacity-95 shadow-xl rounded-lg mt-2 mb-4 min-w-[200px]">
                 <Link 
                   href="/" 
                   className="block px-3 py-2 text-black hover:text-gray-800 hover:bg-black hover:bg-opacity-10 rounded-md font-medium transition-all"

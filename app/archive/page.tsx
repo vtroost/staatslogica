@@ -78,7 +78,7 @@ export default function ArchivePage() {
                                 <>
                                     <span>|</span>
                                     <span>
-                                        Perspectief: {article.thinkers.map((slugOrObject, idx) => {
+                                        Inspiratie: {article.thinkers.map((slugOrObject, idx) => {
                                             let currentSlug: string;
                                             let displayName: string;
                                             let key: string;

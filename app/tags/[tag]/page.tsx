@@ -91,7 +91,7 @@ export default async function TagPage({ params }: { params: Params }) {
         if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
         return (
             <span>
-                Perspectief: {thinkerSlugs.map((slugOrObject, idx) => {
+                Inspiratie: {thinkerSlugs.map((slugOrObject, idx) => {
                     let currentSlug: string;
                     let displayName: string;
                     let key: string;
