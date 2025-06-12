@@ -15,7 +15,7 @@ export const categories: CategoryData[] = [
     name: 'Overheidsmacht & Interventie',
     slug: 'overheidsmacht-interventie',
     description: 'Kritische analyse van overheidsinterventie en centralisatie van macht',
-    topics: ['overheidsinterventie', 'centrale planning', 'centralisatie', 'publieke sector', 'staatsmonopolie', 'gezagskritiek'],
+    topics: ['overheidsinterventie', 'centrale planning', 'centralisatie', 'publieke sector', 'staatsmonopolie', 'gezagskritiek', 'bureaucratie'],
     color: 'from-red-500 to-red-600'
   },
   {
@@ -36,7 +36,7 @@ export const categories: CategoryData[] = [
     name: 'Vrijheid & Individualisme',
     slug: 'vrijheid-individualisme',
     description: 'Verkenning van individuele vrijheden en staatsburgerschap',
-    topics: ['individualisme', 'staatsburgerschap'],
+    topics: ['individualisme', 'staatsburgerschap','menselijke-waardigheid'],
     color: 'from-yellow-500 to-yellow-600'
   },
   {
@@ -57,7 +57,7 @@ export const categories: CategoryData[] = [
     name: 'Arbeid & Actie',
     slug: 'arbeid-actie',
     description: 'Analyse van arbeidsmarkt en collectieve acties',
-    topics: ['staking'],
+    topics: ['staking','arbeidsongeschiktheid'],
     color: 'from-orange-500 to-orange-600'
   },
   {

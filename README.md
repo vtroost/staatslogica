@@ -1,212 +1,343 @@
 # Staatslogica
 
-A Next.js website for displaying critical analyses and philosophical perspectives on current events, inspired by great thinkers throughout history.
+Een Next.js website voor kritische analyses en filosofische perspectieven op actuele gebeurtenissen, geïnspireerd door grote denkers uit de geschiedenis.
 
-## Overview
+## Overzicht
 
-Staatslogica is a modern Next.js website that presents articles analyzing current events from various philosophical perspectives. The site features:
+Staatslogica is een moderne Next.js website die artikelen presenteert waarin actuele gebeurtenissen vanuit verschillende filosofische perspectieven worden geanalyseerd. De site bevat:
 
-- **Article Display**: Browse articles with rich metadata, images, and categorization
-- **Thinker Profiles**: Learn about influential philosophers and thinkers
-- **Tag-based Navigation**: Explore content by topics and themes
-- **Archive**: Browse historical content chronologically
-- **SEO Optimization**: Dynamic sitemap generation and comprehensive metadata
+- **Artikel Weergave**: Blader door artikelen met rijke metadata, afbeeldingen en categorisering
+- **Denker Profielen**: Leer over invloedrijke filosofen en denkers
+- **Tag-gebaseerde Navigatie**: Verken content op onderwerp en thema
+- **Archief**: Blader chronologisch door historische content
+- **SEO Optimalisatie**: Dynamische sitemap generatie en uitgebreide metadata
 
-## Current Features
+## Huidige Functies
 
 ### Content Management
-- **Static MDX Articles**: Articles stored as MDX files in `content/articles/`
-- **Thinker Profiles**: Detailed profiles in `content/thinkers/` with biographical information
-- **Rich Metadata**: Articles include dates, tags, thinker associations, and featured images
-- **Image Integration**: Support for article images via Unsplash and local assets
-- **Decap CMS Integration**: Content management system for easy article creation and editing
+- **Statische MDX Artikelen**: Artikelen opgeslagen als MDX bestanden in `content/articles/`
+- **Denker Profielen**: Gedetailleerde profielen in `content/thinkers/` met biografische informatie
+- **Rijke Metadata**: Artikelen bevatten datums, tags, denker associaties en featured afbeeldingen
+- **Afbeelding Integratie**: Ondersteuning voor artikel afbeeldingen via externe URLs en lokale assets
+- **Nederlandse Content**: Volledig Nederlandse interface en content
 
-### User Experience
-- **Featured Article**: Homepage highlights the latest article with full-width display
-- **Article Grid**: Clean grid layout for browsing recent articles
-- **Responsive Design**: Mobile-friendly interface using Tailwind CSS
-- **Interactive Navigation**: Smooth transitions and hover effects
-- **Social Sharing**: Built-in sharing buttons for Twitter and WhatsApp
+### Gebruikerservaring
+- **Featured Artikel**: Homepage benadrukt het nieuwste artikel met full-width weergave
+- **Artikel Grid**: Overzichtelijke grid layout voor het bladeren door recente artikelen
+- **Responsive Design**: Mobiel-vriendelijke interface met Tailwind CSS
+- **Interactieve Navigatie**: Vloeiende overgangen en hover effecten
+- **Social Sharing**: Ingebouwde deel knoppen voor social media
 
-### SEO & Technical Features
-- **Dynamic Sitemap**: Automatically generated sitemap at `/sitemap.xml` with all pages
-- **Structured Data**: JSON-LD markup for articles and organization information
-- **Meta Tags**: Comprehensive Open Graph and Twitter Card support
-- **Robots.txt**: Proper search engine crawling directives
-- **Performance**: Optimized images and static generation for fast loading
+### SEO & Technische Functies
+- **Dynamische Sitemap**: Automatisch gegenereerde sitemap op `/sitemap.xml` met alle pagina's
+- **Gestructureerde Data**: JSON-LD opmaak voor artikelen en organisatie informatie
+- **Meta Tags**: Uitgebreide Open Graph en Twitter Card ondersteuning
+- **Robots.txt**: Juiste zoekmachine crawling richtlijnen
+- **Performance**: Geoptimaliseerde afbeeldingen en statische generatie voor snelle laadtijden
 
-### Navigation & Discovery
-- **Tag Pages**: Browse articles by specific topics (`/tags/[tag]`)
-- **Thinker Pages**: Dedicated pages for each philosopher (`/denkers/[slug]`)
-- **Archive Page**: Chronological listing of all articles (`/archive`)
-- **About Page**: Information about the site and its mission
-- **Search Engine Friendly**: All pages indexed with proper metadata
+### Navigatie & Discovery
+- **Tag Pagina's**: Blader door artikelen op specifieke onderwerpen (`/tags/[tag]`)
+- **Denker Pagina's**: Speciale pagina's voor elke filosoof (`/denkers/[slug]`)
+- **Categorie Pagina's**: Thematische groepering (`/categorieen/[slug]`)
+- **Onderwerpen**: Overzicht van alle onderwerpen (`/onderwerpen`)
+- **Archief Pagina**: Chronologische lijst van alle artikelen (`/archive`)
+- **Over Pagina**: Informatie over de site en haar missie
+- **Zoekmachine Vriendelijk**: Alle pagina's geïndexeerd met juiste metadata
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Content**: MDX files with gray-matter for frontmatter parsing
-- **Styling**: Tailwind CSS with typography plugin
-- **Images**: Next.js Image optimization with Unsplash integration
-- **CMS**: Decap CMS (formerly Netlify CMS) for content management
-- **Deployment**: Netlify with server-side rendering support
-- **SEO**: Dynamic sitemap generation and structured data
+- **Framework**: Next.js 14 met App Router
+- **Taal**: TypeScript
+- **Content**: MDX bestanden met gray-matter voor frontmatter parsing
+- **Styling**: Tailwind CSS met typography plugin
+- **Afbeeldingen**: Next.js Image optimalisatie met externe URL ondersteuning
+- **Deployment**: Netlify met server-side rendering ondersteuning
+- **SEO**: Dynamische sitemap generatie en gestructureerde data
 
-## Project Structure
+## Project Structuur
 
 ```
-├── app/                     # Next.js App Router pages
-│   ├── page.tsx            # Homepage with featured article and grid
-│   ├── articles/[slug]/    # Individual article pages
-│   ├── denkers/[slug]/     # Thinker profile pages
-│   ├── tags/[tag]/         # Tag-based article listings
-│   ├── archive/            # Archive page
-│   ├── about/              # About page
-│   └── sitemap.ts          # Dynamic sitemap generation
-├── components/             # Reusable React components
-├── content/               # Static content files
-│   ├── articles/          # MDX article files
-│   ├── thinkers/          # Thinker profile data
-│   └── pages/             # Static page content
-├── lib/                   # Utility functions and data fetching
-│   ├── articles.ts        # Article parsing and retrieval
-│   ├── thinkers.ts        # Thinker data management
-│   ├── tags.ts            # Tag extraction and organization
-│   └── types.ts           # TypeScript type definitions
-├── public/                # Static assets
-│   ├── robots.txt         # Search engine directives
-│   └── cms/               # Decap CMS configuration
-└── netlify.toml           # Netlify deployment configuration
+├── app/                     # Next.js App Router pagina's
+│   ├── page.tsx            # Homepage met featured artikel en grid
+│   ├── articles/[slug]/    # Individuele artikel pagina's
+│   ├── denkers/[slug]/     # Denker profiel pagina's
+│   ├── categorieen/[slug]/ # Categorie overzicht pagina's
+│   ├── onderwerpen/        # Onderwerpen overzicht
+│   ├── tags/[tag]/         # Tag-gebaseerde artikel lijsten
+│   ├── archive/            # Archief pagina
+│   ├── about/              # Over pagina
+│   └── sitemap.ts          # Dynamische sitemap generatie
+├── components/             # Herbruikbare React componenten
+├── content/               # Statische content bestanden
+│   ├── articles/          # MDX artikel bestanden
+│   ├── thinkers/          # Denker profiel data
+│   └── pages/             # Statische pagina content
+├── lib/                   # Utility functies en data fetching
+│   ├── articles.ts        # Artikel parsing en ophaling
+│   ├── thinkers.ts        # Denker data beheer
+│   ├── tags.ts            # Tag extractie en organisatie
+│   └── types.ts           # TypeScript type definities
+├── public/                # Statische assets
+│   ├── robots.txt         # Zoekmachine richtlijnen
+│   └── images/            # Statische afbeeldingen
+└── netlify.toml           # Netlify deployment configuratie
 ```
 
-## Content Structure
+## Setup en Ontwikkeling
 
-### Articles
-Articles are stored as MDX files with YAML frontmatter:
-
-```yaml
----
-title: "Article Title"
-date: "2025-01-15"
-slug: "article-slug"
-tags: ["politics", "economics"]
-thinkers: ["ayn-rand", "ludwig-von-mises"]
-spin: "Brief description of the article's perspective"
-imageUrl: "https://images.unsplash.com/photo-id"
-sourceUrl: "https://example.com/original-article"
-sourceTitle: "Original Source Title"
----
-
-Article content in MDX format...
-```
-
-### Thinkers
-Thinker profiles include biographical information, key ideas, and associated quotes, stored as Markdown files with frontmatter.
-
-## Setup and Development
-
-1. **Clone the repository:**
-   ```bash
+1. **Clone de repository:**
+   ```cmd
    git clone <repository-url>
    cd staatslogica
    ```
 
-2. **Install dependencies:**
-   ```bash
+2. **Installeer dependencies:**
+   ```cmd
    npm install
    ```
 
-3. **Run the development server:**
-   ```bash
+3. **Start de development server:**
+   ```cmd
    npm run dev
    ```
 
-4. **Open** [http://localhost:3000](http://localhost:3000) in your browser
+4. **Open** [http://localhost:3000](http://localhost:3000) in je browser
 
-## Building and Deployment
+## Bouwen en Deployment
 
-The site is configured for Next.js deployment with server-side features:
+De site is geconfigureerd voor Next.js deployment met server-side functies:
 
-```bash
+```cmd
 npm run build
 npm start
 ```
 
 ### Netlify Deployment
-The site is deployed on Netlify with the following configuration:
+De site wordt gedeployed op Netlify met de volgende configuratie:
 - **Build Command**: `npm run build`
 - **Publish Directory**: `.next`
-- **Framework**: Next.js with @netlify/plugin-nextjs
-- **Features**: Server-side rendering, dynamic sitemap, and API routes
+- **Framework**: Next.js met @netlify/plugin-nextjs
+- **Features**: Server-side rendering, dynamische sitemap, en API routes
 
-## SEO Features
+## Hoe Nieuwe Artikelen Toevoegen
 
-### Dynamic Sitemap
-- **Automatic Generation**: Sitemap updates automatically when content changes
-- **Comprehensive Coverage**: Includes all articles, thinker pages, tag pages, and static pages
-- **Google Search Console**: Successfully indexed with 63+ pages discovered
-- **SEO Best Practices**: Proper priorities, change frequencies, and last modified dates
+### Methode 1: Handmatig Artikel Toevoegen
 
-### Structured Data
-- **Article Schema**: Rich snippets for articles with author, date, and organization info
-- **Organization Schema**: Proper site identification for search engines
-- **Open Graph**: Complete social media sharing optimization
+#### Stap 1: Maak een nieuw MDX bestand
+Maak een nieuw bestand in de `content/articles/` directory met de volgende naamgeving:
+```
+YYYY-MM-DD-artikel-titel-met-hyphens.mdx
+```
 
-## Content Management
+**Voorbeeld:** `2025-01-15-de-staat-als-hindernisparcours.mdx`
 
-### Adding Articles via Decap CMS
-1. Visit `/admin` on the live site
-2. Authenticate with your Git provider
-3. Create new articles with the visual editor
-4. Articles are automatically committed to the repository
+#### Stap 2: Voeg de juiste frontmatter toe
+Elk artikel moet beginnen met YAML frontmatter tussen `---` markeringen:
 
-### Adding Articles Manually
-1. Create a new MDX file in `content/articles/`
-2. Include proper frontmatter with required fields
-3. Write content using MDX syntax
-4. The article will automatically appear on the site and in the sitemap
+```yaml
+---
+title: "De staat als hindernisparcours"
+date: 2025-01-15
+tags:
+  - politiek
+  - bureaucratie
+  - economie
+thinkers:
+  - friedrich-hayek
+  - ludwig-von-mises
+spin: "Een korte beschrijving van het artikel's perspectief en standpunt"
+sourceUrl: "https://example.com/origineel-artikel"
+sourceTitle: "Titel van het Originele Artikel"
+imageUrl: "https://example.com/image.jpg"
+---
+```
 
-### Adding Thinkers
-1. Create a new Markdown file in `content/thinkers/`
-2. Include biographical information and metadata
-3. Reference the thinker slug in article frontmatter
-4. The thinker page will be automatically generated and included in the sitemap
+#### Stap 3: Schrijf de artikel inhoud
+Na de frontmatter kun je de artikel inhoud schrijven in MDX formaat:
 
-### Image Management
-- Use tested Unsplash URLs for article images
-- Store local images in `public/images/uploads/`
-- Images are automatically optimized by Next.js
-- Thinker portraits should be placed in `public/uploads/[slug].png`
+```mdx
+**Vetgedrukte openingszin die de toon zet**
+
+Hier begint je artikel inhoud. Je kunt gebruik maken van alle Markdown functies:
+
+- Lijsten
+- **Vetgedrukt**
+- *Cursief*
+- Links naar [externe sites](https://example.com)
+
+## Kopjes
+
+Verdere paragrafen met je analyse...
+
+**Conclusie in vetgedrukt**
+
+---
+
+**Voetnoten** (optioneel)
+¹ Referentie naar boeken of artikelen
+```
+
+### Vereiste en Optionele Velden
+
+#### Verplichte Velden:
+- `title`: De titel van het artikel (string)
+- `date`: Publicatiedatum in YYYY-MM-DD formaat (string)
+
+#### Optionele maar Aanbevolen Velden:
+- `tags`: Array van onderwerp tags (string[])
+- `thinkers`: Array van denker slugs (string[])
+- `spin`: Korte beschrijving van het artikel's perspectief (string)
+- `sourceUrl`: Link naar het originele artikel indien van toepassing (string)
+- `sourceTitle`: Titel van het originele artikel (string)
+- `imageUrl`: URL naar een featured afbeelding (string)
+
+### Bestandsnaamconventies
+
+**Juist:**
+- `2025-01-15-de-staat-als-hindernisparcours.mdx`
+- `2025-02-10-waarom-inflatie-diefstal-is.mdx`
+- `2025-03-05-de-mythe-van-het-sociale-contract.mdx`
+
+**Verkeerd:**
+- `artikel-1.mdx` (geen datum)
+- `2025-1-5-titel.mdx` (datum niet gepadded)
+- `De Staat Als Hindernisparcours.mdx` (hoofdletters en spaties)
+
+### Tag Richtlijnen
+
+Gebruik consistente, Nederlandse tags in kleine letters:
+- `politiek`, `economie`, `filosofie`
+- `inflatie`, `belasting`, `regelgeving`
+- `vrijheid`, `eigendomsrecht`, `markt`
+
+### Denker Slugs
+
+Verwijs naar bestaande denkers met hun slug:
+- `friedrich-hayek`
+- `ludwig-von-mises`
+- `murray-rothbard`
+- `ayn-rand`
+- `henry-hazlitt`
+
+### Afbeelding Best Practices
+
+- Gebruik hoge kwaliteit afbeeldingen (minimaal 800px breed)
+- Test afbeelding URLs voordat je ze toevoegt
+- Voor lokale afbeeldingen: plaats in `public/images/uploads/`
+- Gebruik beschrijvende bestandsnamen
+
+### Methode 2: Via Decap CMS (indien geconfigureerd)
+
+1. Ga naar `/admin` op de live site
+2. Authenticeer met je Git provider
+3. Klik op "New Article"
+4. Vul alle velden in via de visual editor
+5. Publiceer - het artikel wordt automatisch committed naar de repository
+
+## Content Validatie
+
+Het systeem valideert automatisch:
+- ✅ Verplichte velden (title, date)
+- ✅ Correct bestandsformaat (.mdx)
+- ✅ Geldige frontmatter YAML
+- ⚠️ Waarschuwingen voor ontbrekende optionele velden
+- ⚠️ Ontbrekende of ongeldige afbeelding URLs
 
 ## Development Guidelines
 
-- Use TypeScript for type safety
-- Follow the existing code patterns and structure
-- Test image URLs before adding them to articles
-- Maintain consistent metadata across articles
-- Use semantic HTML and proper accessibility attributes
-- Ensure all new pages are included in sitemap generation
+- Gebruik TypeScript voor type veiligheid
+- Volg bestaande code patronen en structuur
+- Test afbeelding URLs voordat je ze toevoegt aan artikelen
+- Houd consistente metadata bij alle artikelen
+- Gebruik semantische HTML en juiste accessibility attributen
+- Zorg ervoor dat alle nieuwe pagina's opgenomen worden in sitemap generatie
 
-## Recent Updates
+## Recente Updates
 
-### Technical Improvements (June 2025)
-- ✅ **Fixed sitemap generation** - Dynamic sitemap now works correctly in production
-- ✅ **Resolved build issues** - TypeScript compilation errors fixed
-- ✅ **Google Search Console integration** - 63 pages successfully indexed
-- ✅ **Enhanced SEO** - Improved robots.txt and structured data
-- ✅ **Netlify optimization** - Proper Next.js plugin configuration
+### Technische Verbeteringen (2025)
+- ✅ **Nederlandse interface** - Volledig Nederlandse gebruikersinterface
+- ✅ **Categorie systeem** - Thematische groepering van content
+- ✅ **Verbeterde navigatie** - Onderwerpen overzicht en categorie pagina's
+- ✅ **Gefixte sitemap generatie** - Dynamische sitemap werkt correct in productie
+- ✅ **Opgeloste build issues** - TypeScript compilatie fouten opgelost
+- ✅ **Google Search Console integratie** - Pagina's succesvol geïndexeerd
+- ✅ **Verbeterde SEO** - Verbeterde robots.txt en gestructureerde data
+- ✅ **Netlify optimalisatie** - Juiste Next.js plugin configuratie
 
 ### Performance & SEO
-- **Fast loading times** with Next.js optimization
-- **Complete search engine coverage** via dynamic sitemap
-- **Social media ready** with Open Graph and Twitter Cards
-- **Mobile optimized** responsive design
+- **Snelle laadtijden** met Next.js optimalisatie
+- **Volledige zoekmachine dekking** via dynamische sitemap
+- **Social media ready** met Open Graph en Twitter Cards
+- **Mobiel geoptimaliseerd** responsive design
 
 ## Deployment Status
 
-- **✅ Production**: Deployed on Netlify with full Next.js support
-- **✅ Sitemap**: Working at https://staatslogica.nl/sitemap.xml
-- **✅ Google Search Console**: Successfully indexed
-- **✅ CMS**: Decap CMS available at /admin
-- **✅ Performance**: Optimized for speed and SEO
+- **✅ Productie**: Gedeployed op Netlify met volledige Next.js ondersteuning
+- **✅ Sitemap**: Werkend op https://staatslogica.nl/sitemap.xml
+- **✅ Google Search Console**: Succesvol geïndexeerd
+- **✅ Performance**: Geoptimaliseerd voor snelheid en SEO
+- **✅ Nederlandse Content**: Volledig Nederlandse interface
+
+## Troubleshooting
+
+### Artikel verschijnt niet op de site
+1. Controleer of het bestand eindigt op `.mdx`
+2. Verificeer dat title en date velden aanwezig zijn
+3. Controleer of de frontmatter YAML geldig is
+4. Herstart de development server (`npm run dev`)
+
+### Afbeelding laadt niet
+1. Test de afbeelding URL in een browser
+2. Controleer of de URL correct is gespeld
+3. Zorg ervoor dat de afbeelding publiek toegankelijk is
+
+### Build fouten
+1. Controleer console berichten voor specifieke fouten
+2. Verificeer alle MDX bestanden op geldige syntax
+3. Test lokaal met `npm run build` voordat je commit
+
+## Quick Reference: Artikel Toevoegen
+
+### Snelle Checklist
+- [ ] Bestand naam: `YYYY-MM-DD-titel-met-hyphens.mdx`
+- [ ] Verplichte frontmatter: `title` en `date`
+- [ ] Tags in kleine letters en Nederlands
+- [ ] Denker slugs controleren in `/content/thinkers/`
+- [ ] Afbeelding URL testen
+- [ ] Lokaal testen met `npm run dev`
+
+### Template voor Nieuw Artikel
+
+```mdx
+---
+title: "Artikel Titel"
+date: 2025-01-15
+tags:
+  - tag1
+  - tag2
+thinkers:
+  - denker-slug
+spin: "Korte beschrijving van het perspectief"
+sourceUrl: "https://example.com/origineel"
+sourceTitle: "Originele Titel"
+imageUrl: "https://example.com/image.jpg"
+---
+
+**Openingszin in vetgedrukt**
+
+Artikel inhoud hier...
+
+**Slotconclusie**
+```
+
+### Veelgebruikte Tags
+- `politiek`, `economie`, `filosofie`, `geschiedenis`
+- `inflatie`, `belasting`, `regelgeving`, `subsidie`
+- `vrijheid`, `eigendomsrecht`, `markt`, `staat`
+- `democratie`, `bureaucratie`, `verkiezingen`
+
+### Beschikbare Denkers
+Check `/content/thinkers/` voor volledige lijst, veel gebruikte:
+- `friedrich-hayek`, `ludwig-von-mises`, `murray-rothbard`
+- `ayn-rand`, `henry-hazlitt`, `saifedean-ammous`
+- `thomas-sowell`, `milton-friedman`

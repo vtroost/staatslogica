@@ -205,8 +205,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{category.name}</h1>
-          <p className="text-xl md:text-2xl opacity-90">{category.description}</p>
+          <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-6 inline-block">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{category.name}</h1>
+            <p className="text-xl md:text-2xl opacity-90 text-white">{category.description}</p>
+          </div>
         </div>
       </div>
 

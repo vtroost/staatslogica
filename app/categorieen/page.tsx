@@ -247,10 +247,12 @@ export default function CategoriesPage() {
                     )}
 
                     <div className="flex-1 overflow-hidden relative z-10">
-                      <h3 className="text-xl font-bold mb-2">{category.name}</h3>
-                      <p className="text-white text-opacity-90 text-sm leading-relaxed line-clamp-3">
-                        {category.description}
-                      </p>
+                      <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 mb-3">
+                        <h3 className="text-xl font-bold mb-2 text-white">{category.name}</h3>
+                        <p className="text-white text-opacity-90 text-sm leading-relaxed line-clamp-3">
+                          {category.description}
+                        </p>
+                      </div>
                     </div>
                     <div className="mt-3 flex items-center justify-between relative z-10">
                       <span className="text-white text-opacity-80 text-sm">
