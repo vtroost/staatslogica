@@ -213,58 +213,88 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Libertarian Context Section */}
-        <div className="mb-12 bg-white rounded-lg shadow-sm p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Libertarisch Perspectief</h2>
-          
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Ons Standpunt</h3>
-              <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
-            </div>
+        {/* Libertarian Context Section - Collapsible */}
+        <div 
+          className="mb-12 rounded-lg shadow-sm"
+          style={{
+            background: `linear-gradient(135deg, ${category.color.includes('blue') ? 'rgba(59, 130, 246, 0.15)' : 
+                                                  category.color.includes('green') ? 'rgba(34, 197, 94, 0.15)' : 
+                                                  category.color.includes('purple') ? 'rgba(147, 51, 234, 0.15)' : 
+                                                  category.color.includes('orange') ? 'rgba(249, 115, 22, 0.15)' : 
+                                                  category.color.includes('emerald') ? 'rgba(16, 185, 129, 0.15)' : 
+                                                  'rgba(156, 163, 175, 0.15)'}, rgba(255, 255, 255, 0.8))`
+          }}
+        >
+          <details className="group">
+            <summary className="cursor-pointer p-6 hover:bg-gray-100 rounded-t-lg transition-colors list-none">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-gray-900">Libertarisch Perspectief</h2>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-700 font-medium group-open:hidden">Klik om te bekijken</span>
+                  <span className="text-sm text-gray-700 font-medium hidden group-open:inline">Klik om te verbergen</span>
+                  <svg 
+                    className="w-6 h-6 text-gray-700 transition-transform group-open:rotate-180" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </summary>
             
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Analysebenadering</h3>
-              <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Belangrijke Denkers</h3>
-              <div className="flex flex-wrap gap-2">
-                {context.keyThinkers.map((thinker) => {
-                  // Check if this thinker has a profile by comparing names
-                  const thinkerProfile = allThinkers.find(t => 
-                    t.name === thinker || 
-                    t.name.toLowerCase() === thinker.toLowerCase() ||
-                    t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
-                  );
-                  
-                  if (thinkerProfile) {
-                    // Render as clickable link with colored background
-                    return (
-                      <Link
-                        key={thinker}
-                        href={`/denkers/${thinkerProfile.slug}`}
-                        className="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full text-sm font-medium transition-colors"
-                      >
-                        {thinker}
-                      </Link>
-                    );
-                  } else {
-                    // Render as regular span
-                    return (
-                      <span 
-                        key={thinker} 
-                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
-                      >
-                        {thinker}
-                      </span>
-                    );
-                  }
-                })}
+            <div className="px-6 pb-6 border-t border-gray-100">
+              <div className="space-y-6 pt-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Ons Standpunt</h3>
+                  <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Analysebenadering</h3>
+                  <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Belangrijke Denkers</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {context.keyThinkers.map((thinker) => {
+                      // Check if this thinker has a profile by comparing names
+                      const thinkerProfile = allThinkers.find(t => 
+                        t.name === thinker || 
+                        t.name.toLowerCase() === thinker.toLowerCase() ||
+                        t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
+                      );
+                      
+                      if (thinkerProfile) {
+                        // Render as clickable link with colored background
+                        return (
+                          <Link
+                            key={thinker}
+                            href={`/denkers/${thinkerProfile.slug}`}
+                            className="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full text-sm font-medium transition-colors"
+                          >
+                            {thinker}
+                          </Link>
+                        );
+                      } else {
+                        // Render as regular span
+                        return (
+                          <span 
+                            key={thinker} 
+                            className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                          >
+                            {thinker}
+                          </span>
+                        );
+                      }
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </details>
         </div>
 
         {/* Articles Grid */}
