@@ -43,4 +43,14 @@ export interface TagData {
   name: string;
   slug: string;
   count?: number; // Optional count for performance tracking
+}
+
+// --- Category Data Interface ---
+export interface CategoryData {
+  name: string;
+  slug: string;
+  description: string;
+  topics: string[]; // Tags that belong to this category
+  color: string;
+  count?: number; // Optional count for performance tracking
 } 
