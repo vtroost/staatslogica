@@ -144,14 +144,115 @@ export default function CategoriesPage() {
               >
                 {/* Category Header */}
                 <Link href={`/categorieen/${category.slug}`}>
-                  <div className={`bg-gradient-to-r ${category.color} p-6 text-white h-[160px] flex flex-col justify-between cursor-pointer hover:opacity-90 transition-opacity`}>
-                    <div className="flex-1 overflow-hidden">
+                  <div className={`bg-gradient-to-r ${category.color} p-6 text-white h-[160px] flex flex-col justify-between cursor-pointer hover:opacity-90 transition-opacity relative overflow-hidden`}>
+                    {/* Background Images by Category */}
+                    {category.slug === 'economie-geld' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://bnr-external-prod.imgix.net/7T_QPr_RPdSl9GNHOE3zp_mpvP8.jpg)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-green-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'overheidsmacht-interventie' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1564398294469-bf933407df73?q=80&w=1200&auto=format&fit=crop)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-red-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'politiek-bestuur' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-blue-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'begrotingsbeleid-bezuinigingen' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-purple-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'vrijheid-individualisme' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1519452575417-564c1401ecc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-yellow-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'mobiliteit-infrastructuur' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-indigo-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'wonen-levensonderhoud' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-teal-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'arbeid-actie' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-orange-600 bg-opacity-70" />
+                      </>
+                    )}
+                    {category.slug === 'klimaat-milieu' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-emerald-600 bg-opacity-70" />
+                      </>
+                    )}
+
+                    <div className="flex-1 overflow-hidden relative z-10">
                       <h3 className="text-xl font-bold mb-2">{category.name}</h3>
                       <p className="text-white text-opacity-90 text-sm leading-relaxed line-clamp-3">
                         {category.description}
                       </p>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
+                    <div className="mt-3 flex items-center justify-between relative z-10">
                       <span className="text-white text-opacity-80 text-sm">
                         {category.count || 0} artikel{(category.count || 0) !== 1 ? 'en' : ''}
                       </span>

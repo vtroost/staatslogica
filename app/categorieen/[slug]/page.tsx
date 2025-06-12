@@ -93,8 +93,118 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className={`${getCategoryColor(category.slug)} text-white py-16`}>
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className={`${getCategoryColor(category.slug)} text-white py-16 relative overflow-hidden`}>
+        {/* Background Images by Category */}
+        {category.slug === 'economie-geld' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://bnr-external-prod.imgix.net/7T_QPr_RPdSl9GNHOE3zp_mpvP8.jpg)'
+              }}
+            />
+            <div className="absolute inset-0 bg-green-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'overheidsmacht-interventie' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-red-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'politiek-bestuur' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-blue-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'begrotingsbeleid-bezuinigingen' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-purple-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'vrijheid-individualisme' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1519452575417-564c1401ecc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-yellow-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'mobiliteit-infrastructuur' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-indigo-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'wonen-levensonderhoud' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-teal-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'arbeid-actie' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-orange-600 bg-opacity-70" />
+          </>
+        )}
+        
+        {category.slug === 'klimaat-milieu' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+              }}
+            />
+            <div className="absolute inset-0 bg-emerald-600 bg-opacity-70" />
+          </>
+        )}
+
+        
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{category.name}</h1>
           <p className="text-xl md:text-2xl opacity-90">{category.description}</p>
         </div>

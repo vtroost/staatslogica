@@ -173,17 +173,17 @@ export function getCategoryContext(categorySlug: string): {
     'economie-geld': {
       libertarianPerspective: 'De Oostenrijkse School van economie vormt de basis van onze economische analyses. We geloven in vrije markten, geldsanering, en het afschaffen van centrale bankinterventie. Inflatie wordt gezien als een verborgen belasting die welvaart vernietigt en ongelijkheid vergroot.',
       analysisApproach: 'Onze analyses richten zich op het blootleggen van economische interventies, de perverse gevolgen van monetair beleid, en het tonen van hoe vrije markten tot welvaart en voorspoed leiden. We analyseren inflatie, belastingdruk, en regulering vanuit het perspectief van individuele vrijheid.',
-      keyThinkers: ['Ludwig von Mises', 'Friedrich A. von Hayek', 'Murray Rothbard', 'Jesús Huerta de Soto']
+      keyThinkers: ['Ludwig von Mises', 'Friedrich A. von Hayek', 'Murray Rothbard', 'Saifedean Ammous', 'Ron Paul', 'Frédéric Bastiat', 'Henry Hazlitt']
     },
     'overheidsmacht-interventie': {
       libertarianPerspective: 'Overheidsinterventie wordt gezien als een inbreuk op individuele vrijheid en eigendomsrechten. Elke vorm van dwang door de staat wordt kritisch geanalyseerd, of het nu gaat om regulering, subsidies, of directe controle over markten.',
       analysisApproach: 'We ontleden hoe overheidsinterventie onbedoelde gevolgen heeft, markten verstoort, en innovatie belemmert. Onze analyses tonen het falen van centrale planning en de superioriteit van spontane orde en vrijwillige samenwerking.',
-      keyThinkers: ['Friedrich A. von Hayek', 'Ludwig von Mises', 'Murray Rothbard', 'Milton Friedman']
+      keyThinkers: ['Friedrich A. von Hayek', 'Ludwig von Mises', 'Murray Rothbard', 'Etienne de La Boetie', 'Frédéric Bastiat', 'Milton Friedman']
     },
     'politiek-bestuur': {
       libertarianPerspective: 'Democratie wordt niet als een doel op zich gezien, maar als een middel. We zijn kritisch over majoritarisme en pleiten voor constitutionele beperkingen van staatsmacht. Politieke macht corrumpeert en moet daarom maximaal worden beperkt.',
       analysisApproach: 'Onze politieke analyses richten zich op het tonen van politiek falen, rent-seeking gedrag, en de illusie van democratische legitimiteit. We analyseren hoe politieke besluitvorming vaak ten koste gaat van individuele rechten en economische efficiëntie.',
-      keyThinkers: ['James Buchanan', 'Gordon Tullock', 'Anthony de Jasay', 'Hans-Hermann Hoppe']
+      keyThinkers: ['James Buchanan', 'Gordon Tullock', 'Etienne de La Boetie', 'Ron Paul', 'Lysander Spooner', 'Larken Rose', 'Anthony de Jasay', 'Hans-Hermann Hoppe']
     },
     'begrotingsbeleid-bezuinigingen': {
       libertarianPerspective: 'Overheidsuitgaven worden gezien als verspilling van schaarse middelen die beter door de markt kunnen worden gealloceerd. Echte bezuinigingen betekenen het verkleinen van de staat, niet alleen het vertragen van uitgavengroei.',
@@ -193,7 +193,7 @@ export function getCategoryContext(categorySlug: string): {
     'vrijheid-individualisme': {
       libertarianPerspective: 'Individuele vrijheid en zelfbeschikking staan centraal. We geloven in negatieve rechten (recht om met rust gelaten te worden) boven positieve rechten (recht op voorzieningen van anderen). Elk individu is eigenaar van zichzelf.',
       analysisApproach: 'Onze analyses onderzoeken hoe collectivistische ideologieën individuele vrijheid ondermijnen. We tonen het belang van eigendomsrechten, vrijwillige associatie, en persoonlijke verantwoordelijkheid voor een welvarende samenleving.',
-      keyThinkers: ['John Stuart Mill', 'Robert Nozick', 'Murray Rothbard', 'Ayn Rand']
+      keyThinkers: ['John Stuart Mill', 'Robert Nozick', 'Murray Rothbard', 'Ayn Rand', 'Lysander Spooner', 'Larken Rose']
     },
     'mobiliteit-infrastructuur': {
       libertarianPerspective: 'Infrastructuur kan efficiënter door private partijen worden geleverd dan door de overheid. Monopolies zoals NS en staatswegen leiden tot inefficiëntie, slechte service, en misallocatie van middelen.',
