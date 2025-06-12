@@ -23,7 +23,7 @@ function generateSlug(name: string): string {
 
 // Metadata can be static again
 export const metadata: Metadata = {
-  title: 'Archief | Staatslogica',
+  title: 'Archief',
   description: 'Blader door alle gepubliceerde artikelen en analyses van Staatslogica.',
 };
 

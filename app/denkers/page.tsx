@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 // Metadata for the Denkers page
 export const metadata: Metadata = {
-  title: 'Denkers | Staatslogica',
+  title: 'Denkers',
   description: 'Ontdek de verschillende denkers en perspectieven die Staatslogica analyseert.',
 };
 
@@ -69,27 +69,24 @@ export default async function ThinkersPage() {
 
     return (
         <div className="w-full min-h-screen">
-            {/* Enhanced Header Section with Gadsden Flag Colors */}
-            <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 relative overflow-hidden">
-                {/* Background Pattern/Texture */}
-                <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                
-                <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
+            {/* Header Section */}
+            <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+                <div className="max-w-6xl mx-auto px-4">
                     <div className="max-w-4xl">
                         {/* Category Badge */}
                         <div className="mb-6">
-                            <span className="inline-block bg-black bg-opacity-30 text-white px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
+                            <span className="inline-block bg-black bg-opacity-30 text-black px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
                                 Intellectuele Vrijheid
                             </span>
                         </div>
                         
                         {/* Title */}
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
                             Denkers
                         </h1>
                         
                         {/* Description */}
-                        <div className="text-lg text-white text-opacity-95 space-y-4 leading-relaxed font-medium">
+                        <div className="text-lg text-black text-opacity-90 leading-relaxed space-y-4">
                             <p>
                                 In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
                             </p>

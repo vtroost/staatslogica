@@ -2,7 +2,7 @@ import Link from 'next/link'; // Import Link
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pagina niet gevonden (404) | Staatslogica',
+  title: 'Pagina niet gevonden (404)',
 };
 
 export default function NotFound() {

@@ -40,7 +40,7 @@ export default function SiteLayout({ children }: LayoutProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link href="/" className="text-xl font-bold text-black hover:text-gray-800 transition-colors">
-              Staatslogica
+              Staatslogica !
             </Link>
 
             {/* Desktop Menu */}

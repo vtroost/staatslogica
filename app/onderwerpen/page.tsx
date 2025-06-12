@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Onderwerpen | Staatslogica',
+  title: 'Onderwerpen',
   description: 'Ontdek alle onderwerpen en tags op Staatslogica. Verken de meest besproken thema\'s in onze politieke analyses.',
 };
 

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Categorieën | Staatslogica',
+  title: 'Categorieën',
   description: 'Overzicht van alle analyses per categorie. Van economie tot politiek - ontmasker staatspropaganda met Staatslogica.',
   keywords: ['categorieën', 'analyse', 'politiek', 'economie', 'overheid', 'libertarisme']
 };

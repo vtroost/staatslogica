@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Staatslogica | Kritische denkers. Heldere analyses.',
-    template: '%s | Staatslogica',
+    default: 'Staatslogica !',
+    template: 'Staatslogica ! | %s',
   },
   description: "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.",
   keywords: ["libertarisme", "anarchisme", "staatstheorie", "politieke filosofie", "nederland", "nieuwsanalyse", "ludwig von mises", "ayn rand", "bastiat"],
@@ -27,20 +27,20 @@ export const metadata: Metadata = {
     locale: 'nl_NL',
     url: 'https://staatslogica.nl',
     siteName: 'StaatsLogica',
-    title: 'Staatslogica | Kritische denkers. Heldere analyses.',
+    title: 'Staatslogica !',
     description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Staatslogica - Kritische denkers. Heldere analyses.',
+        alt: 'Staatslogica !',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Staatslogica | Kritische denkers. Heldere analyses.',
+    title: 'Staatslogica !',
     description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.',
     images: ['/og-image.jpg'],
   },
