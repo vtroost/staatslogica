@@ -28,7 +28,7 @@ export default function CategoriesPage() {
     ...category,
     articles: getArticlesByCategory(category.slug)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 3) // Show top 3 articles per category
+      .slice(0, 2) // Show top 2 articles per category
   }));
 
   // Helper to render thinker links

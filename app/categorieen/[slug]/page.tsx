@@ -1,4 +1,4 @@
-import { getAllCategories, getCategoryBySlug, getArticlesByCategory } from '@/lib/categories';
+import { getAllCategories, getCategoryBySlug, getArticlesByCategory, getCategoryColor, getOtherCategories, getCategoryContext } from '@/lib/categories';
 import { getAllThinkers } from '@/lib/thinkers';
 import type { Article } from '@/lib/types';
 import Link from 'next/link';
@@ -38,15 +38,18 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 type ArticleWithSourceTitle = Article & { sourceTitle?: string };
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = getCategoryBySlug(params.slug);
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { slug } = params;
+  const category = getCategoryBySlug(slug);
+  const context = getCategoryContext(slug);
   const allThinkers = getAllThinkers();
   
-  if (!category) {
+  if (!category || !context) {
     notFound();
   }
 
-  const articles = getArticlesByCategory(params.slug);
+  const articles = getArticlesByCategory(slug);
+  const otherCategories = getOtherCategories(slug);
   
   // Sort articles by date (newest first)
   articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -90,59 +93,73 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className={`w-full bg-gradient-to-r ${category.color} py-12 md:py-16`}>
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center text-white">
-            {/* Breadcrumb */}
-            <div className="mb-6">
-              <nav className="flex justify-center items-center space-x-2 text-sm">
-                <Link href="/" className="text-white text-opacity-80 hover:text-white">
-                  Home
-                </Link>
-                <span className="text-white text-opacity-60">/</span>
-                <Link href="/categorieen" className="text-white text-opacity-80 hover:text-white">
-                  Categorieën
-                </Link>
-                <span className="text-white text-opacity-60">/</span>
-                <span className="text-white font-medium">{category.name}</span>
-              </nav>
+      <div className={`${getCategoryColor(category.slug)} text-white py-16`}>
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{category.name}</h1>
+          <p className="text-xl md:text-2xl opacity-90">{category.description}</p>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Libertarian Context Section */}
+        <div className="mb-12 bg-white rounded-lg shadow-sm p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Libertarisch Perspectief</h2>
+          
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Ons Standpunt</h3>
+              <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
             </div>
-
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-              {category.name}
-            </h1>
-            <p className="text-lg text-white text-opacity-90 max-w-3xl mx-auto leading-relaxed">
-              {category.description}
-            </p>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Analysebenadering</h3>
+              <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Belangrijke Denkers</h3>
+              <div className="flex flex-wrap gap-2">
+                {context.keyThinkers.map((thinker) => {
+                  // Check if this thinker has a profile by comparing names
+                  const thinkerProfile = allThinkers.find(t => 
+                    t.name === thinker || 
+                    t.name.toLowerCase() === thinker.toLowerCase() ||
+                    t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
+                  );
+                  
+                  if (thinkerProfile) {
+                    // Render as clickable link with colored background
+                    return (
+                      <Link
+                        key={thinker}
+                        href={`/denkers/${thinkerProfile.slug}`}
+                        className="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full text-sm font-medium transition-colors"
+                      >
+                        {thinker}
+                      </Link>
+                    );
+                  } else {
+                    // Render as regular span
+                    return (
+                      <span 
+                        key={thinker} 
+                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                      >
+                        {thinker}
+                      </span>
+                    );
+                  }
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Topics Section */}
-      <section className="w-full bg-white py-8 border-b-2 border-gray-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-lg font-bold text-gray-800 mb-4 text-center">
-            Onderwerpen in deze categorie
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {category.topics.map((topic, index) => (
-              <Link
-                key={index}
-                href={`/tags/${topic.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-yellow-500 hover:text-black text-gray-700 rounded-lg font-medium text-sm transition-colors"
-              >
-                {topic}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Articles */}
-      <section className="w-full py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          {articles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Articles Grid */}
+        {articles.length > 0 ? (
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Artikelen</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {articles.map((article: ArticleWithSourceTitle) => (
                 <article 
                   key={article.slug} 
@@ -227,49 +244,31 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 </article>
               ))}
             </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="text-6xl mb-6">📝</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Nog geen artikelen
-              </h3>
-              <p className="text-gray-600 max-w-md mx-auto">
-                Er zijn nog geen artikelen gepubliceerd in de categorie "{category.name}". 
-                Kom later terug voor nieuwe analyses!
-              </p>
-              <Link 
-                href="/categorieen"
-                className="inline-block mt-6 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg transition-colors"
-              >
-                Bekijk andere categorieën
-              </Link>
-            </div>
-          )}
-        </div>
-      </section>
+          </div>
+        ) : (
+          <div className="text-center py-12 bg-white rounded-lg shadow-sm mb-12">
+            <h2 className="text-xl font-semibold text-gray-600 mb-2">Geen artikelen gevonden</h2>
+            <p className="text-gray-500">Er zijn nog geen artikelen in deze categorie.</p>
+          </div>
+        )}
 
-      {/* Related Categories */}
-      <section className="w-full bg-white border-t-4 border-yellow-400 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Andere categorieën
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {getAllCategories()
-              .filter(cat => cat.slug !== category.slug)
-              .slice(0, 6)
-              .map(relatedCategory => (
-              <Link
-                key={relatedCategory.slug}
-                href={`/categorieen/${relatedCategory.slug}`}
-                className={`px-6 py-3 bg-gradient-to-r ${relatedCategory.color} text-white hover:opacity-90 rounded-lg font-medium text-sm transition-opacity shadow-md hover:shadow-lg`}
+        {/* Other Categories */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Andere Categorieën</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {otherCategories.map((cat) => (
+              <Link 
+                key={cat.slug} 
+                href={`/categorieen/${cat.slug}`}
+                className={`${getCategoryColor(cat.slug)} text-white p-4 rounded-lg hover:opacity-90 transition-opacity`}
               >
-                {relatedCategory.name}
+                <h3 className="font-semibold text-lg mb-2">{cat.name}</h3>
+                <p className="text-sm opacity-90 line-clamp-2">{cat.description}</p>
               </Link>
             ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 } 

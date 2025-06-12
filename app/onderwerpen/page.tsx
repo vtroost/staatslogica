@@ -112,11 +112,7 @@ export default function OnderwerpenPage() {
       <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
-            <div className="mb-6">
-              <span className="inline-block bg-black bg-opacity-30 text-white px-4 py-2 text-sm font-bold uppercase tracking-wide rounded">
-                Verken Onderwerpen
-              </span>
-            </div>
+
             <h1 className="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight">
               Onderwerpen
             </h1>
@@ -128,35 +124,10 @@ export default function OnderwerpenPage() {
         </div>
       </section>
 
-      {/* Quick Category Navigation */}
-      <section className="w-full bg-white py-8 border-b-2 border-gray-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-lg font-bold text-gray-800 mb-4 text-center">
-            Blader per categorie
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map(category => (
-              <Link
-                key={category.slug}
-                href={`/categorieen/${category.slug}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-yellow-500 hover:text-black text-gray-700 rounded-lg font-medium text-sm transition-colors"
-              >
-                {category.name} ({category.count || 0})
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Categories with Topics */}
       <section className="w-full py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-yellow-500"></div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Onderwerpen per categorie
-            </h2>
-          </div>
+
 
           <div className="space-y-12">
             {categories
@@ -186,23 +157,18 @@ export default function OnderwerpenPage() {
 
                     <div className="flex flex-wrap gap-2 leading-relaxed">
                       {categoryTags
-                        .sort(() => Math.random() - 0.5) // Shuffle for organic appearance
+                        .sort((a, b) => b.count - a.count) // Sort by frequency (most used first)
                         .map((tag, index) => (
                         <Link
                           key={tag.slug}
                           href={`/tags/${tag.slug}`}
                           className={`
-                            inline-block mx-1 my-1 px-3 py-1 rounded-lg font-bold
+                            inline-block mx-1 my-1 px-3 py-1 rounded-lg font-medium
                             transition-all duration-300 ease-out
-                            hover:scale-110 hover:rotate-1 hover:shadow-lg
+                            hover:scale-105 hover:shadow-md
                             ${getFontSize(tag.count)}
                             ${getOpacity(tag.count)}
-                            ${index % 3 === 0 
-                              ? 'text-yellow-600 hover:text-yellow-700 hover:bg-yellow-100' 
-                              : index % 3 === 1 
-                              ? 'text-gray-800 hover:text-black hover:bg-gray-100'
-                              : 'text-yellow-700 hover:text-yellow-800 hover:bg-yellow-50'
-                            }
+                            bg-gradient-to-r ${category.color} text-white hover:opacity-80
                           `}
                           title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
                         >
@@ -231,18 +197,18 @@ export default function OnderwerpenPage() {
 
                 <div className="flex flex-wrap gap-2 leading-relaxed">
                   {uncategorizedTags
-                    .sort(() => Math.random() - 0.5)
+                    .sort((a, b) => b.count - a.count) // Sort by frequency
                     .map((tag, index) => (
                     <Link
                       key={tag.slug}
                       href={`/tags/${tag.slug}`}
                       className={`
-                        inline-block mx-1 my-1 px-3 py-1 rounded-lg font-bold
+                        inline-block mx-1 my-1 px-3 py-1 rounded-lg font-medium
                         transition-all duration-300 ease-out
-                        hover:scale-110 hover:rotate-1 hover:shadow-lg
+                        hover:scale-105 hover:shadow-md
                         ${getFontSize(tag.count)}
                         ${getOpacity(tag.count)}
-                        text-gray-600 hover:text-gray-800 hover:bg-white
+                        bg-gray-500 text-white hover:bg-gray-600
                       `}
                       title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
                     >
@@ -256,88 +222,9 @@ export default function OnderwerpenPage() {
         </div>
       </section>
 
-      {/* All Topics Cloud */}
-      <section className="w-full bg-white py-16 border-t-4 border-yellow-400">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-yellow-500"></div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Alle onderwerpen ({tagsWithFrequency.length})
-            </h2>
-          </div>
 
-          {tagsWithFrequency.length > 0 ? (
-            <div className="text-center space-y-4 leading-relaxed">
-              {tagsWithFrequency
-                .sort(() => Math.random() - 0.5)
-                .map((tag, index) => (
-                <Link
-                  key={tag.slug}
-                  href={`/tags/${tag.slug}`}
-                  className={`
-                    inline-block mx-2 my-1 px-3 py-1 rounded-lg font-bold
-                    transition-all duration-300 ease-out
-                    hover:scale-110 hover:rotate-1 hover:shadow-lg
-                    ${getFontSize(tag.count)}
-                    ${getOpacity(tag.count)}
-                    ${tag.category 
-                      ? 'text-yellow-600 hover:text-yellow-700 hover:bg-yellow-100' 
-                      : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
-                    }
-                  `}
-                  title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''} ${tag.category ? `(${tag.category})` : ''}`}
-                >
-                  {tag.name}
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">Geen onderwerpen gevonden.</p>
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="w-full bg-gray-50 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-6">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">
-                {categories.length}
-              </div>
-              <div className="text-gray-600 font-medium">
-                Categorieën
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">
-                {tagsWithFrequency.length}
-              </div>
-              <div className="text-gray-600 font-medium">
-                Onderwerpen
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">
-                {articles.length}
-              </div>
-              <div className="text-gray-600 font-medium">
-                Totaal artikelen
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">
-                {maxCount}
-              </div>
-              <div className="text-gray-600 font-medium">
-                Meest behandeld
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 } 
