@@ -112,7 +112,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: 'url(https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                backgroundImage: 'url(https://www.christenunie.nl/l/nl/library/download/urn:uuid:261cb5ae-2eeb-43cc-9ef8-e98de978e6ec/me+politie.jpg?scaleType=3&width=1200&height=675)'
               }}
             />
             <div className="absolute inset-0 bg-red-600 bg-opacity-70" />

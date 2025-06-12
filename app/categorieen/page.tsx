@@ -162,7 +162,7 @@ export default function CategoriesPage() {
                         <div 
                           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                           style={{
-                            backgroundImage: 'url(https://images.unsplash.com/photo-1564398294469-bf933407df73?q=80&w=1200&auto=format&fit=crop)'
+                            backgroundImage: 'url(https://www.christenunie.nl/l/nl/library/download/urn:uuid:261cb5ae-2eeb-43cc-9ef8-e98de978e6ec/me+politie.jpg?scaleType=3&width=1200&height=675)'
                           }}
                         />
                         <div className="absolute inset-0 bg-red-600 bg-opacity-70" />
