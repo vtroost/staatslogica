@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteLayout from "@/components/Layout"; // Use the component we moved
 // import Script from 'next/script'; // No longer needed here
-import NetlifyIdentityWidget from "@/components/NetlifyIdentityWidget"; // Update path
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Staatslogica - Libertarische Daganalyse',
+        alt: 'Staatslogica - Kritische denkers. Heldere analyses.',
       },
     ],
   },
@@ -172,8 +172,6 @@ export default function RootLayout({
       <body>
         {/* We use SiteLayout here, assuming it provides header/footer etc. */}
         <SiteLayout>{children}</SiteLayout>
-        {/* Render the Netlify Identity Widget client component */}
-        <NetlifyIdentityWidget />
       </body>
     </html>
   );

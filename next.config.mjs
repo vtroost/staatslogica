@@ -34,9 +34,7 @@ const nextConfig = {
   },
   // Explicitly tell Next.js to transpile these packages
   transpilePackages: [
-    'decap-cms-lib-util',
-    'decap-cms-core'
-    // Add other decap-cms packages here if similar errors occur
+    // Add packages that need transpilation here
   ],
   // Remove any API routes or dynamic features
   experimental: {
@@ -49,6 +47,7 @@ const nextConfig = {
         destination: '/categorieen',
         permanent: true,
       },
+
     ]
   },
 };
