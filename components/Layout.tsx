@@ -122,7 +122,7 @@ export default function SiteLayout({ children }: LayoutProps) {
       {/* Footer */}
       <footer className="bg-gray-50 border-t border-gray-200 mt-12 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} Staatslogica - Alle rechten voorbehouden (Satire)
+            © {new Date().getFullYear()} Staatslogica - Alle rechten voorbehouden
             <div className="mt-2 space-x-4">
                 <Link href="/about" className="hover:underline">Over Staatslogica</Link>
                 <span>|</span>

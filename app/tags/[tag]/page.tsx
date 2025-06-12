@@ -6,6 +6,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
+import { format } from 'date-fns';
+import { nl } from 'date-fns/locale';
+import TimelineComponent from './TimelineComponent';
 
 // Define Params type
 type Params = {
@@ -14,6 +17,11 @@ type Params = {
 
 // Extend Article type for sourceTitle
 type ArticleWithSourceTitle = Article & { sourceTitle?: string };
+
+// Define a type for article grouped by month/year
+type GroupedArticles = {
+    [key: string]: ArticleWithSourceTitle[];
+};
 
 // Generate static params for all unique tags
 export async function generateStaticParams(): Promise<Params[]> {
@@ -85,6 +93,19 @@ export default async function TagPage({ params }: { params: Params }) {
 
     // Use all articles in the grid (no featured article)
     const taggedArticles = articles as ArticleWithSourceTitle[];
+    
+    // Group articles by month & year for the timeline
+    const groupedArticles: GroupedArticles = {};
+    taggedArticles.forEach(article => {
+        const date = new Date(article.date);
+        const key = format(date, 'MMMM yyyy', { locale: nl });
+        
+        if (!groupedArticles[key]) {
+            groupedArticles[key] = [];
+        }
+        
+        groupedArticles[key].push(article);
+    });
 
     // Helper to render thinker links
     const renderThinkerLinks = (thinkerSlugs: string[] | undefined, linkClassName: string) => {
@@ -149,7 +170,7 @@ export default async function TagPage({ params }: { params: Params }) {
                 </div>
             </section>
 
-            {/* Articles Grid */}
+            {/* Articles Grid with Timeline */}
             <section className="w-full bg-gray-50 py-12 md:py-16 border-t-4 border-yellow-400">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="flex items-center gap-4 mb-8">
@@ -159,8 +180,15 @@ export default async function TagPage({ params }: { params: Params }) {
                         </h2>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {taggedArticles.map((article: ArticleWithSourceTitle) => (
+                    <div className="flex flex-col md:flex-row gap-8">
+                        {/* Timeline Component */}
+                        <div className="md:w-1/4">
+                            <TimelineComponent groupedArticles={groupedArticles} />
+                        </div>
+                        
+                        {/* Articles Grid */}
+                        <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {taggedArticles.slice(0, 9).map((article: ArticleWithSourceTitle) => (
                                 <article key={article.slug} className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
                                     {/* Article Image */}
                                     <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
@@ -225,6 +253,7 @@ export default async function TagPage({ params }: { params: Params }) {
                                 </article>
                             ))}
                         </div>
+                    </div>
                 </div>
             </section>
 
