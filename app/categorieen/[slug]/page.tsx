@@ -213,201 +213,206 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Libertarian Context Section - Collapsible */}
-        <div 
-          className="mb-12 rounded-lg shadow-sm"
-          style={{
-            background: `linear-gradient(135deg, ${category.color.includes('blue') ? 'rgba(59, 130, 246, 0.15)' : 
-                                                  category.color.includes('green') ? 'rgba(34, 197, 94, 0.15)' : 
-                                                  category.color.includes('purple') ? 'rgba(147, 51, 234, 0.15)' : 
-                                                  category.color.includes('orange') ? 'rgba(249, 115, 22, 0.15)' : 
-                                                  category.color.includes('emerald') ? 'rgba(16, 185, 129, 0.15)' : 
-                                                  'rgba(156, 163, 175, 0.15)'}, rgba(255, 255, 255, 0.8))`
-          }}
-        >
-          <details className="group">
-            <summary className="cursor-pointer p-6 hover:bg-gray-100 rounded-t-lg transition-colors list-none">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-900">Libertarisch Perspectief</h2>
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-700 font-medium group-open:hidden">Klik om te bekijken</span>
-                  <span className="text-sm text-gray-700 font-medium hidden group-open:inline">Klik om te verbergen</span>
-                  <svg 
-                    className="w-6 h-6 text-gray-700 transition-transform group-open:rotate-180" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        {/* Libertarian Perspective Section - Modern Design */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Libertarisch Perspectief</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Onze analyse van deze categorie vanuit de principes van individuele vrijheid, eigendomsrechten en vrije markten.
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Our Position Card */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
+                <h3 className="text-lg font-semibold text-gray-900">Ons Standpunt</h3>
               </div>
-            </summary>
-            
-            <div className="px-6 pb-6 border-t border-gray-100">
-              <div className="space-y-6 pt-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Ons Standpunt</h3>
-                  <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
+              <p className="text-gray-700 leading-relaxed text-sm">{context.libertarianPerspective}</p>
+            </div>
+
+            {/* Analysis Approach Card */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
                 </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Analysebenadering</h3>
-                  <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
+                <h3 className="text-lg font-semibold text-gray-900">Analysebenadering</h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm">{context.analysisApproach}</p>
+            </div>
+
+            {/* Key Thinkers Card */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                  </svg>
                 </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Belangrijke Denkers</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {context.keyThinkers.map((thinker) => {
-                      // Check if this thinker has a profile by comparing names
-                      const thinkerProfile = allThinkers.find(t => 
-                        t.name === thinker || 
-                        t.name.toLowerCase() === thinker.toLowerCase() ||
-                        t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
-                      );
-                      
-                      if (thinkerProfile) {
-                        // Render as clickable link with colored background
-                        return (
-                          <Link
-                            key={thinker}
-                            href={`/denkers/${thinkerProfile.slug}`}
-                            className="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full text-sm font-medium transition-colors"
-                          >
-                            {thinker}
-                          </Link>
-                        );
-                      } else {
-                        // Render as regular span
-                        return (
-                          <span 
-                            key={thinker} 
-                            className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
-                          >
-                            {thinker}
-                          </span>
-                        );
-                      }
-                    })}
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Belangrijke Denkers</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {context.keyThinkers.map((thinker) => {
+                  // Check if this thinker has a profile by comparing names
+                  const thinkerProfile = allThinkers.find(t => 
+                    t.name === thinker || 
+                    t.name.toLowerCase() === thinker.toLowerCase() ||
+                    t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
+                  );
+                  
+                  if (thinkerProfile) {
+                    // Render as clickable link with colored background
+                    return (
+                      <Link
+                        key={thinker}
+                        href={`/denkers/${thinkerProfile.slug}`}
+                        className="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-xs font-medium transition-colors hover:scale-105 transform"
+                      >
+                        {thinker}
+                      </Link>
+                    );
+                  } else {
+                    // Render as regular span
+                    return (
+                      <span 
+                        key={thinker} 
+                        className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium"
+                      >
+                        {thinker}
+                      </span>
+                    );
+                  }
+                })}
               </div>
             </div>
-          </details>
+          </div>
         </div>
 
-        {/* Articles Grid */}
-        {articles.length > 0 ? (
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Artikelen</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {articles.map((article: ArticleWithSourceTitle) => (
-                <article 
-                  key={article.slug} 
-                  className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group"
-                >
-                  {/* Article Image */}
-                  <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
-                    {article.imageUrl ? (
-                      <Image
-                        src={article.imageUrl}
-                        alt={article.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className={`w-full h-full bg-gradient-to-br ${category.color} flex items-center justify-center`}>
-                        <div className="text-white text-4xl font-bold opacity-70">
-                          {article.title.charAt(0)}
-                        </div>
-                      </div>
-                    )}
-                  </Link>
-                  
-                  {/* Article Content */}
-                  <div className="p-6">
-                    {/* Title */}
-                    <h3 className="text-xl font-bold mb-3 leading-tight">
-                      <Link 
-                        href={`/articles/${article.slug}`} 
-                        className="text-gray-900 hover:text-yellow-600 transition-colors"
-                      >
-                        {article.title}
-                      </Link>
-                    </h3>
-                    
-                    {/* Metadata */}
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
-                      <span className="flex items-center">
-                        📅 {new Date(article.date).toLocaleDateString('nl-NL', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
-                        })}
-                      </span>
-                      {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-medium")}
-                    </div>
-                    
-                    {/* Spin/Description */}
-                    {article.spin && (
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {article.spin.length > 120 ? `${article.spin.substring(0, 120)}...` : article.spin}
-                      </p>
-                    )}
-
-                    {/* Tags */}
-                    {article.tags && article.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {article.tags.slice(0, 3).map((tag, index) => (
-                          <span
-                            key={index}
-                            className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {article.tags.length > 3 && (
-                          <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
-                            +{article.tags.length - 3}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                    
-                    {/* Read More */}
-                    <Link 
-                      href={`/articles/${article.slug}`} 
-                      className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
+        {/* Main Content Area with Sidebar */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Main Content - Articles */}
+          <div className="flex-1">
+            {articles.length > 0 ? (
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Artikelen</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {articles.map((article: ArticleWithSourceTitle) => (
+                    <article 
+                      key={article.slug} 
+                      className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group"
                     >
-                      Lees artikel →
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm mb-12">
-            <h2 className="text-xl font-semibold text-gray-600 mb-2">Geen artikelen gevonden</h2>
-            <p className="text-gray-500">Er zijn nog geen artikelen in deze categorie.</p>
-          </div>
-        )}
+                      {/* Article Image */}
+                      <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
+                        {article.imageUrl ? (
+                          <Image
+                            src={article.imageUrl}
+                            alt={article.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className={`w-full h-full bg-gradient-to-br ${category.color} flex items-center justify-center`}>
+                            <div className="text-white text-4xl font-bold opacity-70">
+                              {article.title.charAt(0)}
+                            </div>
+                          </div>
+                        )}
+                      </Link>
+                      
+                      {/* Article Content */}
+                      <div className="p-6">
+                        {/* Title */}
+                        <h3 className="text-xl font-bold mb-3 leading-tight">
+                          <Link 
+                            href={`/articles/${article.slug}`} 
+                            className="text-gray-900 hover:text-yellow-600 transition-colors"
+                          >
+                            {article.title}
+                          </Link>
+                        </h3>
+                        
+                        {/* Metadata */}
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
+                          <span className="flex items-center">
+                            📅 {new Date(article.date).toLocaleDateString('nl-NL', { 
+                              year: 'numeric', 
+                              month: 'long', 
+                              day: 'numeric' 
+                            })}
+                          </span>
+                          {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-medium")}
+                        </div>
+                        
+                        {/* Spin/Description */}
+                        {article.spin && (
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                            {article.spin.length > 120 ? `${article.spin.substring(0, 120)}...` : article.spin}
+                          </p>
+                        )}
 
-        {/* Other Categories */}
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Andere Categorieën</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {otherCategories.map((cat) => (
-              <Link 
-                key={cat.slug} 
-                href={`/categorieen/${cat.slug}`}
-                className={`${getCategoryColor(cat.slug)} text-white p-4 rounded-lg hover:opacity-90 transition-opacity`}
-              >
-                <h3 className="font-semibold text-lg mb-2">{cat.name}</h3>
-                <p className="text-sm opacity-90 line-clamp-2">{cat.description}</p>
-              </Link>
-            ))}
+                        {/* Tags */}
+                        {article.tags && article.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {article.tags.slice(0, 3).map((tag, index) => (
+                              <span
+                                key={index}
+                                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                            {article.tags.length > 3 && (
+                              <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
+                                +{article.tags.length - 3}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        
+                        {/* Read More */}
+                        <Link 
+                          href={`/articles/${article.slug}`} 
+                          className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
+                        >
+                          Lees artikel →
+                        </Link>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-12 bg-white rounded-lg shadow-sm">
+                <h2 className="text-xl font-semibold text-gray-600 mb-2">Geen artikelen gevonden</h2>
+                <p className="text-gray-500">Er zijn nog geen artikelen in deze categorie.</p>
+              </div>
+            )}
+          </div>
+
+          {/* Sidebar - Other Categories */}
+          <div className="lg:w-80">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Ontdek andere categorieën</h3>
+              <div className="space-y-3">
+                {otherCategories.map((cat) => (
+                  <Link 
+                    key={cat.slug} 
+                    href={`/categorieen/${cat.slug}`}
+                    className={`block px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 transform ${getCategoryColor(cat.slug)} text-white hover:shadow-md`}
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
