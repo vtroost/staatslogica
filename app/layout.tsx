@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'Staatslogica !',
     template: 'Staatslogica ! | %s',
   },
-  description: "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.",
+  description: "Ontmasker het 'staatsnarratief' met heldere, vrijheidsgerichte analyses. Satirisch, scherp en altijd principieel.",
   keywords: ["libertarisme", "anarchisme", "staatstheorie", "politieke filosofie", "nederland", "nieuwsanalyse", "ludwig von mises", "ayn rand", "frederic bastiat"],
   authors: [{ name: "Staatslogica" }],
   creator: "Staatslogica",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: 'https://staatslogica.nl',
     siteName: 'StaatsLogica',
     title: 'Staatslogica !',
-    description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.',
+    description: 'Ontmasker het \'staatsnarratief\' met heldere, vrijheidsgerichte analyses. Satirisch, scherp en altijd principieel.',
     images: [
       {
         url: '/apple-touch-icon.png',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Staatslogica !',
-    description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.',
+    description: 'Ontmasker het \'staatsnarratief\' met heldere, vrijheidsgerichte analyses.',
     images: ['/apple-touch-icon.png'],
   },
   robots: {
@@ -83,7 +83,7 @@ export default function RootLayout({
       "alternateName": "Staatslogica",
       "url": "https://staatslogica.nl",
       "logo": "https://staatslogica.nl/favicon.svg",
-      "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
+      "description": "Ontmasker het 'staatsnarratief' met heldere, vrijheidsgerichte analyses.",
       "foundingDate": "2024",
       "sameAs": [],
       "contactPoint": {
@@ -98,7 +98,7 @@ export default function RootLayout({
       "name": "StaatsLogica",
       "alternateName": "Staatslogica",
       "url": "https://staatslogica.nl",
-      "description": "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.",
+      "description": "Ontmasker het 'staatsnarratief' met heldere, vrijheidsgerichte analyses.",
       "publisher": {
         "@type": "Organization",
         "name": "StaatsLogica",

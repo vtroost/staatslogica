@@ -1,6 +1,6 @@
 # Staatslogica !
 
-Een moderne Next.js website voor libertarische analyses en politieke filosofie. Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote denkers uit de geschiedenis.
+Een moderne Next.js website voor libertarische analyses en politieke filosofie. Ontmasker het 'staatsnarratief' met heldere, vrijheidsgerichte analyses.
 
 ## 🎯 Overzicht
 
@@ -314,7 +314,7 @@ rm -rf .next && npm run build
 
 **Website**: [staatslogica.nl](https://staatslogica.nl)  
 **Email**: redactie@staatslogica.nl  
-**Mission**: Ontmasker staatspropaganda met heldere analyses
+**Mission**: Ontmasker het 'staatsnarratief' met heldere, vrijheidsgerichte analyses
 
 ---
 

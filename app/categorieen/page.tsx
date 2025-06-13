@@ -9,7 +9,7 @@ import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Categorieën',
-  description: 'Overzicht van alle analyses per categorie. Van economie tot politiek - ontmasker staatspropaganda met Staatslogica.',
+  description: 'Overzicht van alle analyses per categorie. Van economie tot politiek - ontmasker het \'staatsnarratief\' met Staatslogica.',
   keywords: ['categorieën', 'analyse', 'politiek', 'economie', 'overheid', 'libertarisme']
 };
 
@@ -128,7 +128,7 @@ export default function CategoriesPage() {
             </h1>
             <div className="max-w-4xl">
               <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
-                Ontmasker staatspropaganda per categorie. Van economie tot politiek - alle analyses op één plek.
+                Ontmasker het 'staatsnarratief' per categorie. Van economie tot politiek - alle analyses op één plek.
               </p>
               <p className="text-base text-black text-opacity-80 leading-relaxed">
                 Elke categorie bundelt artikelen rond een specifiek thema en toont de libertarische analyse van 
