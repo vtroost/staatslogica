@@ -43,27 +43,17 @@ export default function AboutPage() {
     <div className="w-full min-h-screen">
       
       {/* Header Section */}
-      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 relative overflow-hidden">
-        {/* Background Pattern/Texture */}
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
-          <div className="max-w-4xl">
-            {/* Category Badge */}
-            <div className="mb-6">
-              <span className="inline-block bg-black bg-opacity-30 text-white px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
-                Missie & Visie
-              </span>
-            </div>
-            
+      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-left">
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
               Over Staatslogica
             </h1>
             
             {/* Introduction */}
-            <div className="text-lg text-black text-opacity-90 leading-relaxed font-medium">
-              <p>
+            <div className="max-w-4xl">
+              <p className="text-lg text-black text-opacity-90 leading-relaxed">
                 Dagelijkse oefening in helder denken — we becommentariëren nieuws dat vaak gedachteloos het staatsnarratief herhaalt en zetten daar logica, consistentie en het non-agressieprincipe tegenover.
               </p>
             </div>

@@ -122,13 +122,21 @@ export default function CategoriesPage() {
       {/* Header */}
       <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center">
+          <div className="text-left">
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
               Analyses per Categorie
             </h1>
-            <p className="text-lg text-black text-opacity-90 max-w-3xl mx-auto leading-relaxed">
-              Ontmasker staatspropaganda per categorie. Van economie tot politiek - alle analyses op één plek.
-            </p>
+            <div className="max-w-4xl">
+              <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
+                Ontmasker staatspropaganda per categorie. Van economie tot politiek - alle analyses op één plek.
+              </p>
+              <p className="text-base text-black text-opacity-80 leading-relaxed">
+                Elke categorie bundelt artikelen rond een specifiek thema en toont de libertarische analyse van 
+                overheidshandelen. Klik op een categorie om alle gerelateerde artikelen te bekijken, inclusief 
+                de belangrijkste denkers en hun inzichten die onze analyses vormgeven. Van Mises' economische 
+                theorie tot Rothbard's staatskritiek - ontdek hoe deze ideeën hedendaagse politiek ontmaskeren.
+              </p>
+            </div>
           </div>
         </div>
       </section>

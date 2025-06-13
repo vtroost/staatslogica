@@ -9,7 +9,7 @@ Een moderne Next.js website voor libertarische analyses en politieke filosofie. 
 ### ✨ Kernfuncties
 
 - **📰 Artikel Platform**: Rijke MDX artikelen met uitgebreide metadata
-- **👨‍💼 Denker Profielen**: Gedetailleerde profielen van invloedrijke filosofen
+- **👨‍💼 Denker Profielen**: Gedetailleerde profielen van invloedrijke filosofen en economen
 - **🏷️ Smart Tagging**: Intuïtieve navigatie via onderwerpen en categorieën
 - **📊 SEO Geoptimaliseerd**: Volledige zoekmachine dekking met gestructureerde data
 - **🎨 Modern Design**: Responsive interface met uitstekende UX
@@ -19,10 +19,7 @@ Een moderne Next.js website voor libertarische analyses en politieke filosofie. 
 
 🌐 **[staatslogica.nl](https://staatslogica.nl)**
 
-### Recent Verbeterde Branding (2025)
-- ✅ **Favicon**: Nieuwe distinctieve "S!" icoon in goud/rood
-- ✅ **Titel**: "Staatslogica !" met uitroepteken in zoekmachine resultaten
-- ✅ **Social Media**: Optimale weergave bij delen op sociale platforms
+**Branding**: Site toont "Staatslogica !" met uitroepteken in zoekresultaten en gebruikt geoptimaliseerde favicon voor betere zoekmachine weergave.
 
 ## 🛠️ Tech Stack
 
@@ -54,8 +51,8 @@ staatslogica/
 │   └── pages/            # Statische pagina's
 ├── lib/                  # Utility functies
 ├── public/               # Statische assets
-│   ├── favicon.svg       # Aangepaste favicon
-│   ├── manifest.json     # PWA manifest
+│   ├── favicon.svg       # SVG favicon met bestaand design
+│   ├── manifest.json     # PWA manifest met "Staatslogica !"
 │   └── robots.txt        # SEO configuratie
 └── netlify.toml          # Deployment configuratie
 ```
@@ -117,7 +114,7 @@ tags:
   - staatstheorie
 thinkers:
   - murray-rothbard
-  - hans-hermann-hoppe
+  - walter-block
 spin: "Waarom de staat moreel niet verschilt van georganiseerde misdaad"
 sourceUrl: "https://example.com/original"
 sourceTitle: "Original Article Title"
@@ -145,13 +142,27 @@ Murray Rothbard toonde aan dat de staat...
 - **Economie**: `economie`, `inflatie`, `belasting`, `markt`, `subsidie`
 - **Filosofie**: `anarchisme`, `libertarisme`, `eigendomsrecht`, `vrijheid`
 
-#### Beschikbare Denkers
-- `ludwig-von-mises` - Oostenrijkse School econoom
-- `friedrich-hayek` - Spontane orde theoreticus  
-- `murray-rothbard` - Anarcho-kapitalist
-- `ayn-rand` - Objectivistisch filosoof
-- `henry-hazlitt` - Economische journalist
-- `hans-hermann-hoppe` - Libertarisch theoreticus
+#### Beschikbare Denkers (chronologisch op geboortejaar)
+- `adam-smith` - Grondlegger moderne economie en moraalfilosoof (1723–1790)
+- `frederic-bastiat` - Franse liberale econoom (1801–1850)
+- `lysander-spooner` - Amerikaanse anarchist en jurist (1808–1887)
+- `ludwig-von-mises` - Oostenrijkse School econoom (1881–1973)
+- `ayn-rand` - Objectivistisch filosoof (1905–1982)
+- `milton-friedman` - Nobelprijswinnaar en monetarist (1912–2006)
+- `friedrich-hayek` - Spontane orde theoreticus (1899–1992)
+- `henry-hazlitt` - Economische journalist (1894–1993)
+- `murray-rothbard` - Anarcho-kapitalist (1926–1995)
+- `ron-paul` - Amerikaanse politicus en libertariër (geboren 1935)
+- `walter-block` - Anarcho-kapitalist en libertarisch theoreticus (geboren 1941)
+- `hans-hermann-hoppe` - Libertarisch theoreticus (geboren 1949)
+- `jesus-huerta-de-soto` - Spaanse econoom en bankkriticus (geboren 1956)
+- `larken-rose` - Anarcho-libertariër en staatsfilosoof (geboren 1969)
+- `saifedean-ammous` - Libanees-Palestijnse econoom en Bitcoin-advocaat (geboren 1980)
+
+**Denker Format Regels**:
+- **Overleden denkers**: `Name (1881–1973)`
+- **Levende denkers**: `Name (geboren 1956)`
+- **Volgorde**: Altijd chronologisch op geboortejaar
 
 ## 🔧 Development
 
@@ -207,20 +218,6 @@ npm run generate-sitemap  # Generate sitemap locally
 - **Headings**: Inter font, bold weights
 - **Body**: Inter font, regular/medium
 - **Code**: Monospace, syntax highlighting
-
-## 🔄 Recent Updates
-
-### Branding Improvements (Januari 2025)
-- ✅ **Favicon**: Nieuwe SVG favicon met "S!" design
-- ✅ **Manifest**: Bijgewerkt naar "Staatslogica !" met uitroepteken
-- ✅ **Meta Tags**: Consistente branding door hele site
-- ✅ **Search Results**: Optimale weergave in Google resultaten
-
-### Technical Improvements
-- ✅ **Next.js 14**: App Router met server components
-- ✅ **TypeScript**: Volledige type safety
-- ✅ **Performance**: Geoptimaliseerde bundle size
-- ✅ **Netlify**: Perfecte deployment configuratie
 
 ## 🐛 Troubleshooting
 
@@ -282,6 +279,13 @@ rm -rf .next && npm run build
 - Voeg tests toe waar nodig
 - Update documentatie
 - Test lokaal voordat je commit
+
+### Content Regels
+- **Denkers**: Altijd chronologisch op geboortejaar ordenen
+- **Levende denkers**: Gebruik "geboren <jaar>" format
+- **Overleden denkers**: Gebruik "(<geboortejaar>–<sterfjaar>)" format
+- **Tags**: Nederlandse termen, kleine letters
+- **Bestandsnamen**: `YYYY-MM-DD-titel-slug.mdx` format
 
 ## 📞 Contact & Support
 

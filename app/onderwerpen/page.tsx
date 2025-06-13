@@ -109,17 +109,24 @@ export default function OnderwerpenPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-16 md:py-24">
+      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center">
-
-            <h1 className="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight">
+          <div className="text-left">
+            <h1 className="text-3xl md:text-5xl font-bold text-black mb-6 leading-tight">
               Onderwerpen
             </h1>
-            <p className="text-xl text-black text-opacity-90 max-w-3xl mx-auto leading-relaxed">
-              Ontdek de meest besproken thema's in onze analyses. Onderwerpen zijn georganiseerd in categorieën 
-              voor beter overzicht. Hoe groter het onderwerp, hoe vaker we erover hebben geschreven.
-            </p>
+            <div className="max-w-4xl">
+              <p className="text-xl text-black text-opacity-90 mb-4 leading-relaxed">
+                Ontdek de meest besproken thema's in onze analyses. Onderwerpen zijn georganiseerd in categorieën 
+                voor beter overzicht. Hoe groter het onderwerp, hoe vaker we erover hebben geschreven.
+              </p>
+              <p className="text-lg text-black text-opacity-80 leading-relaxed">
+                Elk onderwerp toont hoeveel artikelen erover zijn geschreven. Klik op een onderwerp om alle 
+                gerelateerde analyses te bekijken, of verken een hele categorie om de bredere context te begrijpen. 
+                Van economische interventies tot politieke machtsuitoefening - hier vind je alle thema's die 
+                de staatsmachine blootleggen.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -127,8 +134,6 @@ export default function OnderwerpenPage() {
       {/* Categories with Topics */}
       <section className="w-full py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
-
-
           <div className="space-y-12">
             {categories
               .filter(category => tagsByCategory.has(category.slug))
@@ -221,10 +226,6 @@ export default function OnderwerpenPage() {
           </div>
         </div>
       </section>
-
-
-
-
     </div>
   );
 } 

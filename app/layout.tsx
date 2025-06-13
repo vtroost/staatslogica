@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: 'Staatslogica ! | %s',
   },
   description: "Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.",
-  keywords: ["libertarisme", "anarchisme", "staatstheorie", "politieke filosofie", "nederland", "nieuwsanalyse", "ludwig von mises", "ayn rand", "bastiat"],
+  keywords: ["libertarisme", "anarchisme", "staatstheorie", "politieke filosofie", "nederland", "nieuwsanalyse", "ludwig von mises", "ayn rand", "frederic bastiat"],
   authors: [{ name: "Staatslogica" }],
   creator: "Staatslogica",
   publisher: "Staatslogica",

@@ -54,4 +54,4 @@ Zijn kritiek op 'legal plunder' blijft actueel in debatten over belastingen, her
 
 Zijn focus op wat níet wordt gezien is essentieel voor het begrijpen van economische onbedoelde gevolgen.
 
-Zijn satirische toon maakt hem geliefd bij libertarische denkers die hun argumenten kracht willen bijzetten met ironie en morele helderheid.
+Zijn satirische toon maakt hem geliefd bij libertarische denkers die hun argumenten kracht willen bijzetten met ironie en morele helderheid. 

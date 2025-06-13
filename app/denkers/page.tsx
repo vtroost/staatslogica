@@ -73,13 +73,6 @@ export default async function ThinkersPage() {
             <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="max-w-4xl">
-                        {/* Category Badge */}
-                        <div className="mb-6">
-                            <span className="inline-block bg-black bg-opacity-30 text-black px-4 py-2 text-sm font-bold uppercase tracking-wide rounded-lg">
-                                Intellectuele Vrijheid
-                            </span>
-                        </div>
-                        
                         {/* Title */}
                         <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
                             Denkers
@@ -91,7 +84,7 @@ export default async function ThinkersPage() {
                                 In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
                             </p>
                             <p>
-                                Deze denkers bieden perspectieven die mainstream media zelden belichten: van Bastiat's waarschuwingen tegen legale plundering tot Rothbard's ontmaskering van staatsmacht, van Mises' economische inzichten tot Spooner's juridische rebellie. Ontdek waarom hun ideeën relevanter zijn dan ooit.
+                                Deze denkers bieden perspectieven die mainstream media zelden belichten: van Frédéric Bastiat's waarschuwingen tegen legale plundering tot Rothbard's ontmaskering van staatsmacht, van Mises' economische inzichten tot Spooner's juridische rebellie. Ontdek waarom hun ideeën relevanter zijn dan ooit.
                             </p>
                         </div>
                     </div>

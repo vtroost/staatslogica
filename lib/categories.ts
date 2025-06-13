@@ -2,20 +2,22 @@ import type { CategoryData } from './types';
 import { generateSlug } from './utils';
 import { getAllArticles } from './articles';
 
-// Define the new category structure based on the user's proposal
+/**
+ * Category definitions with associated tags and metadata
+ */
 export const categories: CategoryData[] = [
   {
     name: 'Economie & Geld',
     slug: 'economie-geld',
-    description: 'Analyse van economische processen, inflatie, centrale banken en alternatieve geldsystemen',
-    topics: ['inflatie', 'centrale banken', 'fiatgeld', 'bitcoin', 'economie', 'loonvorming', 'belasting', 'belastingen', 'time preference'],
+    description: 'Analyses van economisch beleid, monetaire zaken en marktwerking',
+    topics: ['economie', 'inflatie', 'belasting', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen'],
     color: 'from-green-500 to-green-600'
   },
   {
     name: 'Overheidsmacht & Interventie',
     slug: 'overheidsmacht-interventie',
-    description: 'Kritische analyse van overheidsinterventie en centralisatie van macht',
-    topics: ['overheidsinterventie', 'centrale planning', 'centralisatie', 'publieke sector', 'staatsmonopolie', 'gezagskritiek', 'bureaucratie'],
+    description: 'Kritische analyses van staatsmacht en overheidsinterventie',
+    topics: ['overheidsmacht', 'interventie', 'technocratie', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie'],
     color: 'from-red-500 to-red-600'
   },
   {
