@@ -1,25 +1,16 @@
-'use client';
-
 import { getStromingBySlug } from '@/lib/stromingen';
 import StromingBadge from '@/components/StromingBadge';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 import type { Stroming } from '@/lib/types';
 
-interface DenkersClientProps {
+interface DenkersContentProps {
   thinkers: any[];
   stromingen: Stroming[];
 }
 
-export default function DenkersClient({ thinkers, stromingen }: DenkersClientProps) {
-  const [selectedStroming, setSelectedStroming] = useState<string | null>(null);
-
-  const filteredThinkers = selectedStroming 
-    ? thinkers.filter(thinker => thinker.stroming === selectedStroming)
-    : thinkers;
-
+export default function DenkersContent({ thinkers, stromingen }: DenkersContentProps) {
   return (
     <div className="w-full min-h-screen">
       {/* Compact Breadcrumb */}
@@ -44,23 +35,17 @@ export default function DenkersClient({ thinkers, stromingen }: DenkersClientPro
             </h1>
             <div className="text-lg text-black text-opacity-90 leading-relaxed space-y-4">
               <p>
-                In een wereld waarin media en politiek vaak maar één verhaal vertellen, is het cruciaal om verder te kijken dan de staatspropaganda. Echte intellectuele vrijheid vereist dat we luisteren naar stemmen die durven te twijfelen aan de gevestigde orde.
+              In een tijd waarin media en politiek één verhaal lijken te vertellen, is het des te belangrijker om kennis te maken met stemmen die zich niet schikken naar de logica van macht. Ware intellectuele vrijheid begint waar twijfel aan de staat wordt toegestaan.
               </p>
               <p>
-                Deze denkers bieden perspectieven die mainstream media zelden belichten: van Frédéric Bastiat's waarschuwingen tegen legale plundering tot Rothbard's ontmaskering van staatsmacht, van Mises' economische inzichten tot Spooner's juridische rebellie. Ontdek waarom hun ideeën relevanter zijn dan ooit.
+              De denkers op deze site vertegenwoordigen vier stromingen die elkaar soms overlappen, maar elk op hun manier het staatsdenken uitdagen:
+              klassiek-liberalen die pleiten voor een minimale overheid, libertariërs die vrijwilligheid als hoogste principe beschouwen, anarcho-kapitalisten die elk gezag buiten het individu verwerpen, en anarchisten die de psychologische wortels van onderwerping blootleggen.
+              </p>
+              <p>
+              Van Bastiat's waarschuwing tegen “legale roof”, tot Mises' analyse van economische prikkels; van Rand's lofzang op rationeel egoïsme tot Spooner's juridische afrekening met de grondwet — hun inzichten zijn vandaag relevanter dan ooit. Ontdek de logica van vrijheid.
               </p>
               
-              <div className="pt-4">
-                <Link 
-                  href="/stromingen"
-                  className="inline-flex items-center gap-2 bg-black bg-opacity-20 text-black px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-medium"
-                >
-                  Bekijk per stroming
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
+
             </div>
           </div>
         </div>
@@ -68,64 +53,24 @@ export default function DenkersClient({ thinkers, stromingen }: DenkersClientPro
 
       <section className="w-full bg-gray-50 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          {/* Compact Filter Badges */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Filter op stroming
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => setSelectedStroming(null)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  selectedStroming === null 
-                    ? 'bg-yellow-400 text-black' 
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                Alle denkers ({thinkers.length})
-              </button>
-
-              {stromingen.map(stroming => {
-                const count = thinkers.filter(t => t.stroming === stroming.slug).length;
-                return (
-                  <button
-                    key={stroming.slug}
-                    onClick={() => setSelectedStroming(stroming.slug)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedStroming === stroming.slug 
-                        ? 'bg-yellow-400 text-black' 
-                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                    }`}
-                  >
-                    {stroming.name} ({count})
-                  </button>
-                );
-              })}
-              
-              <Link 
-                href="/stromingen"
-                className="px-4 py-2 rounded-lg text-sm font-medium text-yellow-600 hover:text-yellow-700 border border-yellow-200 hover:border-yellow-300 transition-colors"
-              >
-                Meer info →
-              </Link>
-            </div>
+          {/* Stroming Labels */}
+          <div className="flex flex-wrap gap-3 mb-6">
+            {stromingen.map(stroming => {
+              return (
+                <Link 
+                  key={stroming.slug}
+                  href={`/stromingen/${stroming.slug}`}
+                  className="inline-flex items-center gap-2 bg-yellow-400 text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-all font-medium text-sm"
+                >
+                  {stroming.name}
+                </Link>
+              );
+            })}
           </div>
-
-          {/* Selected Stroming Description */}
-          {selectedStroming && (
-            <div className="mb-8 bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {getStromingBySlug(selectedStroming)?.name}
-              </h3>
-              <p className="text-gray-600">
-                {getStromingBySlug(selectedStroming)?.description}
-              </p>
-            </div>
-          )}
 
           {/* Thinkers Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredThinkers.map(thinker => {
+            {thinkers.map(thinker => {
               let years = '';
               if (thinker.title) {
                 const match = thinker.title.match(/\(([^)]+)\)/);

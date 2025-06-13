@@ -1,6 +1,6 @@
 import { getAllThinkers, getThinkerBySlug } from '@/lib/thinkers';
 import { STROMINGEN } from '@/lib/stromingen';
-import DenkersClient from './DenkersClient';
+import DenkersContent from './DenkersContent';
 
 // Helper function to extract tagline from bio content
 function extractTagline(bioContent?: string): string {
@@ -61,7 +61,7 @@ export default async function ThinkersPage() {
     });
 
     return (
-        <DenkersClient 
+        <DenkersContent 
             thinkers={thinkersWithTaglines} 
             stromingen={STROMINGEN}
         />

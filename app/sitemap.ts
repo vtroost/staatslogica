@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllArticles } from '@/lib/articles'
 import { getAllThinkers } from '@/lib/thinkers'
+import { STROMINGEN } from '@/lib/stromingen'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://staatslogica.nl'
@@ -37,6 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.5,
+    }))
+
+    // Get all stromingen
+    const stomingEntries: MetadataRoute.Sitemap = STROMINGEN.map((stroming) => ({
+      url: `${baseUrl}/stromingen/${stroming.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     }))
 
     // Static pages
@@ -85,7 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     ]
 
-    return [...staticPages, ...articleEntries, ...thinkerEntries, ...tagEntries]
+    return [...staticPages, ...articleEntries, ...thinkerEntries, ...tagEntries, ...stomingEntries]
   } catch (error) {
     console.error('Error generating sitemap:', error)
     // Return at least the static pages if dynamic content fails

@@ -3,7 +3,7 @@ import type { Stroming } from './types';
 export const STROMINGEN: Stroming[] = [
   {
     slug: 'klassiek-liberaal',
-    name: 'Klassiek-liberaal',
+    name: 'Klassiek-liberalisme',
     description: 'Voorstanders van vrije markt, beperkte overheid en eigendomsrechten — maar niet noodzakelijk anarchisme',
     detailedDescription: 'Het klassiek liberalisme ontstond in de 18e eeuw als reactie op het mercantilisme en absolutisme. Deze stroming benadrukt de waarde van individuele vrijheid, vrije markten en beperkte overheidsinterventie. Klassiek liberalen geloven dat spontane orde en concurrentie tot betere uitkomsten leiden dan centrale planning. Ze accepteren een minimale staat voor het beschermen van eigendomsrechten en het handhaven van contracten, maar zijn sceptisch over uitgebreide overheidsprogramma\'s.',
     keyPrinciples: [
@@ -18,7 +18,7 @@ export const STROMINGEN: Stroming[] = [
   },
   {
     slug: 'libertarier',
-    name: 'Libertariër',
+    name: 'Libertarisme',
     description: 'Radicaal vrije markt, natuurlijke rechten, vrijwilligheid — trekken richting anarchisme',
     detailedDescription: 'Het libertarisme gaat verder dan het klassiek liberalisme door een radicalere interpretatie van individuele vrijheid. Libertariërs geloven in natuurlijke rechten die voorafgaan aan de staat en zien vrijwillige interactie als de enige legitieme basis voor sociale organisatie. Ze zijn veel kritischer op staatsmacht dan klassiek liberalen en sommigen evolueren naar anarchistische posities. Deze stroming benadrukt dat initiatie van geweld altijd moreel verwerpelijk is.',
     keyPrinciples: [
@@ -33,7 +33,7 @@ export const STROMINGEN: Stroming[] = [
   },
   {
     slug: 'anarcho-kapitalistisch',
-    name: 'Anarcho-kapitalistisch',
+    name: 'Anarcho-kapitalisme',
     description: 'Streven naar een volledig vrijwillige samenleving zonder staat — met eigendomsrechten en privaat rechtssysteem',
     detailedDescription: 'Het anarcho-kapitalisme is de logische conclusie van het libertaire denken: een volledig vrijwillige samenleving zonder monopolistische staat. Anarcho-kapitalisten geloven dat alle diensten die de staat nu levert - inclusief rechtspraak, beveiliging en arbitrage - beter en ethischer door private ondernemingen geleverd kunnen worden. Ze zien de staat als een inherent gewelddadige en inefficiënte organisatie die concurrenten uitsluit door geweld.',
     keyPrinciples: [
@@ -48,7 +48,7 @@ export const STROMINGEN: Stroming[] = [
   },
   {
     slug: 'anarchistisch',
-    name: 'Anarchistisch',
+    name: 'Anarchisme',
     description: 'Focus op vrijwilligheid, anti-staats, vaak buiten marktkader',
     detailedDescription: 'Het anarchisme in bredere zin focust op de afwijzing van alle hiërarchische autoriteit, maar niet noodzakelijk binnen een markteconomisch kader. Deze denkers concentreren zich vooral op het blootleggen van de illusie van politieke autoriteit en het bevorderen van vrijwillige samenwerking. Ze benadrukken dat echte autoriteit alleen voortkomt uit waarheid en expertise, niet uit geweld of positie.',
     keyPrinciples: [
