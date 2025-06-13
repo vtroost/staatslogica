@@ -143,13 +143,8 @@ export default function CategoriesPage() {
             </h1>
             <div className="max-w-4xl">
               <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
-                Ontmasker het 'staatsnarratief' per categorie. Van economie tot politiek - alle analyses op één plek.
-              </p>
-              <p className="text-base text-black text-opacity-80 leading-relaxed">
-                Elke categorie bundelt artikelen rond een specifiek thema en toont de libertarische analyse van 
-                overheidshandelen. Klik op een categorie om alle gerelateerde artikelen te bekijken, inclusief 
-                de belangrijkste denkers en hun inzichten die onze analyses vormgeven. Van Mises' economische 
-                theorie tot Rothbard's staatskritiek - ontdek hoe deze ideeën hedendaagse politiek ontmaskeren.
+                Ontmasker het 'staatsnarratief' per categorie. Van economie tot politiek - alle analyses op één plek. Duik in een categorie om gerelateerde artikelen te bekijken, inclusief 
+                de belangrijkste denkers en hun inzichten die onze analyses vormgeven.
               </p>
             </div>
           </div>
@@ -306,9 +301,9 @@ export default function CategoriesPage() {
                             </h5>
                             <p className="text-gray-500 text-xs">
                               {new Date(article.date).toLocaleDateString('nl-NL', {
-                                year: 'numeric',
+                                day: 'numeric',
                                 month: 'long',
-                                day: 'numeric'
+                                year: 'numeric'
                               })}
                             </p>
                           </Link>

@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Onderwerpen',
-  description: 'Ontdek alle onderwerpen en tags op Staatslogica. Verken de meest besproken thema\'s in onze politieke analyses.',
+  title: 'Alle Onderwerpen - Staatslogica',
+  description: 'Overzicht van alle onderwerpen behandeld in Staatslogica analyses.',
 };
 
 // Helper function to generate slug (consistent with existing tag system)
@@ -79,34 +79,6 @@ export default function OnderwerpenPage() {
     }
   });
 
-  // Calculate font sizes based on frequency
-  const maxCount = Math.max(...tagsWithFrequency.map(tag => tag.count));
-  const minCount = Math.min(...tagsWithFrequency.map(tag => tag.count));
-  
-  const getFontSize = (count: number) => {
-    if (maxCount === minCount) return 'text-lg';
-    
-    const ratio = (count - minCount) / (maxCount - minCount);
-    
-    if (ratio >= 0.8) return 'text-3xl md:text-4xl';
-    if (ratio >= 0.6) return 'text-2xl md:text-3xl';
-    if (ratio >= 0.4) return 'text-xl md:text-2xl';
-    if (ratio >= 0.2) return 'text-lg md:text-xl';
-    return 'text-base md:text-lg';
-  };
-
-  const getOpacity = (count: number) => {
-    if (maxCount === minCount) return 'opacity-80';
-    
-    const ratio = (count - minCount) / (maxCount - minCount);
-    
-    if (ratio >= 0.8) return 'opacity-100';
-    if (ratio >= 0.6) return 'opacity-90';
-    if (ratio >= 0.4) return 'opacity-80';
-    if (ratio >= 0.2) return 'opacity-70';
-    return 'opacity-60';
-  };
-
   return (
     <>
       {/* Compact Breadcrumb */}
@@ -115,128 +87,183 @@ export default function OnderwerpenPage() {
           <Breadcrumb 
             items={[
               { label: 'Home', href: '/' },
-              { label: 'Onderwerpen' }
+              { label: 'Alle Onderwerpen' }
             ]}
             variant="yellow"
           />
         </div>
       </div>
 
+      {/* Header */}
       <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-left">
-            
-            <h1 className="text-3xl md:text-5xl font-bold text-black mb-6 leading-tight">
-              Onderwerpen
+            <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
+              Alle Onderwerpen
             </h1>
             <div className="max-w-4xl">
-              <p className="text-xl text-black text-opacity-90 mb-4 leading-relaxed">
-                Ontdek de meest besproken thema's in onze analyses. Onderwerpen zijn georganiseerd in categorieën 
-                voor beter overzicht. Hoe groter het onderwerp, hoe vaker we erover hebben geschreven.
-              </p>
-              <p className="text-lg text-black text-opacity-80 leading-relaxed">
-                Elk onderwerp toont hoeveel artikelen erover zijn geschreven. Klik op een onderwerp om alle 
-                gerelateerde analyses te bekijken, of verken een hele categorie om de bredere context te begrijpen. 
-                Van economische interventies tot politieke machtsuitoefening - hier vind je alle thema's die 
-                de staatsmachine blootleggen.
+              <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
+                Ontdek alle onderwerpen en tags georganiseerd per categorie. Elk onderwerp toont hoeveel artikelen erover zijn geschreven.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories with Topics */}
-      <section className="w-full py-16 md:py-24">
+      {/* Categories with Topics in Cards */}
+      <section className="w-full bg-gray-50 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories
               .filter(category => tagsByCategory.has(category.slug))
               .map(category => {
                 const categoryTags = tagsByCategory.get(category.slug) || [];
                 
                 return (
-                  <div key={category.slug} className="bg-white rounded-lg shadow-sm p-8">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-1 h-12 bg-gradient-to-b ${category.color} rounded-full`}></div>
-                        <div>
-                          <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                            {category.name}
-                          </h3>
-                          <p className="text-gray-600 mt-1">{category.description}</p>
+                  <div
+                    key={category.slug}
+                    className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                  >
+                    {/* Category Header */}
+                    <Link href={`/categorieen/${category.slug}`}>
+                      <div className={`bg-gradient-to-r ${category.color} p-6 text-white h-[120px] flex flex-col justify-between cursor-pointer hover:opacity-90 transition-opacity`}>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold mb-2 text-white">{category.name}</h3>
+                          <p className="text-white text-opacity-90 text-sm leading-relaxed line-clamp-2">
+                            {categoryTags.length} onderwerp{categoryTags.length !== 1 ? 'en' : ''}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-white text-opacity-80 text-sm">
+                            {categoryTags.reduce((sum, tag) => sum + tag.count, 0)} artikel{categoryTags.reduce((sum, tag) => sum + tag.count, 0) !== 1 ? 'en' : ''}
+                          </span>
+                          <span className="text-white text-opacity-90 text-sm font-medium">
+                            Bekijk categorie →
+                          </span>
                         </div>
                       </div>
-                      <Link
-                        href={`/categorieen/${category.slug}`}
-                        className="text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
-                      >
-                        Alle artikelen →
-                      </Link>
-                    </div>
+                    </Link>
 
-                    <div className="flex flex-wrap gap-2 leading-relaxed">
-                      {categoryTags
-                        .sort((a, b) => b.count - a.count) // Sort by frequency (most used first)
-                        .map((tag, index) => (
-                        <Link
-                          key={tag.slug}
-                          href={`/tags/${tag.slug}`}
-                          className={`
-                            inline-block mx-1 my-1 px-3 py-1 rounded-lg font-medium
-                            transition-all duration-300 ease-out
-                            hover:scale-105 hover:shadow-md
-                            ${getFontSize(tag.count)}
-                            ${getOpacity(tag.count)}
-                            bg-gradient-to-r ${category.color} text-white hover:opacity-80
-                          `}
-                          title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
-                        >
-                          {tag.name}
-                        </Link>
-                      ))}
+                    {/* Tags */}
+                    <div className="p-6">
+                      <div className="space-y-3">
+                        <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">
+                          Onderwerpen
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {categoryTags
+                            .sort((a, b) => b.count - a.count)
+                            .slice(0, 12) // Limit to 12 tags per category
+                            .map((tag) => (
+                            <Link
+                              key={tag.slug}
+                              href={`/tags/${tag.slug}`}
+                              className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                              title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
+                            >
+                              {tag.name}
+                              <span className="ml-1 text-xs text-gray-500">({tag.count})</span>
+                            </Link>
+                          ))}
+                          {categoryTags.length > 12 && (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500">
+                              +{categoryTags.length - 12} meer
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
               })}
 
-            {/* Uncategorized Topics */}
+            {/* Uncategorized Topics Card */}
             {uncategorizedTags.length > 0 && (
-              <div className="bg-gray-100 rounded-lg p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-1 h-12 bg-gradient-to-b from-gray-400 to-gray-500 rounded-full"></div>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                      Overige onderwerpen
-                    </h3>
-                    <p className="text-gray-600 mt-1">
-                      Onderwerpen die nog niet zijn ingedeeld in een categorie
+              <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                <div className="bg-gradient-to-r from-gray-400 to-gray-500 p-6 text-white h-[120px] flex flex-col justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold mb-2 text-white">Overige onderwerpen</h3>
+                    <p className="text-white text-opacity-90 text-sm leading-relaxed">
+                      {uncategorizedTags.length} onderwerp{uncategorizedTags.length !== 1 ? 'en' : ''}
                     </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white text-opacity-80 text-sm">
+                      {uncategorizedTags.reduce((sum, tag) => sum + tag.count, 0)} artikel{uncategorizedTags.reduce((sum, tag) => sum + tag.count, 0) !== 1 ? 'en' : ''}
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 leading-relaxed">
-                  {uncategorizedTags
-                    .sort((a, b) => b.count - a.count) // Sort by frequency
-                    .map((tag, index) => (
-                    <Link
-                      key={tag.slug}
-                      href={`/tags/${tag.slug}`}
-                      className={`
-                        inline-block mx-1 my-1 px-3 py-1 rounded-lg font-medium
-                        transition-all duration-300 ease-out
-                        hover:scale-105 hover:shadow-md
-                        ${getFontSize(tag.count)}
-                        ${getOpacity(tag.count)}
-                        bg-gray-500 text-white hover:bg-gray-600
-                      `}
-                      title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
-                    >
-                      {tag.name}
-                    </Link>
-                  ))}
+                <div className="p-6">
+                  <div className="space-y-3">
+                    <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">
+                      Onderwerpen
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {uncategorizedTags
+                        .sort((a, b) => b.count - a.count)
+                        .slice(0, 12)
+                        .map((tag) => (
+                        <Link
+                          key={tag.slug}
+                          href={`/tags/${tag.slug}`}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                          title={`${tag.count} artikel${tag.count !== 1 ? 'en' : ''}`}
+                        >
+                          {tag.name}
+                          <span className="ml-1 text-xs text-gray-500">({tag.count})</span>
+                        </Link>
+                      ))}
+                      {uncategorizedTags.length > 12 && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500">
+                          +{uncategorizedTags.length - 12} meer
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics */}
+      <section className="w-full bg-white border-t-4 border-yellow-400 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="p-4">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-600 mb-2">
+                {categories.filter(category => tagsByCategory.has(category.slug)).length}
+              </div>
+              <div className="text-gray-600 font-medium text-sm">
+                Categorieën
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-600 mb-2">
+                {tagsWithFrequency.length}
+              </div>
+              <div className="text-gray-600 font-medium text-sm">
+                Totaal onderwerpen
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-600 mb-2">
+                {tagsWithFrequency.reduce((sum, tag) => sum + tag.count, 0)}
+              </div>
+              <div className="text-gray-600 font-medium text-sm">
+                Totaal artikelen
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-600 mb-2">
+                {Math.max(...tagsWithFrequency.map(tag => tag.count))}
+              </div>
+              <div className="text-gray-600 font-medium text-sm">
+                Meest behandeld
+              </div>
+            </div>
           </div>
         </div>
       </section>

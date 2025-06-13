@@ -33,26 +33,35 @@ export default function DenkersContent({ thinkers, stromingen }: DenkersContentP
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
               Denkers
             </h1>
-            <div className="text-lg text-black text-opacity-90 leading-relaxed space-y-4">
+            <div className="text-lg text-black text-opacity-90 leading-relaxed">
               <p>
               In een tijd waarin media en politiek één verhaal lijken te vertellen, is het des te belangrijker om kennis te maken met stemmen die zich niet schikken naar de logica van macht. Ware intellectuele vrijheid begint waar twijfel aan de staat wordt toegestaan.
               </p>
-              <p>
-              De denkers op deze site vertegenwoordigen vier stromingen die elkaar soms overlappen, maar elk op hun manier het staatsdenken uitdagen:
-              klassiek-liberalen die pleiten voor een minimale overheid, libertariërs die vrijwilligheid als hoogste principe beschouwen, anarcho-kapitalisten die elk gezag buiten het individu verwerpen, en anarchisten die de psychologische wortels van onderwerping blootleggen.
-              </p>
-              <p>
-              Van Bastiat's waarschuwing tegen “legale roof”, tot Mises' analyse van economische prikkels; van Rand's lofzang op rationeel egoïsme tot Spooner's juridische afrekening met de grondwet — hun inzichten zijn vandaag relevanter dan ooit. Ontdek de logica van vrijheid.
-              </p>
-              
-
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-gray-50 py-12 md:py-16">
+      {/* Content Section */}
+      <section className="w-full bg-gray-50 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
+                    {/* Introduction Text */}
+          <div className="max-w-4xl mb-8">
+            <div className="flex items-center mb-6">
+              <div className="w-1 h-8 bg-yellow-400 mr-3"></div>
+              <h2 className="text-2xl font-bold text-gray-900">De vier stromingen</h2>
+            </div>
+            <div className="text-gray-700 leading-relaxed space-y-4">
+              <p>
+                De denkers op deze site vertegenwoordigen vier stromingen die elkaar soms overlappen, maar elk op hun manier het staatsdenken uitdagen:
+                klassiek-liberalen die pleiten voor een minimale overheid, libertariërs die vrijwilligheid als hoogste principe beschouwen, anarcho-kapitalisten die elk gezag buiten het individu verwerpen, en anarchisten die de psychologische wortels van onderwerping blootleggen.
+              </p>
+              <p>
+                Van Bastiat's waarschuwing tegen "legale roof", tot Mises' analyse van economische prikkels; van Rand's lofzang op rationeel egoïsme tot Spooner's juridische afrekening met de grondwet — hun inzichten zijn vandaag relevanter dan ooit. Ontdek de logica van vrijheid.
+              </p>
+            </div>
+          </div>
+
           {/* Stroming Labels */}
           <div className="flex flex-wrap gap-3 mb-6">
             {stromingen.map(stroming => {

@@ -97,7 +97,7 @@ export default function ArticleCard({ article, allThinkers = [], categoryColor }
         
         {/* Metadata */}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-3">
-          <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}</span>
+          <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
           {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-bold")}
         </div>
         

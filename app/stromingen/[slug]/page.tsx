@@ -111,42 +111,45 @@ export default async function StromingPage({ params }: { params: { slug: string 
       <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-4xl">
-            <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
-              {stroming.name}
-            </h1>
-            <div className="text-lg text-black text-opacity-90 leading-relaxed space-y-4">
+            <div className="flex items-start justify-between mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold text-black leading-tight">
+                {stroming.name}
+              </h1>
+              <Link 
+                href="/denkers"
+                className="inline-flex items-center gap-2 bg-black bg-opacity-20 text-black px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-medium text-sm whitespace-nowrap ml-4"
+              >
+                ← Alle denkers
+              </Link>
+            </div>
+            <div className="text-lg text-black text-opacity-90 leading-relaxed">
               <p>{stroming.detailedDescription}</p>
-              
-              {stroming.keyPrinciples && (
-                <div className="pt-4">
-                  <h3 className="text-xl font-bold text-black mb-3">Kernprincipes:</h3>
-                  <ul className="list-disc list-inside space-y-1 text-black text-opacity-90">
-                    {stroming.keyPrinciples.map((principle, index) => (
-                      <li key={index}>{principle}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              
-              {/* Back to all thinkers */}
-              <div className="pt-4">
-                <Link 
-                  href="/denkers"
-                  className="inline-flex items-center gap-2 bg-black bg-opacity-20 text-black px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-medium"
-                >
-                  ← Alle denkers
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Thinkers Grid */}
-      <section className="w-full bg-gray-50 py-12 md:py-16">
+      {/* Content Section */}
+      <section className="w-full bg-gray-50 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
+          {/* Kernprincipes */}
+          {stroming.keyPrinciples && (
+            <div className="max-w-4xl mb-8">
+              <div className="flex items-center mb-6">
+                <div className="w-1 h-8 bg-yellow-400 mr-3"></div>
+                <h2 className="text-2xl font-bold text-gray-900">Kernprincipes</h2>
+              </div>
+              <div className="text-gray-700 leading-relaxed mb-8">
+                <ul className="list-disc list-inside space-y-2">
+                  {stroming.keyPrinciples.map((principle, index) => (
+                    <li key={index}>{principle}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
 
-
+          {/* Thinkers Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {thinkersWithTaglines.map(thinker => {
               let years = '';

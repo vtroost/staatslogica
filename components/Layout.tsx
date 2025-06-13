@@ -52,7 +52,7 @@ export default function SiteLayout({ children }: LayoutProps) {
                 <Link href="/" className="text-black hover:text-gray-800 hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-150 font-medium">Artikelen</Link>
                 <Link href="/categorieen" className="text-black hover:text-gray-800 hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-150 font-medium">Categorieën</Link>
                 <Link href="/denkers" className="text-black hover:text-gray-800 hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-150 font-medium">Denkers</Link>
-                <Link href="/onderwerpen" className="text-black hover:text-gray-800 hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-150 font-medium">Onderwerpen</Link>
+
                 <Link href="/about" className="text-black hover:text-gray-800 hover:underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-150 font-medium">Over</Link>
               </div>
             </div>
@@ -94,13 +94,7 @@ export default function SiteLayout({ children }: LayoutProps) {
                 >
                   Denkers
                 </Link>
-                <Link 
-                  href="/onderwerpen" 
-                  className="block px-3 py-2 text-black hover:text-gray-800 hover:bg-black hover:bg-opacity-10 rounded-md font-medium transition-all"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Onderwerpen
-                </Link>
+
                 <Link 
                   href="/about" 
                   className="block px-3 py-2 text-black hover:text-gray-800 hover:bg-black hover:bg-opacity-10 rounded-md font-medium transition-all"

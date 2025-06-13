@@ -72,8 +72,6 @@ export default function AboutPage() {
               </p>
               <p>
                 Staatslogica becommentarieert nieuws dat gedachteloos het staatsnarratief herhaalt — berichten die dwang normaal maken, controle als vooruitgang verkopen, en collectieve offers verheerlijken.
-              </p>
-              <p className="text-base text-black text-opacity-90 leading-relaxed">
                 Wij zetten daar iets radicaal eenvoudigs tegenover: <strong>logica, consistentie en het non-agressieprincipe.</strong>
               </p>
             </div>
@@ -82,11 +80,11 @@ export default function AboutPage() {
       </section>
 
       {/* Content Section */}
-      <section className="w-full bg-gray-50 py-12 md:py-16">
+      <section className="w-full bg-gray-50 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-5xl bg-white rounded-lg shadow-sm p-8 md:p-12">
+          <div className="max-w-4xl">
             {/* Content with consistent website styling */}
-            <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-yellow-400 prose-blockquote:bg-yellow-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-lg prose-blockquote:text-gray-800 prose-blockquote:font-medium prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-2xl prose-h3:font-bold prose-h3:text-gray-900 prose-p:mb-5 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-yellow-600 prose-a:font-medium hover:prose-a:text-yellow-700 prose-strong:text-gray-900 prose-strong:font-bold prose-hr:border-yellow-200 prose-hr:my-8">
+            <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-yellow-400 prose-blockquote:bg-yellow-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-lg prose-blockquote:text-gray-800 prose-blockquote:font-medium prose-h3:mt-0 prose-h3:mb-6 prose-h3:text-2xl prose-h3:font-bold prose-h3:text-gray-900 prose-h3:flex prose-h3:items-center prose-h3:before:content-[''] prose-h3:before:w-1 prose-h3:before:h-8 prose-h3:before:bg-yellow-400 prose-h3:before:mr-3 prose-h3:before:flex-shrink-0 prose-p:mb-5 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-yellow-600 prose-a:font-medium hover:prose-a:text-yellow-700 prose-strong:text-gray-900 prose-strong:font-bold prose-hr:hidden">
               <MDXRemote source={pageData.content} />
             </div>
           </div>

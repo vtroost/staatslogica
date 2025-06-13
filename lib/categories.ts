@@ -10,21 +10,21 @@ export const categories: CategoryData[] = [
     name: 'Economie & Geld',
     slug: 'economie-geld',
     description: 'Analyses van economisch beleid, monetaire zaken en marktwerking',
-    topics: ['economie', 'inflatie', 'belasting', 'belastingen', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'marktverstoringen', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen', 'centrale-banken', 'loonvorming'],
+    topics: ['economie', 'inflatie', 'belasting', 'vrije-markt', 'fiatgeld', 'time preference', 'belastingen', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'marktverstoringen', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen', 'centrale-banken', 'loonvorming'],
     color: 'from-green-500 to-green-600'
   },
   {
     name: 'Overheidsmacht & Interventie',
     slug: 'overheidsmacht-interventie',
     description: 'Kritische analyses van staatsmacht en overheidsinterventie',
-    topics: ['overheidsmacht', 'interventie', 'technocratie', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie', 'centrale-planning', 'gezagskritiek'],
+    topics: ['overheidsmacht', 'interventie', 'technocratie','subsidies', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie', 'centrale-planning', 'gezagskritiek'],
     color: 'from-red-500 to-red-600'
   },
   {
     name: 'Politiek & Bestuur',
     slug: 'politiek-bestuur',
     description: 'Analyse van politieke processen, partijen en democratische instellingen',
-    topics: ['politiek', 'politieke partijen', 'coalitie', 'democratie', 'referenda', 'betrouwbare politici'],
+    topics: ['politiek', 'politieke partijen', 'publieke sector', 'coalitie', 'democratie', 'referenda', 'betrouwbare politici'],
     color: 'from-blue-500 to-blue-600'
   },
   {
@@ -66,7 +66,7 @@ export const categories: CategoryData[] = [
     name: 'Klimaat & Milieu',
     slug: 'klimaat-milieu',
     description: 'Kritische blik op klimaat- en milieubeleid',
-    topics: ['milieu-klimaat', 'milieu', 'klimaat'],
+    topics: ['milieu-klimaat', 'milieu', 'klimaat','klimaatverandering','klimaatbeleid'],
     color: 'from-emerald-500 to-emerald-600'
   }
 ];
