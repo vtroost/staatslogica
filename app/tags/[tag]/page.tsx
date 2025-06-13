@@ -1,11 +1,13 @@
 import { getAllArticles } from '@/lib/articles'; 
 import { getAllThinkers } from '@/lib/thinkers';
+import Breadcrumb from '@/components/Breadcrumb';
 import type { Article, ThinkerData } from '@/lib/types'; 
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
+import ArticleCard from '@/components/ArticleCard';
 
 // Define Params type
 type Params = {
@@ -86,53 +88,31 @@ export default async function TagPage({ params }: { params: Params }) {
     // Use all articles in the grid (no featured article)
     const taggedArticles = articles as ArticleWithSourceTitle[];
 
-    // Helper to render thinker links
-    const renderThinkerLinks = (thinkerSlugs: string[] | undefined, linkClassName: string) => {
-        if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
-        return (
-            <span>
-                Inspiratie: {thinkerSlugs.map((slugOrObject, idx) => {
-                    let currentSlug: string;
-                    let displayName: string;
-                    let key: string;
 
-                    if (typeof slugOrObject === 'string') {
-                        currentSlug = slugOrObject;
-                        key = slugOrObject;
-                        const thinker = allThinkers.find(t => t.slug === currentSlug);
-                        displayName = thinker ? thinker.name : currentSlug;
-                    } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
-                        currentSlug = (slugOrObject as any).slug || 'unknown-thinker';
-                        displayName = (slugOrObject as any).name || 'Unknown Thinker';
-                        key = currentSlug + '-' + idx;
-                    } else {
-                        return null;
-                    }
-
-                    return (
-                        <React.Fragment key={key}>
-                            {idx > 0 && ', '}
-                            <Link href={`/denkers/${currentSlug}`} className={linkClassName}>
-                                {displayName}
-                            </Link>
-                        </React.Fragment>
-                    );
-                })}
-            </span>
-        );
-    };
-
-    // Helper to get main tag for display
-    const getMainTag = (tags: string[] | undefined) => {
-        if (!tags || tags.length === 0) return null;
-        return tags[0];
-    };
 
     return (
         <>
+            {/* Compact Breadcrumb */}
+            <div className="w-full bg-yellow-500 border-b border-yellow-600">
+                <div className="max-w-6xl mx-auto">
+                    <Breadcrumb 
+                       items={[
+                         { label: 'Home', href: '/' },
+                         { label: 'Onderwerpen', href: '/onderwerpen' },
+                         { label: displayTagName }
+                       ]}
+                       variant="yellow"
+                     />
+                </div>
+            </div>
+
             {/* Header Section */}
-            <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+            <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
                 <div className="max-w-6xl mx-auto px-4">
+                    <div className="max-w-4xl text-left mb-8">
+                        
+                    </div>
+                    
                     <div className="text-center">
                         <div className="mb-6">
                             <span className="inline-block bg-black bg-opacity-30 text-white px-4 py-2 text-sm font-bold uppercase tracking-wide rounded">
@@ -161,69 +141,12 @@ export default async function TagPage({ params }: { params: Params }) {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {taggedArticles.map((article: ArticleWithSourceTitle) => (
-                                <article key={article.slug} className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
-                                    {/* Article Image */}
-                                    <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
-                                        {article.imageUrl ? (
-                                            <Image
-                                                src={article.imageUrl}
-                                                alt={article.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">
-                                                <div className="text-black text-4xl font-bold opacity-70">
-                                                    {article.title.charAt(0)}
-                                                </div>
-                                            </div>
-                                        )}
-                                        
-                                        {/* Main Tag Overlay */}
-                                        {getMainTag(article.tags) && (
-                                            <div className="absolute top-3 left-3 z-10">
-                                                <span className="inline-block bg-yellow-500 text-black px-3 py-1 text-xs font-bold uppercase tracking-wide rounded shadow-md">
-                                                    {getMainTag(article.tags)}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </Link>
-                                    
-                                    {/* Article Content */}
-                                    <div className="p-6">
-                                        {/* Title */}
-                                        <h3 className="text-xl font-bold mb-3 leading-tight">
-                                            <Link 
-                                                href={`/articles/${article.slug}`} 
-                                                className="text-gray-900 hover:text-yellow-600 transition-colors"
-                                            >
-                                                {article.title}
-                                            </Link>
-                                        </h3>
-                                        
-                                        {/* Metadata */}
-                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-3">
-                                            <span>{new Date(article.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}</span>
-                                            {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-bold")}
-                                        </div>
-                                        
-                                        {/* Spin/Description */}
-                                        {article.spin && (
-                                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                                {article.spin.length > 120 ? `${article.spin.substring(0, 120)}...` : article.spin}
-                                            </p>
-                                        )}
-                                        
-                                        {/* Read More */}
-                                        <Link 
-                                            href={`/articles/${article.slug}`} 
-                                            className="text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
-                                        >
-                                            Lees meer →
-                                        </Link>
-                                    </div>
-                                </article>
-                            ))}
+                            <ArticleCard 
+                                key={article.slug}
+                                article={article}
+                                allThinkers={allThinkers}
+                            />
+                        ))}
                         </div>
                 </div>
             </section>

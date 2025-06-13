@@ -27,6 +27,7 @@ export interface ThinkerData {
   articleCount: number; // Calculated
   bioContent?: string; // Full bio content from MD file
   title?: string; // Title from MD file frontmatter
+  stroming?: string; // Added stroming field
 }
 
 // --- Base Thinker Data from JSON ---
@@ -53,4 +54,15 @@ export interface CategoryData {
   topics: string[]; // Tags that belong to this category
   color: string;
   count?: number; // Optional count for performance tracking
+}
+
+// Add new interfaces for stromingen
+export interface Stroming {
+  slug: string;
+  name: string;
+  description: string;
+  detailedDescription?: string; // Extended description for the stroming page
+  keyPrinciples?: string[]; // Core principles of this stroming
+  color: string; // CSS color for badge
+  thinkers: string[]; // slugs of thinkers in this stroming
 } 

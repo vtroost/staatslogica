@@ -1,11 +1,13 @@
 import { getAllCategories, getCategoryBySlug, getArticlesByCategory, getCategoryColor, getOtherCategories, getCategoryContext } from '@/lib/categories';
 import { getAllThinkers } from '@/lib/thinkers';
+import Breadcrumb from '@/components/Breadcrumb';
 import type { Article } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import { notFound } from 'next/navigation';
+import ArticleCard from '@/components/ArticleCard';
 
 interface CategoryPageProps {
   params: {
@@ -54,46 +56,26 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   // Sort articles by date (newest first)
   articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  // Helper to render thinker links
-  const renderThinkerLinks = (thinkerSlugs: string[] | undefined, linkClassName: string) => {
-    if (!thinkerSlugs || thinkerSlugs.length === 0) return null;
-    return (
-      <span>
-        {thinkerSlugs.map((slugOrObject, idx) => {
-          let currentSlug: string;
-          let displayName: string;
-          let key: string;
 
-          if (typeof slugOrObject === 'string') {
-            currentSlug = slugOrObject;
-            key = slugOrObject;
-            const thinker = allThinkers.find(t => t.slug === currentSlug);
-            displayName = thinker ? thinker.name : currentSlug;
-          } else if (typeof slugOrObject === 'object' && slugOrObject !== null) {
-            currentSlug = (slugOrObject as any).slug || 'unknown-thinker';
-            displayName = (slugOrObject as any).name || 'Unknown Thinker';
-            key = currentSlug + '-' + idx;
-          } else {
-            return null;
-          }
-
-          return (
-            <React.Fragment key={key}>
-              {idx > 0 && ', '}
-              <Link href={`/denkers/${currentSlug}`} className={linkClassName}>
-                {displayName}
-              </Link>
-            </React.Fragment>
-          );
-        })}
-      </span>
-    );
-  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className={`${getCategoryColor(category.slug)} text-white py-16 relative overflow-hidden`}>
+    <>
+      {/* Compact Breadcrumb */}
+      <div className="w-full bg-yellow-500 border-b border-yellow-600">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumb 
+             items={[
+               { label: 'Home', href: '/' },
+               { label: 'Categorieën', href: '/categorieen' },
+               { label: category.name }
+             ]}
+             variant="yellow"
+           />
+        </div>
+      </div>
+
+      {/* Header Hero */}
+      <div className={`relative w-full py-10 md:py-12 overflow-hidden bg-gradient-to-r ${category.color}`}>
         {/* Background Images by Category */}
         {category.slug === 'economie-geld' && (
           <>
@@ -106,7 +88,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-green-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'overheidsmacht-interventie' && (
           <>
             <div 
@@ -118,7 +99,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-red-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'politiek-bestuur' && (
           <>
             <div 
@@ -130,7 +110,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-blue-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'begrotingsbeleid-bezuinigingen' && (
           <>
             <div 
@@ -142,7 +121,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-purple-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'vrijheid-individualisme' && (
           <>
             <div 
@@ -154,7 +132,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-yellow-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'mobiliteit-infrastructuur' && (
           <>
             <div 
@@ -166,7 +143,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-indigo-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'wonen-levensonderhoud' && (
           <>
             <div 
@@ -178,7 +154,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-teal-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'arbeid-actie' && (
           <>
             <div 
@@ -190,7 +165,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-orange-600 bg-opacity-70" />
           </>
         )}
-        
         {category.slug === 'klimaat-milieu' && (
           <>
             <div 
@@ -202,10 +176,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-emerald-600 bg-opacity-70" />
           </>
         )}
-
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-6 inline-block">
+            
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{category.name}</h1>
             <p className="text-xl md:text-2xl opacity-90 text-white">{category.description}</p>
           </div>
@@ -305,87 +279,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Artikelen</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {articles.map((article: ArticleWithSourceTitle) => (
-                    <article 
-                      key={article.slug} 
-                      className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group"
-                    >
-                      {/* Article Image */}
-                      <Link href={`/articles/${article.slug}`} className="block relative h-48 bg-gray-200">
-                        {article.imageUrl ? (
-                          <Image
-                            src={article.imageUrl}
-                            alt={article.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        ) : (
-                          <div className={`w-full h-full bg-gradient-to-br ${category.color} flex items-center justify-center`}>
-                            <div className="text-white text-4xl font-bold opacity-70">
-                              {article.title.charAt(0)}
-                            </div>
-                          </div>
-                        )}
-                      </Link>
-                      
-                      {/* Article Content */}
-                      <div className="p-6">
-                        {/* Title */}
-                        <h3 className="text-xl font-bold mb-3 leading-tight">
-                          <Link 
-                            href={`/articles/${article.slug}`} 
-                            className="text-gray-900 hover:text-yellow-600 transition-colors"
-                          >
-                            {article.title}
-                          </Link>
-                        </h3>
-                        
-                        {/* Metadata */}
-                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
-                          <span className="flex items-center">
-                            📅 {new Date(article.date).toLocaleDateString('nl-NL', { 
-                              year: 'numeric', 
-                              month: 'long', 
-                              day: 'numeric' 
-                            })}
-                          </span>
-                          {renderThinkerLinks(article.thinkers, "hover:underline text-yellow-600 font-medium")}
-                        </div>
-                        
-                        {/* Spin/Description */}
-                        {article.spin && (
-                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                            {article.spin.length > 120 ? `${article.spin.substring(0, 120)}...` : article.spin}
-                          </p>
-                        )}
-
-                        {/* Tags */}
-                        {article.tags && article.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {article.tags.slice(0, 3).map((tag, index) => (
-                              <span
-                                key={index}
-                                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                            {article.tags.length > 3 && (
-                              <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
-                                +{article.tags.length - 3}
-                              </span>
-                            )}
-                          </div>
-                        )}
-                        
-                        {/* Read More */}
-                        <Link 
-                          href={`/articles/${article.slug}`} 
-                          className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-bold text-sm transition-colors"
-                        >
-                          Lees artikel →
-                        </Link>
-                      </div>
-                    </article>
+                    <ArticleCard 
+                      key={article.slug}
+                      article={article}
+                      allThinkers={allThinkers}
+                      categoryColor={category.color}
+                    />
                   ))}
                 </div>
               </div>
@@ -416,6 +315,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Breadcrumb from '@/components/Breadcrumb';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -42,8 +43,21 @@ export default function AboutPage() {
   return (
     <div className="w-full min-h-screen">
       
+      {/* Compact Breadcrumb */}
+      <div className="w-full bg-yellow-500 border-b border-yellow-600">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumb 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Over' }
+            ]}
+            variant="yellow"
+          />
+        </div>
+      </div>
+
       {/* Header Section */}
-      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-4xl">
             {/* Title */}

@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import type { ThinkerData, Article } from './types'; // Import types
 import { generateSlug } from './utils'; // Import utility
 import { getAllArticles } from './articles'; // Import article functions
+import { getStromingForThinker } from './stromingen'; // Import stroming functions
 
 const thinkersContentDirectory = path.join(process.cwd(), 'content', 'thinkers');
 
@@ -99,6 +100,7 @@ export function getAllThinkers(): ThinkerData[] {
   const thinkers = allThinkerFiles.map(fileData => {
     const slug = fileData.slug;
     const count = articleCounts.get(slug) || 0;
+    const stroming = getStromingForThinker(slug);
     return {
       slug: slug,
       name: fileData.frontmatter.name,
@@ -106,6 +108,7 @@ export function getAllThinkers(): ThinkerData[] {
       works: fileData.frontmatter.works || [], // Directly from frontmatter
       quote: fileData.frontmatter.quote, // Directly from frontmatter
       articleCount: count,
+      stroming: stroming?.slug, // Add stroming information
       // bioContent is not included in this summary function for performance
     } as ThinkerData; // Asserting type, excluding bioContent
   });
@@ -133,6 +136,7 @@ export function getThinkerBySlug(slug: string): ThinkerData | null {
 
   const articles = getArticlesByThinker(slug);
   const articleCount = articles.length;
+  const stroming = getStromingForThinker(slug);
 
   return {
     slug: fileData.slug,
@@ -141,6 +145,7 @@ export function getThinkerBySlug(slug: string): ThinkerData | null {
     works: fileData.frontmatter.works || [],
     quote: fileData.frontmatter.quote,
     articleCount: articleCount,
+    stroming: stroming?.slug, // Add stroming information
     bioContent: fileData.content, // Include the bio content here
   };
 }

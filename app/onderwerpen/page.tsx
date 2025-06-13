@@ -1,5 +1,6 @@
 import { getAllArticles } from '@/lib/articles';
 import { getAllCategories, getCategoryForTag } from '@/lib/categories';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -107,11 +108,24 @@ export default function OnderwerpenPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+    <>
+      {/* Compact Breadcrumb */}
+      <div className="w-full bg-yellow-500 border-b border-yellow-600">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumb 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Onderwerpen' }
+            ]}
+            variant="yellow"
+          />
+        </div>
+      </div>
+
+      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-left">
+            
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-6 leading-tight">
               Onderwerpen
             </h1>
@@ -226,6 +240,6 @@ export default function OnderwerpenPage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 } 

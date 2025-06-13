@@ -1,5 +1,6 @@
 import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 import { getAllThinkers } from '@/lib/thinkers';
+import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -152,10 +153,25 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 }}
             />
             
+            {/* Compact Breadcrumb - moved outside yellow section */}
+            <div className="w-full bg-yellow-500 border-b border-yellow-600">
+                <div className="max-w-7xl mx-auto">
+                    <Breadcrumb 
+                      items={[
+                        { label: 'Home', href: '/' },
+                        { label: 'Artikelen' },
+                        { label: frontmatter.title }
+                      ]}
+                      variant="yellow"
+                    />
+                </div>
+            </div>
+            
             {/* Yellow accent strip */}
             <div className="w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
             
             <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+            
             <div className="flex flex-col lg:flex-row gap-8">
                 {/* Main Article Content */}
                 <article className="flex-1 max-w-2xl font-sans">

@@ -1,6 +1,7 @@
 import { getAllArticles } from '@/lib/articles';
 import { getAllThinkers } from '@/lib/thinkers';
 import { getAllCategories, getArticlesByCategory } from '@/lib/categories';
+import Breadcrumb from '@/components/Breadcrumb';
 import type { Article } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -119,10 +120,24 @@ export default function CategoriesPage() {
         }}
       />
 
+      {/* Compact Breadcrumb */}
+      <div className="w-full bg-yellow-500 border-b border-yellow-600">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumb 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Categorieën' }
+            ]}
+            variant="yellow"
+          />
+        </div>
+      </div>
+
       {/* Header */}
-      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
+      <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-left">
+            
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
               Analyses per Categorie
             </h1>

@@ -1,5 +1,8 @@
 import { getAllArticles } from '@/lib/articles';
 import { getAllThinkers, getThinkerBySlug } from '@/lib/thinkers';
+import { getStromingBySlug } from '@/lib/stromingen';
+import StromingBadge from '@/components/StromingBadge';
+import Breadcrumb from '@/components/Breadcrumb';
 import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -84,70 +87,114 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
     }
   }
 
+  // Get stroming information
+  const stroming = getStromingBySlug(thinker.stroming || '');
+
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row gap-10">
-      {/* Main Column: Bio and Image */}
-      <div className="flex-1 min-w-0">
-        <div className="flex flex-col items-center sm:flex-row sm:items-start gap-8 mb-10">
-          <div className="flex-shrink-0 flex flex-col items-center w-full sm:w-auto">
-            {imageExists ? (
-              <Image
-                src={imagePath}
-                alt={thinker.name}
-                width={160}
-                height={160}
-                className="rounded-full object-cover border border-gray-300 shadow-md w-36 h-36 sm:w-40 sm:h-40 mb-4 sm:mb-0"
-                priority
-              />
-            ) : (
-              <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-300 shadow-md mb-4 sm:mb-0">
-                <svg xmlns='http://www.w3.org/2000/svg' className='w-16 h-16' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 14c3.866 0 7-1.343 7-3V7a7 7 0 10-14 0v4c0 1.657 3.134 3 7 3z' /><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 14v7m0 0H9m3 0h3' /></svg>
-              </div>
-            )}
-          </div>
-          <div className="flex-1 w-full">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-center sm:text-left border-b pb-3">
-              {displayName}
-              {displayYears && (
-                <span className="ml-2 text-xl font-normal text-gray-500">({displayYears})</span>
-              )}
-            </h1>
-            {bioContent ? (
-              <div className="prose prose-lg max-w-none text-gray-800 mx-auto sm:mx-0">
-                <MDXRemote source={bioContent} />
-              </div>
-            ) : (
-              <p className="text-gray-500 text-center sm:text-left">Geen biografie beschikbaar.</p>
-            )}
-          </div>
+    <>
+      {/* Compact Breadcrumb */}
+      <div className="w-full bg-yellow-500 border-b border-yellow-600">
+        <div className="max-w-5xl mx-auto">
+          <Breadcrumb 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Denkers', href: '/denkers' },
+              { label: thinker.name }
+            ]}
+            variant="yellow"
+          />
         </div>
       </div>
-
-      {/* Sticky Sidebar: Article List */}
-      <aside className="w-full lg:w-80 flex-shrink-0 lg:pl-6">
-        <div className="lg:sticky lg:top-24">
-          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
-          {thinkerArticles.length > 0 ? (
-            <ul className="space-y-4">
-              {thinkerArticles.map(article => (
-                <li key={article.slug}>
-                  <Link href={`/articles/${article.slug}`} className="block group">
-                    <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-                      {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    </span>
-                    <br />
-                    <span className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-700 transition-colors">
-                      {article.title}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500">Geen artikelen gevonden die aansluiten bij het gedachtegoed van {thinker.name}.</p>
-          )}
+      
+      <div className="max-w-5xl mx-auto px-4 py-8 sm:py-12">
+        
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Main Column: Bio and Image */}
+          <div className="flex-1 min-w-0">
+          <div className="flex flex-col items-center sm:flex-row sm:items-start gap-6 mb-10">
+            <div className="flex-shrink-0 flex flex-col items-center w-full sm:w-48">
+              {imageExists ? (
+                <Image
+                  src={imagePath}
+                  alt={thinker.name}
+                  width={120}
+                  height={120}
+                  className="rounded-full object-cover border border-gray-300 shadow-md w-28 h-28 sm:w-32 sm:h-32"
+                  priority
+                />
+              ) : (
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-300 shadow-md">
+                  <svg xmlns='http://www.w3.org/2000/svg' className='w-16 h-16' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 14c3.866 0 7-1.343 7-3V7a7 7 0 10-14 0v4c0 1.657 3.134 3 7 3z' /><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 14v7m0 0H9m3 0h3' /></svg>
+                </div>
+              )}
+              
+              {/* Stroming Badge and Description - moved under image */}
+              {stroming && (
+                <div className="text-center mt-4 w-full">
+                  <div className="flex flex-col items-center gap-2 mb-3">
+                    <StromingBadge stroming={stroming} size="sm" />
+                    <Link 
+                      href={`/stromingen/${stroming.slug}`}
+                      className="text-xs text-yellow-600 hover:text-yellow-700 underline"
+                    >
+                      Meer over {stroming.name.toLowerCase()} →
+                    </Link>
+                  </div>
+                  <p className="text-xs text-gray-600 italic leading-relaxed">
+                    {displayName} behoort tot de {stroming.name.toLowerCase()}e stroming: {stroming.description.toLowerCase()}
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="flex-1 w-full">
+              <div className="mb-4">
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 text-center sm:text-left">
+                  {displayName}
+                  {displayYears && (
+                    <span className="ml-2 text-xl font-normal text-gray-500">({displayYears})</span>
+                  )}
+                </h1>
+                
+                <div className="border-b border-gray-200 pb-3"></div>
+              </div>
+              {bioContent ? (
+                <div className="prose prose-lg max-w-none text-gray-800 mx-auto sm:mx-0">
+                  <MDXRemote source={bioContent} />
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center sm:text-left">Geen biografie beschikbaar.</p>
+              )}
+            </div>
+          </div>
         </div>
-      </aside>
-    </div>
+
+        {/* Sticky Sidebar: Article List */}
+        <aside className="w-full lg:w-80 flex-shrink-0 lg:pl-6">
+          <div className="lg:sticky lg:top-24">
+            <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
+            {thinkerArticles.length > 0 ? (
+              <ul className="space-y-4">
+                {thinkerArticles.map(article => (
+                  <li key={article.slug}>
+                    <Link href={`/articles/${article.slug}`} className="block group">
+                      <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
+                        {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </span>
+                      <br />
+                      <span className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-700 transition-colors">
+                        {article.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-500">Geen artikelen gevonden die aansluiten bij het gedachtegoed van {thinker.name}.</p>
+            )}
+          </div>
+        </aside>
+        </div>
+      </div>
+    </>
   );
 } 
