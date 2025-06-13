@@ -45,16 +45,22 @@ export default function AboutPage() {
       {/* Header Section */}
       <section className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-left">
+          <div className="max-w-4xl">
             {/* Title */}
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
               Over Staatslogica
             </h1>
             
-            {/* Introduction */}
-            <div className="max-w-4xl">
-              <p className="text-lg text-black text-opacity-90 leading-relaxed">
-                Dagelijkse oefening in helder denken — we becommentariëren nieuws dat vaak gedachteloos het staatsnarratief herhaalt en zetten daar logica, consistentie en het non-agressieprincipe tegenover.
+            {/* Description */}
+            <div className="text-lg text-black text-opacity-90 leading-relaxed space-y-4">
+              <p className="text-xl font-bold text-black">
+                Dagelijkse oefening in helder denken.
+              </p>
+              <p>
+                Staatslogica becommentarieert nieuws dat gedachteloos het staatsnarratief herhaalt — berichten die dwang normaal maken, controle als vooruitgang verkopen, en collectieve offers verheerlijken.
+              </p>
+              <p className="text-base text-black text-opacity-90 leading-relaxed">
+                Wij zetten daar iets radicaal eenvoudigs tegenover: <strong>logica, consistentie en het non-agressieprincipe.</strong>
               </p>
             </div>
           </div>
@@ -64,12 +70,10 @@ export default function AboutPage() {
       {/* Content Section */}
       <section className="w-full bg-gray-50 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="bg-white rounded-lg shadow-sm p-8 md:p-12">
-              {/* Apply consistent prose styling */}
-              <div className="prose prose-lg max-w-none prose-h2:text-2xl prose-h2:font-bold prose-h2:text-gray-900 prose-h2:mb-4 prose-h2:mt-8 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg prose-strong:text-gray-900 prose-strong:font-bold prose-em:text-yellow-700 prose-em:font-medium prose-a:text-yellow-600 prose-a:font-medium hover:prose-a:text-yellow-700 prose-ul:my-6 prose-li:text-gray-700 prose-li:mb-2 prose-blockquote:border-l-4 prose-blockquote:border-yellow-400 prose-blockquote:bg-yellow-50 prose-blockquote:italic prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:text-gray-800 prose-blockquote:font-medium">
-                <MDXRemote source={pageData.content} />
-              </div>
+          <div className="max-w-5xl bg-white rounded-lg shadow-sm p-8 md:p-12">
+            {/* Content with consistent website styling */}
+            <div className="prose prose-lg max-w-none prose-blockquote:border-l-4 prose-blockquote:border-yellow-400 prose-blockquote:bg-yellow-50 prose-blockquote:italic prose-blockquote:pl-4 prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-lg prose-blockquote:text-gray-800 prose-blockquote:font-medium prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-2xl prose-h3:font-bold prose-h3:text-gray-900 prose-p:mb-5 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-yellow-600 prose-a:font-medium hover:prose-a:text-yellow-700 prose-strong:text-gray-900 prose-strong:font-bold prose-hr:border-yellow-200 prose-hr:my-8">
+              <MDXRemote source={pageData.content} />
             </div>
           </div>
         </div>

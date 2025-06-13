@@ -135,6 +135,28 @@ Murray Rothbard toonde aan dat de staat...
 **Conclusie: De staat is moreel bankroet.**
 ```
 
+#### 4. Controleer Tag Categorieën
+**BELANGRIJK**: Alle tags moeten toegewezen zijn aan een categorie in `lib/categories.ts`.
+
+```bash
+# Voer deze check uit na het toevoegen van nieuwe artikelen
+node scripts/check-tags.js
+```
+
+Zorg ervoor dat:
+- Alle tags uit je artikel voorkomen in een van de categorieën in `lib/categories.ts`
+- Nieuwe tags worden toegevoegd aan de juiste categorie
+- De check toont `Unmapped tags: 0`
+
+Als er unmapped tags zijn, voeg ze toe aan de juiste categorie in `lib/categories.ts`:
+
+```typescript
+{
+  name: 'Economie & Geld',
+  topics: ['economie', 'inflatie', 'NIEUWE-TAG-HIER', ...]
+}
+```
+
 ### Content Richtlijnen
 
 #### Tags (gebruik Nederlandse termen)
@@ -179,6 +201,7 @@ npm run type-check   # TypeScript check
 # Content helpers
 npm run validate-content  # Validate all MDX files
 npm run generate-sitemap  # Generate sitemap locally
+node scripts/check-tags.js # Check all tags are mapped to categories
 ```
 
 ### Code Conventies

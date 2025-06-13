@@ -10,14 +10,14 @@ export const categories: CategoryData[] = [
     name: 'Economie & Geld',
     slug: 'economie-geld',
     description: 'Analyses van economisch beleid, monetaire zaken en marktwerking',
-    topics: ['economie', 'inflatie', 'belasting', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen'],
+    topics: ['economie', 'inflatie', 'belasting', 'belastingen', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'marktverstoringen', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen', 'centrale-banken', 'loonvorming'],
     color: 'from-green-500 to-green-600'
   },
   {
     name: 'Overheidsmacht & Interventie',
     slug: 'overheidsmacht-interventie',
     description: 'Kritische analyses van staatsmacht en overheidsinterventie',
-    topics: ['overheidsmacht', 'interventie', 'technocratie', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie'],
+    topics: ['overheidsmacht', 'interventie', 'technocratie', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie', 'centrale-planning', 'gezagskritiek'],
     color: 'from-red-500 to-red-600'
   },
   {
@@ -52,7 +52,7 @@ export const categories: CategoryData[] = [
     name: 'Wonen & Levensonderhoud',
     slug: 'wonen-levensonderhoud',
     description: 'Onderzoek naar woningmarkt en demografische ontwikkelingen',
-    topics: ['woningmarkt', 'geboortecijfer'],
+    topics: ['woningmarkt', 'woningbouw', 'geboortecijfer'],
     color: 'from-teal-500 to-teal-600'
   },
   {
