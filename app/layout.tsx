@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers. Satirisch, scherp en altijd principieel.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/apple-touch-icon.png',
         width: 1200,
         height: 630,
         alt: 'Staatslogica !',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Staatslogica !',
     description: 'Ontmasker staatspropaganda met heldere analyses geïnspireerd door grote libertarische denkers.',
-    images: ['/og-image.jpg'],
+    images: ['/apple-touch-icon.png'],
   },
   robots: {
     index: true,
