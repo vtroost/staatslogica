@@ -177,62 +177,55 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </>
         )}
         
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-6 inline-block">
-            
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{category.name}</h1>
-            <p className="text-xl md:text-2xl opacity-90 text-white">{category.description}</p>
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
+          <div className="max-w-4xl">
+            <div className="flex items-start justify-between mb-4">
+              <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-6 inline-block text-left">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{category.name}</h1>
+                <p className="text-xl md:text-2xl opacity-90 text-white">{category.description}</p>
+              </div>
+              <Link 
+                href="/categorieen"
+                className="inline-flex items-center gap-2 bg-black bg-opacity-20 text-white px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-medium text-sm whitespace-nowrap ml-4"
+              >
+                ← Alle categorieën
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Libertarian Perspective Section - Modern Design */}
-        <div className="mb-12">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Libertarisch Perspectief</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Onze analyse van deze categorie vanuit de principes van individuele vrijheid, eigendomsrechten en vrije markten.
-            </p>
+      {/* Libertarian Perspective Section - Consistent with Denkers page style */}
+      <section className="w-full bg-gray-50 py-8 md:py-10 border-t-4 border-yellow-400">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="mb-8">
+            <div className="flex items-center mb-6">
+              <div className="w-1 h-8 bg-yellow-400 mr-3"></div>
+              <h2 className="text-2xl font-bold text-gray-900">Libertarisch Perspectief</h2>
+            </div>
+            <div className="flex-1 text-gray-700 leading-relaxed space-y-4 mb-6">
+              <p>
+                Onze analyse van deze categorie vanuit de principes van individuele vrijheid, eigendomsrechten en vrije markten.
+              </p>
+            </div>
           </div>
           
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Our Position Card */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">Ons Standpunt</h3>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm">{context.libertarianPerspective}</p>
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Ons Standpunt</h3>
+              <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
             </div>
 
             {/* Analysis Approach Card */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">Analysebenadering</h3>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm">{context.analysisApproach}</p>
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Analysebenadering</h3>
+              <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
             </div>
 
             {/* Key Thinkers Card */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
-                  <svg className="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">Belangrijke Denkers</h3>
-              </div>
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6 md:col-span-2 lg:col-span-1">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Belangrijke Denkers</h3>
               <div className="flex flex-wrap gap-2">
                 {context.keyThinkers.map((thinker) => {
                   // Check if this thinker has a profile by comparing names
@@ -269,50 +262,35 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Main Content Area with Sidebar */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Main Content - Articles */}
-          <div className="flex-1">
-            {articles.length > 0 ? (
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Artikelen</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {articles.map((article: ArticleWithSourceTitle) => (
-                    <ArticleCard 
-                      key={article.slug}
-                      article={article}
-                      allThinkers={allThinkers}
-                      categoryColor={category.color}
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-                <h2 className="text-xl font-semibold text-gray-600 mb-2">Geen artikelen gevonden</h2>
-                <p className="text-gray-500">Er zijn nog geen artikelen in deze categorie.</p>
-              </div>
-            )}
-          </div>
+      <div className="max-w-6xl mx-auto px-4 py-12">
 
-          {/* Sidebar - Other Categories */}
-          <div className="lg:w-80">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Ontdek andere categorieën</h3>
-              <div className="space-y-3">
-                {otherCategories.map((cat) => (
-                  <Link 
-                    key={cat.slug} 
-                    href={`/categorieen/${cat.slug}`}
-                    className={`block px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 transform ${getCategoryColor(cat.slug)} text-white hover:shadow-md`}
-                  >
-                    {cat.name}
-                  </Link>
+        {/* Main Content - Articles */}
+        <div>
+          {articles.length > 0 ? (
+            <div>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-yellow-500"></div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Artikelen</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {articles.map((article: ArticleWithSourceTitle) => (
+                  <ArticleCard 
+                    key={article.slug}
+                    article={article}
+                    allThinkers={allThinkers}
+                    categoryColor={category.color}
+                  />
                 ))}
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="text-center py-12 bg-white rounded-lg shadow-sm">
+              <h2 className="text-xl font-semibold text-gray-600 mb-2">Geen artikelen gevonden</h2>
+              <p className="text-gray-500">Er zijn nog geen artikelen in deze categorie.</p>
+            </div>
+          )}
         </div>
       </div>
     </>
