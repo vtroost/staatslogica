@@ -141,7 +141,7 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
                     </Link>
                   </div>
                   <p className="text-xs text-gray-600 italic leading-relaxed">
-                    {displayName} behoort tot de {stroming.name.toLowerCase()}e stroming: {stroming.description.toLowerCase()}
+                    {displayName} behoort tot de {stroming.name.toLowerCase()}{stroming.name.toLowerCase().endsWith('isme') ? '' : 'e'} stroming: {stroming.description.toLowerCase()}
                   </p>
                 </div>
               )}

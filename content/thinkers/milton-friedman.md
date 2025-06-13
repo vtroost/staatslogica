@@ -44,8 +44,8 @@ Dit boek maakte Friedman tot een publiek intellectueel. Hij legt uit waarom kapi
 - **Onderwijs via vouchers**  
   Ouders moeten kunnen kiezen welke school hun kinderen bezoeken. Concurrentie tussen scholen verbetert de kwaliteit van onderwijs.
 
-- **Geen minimumloonen**  
-  Minimumloonen kosten werkgelegenheid, vooral voor laaggeschoolden. De markt bepaalt loonen efficiënter dan politici.
+- **Geen minimumlonen**  
+  Minimumlonen kosten werkgelegenheid, vooral voor laaggeschoolden. De markt bepaalt lonen efficiënter dan politici.
 
 - **Liberale immigratie**  
   Vrije beweging van mensen verhoogt de welvaart, net als vrije beweging van goederen en kapitaal.
