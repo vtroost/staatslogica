@@ -169,7 +169,7 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
         </div>
 
         {/* Sticky Sidebar: Article List */}
-        <aside className="w-full lg:w-80 flex-shrink-0 lg:pl-6">
+        <aside className="w-full lg:w-64 flex-shrink-0 lg:pl-6">
           <div className="lg:sticky lg:top-24">
             <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
             {thinkerArticles.length > 0 ? (
