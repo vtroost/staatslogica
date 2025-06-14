@@ -132,15 +132,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-yellow-600 bg-opacity-70" />
           </>
         )}
-        {category.slug === 'mobiliteit-infrastructuur' && (
+        {category.slug === 'oorlog-veiligheid' && (
           <>
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: 'url(https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
+                backgroundImage: 'url(https://www.defensie.nl/binaries/content/gallery/defensie/content-afbeeldingen/actueel/nieuws/2024/12/06/kisten.jpg?download)'
               }}
             />
-            <div className="absolute inset-0 bg-indigo-600 bg-opacity-70" />
+            <div className="absolute inset-0 bg-slate-600 bg-opacity-70" />
           </>
         )}
         {category.slug === 'wonen-levensonderhoud' && (
@@ -154,17 +154,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="absolute inset-0 bg-teal-600 bg-opacity-70" />
           </>
         )}
-        {category.slug === 'arbeid-actie' && (
-          <>
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: 'url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)'
-              }}
-            />
-            <div className="absolute inset-0 bg-orange-600 bg-opacity-70" />
-          </>
-        )}
+
         {category.slug === 'klimaat-milieu' && (
           <>
             <div 

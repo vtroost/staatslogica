@@ -17,7 +17,7 @@ export const categories: CategoryData[] = [
     name: 'Overheidsmacht & Interventie',
     slug: 'overheidsmacht-interventie',
     description: 'Ontrafelingen van dwang, planning en marktverstoring',
-    topics: ['overheidsmacht', 'interventie', 'technocratie','subsidies', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie', 'centrale-planning', 'gezagskritiek'],
+    topics: ['overheidsmacht', 'interventie', 'technocratie','subsidies', 'bureaucratie', 'controle', 'surveillance', 'autoritarisme', 'regelgeving', 'staatsmacht', 'centralisatie', 'dwang', 'propaganda', 'overheid', 'staatsmonopolie', 'overheidsinterventie', 'centrale-planning', 'gezagskritiek', 'NS', 'infrastructuur', 'mobiliteit', 'verkeersboetes', 'staking', 'arbeidsongeschiktheid'],
     color: 'from-red-500 to-red-600'
   },
   {
@@ -42,11 +42,11 @@ export const categories: CategoryData[] = [
     color: 'from-yellow-500 to-yellow-600'
   },
   {
-    name: 'Mobiliteit & Infrastructuur',
-    slug: 'mobiliteit-infrastructuur',
-    description: 'Van spoor tot boete: hoe de staat beweging eerst reguleert en daarna beboet',
-    topics: ['NS', 'infrastructuur', 'mobiliteit', 'verkeersboetes'],
-    color: 'from-indigo-500 to-indigo-600'
+    name: 'Oorlog & Veiligheid',
+    slug: 'oorlog-veiligheid',
+    description: 'Hoe oorlog de gezondheid van de staat wordt en veiligheid een excuus voor controle',
+    topics: ['oorlog', 'defensie', 'veiligheid', 'militaire-interventie', 'buitenlandse-politiek', 'terrorisme', 'oorlogseconomie', 'militair-industrieel-complex', 'neutraliteit', 'zelfverdediging', 'geopolitiek'],
+    color: 'from-slate-500 to-slate-600'
   },
   {
     name: 'Wonen & Levensonderhoud',
@@ -54,13 +54,6 @@ export const categories: CategoryData[] = [
     description: 'Wanneer woningnood niet het gevolg is van schaarste, maar van beleid',
     topics: ['woningmarkt', 'woningbouw', 'geboortecijfer'],
     color: 'from-teal-500 to-teal-600'
-  },
-  {
-    name: 'Arbeid & Actie',
-    slug: 'arbeid-actie',
-    description: 'Over stakingen, regels, en het eigendom van je eigen arbeid',
-    topics: ['staking','arbeidsongeschiktheid'],
-    color: 'from-orange-500 to-orange-600'
   },
   {
     name: 'Klimaat & Milieu',
@@ -206,15 +199,15 @@ export function getCategoryContext(categorySlug: string): {
       content: 'Vrijheid is niet het recht om te doen wat je wilt, maar het recht om met rust gelaten te worden. Collectivisme presenteert zich als solidariteit, maar het is gewoon individuele verantwoordelijkheid uitbesteed aan de staat.\n\nPositieve rechten zijn altijd iemand anders zijn verplichtingen. "Rechten" op huisvesting, zorg of onderwijs zijn eigenlijk claims op andermans arbeid. Echte rechten kosten anderen niets — ze vragen alleen rust.\n\nCollectieve besluitvorming wordt gebruikt om individuele keuzes te overstijgen. Democratie wordt gebruikt om minderheidsrechten te schenden. Solidariteit wordt afgedwongen met belastingen en boetes.',
       keyThinkers: ['John Stuart Mill', 'Robert Nozick', 'Murray Rothbard', 'Ayn Rand', 'Lysander Spooner', 'Larken Rose'],
       quote: 'The only purpose for which power can be rightfully exercised over any member of a civilized community, against his will, is to prevent harm to others.',
-      quoteAuthor: 'John Stuart Mill',
+            quoteAuthor: 'John Stuart Mill',
       quoteSource: 'On Liberty, 1859'
     },
-    'mobiliteit-infrastructuur': {
-      content: 'Publieke infrastructuur wordt vaak gepresenteerd als een vanzelfsprekende taak van de staat. Maar wat gebeurt er als die infrastructuur gegijzeld wordt door monopolie en dwang? Van spoorwegen tot snelwegen: centralisatie leidt zelden tot snelheid, laat staan tot service.\n\nWanneer één aanbieder gegarandeerde macht krijgt — beschermd tegen concurrentie — verdwijnen de prikkels om te verbeteren. Monopolies zoals de NS of overheidswegen zijn geen toevalligheden, maar het gevolg van bewust uitgesloten alternatieven.\n\nSubsidies, regulering en centrale aansturing leiden tot misallocatie van middelen, technische stilstand en frustratie bij gebruikers. Innovatie laat zich immers niet afdwingen, maar ontstaat wanneer dienstverleners moeten strijden om vertrouwen en klanten.',
-      keyThinkers: ['Murray Rothbard', 'Walter Block', 'Gabriel Roth', 'Daniel Klein'],
-      quote: 'Free-market capitalism is a network of free and voluntary exchanges in which producers work, produce, and exchange their products for the products of others through prices voluntarily arrived at.',
-      quoteAuthor: 'Murray Rothbard',
-      quoteSource: 'For a New Liberty, 1973'
+    'oorlog-veiligheid': {
+      content: 'Oorlog is de gezondheid van de staat, zoals Randolph Bourne al schreef in 1918. Niets vergroot overheidsmacht zo effectief als oorlog of de dreiging ervan. Burgerrechten verdwijnen, belastingen stijgen, en dissidenten worden het zwijgen opgelegd — allemaal in naam van nationale veiligheid.\n\nHet militair-industrieel complex gedijt bij conflict, niet bij vrede. Buitenlandse interventies worden verkocht als humanitaire missies, maar dienen meestal strategische of economische belangen. Defensie-uitgaven zijn vaak meer over subsidie aan wapenindustrie dan over werkelijke verdediging.\n\nEchte veiligheid ontstaat door vrije handel, diplomatiek en het respecteren van soevereiniteit — niet door militaire projectie of regime change. Neutraliteit en niet-agressie zijn geen zwakte, maar wijsheid.',
+      keyThinkers: ['Murray Rothbard', 'Robert Higgs', 'Randolph Bourne', 'Ron Paul', 'Lysander Spooner', 'Ludwig von Mises'],
+      quote: 'War is the health of the state. It automatically sets in motion throughout society those irresistible forces for uniformity, for passionate cooperation with the government.',
+      quoteAuthor: 'Randolph Bourne',
+      quoteSource: 'The State, 1918'
     },
     'wonen-levensonderhoud': {
       content: 'Woningnood wordt vaak gepresenteerd als een gevolg van schaarste, maar schaarste is zelden natuurlijk. Wanneer bouwen verboden wordt, prijzen gecontroleerd worden, en eigendom belast wordt, ontstaat er kunstmatige schaarste.\n\nHuurcontrole beschermt zittende huurders ten koste van nieuwe huurders. Sociale woningbouw verdringt private woningbouw. Planningsregels beschermen bestaande eigenaren tegen concurrentie van nieuwe ontwikkelingen.\n\nElke interventie in de woningmarkt lost één probleem op door drie nieuwe te creëeren. Huurcontrole leidt tot onderhoudstekort, sociale woningbouw tot wachtlijsten, en bestemmingsplannen tot schaarste.',
@@ -223,13 +216,7 @@ export function getCategoryContext(categorySlug: string): {
       quoteAuthor: 'Thomas Sowell',
       quoteSource: 'Basic Economics, 2000'
     },
-    'arbeid-actie': {
-      content: 'Arbeid is een uitwisseling van waarde tussen vrijwillige partijen. Maar wat als die vrijwilligheid wordt weggenomen door regels, minimumlonen en stakingsrecht? Dan wordt samenwerking vervangen door dwang.\n\nMinimumlonen beschermen niet laaggeschoolden, maar sluiten ze uit van de arbeidsmarkt. Arbeidsregulering beschermt niet werknemers, maar maakt ze duurder. Stakingsrecht beschermt niet arbeiders, maar vakbondsmacht.\n\nElke arbeidsregel die werknemers moet beschermen, maakt hen duurder en dus minder inzetbaar. Het resultaat is niet betere arbeidsomstandigheden, maar minder banen.',
-      keyThinkers: ['Murray Rothbard', 'Walter Williams', 'Thomas Sowell', 'Morgan Reynolds'],
-      quote: 'The minimum wage law is most properly described as a law saying employers must discriminate against people who have low skills.',
-      quoteAuthor: 'Thomas Sowell',
-      quoteSource: 'Ethnic America, 1981'
-    },
+
     'klimaat-milieu': {
       content: 'Klimaatpaniek wordt gepresenteerd als wetenschap, maar het is vaak politiek. Morele paniek is een krachtig instrument om individuele vrijheden in te perken en staatsmacht uit te breiden — en dat weten beleidsmakers maar al te goed.\n\nKlimaatbeleid treft altijd de armen het hardst en de rijken het minst. Koolstofbelastingen zijn regressief, energie-armoede is reëel, en groene subsidies gaan naar de connecties van politici, niet naar effectieve oplossingen.\n\nEigendomsrechten beschermen het milieu beter dan regulering. Vervuiling is vaak een gevolg van onduidelijke eigendom, niet van teveel vrijheid. Innovatie ontstaat door concurrentie, niet door centrale planning.',
       keyThinkers: ['Murray Rothbard', 'Walter Block', 'Terry Anderson', 'Julian Simon'],
