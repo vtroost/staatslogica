@@ -195,69 +195,126 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </div>
 
-      {/* Libertarian Perspective Section - Consistent with Denkers page style */}
+      {/* Libertarian Perspective Section - New narrative approach */}
       <section className="w-full bg-gray-50 py-8 md:py-10 border-t-4 border-yellow-400">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="mb-8">
-            <div className="flex items-center mb-6">
-              <div className="w-1 h-8 bg-yellow-400 mr-3"></div>
-              <h2 className="text-2xl font-bold text-gray-900">Libertarisch Perspectief</h2>
-            </div>
-            <div className="flex-1 text-gray-700 leading-relaxed space-y-4 mb-6">
-              <p>
-                Onze analyse van deze categorie vanuit de principes van individuele vrijheid, eigendomsrechten en vrije markten.
-              </p>
-            </div>
+          <div className="flex items-center mb-6">
+            <div className="w-1 h-8 bg-yellow-400 mr-3"></div>
+            <h2 className="text-2xl font-bold text-gray-900">{category.name} onder de loep</h2>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Our Position Card */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Ons Standpunt</h3>
-              <p className="text-gray-700 leading-relaxed">{context.libertarianPerspective}</p>
+                    <div className="grid lg:grid-cols-3 gap-8">
+            {/* Main content - left 2/3 */}
+            <div className="lg:col-span-2">
+              <div className="text-gray-700 leading-relaxed space-y-6 mb-8">
+                {context.content.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className={index === 0 ? "text-lg" : ""}>
+                    {paragraph}
+                  </p>
+                ))}
+                
+                {/* Quote section with thinker silhouette */}
+                <blockquote className="border-l-4 border-yellow-400 pl-6 py-4 bg-white rounded-r-lg shadow-sm my-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      {(() => {
+                        // Find thinker profile for the quote author
+                        const quoteThinker = allThinkers.find(t => 
+                          t.name === context.quoteAuthor || 
+                          t.name.toLowerCase() === context.quoteAuthor.toLowerCase() ||
+                          t.name.replace(/\./g, '').trim() === context.quoteAuthor.replace(/\./g, '').trim()
+                        );
+                        
+                        if (quoteThinker) {
+                          return (
+                            <Link
+                              href={`/denkers/${quoteThinker.slug}`}
+                              className="group block"
+                            >
+                              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-500 group-hover:scale-105 transition-transform duration-200 flex items-center justify-center">
+                                <Image
+                                  src={`/uploads/${quoteThinker.slug}.png`}
+                                  alt={quoteThinker.name}
+                                  width={64}
+                                  height={64}
+                                  className="object-cover opacity-90"
+                                  style={{ 
+                                    mixBlendMode: 'multiply'
+                                  }}
+                                />
+                              </div>
+                            </Link>
+                          );
+                        } else {
+                          return (
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-black opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14c3.866 0 7-1.343 7-3V7a7 7 0 10-14 0v4c0 1.657 3.134 3 7 3z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14v7m0 0H9m3 0h3" />
+                              </svg>
+                            </div>
+                          );
+                        }
+                      })()}
+                    </div>
+                    <div className="flex-1">
+                                             <p className="text-gray-800 italic text-lg leading-relaxed mb-2">
+                         "{context.quote}"
+                       </p>
+                       <footer className="text-gray-600 text-sm">
+                         — {context.quoteAuthor}
+                         {context.quoteSource && (
+                           <span className="text-gray-500 text-xs ml-2">
+                             ({context.quoteSource})
+                           </span>
+                         )}
+                       </footer>
+                    </div>
+                  </div>
+                </blockquote>
+              </div>
             </div>
-
-            {/* Analysis Approach Card */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Analysebenadering</h3>
-              <p className="text-gray-700 leading-relaxed">{context.analysisApproach}</p>
-            </div>
-
-            {/* Key Thinkers Card */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow p-6 md:col-span-2 lg:col-span-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Belangrijke Denkers</h3>
-              <div className="flex flex-wrap gap-2">
-                {context.keyThinkers.map((thinker) => {
-                  // Check if this thinker has a profile by comparing names
-                  const thinkerProfile = allThinkers.find(t => 
-                    t.name === thinker || 
-                    t.name.toLowerCase() === thinker.toLowerCase() ||
-                    t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
-                  );
-                  
-                  if (thinkerProfile) {
-                    // Render as clickable link with colored background
-                    return (
-                      <Link
-                        key={thinker}
-                        href={`/denkers/${thinkerProfile.slug}`}
-                        className="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-xs font-medium transition-colors hover:scale-105 transform"
-                      >
-                        {thinker}
-                      </Link>
+            
+            {/* Sidebar - right 1/3 */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Voor wie verder wil denken</h3>
+                <p className="text-gray-700 mb-4 text-sm">
+                  De inzichten in deze categorie zijn geïnspireerd door economen en denkers die marktwerking doordenken tot in de details:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {context.keyThinkers.map((thinker) => {
+                    // Check if this thinker has a profile by comparing names
+                    const thinkerProfile = allThinkers.find(t => 
+                      t.name === thinker || 
+                      t.name.toLowerCase() === thinker.toLowerCase() ||
+                      t.name.replace(/\./g, '').trim() === thinker.replace(/\./g, '').trim()
                     );
-                  } else {
-                    // Render as regular span
-                    return (
-                      <span 
-                        key={thinker} 
-                        className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium"
-                      >
-                        {thinker}
-                      </span>
-                    );
-                  }
-                })}
+                    
+                    if (thinkerProfile) {
+                      // Render as clickable link with colored background
+                      return (
+                        <Link
+                          key={thinker}
+                          href={`/denkers/${thinkerProfile.slug}`}
+                          className="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-sm font-medium transition-colors hover:scale-105 transform"
+                        >
+                          {thinker}
+                        </Link>
+                      );
+                    } else {
+                      // Render as regular span
+                      return (
+                        <span 
+                          key={thinker} 
+                          className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium"
+                        >
+                          {thinker}
+                        </span>
+                      );
+                    }
+                  })}
+                </div>
               </div>
             </div>
           </div>

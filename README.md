@@ -247,33 +247,22 @@ node scripts/check-tags.js # Check all tags are mapped to categories
 ### Veelvoorkomende Issues
 
 **Artikel verschijnt niet**
-```bash
-# Check bestandsnaam format
-ls content/articles/2025-01-20-titel.mdx
+- **Oorzaak**: Ongeldige `date` in frontmatter of incorrect bestandsnaamformaat.
+- **Oplossing**: Zorg dat de datum `YYYY-MM-DD` is en in de toekomst ligt. Hernoem het bestand correct.
 
-# Valideer frontmatter
-npm run validate-content
+**Tags worden niet herkend**
+- **Oorzaak**: Tag is niet toegewezen aan een categorie in `lib/categories.ts`.
+- **Oplossing**: Voer `node scripts/check-tags.js` uit en voeg de niet-gemapte tag toe.
 
-# Restart dev server
-npm run dev
-```
+### Styling Issues
 
-**Build errors**
-```bash
-# Check TypeScript errors
-npm run type-check
-
-# Validate MDX files
-npm run validate-content
-
-# Clean and rebuild
-rm -rf .next && npm run build
-```
-
-**Afbeelding laadt niet**
-- Controleer URL toegankelijkheid
-- Test afbeelding formaat (JPG/PNG/WebP)
-- Verificeer Content-Type headers
+**Denker afbeeldingen (silhouetten) hebben inconsistente kleuren**
+- **Oorzaak**: Sommige bronafbeeldingen voor denkers hebben een witte achtergrond, terwijl andere een transparante achtergrond hebben. Eerdere pogingen met `filter: grayscale()` losten dit niet correct op en resulteerden in grijze tinten.
+- **Oplossing**: De `style` prop op de `Image` componenten is aangepast naar `mix-blend-mode: 'multiply'`. Dit zorgt ervoor dat de witte delen van de afbeelding de gele achtergrondkleur van de container overnemen, wat resulteert in een consistente "zwart met geel" weergave voor alle denkers. Deze wijziging is doorgevoerd in:
+  - `app/denkers/DenkersContent.tsx`
+  - `app/stromingen/[slug]/page.tsx`
+  - `app/categorieen/[slug]/page.tsx`
+  - `app/articles/[slug]/page.tsx`
 
 ## 📈 Analytics & Monitoring
 

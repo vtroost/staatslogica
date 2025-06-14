@@ -14,7 +14,7 @@ export const STROMINGEN: Stroming[] = [
       'Spontane orde door vrijwillige uitwisseling'
     ],
     color: 'bg-gray-100 text-gray-800 border border-gray-200',
-    thinkers: ['adam-smith', 'friedrich-hayek', 'milton-friedman', 'henry-hazlitt', 'ron-paul']
+    thinkers: ['adam-smith', 'friedrich-hayek', 'milton-friedman', 'henry-hazlitt', 'ron-paul', 'walter-williams', 'edward-glaeser', 'thomas-sowell', 'alberto-alesina', 'john-stuart-mill']
   },
   {
     slug: 'libertarier',
@@ -29,7 +29,7 @@ export const STROMINGEN: Stroming[] = [
       'Extreme skepsis jegens alle vormen van staatsmacht'
     ],
     color: 'bg-gray-100 text-gray-800 border border-gray-200',
-    thinkers: ['ayn-rand', 'frederic-bastiat', 'ludwig-von-mises', 'saifedean-ammous']
+    thinkers: ['ayn-rand', 'frederic-bastiat', 'ludwig-von-mises', 'saifedean-ammous', 'richard-epstein', 'robert-higgs', 'james-buchanan', 'robert-nozick']
   },
   {
     slug: 'anarcho-kapitalistisch',
@@ -44,7 +44,7 @@ export const STROMINGEN: Stroming[] = [
       'Vrijwillige financiering van alle diensten'
     ],
     color: 'bg-gray-100 text-gray-800 border border-gray-200',
-    thinkers: ['murray-rothbard', 'walter-block', 'jesus-huerta-de-soto']
+    thinkers: ['murray-rothbard', 'walter-block', 'jesus-huerta-de-soto', 'hans-hermann-hoppe', 'gustave-de-molinari', 'frank-van-dun']
   },
   {
     slug: 'anarchistisch',
