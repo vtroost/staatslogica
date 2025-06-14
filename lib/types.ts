@@ -3,6 +3,7 @@
 export interface ArticleFrontmatter {
   title: string;
   date: string;
+  published?: boolean;
   tags?: string[];
   thinkers?: string[];
   spin?: string;

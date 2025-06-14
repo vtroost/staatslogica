@@ -10,6 +10,12 @@ let articlesCache: Article[] | null = null;
 let cacheTimestamp = 0;
 const CACHE_DURATION = 60000; // 1 minute in production, shorter for development
 
+// Function to clear cache (useful for development)
+export function clearArticlesCache() {
+  articlesCache = null;
+  cacheTimestamp = 0;
+}
+
 /**
  * Reads all .mdx files from the articles directory, parses their frontmatter,
  * and returns an array of article objects with caching for performance.
@@ -63,7 +69,15 @@ export function getAllArticles(): Article[] {
         // Return a placeholder or skip this file
         return { slug, title: 'Error Loading Article', date: 'Unknown Date' } as Article;
     }
-  }).filter(article => article.title !== 'Error Loading Article' && article.title !== 'Untitled'); // Filter out articles with errors/missing data
+  }).filter(article => {
+    // Filter out articles with errors/missing data
+    if (article.title === 'Error Loading Article' || article.title === 'Untitled') {
+      return false;
+    }
+    // Filter out unpublished articles (published: false)
+    // Articles without published field or with published: true are included
+    return article.published !== false;
+  });
 
   // Update cache
   articlesCache = articles;
