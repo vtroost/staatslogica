@@ -14,7 +14,7 @@ export const STROMINGEN: Stroming[] = [
       'Spontane orde door vrijwillige uitwisseling'
     ],
     color: 'bg-gray-100 text-gray-800 border border-gray-200',
-    thinkers: ['adam-smith', 'friedrich-hayek', 'milton-friedman', 'henry-hazlitt', 'ron-paul', 'walter-williams', 'edward-glaeser', 'thomas-sowell', 'alberto-alesina', 'john-stuart-mill']
+    thinkers: ['carl-menger', 'adam-smith', 'friedrich-hayek', 'milton-friedman', 'henry-hazlitt', 'ron-paul', 'walter-williams', 'edward-glaeser', 'thomas-sowell', 'alberto-alesina', 'john-stuart-mill']
   },
   {
     slug: 'libertarier',

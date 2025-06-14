@@ -10,7 +10,7 @@ export const categories: CategoryData[] = [
     name: 'Economie & Geld',
     slug: 'economie-geld',
     description: 'Waar marktlogica botst op staatsuitgaven, inflatie en fiatfantasieën',
-    topics: ['economie', 'inflatie', 'belasting', 'vrije-markt', 'fiatgeld', 'time preference', 'belastingen', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'marktverstoringen', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen', 'centrale-banken', 'loonvorming'],
+    topics: ['economie', 'inflatie', 'belasting', 'vrije-markt', 'fiatgeld', 'time preference', 'belastingen', 'begroting', 'economische-groei', 'geldstelsel', 'consumentenbescherming', 'bitcoin', 'markt', 'marktverstoringen', 'privatisering', 'subsidie', 'kapitalisme', 'economische-drogreden', 'bankwezen', 'centrale-banken', 'loonvorming', 'overheidsuitgaven', 'pensioen'],
     color: 'from-green-500 to-green-600'
   },
   {
@@ -45,7 +45,7 @@ export const categories: CategoryData[] = [
     name: 'Oorlog & Veiligheid',
     slug: 'oorlog-veiligheid',
     description: 'Hoe oorlog de gezondheid van de staat wordt en veiligheid een excuus voor controle',
-    topics: ['oorlog', 'defensie', 'veiligheid', 'militaire-interventie', 'buitenlandse-politiek', 'terrorisme', 'oorlogseconomie', 'militair-industrieel-complex', 'neutraliteit', 'zelfverdediging', 'geopolitiek'],
+    topics: ['oorlog', 'defensie', 'veiligheid', 'militaire-interventie', 'buitenlandse-politiek', 'terrorisme', 'oorlogseconomie', 'militair-industrieel-complex', 'neutraliteit', 'zelfverdediging', 'geopolitiek', 'NAVO', 'militarisme', 'dienstplicht'],
     color: 'from-slate-500 to-slate-600'
   },
   {
