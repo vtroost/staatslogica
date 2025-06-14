@@ -29,7 +29,7 @@ export const STROMINGEN: Stroming[] = [
       'Extreme skepsis jegens alle vormen van staatsmacht'
     ],
     color: 'bg-gray-100 text-gray-800 border border-gray-200',
-    thinkers: ['ayn-rand', 'frederic-bastiat', 'ludwig-von-mises', 'saifedean-ammous', 'richard-epstein', 'robert-higgs', 'james-buchanan', 'robert-nozick']
+    thinkers: ['ayn-rand', 'frederic-bastiat', 'ludwig-von-mises', 'saifedean-ammous', 'richard-epstein', 'robert-higgs', 'james-buchanan', 'robert-nozick', 'thomas-szasz', 'lew-rockwell', 'scott-horton', 'philipp-bagus']
   },
   {
     slug: 'anarcho-kapitalistisch',

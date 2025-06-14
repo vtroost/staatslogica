@@ -61,6 +61,13 @@ export const categories: CategoryData[] = [
     description: 'Waar morele paniek beleidsinstrument wordt en de CO₂-bewijslast kantelt',
     topics: ['milieu-klimaat', 'milieu', 'klimaat','klimaatverandering','klimaatbeleid'],
     color: 'from-emerald-500 to-emerald-600'
+  },
+  {
+    name: 'Gezondheid & Zorg',
+    slug: 'gezondheid-zorg',
+    description: 'Waar staatsmonopolie op gezondheid leidt tot wachtlijsten, bureaucratie en medische autoritarisme',
+    topics: ['gezondheidszorg', 'zorgverzekering', 'ziekenhuizen', 'medische-interventie', 'gezondheidsbeleid', 'zorgmonopolie', 'medische-regelgeving', 'farmaceutische-industrie', 'preventie', 'zorguitgaven', 'medische-dwang', 'vaccinaties', 'zorgpremies', 'wachtlijsten', 'artsentekort', 'zorgcrisis', 'medische-ethiek', 'lichaamsautonomie', 'zorgtoeslagen', 'ggz', 'ouderenzorg', 'thuiszorg', 'zorgverlof', 'medische-privacy'],
+    color: 'from-cyan-500 to-cyan-600'
   }
 ];
 
@@ -204,10 +211,10 @@ export function getCategoryContext(categorySlug: string): {
     },
     'oorlog-veiligheid': {
       content: 'Oorlog is de gezondheid van de staat, zoals Randolph Bourne al schreef in 1918. Niets vergroot overheidsmacht zo effectief als oorlog of de dreiging ervan. Burgerrechten verdwijnen, belastingen stijgen, en dissidenten worden het zwijgen opgelegd — allemaal in naam van nationale veiligheid.\n\nHet militair-industrieel complex gedijt bij conflict, niet bij vrede. Buitenlandse interventies worden verkocht als humanitaire missies, maar dienen meestal strategische of economische belangen. Defensie-uitgaven zijn vaak meer over subsidie aan wapenindustrie dan over werkelijke verdediging.\n\nEchte veiligheid ontstaat door vrije handel, diplomatiek en het respecteren van soevereiniteit — niet door militaire projectie of regime change. Neutraliteit en niet-agressie zijn geen zwakte, maar wijsheid.',
-      keyThinkers: ['Murray Rothbard', 'Robert Higgs', 'Randolph Bourne', 'Ron Paul', 'Lysander Spooner', 'Ludwig von Mises'],
-      quote: 'War is the health of the state. It automatically sets in motion throughout society those irresistible forces for uniformity, for passionate cooperation with the government.',
-      quoteAuthor: 'Randolph Bourne',
-      quoteSource: 'The State, 1918'
+      keyThinkers: ['Murray Rothbard', 'Robert Higgs', 'Scott Horton', 'Ron Paul', 'Lew Rockwell', 'Ludwig von Mises'],
+      quote: 'The State thrives on war - unless, of course, it is defeated and crushed - because war expands its power and control over society to the maximum.',
+      quoteAuthor: 'Murray Rothbard',
+      quoteSource: 'Anatomy of the State, 1974'
     },
     'wonen-levensonderhoud': {
       content: 'Woningnood wordt vaak gepresenteerd als een gevolg van schaarste, maar schaarste is zelden natuurlijk. Wanneer bouwen verboden wordt, prijzen gecontroleerd worden, en eigendom belast wordt, ontstaat er kunstmatige schaarste.\n\nHuurcontrole beschermt zittende huurders ten koste van nieuwe huurders. Sociale woningbouw verdringt private woningbouw. Planningsregels beschermen bestaande eigenaren tegen concurrentie van nieuwe ontwikkelingen.\n\nElke interventie in de woningmarkt lost één probleem op door drie nieuwe te creëeren. Huurcontrole leidt tot onderhoudstekort, sociale woningbouw tot wachtlijsten, en bestemmingsplannen tot schaarste.',
@@ -223,6 +230,13 @@ export function getCategoryContext(categorySlug: string): {
       quote: 'The market economy succeeds by rewarding success and penalizing failure, in both cases giving the right incentives for redirecting resources to their most valued use.',
       quoteAuthor: 'Terry Anderson',
       quoteSource: 'Free Market Environmentalism, 1991'
+    },
+    'gezondheid-zorg': {
+      content: 'Het "recht op zorg" is geen recht maar een claim op andermans arbeid. Wanneer de staat gezondheid centraliseert, ontstaan er wachtlijsten, bureaucratie en medische autoritarisme. Artsen worden ambtenaren, patiënten worden nummers.\n\nZorgverzekeringen zijn geen verzekeringen maar herverdeling. Wanneer consumenten niet direct betalen voor zorg, verdwijnt de prijswerking. Wanneer aanbieders geen concurrentie kennen, verdwijnt innovatie. Staatsmonopolie op zorg leidt tot schaarste, niet tot toegankelijkheid.\n\nEchte zorg ontstaat door vrijwillige uitwisseling tussen arts en patiënt. Concurrentie tussen zorgverleners leidt tot betere kwaliteit en lagere prijzen. Medische dwang — of het nu vaccinaties of lockdowns zijn — is incompatibel met lichaamsautonomie.',
+      keyThinkers: ['Murray Rothbard', 'Hans-Hermann Hoppe', 'Walter Block', 'Thomas Szasz', 'Ron Paul', 'Ludwig von Mises'],
+      quote: 'The proverb warns that "You should not bite the hand that feeds you." But maybe you should, if it prevents you from feeding yourself.',
+      quoteAuthor: 'Thomas Szasz',
+      quoteSource: 'The Second Sin, 1973'
     }
   };
 

@@ -254,6 +254,18 @@ export default function CategoriesPage() {
                       </>
                     )}
 
+                    {category.slug === 'gezondheid-zorg' && (
+                      <>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{
+                            backgroundImage: 'url(https://i0.wp.com/www.nieuworganiseren.nu/wp-content/uploads/2016/02/gezondheidszorg-e1454878348539.jpg?fit=630%2C315&ssl=1)'
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-cyan-600 bg-opacity-70" />
+                      </>
+                    )}
+
                     <div className="flex-1 overflow-hidden relative z-10">
                       <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 mb-3">
                         <h3 className="text-xl font-bold text-white">{category.name}</h3>
