@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useMemo } from 'react';
 import React from 'react';
 import ArticleCard from '@/components/ArticleCard';
+import LoadMoreArticles from '@/components/LoadMoreArticles';
 
 // Add static metadata for the homepage
 export const metadata: Metadata = {
@@ -190,15 +191,12 @@ export default function HomePage() {
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Nieuwste artikelen</h2>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {restArticles.slice(0, 9).map((article: ArticleWithSourceTitle) => (
-                            <ArticleCard 
-                                key={article.slug}
-                                article={article}
-                                allThinkers={allThinkers}
-                            />
-                        ))}
-                    </div>
+                    <LoadMoreArticles
+                        initialArticles={restArticles.slice(0, 9)}
+                        allArticles={restArticles}
+                        allThinkers={allThinkers}
+                        initialLimit={9}
+                    />
                 </div>
             </section>
         </>
