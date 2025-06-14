@@ -44,7 +44,7 @@ const nextConfig = {
     return [
       {
         source: '/nieuws',
-        destination: '/categorieen',
+        destination: '/themas',
         permanent: true,
       },
 

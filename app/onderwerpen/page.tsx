@@ -103,7 +103,7 @@ export default function OnderwerpenPage() {
             </h1>
             <div className="max-w-4xl">
               <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
-                Ontdek alle onderwerpen en tags georganiseerd per categorie. Elk onderwerp toont hoeveel artikelen erover zijn geschreven.
+                Ontdek alle onderwerpen en tags georganiseerd per thema. Elk onderwerp toont hoeveel artikelen erover zijn geschreven.
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function OnderwerpenPage() {
                     className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                   >
                     {/* Category Header */}
-                    <Link href={`/categorieen/${category.slug}`}>
+                    <Link href={`/themas/${category.slug}`}>
                       <div className={`bg-gradient-to-r ${category.color} p-6 text-white h-[120px] flex flex-col justify-between cursor-pointer hover:opacity-90 transition-opacity`}>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2 text-white">{category.name}</h3>
@@ -138,7 +138,7 @@ export default function OnderwerpenPage() {
                             {categoryTags.reduce((sum, tag) => sum + tag.count, 0)} artikel{categoryTags.reduce((sum, tag) => sum + tag.count, 0) !== 1 ? 'en' : ''}
                           </span>
                           <span className="text-white text-opacity-90 text-sm font-medium">
-                            Bekijk categorie →
+                            Bekijk thema →
                           </span>
                         </div>
                       </div>
@@ -237,7 +237,7 @@ export default function OnderwerpenPage() {
                 {categories.filter(category => tagsByCategory.has(category.slug)).length}
               </div>
               <div className="text-gray-600 font-medium text-sm">
-                Categorieën
+                Thema's
               </div>
             </div>
             <div className="p-4">

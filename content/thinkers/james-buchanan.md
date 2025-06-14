@@ -1,6 +1,6 @@
 ---
-name: James M. Buchanan
-title: James M. Buchanan (1919–2013)
+name: James Buchanan
+title: James Buchanan (1919–2013)
 ---
 
 Grondlegger van public choice theory die politici en bureaucraten analyseert als gewone mensen met eigenbelang

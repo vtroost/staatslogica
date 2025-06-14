@@ -1,6 +1,6 @@
 ---
-name: Friedrich A. von Hayek
-title: Friedrich A. von Hayek (1899–1992)
+name: Friedrich von Hayek
+title: Friedrich von Hayek (1899–1992)
 ---
 
 Oostenrijks-Britse econoom, rechtsfilosoof en onvermoeibare verdediger van spontane orde

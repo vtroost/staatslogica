@@ -3,7 +3,7 @@
 /**
  * Tag Category Checker for Staatslogica
  * 
- * This script checks that all tags used in articles are properly mapped to categories.
+ * This script checks that all tags used in articles are properly mapped to themes.
  * It should be run after adding new articles to ensure content organization.
  * 
  * Usage: node scripts/check-tags.js
@@ -44,13 +44,13 @@ files.forEach(file => {
   }
 });
 
-// Read categories from the actual lib/categories.ts file
-const categoriesPath = path.join(__dirname, '..', 'lib', 'categories.ts');
-const categoriesContent = fs.readFileSync(categoriesPath, 'utf8');
+// Read themes from the actual lib/categories.ts file
+const themesPath = path.join(__dirname, '..', 'lib', 'categories.ts');
+const themesContent = fs.readFileSync(themesPath, 'utf8');
 
 // Extract topics from categories.ts
 const allCategoryTopics = new Set();
-const topicsMatches = categoriesContent.match(/topics:\s*\[(.*?)\]/gs);
+const topicsMatches = themesContent.match(/topics:\s*\[(.*?)\]/gs);
 
 if (topicsMatches) {
   topicsMatches.forEach(match => {
@@ -74,7 +74,7 @@ function generateSlug(text) {
     .replace(/^-|-$/g, '');
 }
 
-// Check which tags are not mapped to categories
+// Check which tags are not mapped to themes
 const unmappedTags = [];
 const mappedTags = [];
 
@@ -94,13 +94,13 @@ console.log(`Mapped tags: ${mappedTags.length}`);
 console.log(`Unmapped tags: ${unmappedTags.length}\n`);
 
 if (unmappedTags.length > 0) {
-  console.log('🚨 UNMAPPED TAGS (need to be added to categories):');
+  console.log('🚨 UNMAPPED TAGS (need to be added to themes):');
   unmappedTags.forEach(tag => {
     console.log(`  - ${tag.original} (slug: ${tag.slug})`);
   });
-  console.log('\nPlease add these tags to the appropriate categories in lib/categories.ts\n');
+  console.log('\nPlease add these tags to the appropriate themes in lib/categories.ts\n');
 } else {
-  console.log('✅ All tags are properly mapped to categories!\n');
+  console.log('✅ All tags are properly mapped to themes!\n');
 }
 
 console.log('=== RECENT ARTICLES ===');

@@ -10,7 +10,7 @@ Een moderne Next.js website voor libertarische analyses en politieke filosofie. 
 
 - **📰 Artikel Platform**: Rijke MDX artikelen met uitgebreide metadata
 - **👨‍💼 Denker Profielen**: Gedetailleerde profielen van invloedrijke filosofen en economen
-- **🏷️ Smart Tagging**: Intuïtieve navigatie via onderwerpen en categorieën
+- **🏷️ Smart Tagging**: Intuïtieve navigatie via onderwerpen en thema's
 - **📊 SEO Geoptimaliseerd**: Volledige zoekmachine dekking met gestructureerde data
 - **🎨 Modern Design**: Responsive interface met uitstekende UX
 - **⚡ Performance**: Snelle laadtijden door Next.js optimalisatie
@@ -40,7 +40,7 @@ staatslogica/
 │   ├── page.tsx           # Homepage
 │   ├── articles/[slug]/   # Artikel pagina's
 │   ├── denkers/[slug]/    # Denker profielen
-│   ├── categorieen/       # Categorie overzichten
+│   ├── themas/           # Thema overzichten
 │   ├── tags/[tag]/        # Tag-based filtering
 │   ├── archive/           # Chronologisch archief
 │   └── sitemap.ts         # Dynamische sitemap
@@ -135,8 +135,8 @@ Murray Rothbard toonde aan dat de staat...
 **Conclusie: De staat is moreel bankroet.**
 ```
 
-#### 4. Controleer Tag Categorieën
-**BELANGRIJK**: Alle tags moeten toegewezen zijn aan een categorie in `lib/categories.ts`.
+#### 4. Controleer Tag Thema's
+**BELANGRIJK**: Alle tags moeten toegewezen zijn aan een thema in `lib/categories.ts`.
 
 ```bash
 # Voer deze check uit na het toevoegen van nieuwe artikelen
@@ -144,11 +144,11 @@ node scripts/check-tags.js
 ```
 
 Zorg ervoor dat:
-- Alle tags uit je artikel voorkomen in een van de categorieën in `lib/categories.ts`
-- Nieuwe tags worden toegevoegd aan de juiste categorie
+- Alle tags uit je artikel voorkomen in een van de thema's in `lib/categories.ts`
+- Nieuwe tags worden toegevoegd aan het juiste thema
 - De check toont `Unmapped tags: 0`
 
-Als er unmapped tags zijn, voeg ze toe aan de juiste categorie in `lib/categories.ts`:
+Als er unmapped tags zijn, voeg ze toe aan het juiste thema in `lib/categories.ts`:
 
 ```typescript
 {
@@ -201,7 +201,7 @@ npm run type-check   # TypeScript check
 # Content helpers
 npm run validate-content  # Validate all MDX files
 npm run generate-sitemap  # Generate sitemap locally
-node scripts/check-tags.js # Check all tags are mapped to categories
+node scripts/check-tags.js # Check all tags are mapped to themes
 ```
 
 ### Code Conventies
@@ -251,7 +251,7 @@ node scripts/check-tags.js # Check all tags are mapped to categories
 - **Oplossing**: Zorg dat de datum `YYYY-MM-DD` is en in de toekomst ligt. Hernoem het bestand correct.
 
 **Tags worden niet herkend**
-- **Oorzaak**: Tag is niet toegewezen aan een categorie in `lib/categories.ts`.
+- **Oorzaak**: Tag is niet toegewezen aan een thema in `lib/categories.ts`.
 - **Oplossing**: Voer `node scripts/check-tags.js` uit en voeg de niet-gemapte tag toe.
 
 ### Styling Issues
@@ -261,7 +261,7 @@ node scripts/check-tags.js # Check all tags are mapped to categories
 - **Oplossing**: De `style` prop op de `Image` componenten is aangepast naar `mix-blend-mode: 'multiply'`. Dit zorgt ervoor dat de witte delen van de afbeelding de gele achtergrondkleur van de container overnemen, wat resulteert in een consistente "zwart met geel" weergave voor alle denkers. Deze wijziging is doorgevoerd in:
   - `app/denkers/DenkersContent.tsx`
   - `app/stromingen/[slug]/page.tsx`
-  - `app/categorieen/[slug]/page.tsx`
+  - `app/themas/[slug]/page.tsx`
   - `app/articles/[slug]/page.tsx`
 
 ## 📈 Analytics & Monitoring

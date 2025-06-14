@@ -9,9 +9,9 @@ import Image from 'next/image';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Categorieën',
-  description: 'Overzicht van alle analyses per categorie. Van economie tot politiek - ontmasker het \'staatsnarratief\' met Staatslogica.',
-  keywords: ['categorieën', 'analyse', 'politiek', 'economie', 'overheid', 'libertarisme']
+  title: 'Thema\'s',
+  description: 'Overzicht van alle analyses per thema. Van economie tot politiek - ontmasker het \'staatsnarratief\' met Staatslogica.',
+  keywords: ['thema\'s', 'analyse', 'politiek', 'economie', 'overheid', 'libertarisme']
 };
 
 type ArticleWithSourceTitle = Article & { sourceTitle?: string };
@@ -73,12 +73,12 @@ export default function CategoriesPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Staatslogica Analyses per Categorie",
-    "description": "Overzicht van alle analyses per categorie",
-    "url": `${siteUrl}/categorieen`,
+            "name": "Staatslogica Analyses per Thema",
+        "description": "Overzicht van alle analyses per thema",
+        "url": `${siteUrl}/themas`,
     "mainEntity": {
       "@type": "ItemList",
-      "name": "Analysecategorieën",
+              "name": "Analysethema's",
       "itemListElement": categoryArticles.map((category, index) => ({
         "@type": "ListItem",
         "position": index + 1,
@@ -86,7 +86,7 @@ export default function CategoriesPage() {
           "@type": "Thing",
           "name": category.name,
           "description": category.description,
-          "url": `${siteUrl}/categorieen/${category.slug}`,
+          "url": `${siteUrl}/themas/${category.slug}`,
           "mainEntity": {
             "@type": "ItemList",
             "numberOfItems": category.articles.length,
@@ -126,7 +126,7 @@ export default function CategoriesPage() {
           <Breadcrumb 
             items={[
               { label: 'Home', href: '/' },
-              { label: 'Categorieën' }
+              { label: 'Thema\'s' }
             ]}
             variant="yellow"
           />
@@ -139,11 +139,11 @@ export default function CategoriesPage() {
           <div className="text-left">
             
             <h1 className="text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
-              Analyses per Categorie
+              Analyses per Thema
             </h1>
             <div className="max-w-4xl">
               <p className="text-lg text-black text-opacity-90 mb-4 leading-relaxed">
-                Ontmasker het 'staatsnarratief' per categorie. Van economie tot politiek - alle analyses op één plek. Duik in een categorie om gerelateerde artikelen te bekijken, inclusief 
+                Ontmasker het 'staatsnarratief' per thema. Van economie tot politiek - alle analyses op één plek. Duik in een thema om gerelateerde artikelen te bekijken, inclusief 
                 de belangrijkste denkers en hun inzichten die onze analyses vormgeven.
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function CategoriesPage() {
                 className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
               >
                 {/* Category Header */}
-                <Link href={`/categorieen/${category.slug}`}>
+                <Link href={`/themas/${category.slug}`}>
                   <div className={`bg-gradient-to-r ${category.color} p-6 text-white h-[160px] flex flex-col justify-between cursor-pointer hover:opacity-90 transition-opacity relative overflow-hidden`}>
                     {/* Background Images by Category */}
                     {category.slug === 'economie-geld' && (
@@ -266,10 +266,7 @@ export default function CategoriesPage() {
 
                     <div className="flex-1 overflow-hidden relative z-10">
                       <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 mb-3">
-                        <h3 className="text-xl font-bold mb-2 text-white">{category.name}</h3>
-                        <p className="text-white text-opacity-90 text-sm leading-relaxed line-clamp-3">
-                          {category.description}
-                        </p>
+                        <h3 className="text-xl font-bold text-white">{category.name}</h3>
                       </div>
                     </div>
                     <div className="mt-3 flex items-center justify-between relative z-10">
@@ -277,66 +274,62 @@ export default function CategoriesPage() {
                         {category.count || 0} artikel{(category.count || 0) !== 1 ? 'en' : ''}
                       </span>
                       <span className="text-white text-opacity-90 text-sm font-medium">
-                        Bekijk categorie →
+                        Bekijk thema →
                       </span>
                     </div>
                   </div>
                 </Link>
 
-                {/* Recent Articles */}
+                {/* Theme Introduction */}
                 <div className="p-6">
-                  {category.articles.length > 0 ? (
-                    <div className="space-y-4">
-                      <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">
-                        Recente artikelen
-                      </h4>
-                      {category.articles.map((article, index) => (
-                        <div key={article.slug} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                          <Link
-                            href={`/articles/${article.slug}`}
-                            className="block hover:text-yellow-600 transition-colors"
-                          >
-                            <h5 className="font-semibold text-gray-900 text-sm leading-snug mb-1 line-clamp-2">
-                              {article.title}
-                            </h5>
-                            <p className="text-gray-500 text-xs">
-                              {new Date(article.date).toLocaleDateString('nl-NL', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
-                              })}
-                            </p>
-                          </Link>
-                        </div>
-                      ))}
+                  <div className="space-y-4">
+                    <div className="border-l-4 border-yellow-400 pl-4">
+                      <p className="text-gray-700 text-sm leading-relaxed">
+                        {category.description.length > 150 ? category.description.substring(0, 150) + '...' : category.description}
+                      </p>
                     </div>
-                  ) : (
-                    <p className="text-gray-500 text-sm italic">
-                      Nog geen artikelen in deze categorie.
-                    </p>
-                  )}
+                  </div>
                 </div>
 
-                {/* Topics Preview */}
+                {/* Topics & Onderwerpen */}
                 <div className="px-6 pb-6">
-                  <h4 className="font-bold text-gray-800 text-xs uppercase tracking-wide mb-3">
-                    Onderwerpen
+                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-4">
+                    Onderwerpen in dit thema
                   </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {category.topics.slice(0, 4).map((topic, index) => (
-                      <span
+                  
+                  {/* Always show first 6 topics (approximately 2 rows) */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {category.topics.slice(0, 6).map((topic, index) => (
+                      <Link
                         key={index}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                        href={`/tags/${topic.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="px-2 py-1 bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-yellow-800 text-xs rounded-md transition-colors duration-200 border border-transparent hover:border-yellow-300"
                       >
                         {topic}
-                      </span>
+                      </Link>
                     ))}
-                    {category.topics.length > 4 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
-                        +{category.topics.length - 4} meer
-                      </span>
-                    )}
                   </div>
+                  
+                  {/* Collapsible section for remaining topics */}
+                  {category.topics.length > 6 && (
+                    <details className="group">
+                      <summary className="cursor-pointer text-yellow-600 hover:text-yellow-700 text-sm font-medium list-none flex items-center gap-1">
+                        <span className="transform transition-transform group-open:rotate-90">▶</span>
+                        Toon {category.topics.length - 6} meer onderwerpen
+                      </summary>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {category.topics.slice(6).map((topic, index) => (
+                          <Link
+                            key={index + 6}
+                            href={`/tags/${topic.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="px-2 py-1 bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-yellow-800 text-xs rounded-md transition-colors duration-200 border border-transparent hover:border-yellow-300"
+                          >
+                            {topic}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  )}
                 </div>
               </div>
             ))}
@@ -353,7 +346,7 @@ export default function CategoriesPage() {
                 {allCategories.length}
               </div>
               <div className="text-gray-600 font-medium text-sm">
-                Hoofdcategorieën
+                Hoofdthema's
               </div>
             </div>
             <div className="p-4">
@@ -377,7 +370,7 @@ export default function CategoriesPage() {
                 {Math.max(...allCategories.map(cat => cat.count || 0))}
               </div>
               <div className="text-gray-600 font-medium text-sm">
-                Grootste categorie
+                Grootste thema
               </div>
             </div>
           </div>

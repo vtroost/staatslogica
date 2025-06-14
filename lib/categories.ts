@@ -176,16 +176,16 @@ export function getCategoryContext(categorySlug: string): {
   const contexts = {
     'economie-geld': {
       content: 'Economie wordt vaak gepresenteerd als een neutrale wetenschap, maar dat is een illusie. Achter elke monetaire theorie schuilt een visie op macht, eigendom en vrijheid. Wanneer centrale banken geld drukken, verdwijnt welvaart niet — ze wordt alleen herverdeeld van spaarders naar schuldenaren.\n\nInflatie is geen natuurramp maar een beleidskeuze. Markten worden verstoord door interventie, niet door gebrek aan regulering. Vrije markten belonen waardecreatie, terwijl staatsinmenging rent-seeking beloont.\n\nElke economische wet die beloofd wordt problemen op te lossen, creëert nieuwe problemen. Subsidies maken afhankelijk wat zelfstandig zou kunnen zijn. Regulering beschermt gevestigde belangen tegen concurrentie.',
-      keyThinkers: ['Ludwig von Mises', 'Friedrich A. von Hayek', 'Murray Rothbard', 'Saifedean Ammous', 'Ron Paul', 'Frédéric Bastiat', 'Henry Hazlitt'],
+      keyThinkers: ['Ludwig von Mises', 'Friedrich von Hayek', 'Murray Rothbard', 'Saifedean Ammous', 'Ron Paul', 'Frédéric Bastiat', 'Henry Hazlitt'],
       quote: 'Inflation, being a fraudulent increase in the supply of money, is a form of theft... and a powerful engine of government control.',
       quoteAuthor: 'Murray Rothbard',
       quoteSource: 'The Mystery of Banking, 1983'
     },
     'overheidsmacht-interventie': {
       content: 'Goede bedoelingen leiden zelden tot goede uitkomsten wanneer ze via dwang worden opgelegd. Elke interventie creëert nieuwe problemen die vervolgens meer interventie rechtvaardigen. Dit is geen bug van het systeem — het is de feature.\n\nRegulering beschermt vaak niet de burger, maar de gereguleerde. Subsidies gaan naar degenen met de beste lobbyisten, niet naar degenen met de beste ideeën. Centrale planning faalt niet door incompetentie, maar door gebrek aan informatie.\n\nBeleidsmakers beloven controle te bieden over complexe systemen die inherent oncontroleerbaar zijn. Bureaucratieën groeien niet om problemen op te lossen, maar om zichzelf in stand te houden.',
-      keyThinkers: ['Friedrich A. von Hayek', 'Ludwig von Mises', 'Murray Rothbard', 'Etienne de La Boetie', 'Frédéric Bastiat', 'Milton Friedman'],
+      keyThinkers: ['Friedrich von Hayek', 'Ludwig von Mises', 'Murray Rothbard', 'Etienne de La Boetie', 'Frédéric Bastiat', 'Milton Friedman'],
       quote: 'The curious task of economics is to demonstrate to men how little they really know about what they imagine they can design.',
-      quoteAuthor: 'Friedrich A. von Hayek',
+              quoteAuthor: 'Friedrich von Hayek',
       quoteSource: 'The Fatal Conceit, 1988'
     },
     'politiek-bestuur': {
