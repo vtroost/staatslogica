@@ -4,9 +4,7 @@ import type { Article, ThinkerData } from '@/lib/types';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { useMemo } from 'react';
 import React from 'react';
-import ArticleCard from '@/components/ArticleCard';
 import LoadMoreArticles from '@/components/LoadMoreArticles';
 
 // Add static metadata for the homepage
