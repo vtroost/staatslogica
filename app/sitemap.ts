@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllArticles } from '@/lib/articles'
 import { getAllThinkers } from '@/lib/thinkers'
+import { getAllBooks } from '@/lib/books'
 import { STROMINGEN } from '@/lib/stromingen'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -23,6 +24,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
       priority: 0.6,
+    }))
+
+    // Get all books
+    const books = getAllBooks()
+    const bookEntries: MetadataRoute.Sitemap = books.map((book) => ({
+      url: `${baseUrl}/bibliotheek/${book.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.7,
     }))
 
     // Get all unique tags
@@ -87,6 +97,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
       },
       {
+        url: `${baseUrl}/bibliotheek`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      },
+      {
         url: `${baseUrl}/disclaimer`,
         lastModified: new Date(),
         changeFrequency: 'yearly' as const,
@@ -94,7 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     ]
 
-    return [...staticPages, ...articleEntries, ...thinkerEntries, ...tagEntries, ...stomingEntries]
+    return [...staticPages, ...articleEntries, ...thinkerEntries, ...bookEntries, ...tagEntries, ...stomingEntries]
   } catch (error) {
     console.error('Error generating sitemap:', error)
     // Return at least the static pages if dynamic content fails
@@ -119,6 +135,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
       {
         url: `${baseUrl}/denkers`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      },
+      {
+        url: `${baseUrl}/bibliotheek`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,

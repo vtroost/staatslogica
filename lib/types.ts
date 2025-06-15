@@ -66,4 +66,24 @@ export interface Stroming {
   keyPrinciples?: string[]; // Core principles of this stroming
   color: string; // CSS color for badge
   thinkers: string[]; // slugs of thinkers in this stroming
+}
+
+// --- Book Data Interfaces ---
+export interface BookFrontmatter {
+  title: string;
+  author: string; // Author name (corresponds to thinker)
+  authorSlug: string; // Slug reference to thinker
+  publishYear: number;
+  originalTitle?: string; // If translated
+  publisher?: string;
+  isbn?: string;
+  pages?: number;
+  language?: string;
+  summary?: string; // Short summary for the library page
+  tags?: string[]; // Related topics/themes
+}
+
+export interface Book extends BookFrontmatter {
+  slug: string;
+  content?: string; // Full book content/review from MD file
 } 

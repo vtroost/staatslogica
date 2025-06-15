@@ -47,6 +47,25 @@ Rand's magnum opus is een 1.200 pagina's tellende roman over een dystopisch Amer
 - **Kapitalisme is vrijheid**  
   Niet alleen als economisch systeem, maar als morele noodzaak. Vrijheid is de voorwaarde voor creativiteit, innovatie en betekenisvol menselijk leven.
 
+## Capitalism: The Unknown Ideal (1966)
+De systematische verdediging van kapitalisme als moreel systeem.
+
+Terwijl *Atlas Shrugged* Rands filosofie dramatiseerde via romanpersonages, biedt [*Capitalism: The Unknown Ideal*](/bibliotheek/capitalism-the-unknown-ideal) haar meest systematische intellectuele verdediging van het kapitalisme. Dit is geen verdediging vanuit efficiëntie of traditie, maar vanuit morele principes.
+
+### Kernpunten uit Capitalism: The Unknown Ideal
+
+- **Kapitalisme als het systeem van individuele rechten**  
+  Het enige economische systeem dat consistent is met de erkenning dat individuen doeleinden in zichzelf zijn, niet middelen voor collectieve doelen.
+
+- **De morele basis van eigendomsrechten**  
+  Eigendom is geen willekeurige conventie maar een voortvloeisel uit het recht op leven. Wie eigendomsrechten schendt, tast het recht op leven aan.
+
+- **Kritiek op het mixed economy model**  
+  Westerse landen zijn geen zuivere kapitalistische systemen maar mixed economies die de nadelen van zowel kapitalisme als socialisme combineren.
+
+- **Het failliet van antitrust-wetgeving**  
+  Monopolies kunnen in een vrije markt alleen ontstaan door superieure efficiëntie. Antitrust-wetten straffen succes en beschermen inefficiëntie.
+
 ## Waarom Ayn Rand vandaag nog relevant is
 
 Haar verzet tegen collectieve dwang en morele schuldgevoelens is een krachtige tegenstem in tijden van herverdelingsideologieën.

@@ -3,194 +3,57 @@ name: Frank van Dun
 title: Frank van Dun (geboren 1947)
 ---
 
-Belgische rechtsfilosoof die een naturalistische verdediging van libertarisme en eigendomsrechten ontwikkelde
+Belgische rechtsfilosoof die natuurrecht bevrijdde van religieuze dogma en libertarisme verankerde in menselijke biologie
 
-Frank van Dun is een Belgische filosoof en emeritus professor rechtsfilosofie aan de Universiteit Gent die een unieke synthese heeft ontwikkeld van natuurrecht, libertarisme en evolutionaire theorie. Zijn werk combineert rigoureuze filosofische analyse met praktische inzichten over recht en samenleving. Van Dun is vooral bekend om zijn verdediging van eigendomsrechten en individuele autonomie vanuit een naturalistische en aristotelaanse benadering.
+Frank van Dun is de Europese denker die liet zien dat libertarisme geen Anglo-Amerikaanse uitvinding is, maar een universele menselijke waarheid. Als professor rechtsfilosofie aan de Universiteit Gent ontwikkelde hij een unieke synthese van Aristotelische wijsheid, evolutionaire biologie en moderne vrijheidsfilosofie. Waar anderen libertarisme verdedigen met economische argumenten, fundeert Van Dun het in de diepste structuren van menselijke natuur.
 
-Als een van de weinige Europese libertarische filosofen heeft Van Dun een bridge gevormd tussen Anglo-Amerikaanse libertarische traditie en Continentaal-Europese filosofie. Zijn werk is beïnvloed door Aristoteles, Thomas van Aquino, maar ook door moderne denkers zoals Murray Rothbard en Hans-Hermann Hoppe.
+Van Dun bouwde een brug tussen continentale filosofische traditie en libertarische praktijk. Hij toonde aan dat natuurrecht niet afhangt van religieuze geloof of kulturele traditie, maar van biologische feiten over hoe mensen werkelijk zijn. Zijn werk bewijst dat individuele vrijheid geen cultureel accident is, maar een logische conclusie uit wetenschappelijke antropologie.
 
 ## Belangrijkste ideeën
 
-### Naturalistische rechtsfilosofie
-Van Dun verdedigt een natuurrechtelijke benadering die gebaseerd is op de menselijke natuur en de vereisten voor menselijk floreren, niet op abstracte rationele constructies.
+### Natuurrecht als empirische wetenschap
+Van Dun ontkoppelde natuurrecht van religieuze metafysica door het te baseren op observeerbare feiten over menselijke biologie en psychologie. Wat "natuurlijk" is, is niet wat God beveelt, maar wat de menselijke natuur vereist.
 
 > "Law is not the command of a sovereign, but the recognition of what is naturally just."
 
-### Eigendomsrechten als natuurlijk
-Eigendomsrechten vloeien voort uit de menselijke natuur als rationele, doelgerichte wezens die middelen nodig hebben om hun doelen te bereiken.
-
-### Kritiek op legal positivism
-Van Dun verwerpt de opvatting dat recht simpelweg bestaat uit de bevelen van wie de macht heeft. Recht heeft een objectieve basis in de menselijke natuur.
-
-### Individualistische samenlevingstheorie
-Samenlevingen ontstaan uit individuele acties en kunnen alleen begrepen worden vanuit individueel perspectief, niet als collectieve entiteiten.
-
-### Evolutionair perspectief op instituties
-Rechtsinstellingen en sociale normen evolueren door een proces van variatie en selectie, vergelijkbaar met biologische evolutie.
-
-## The Economics of Law
-Van Dun's analyse van het recht vanuit economisch perspectief
-
-Van Dun past economische analyse toe op rechtsvragen, maar vanuit een naturalistische in plaats van utilitaristische basis.
-
-### Eigendom en efficiëntie
-Eigendomsrechten zijn niet alleen ethisch juist, maar ook economisch efficiënt omdat zij prikkels creëren voor productief gedrag.
-
-### Kosten van rechtssystemen
-Verschillende rechtssystemen hebben verschillende kosten en baten, wat verklaart waarom sommige systemen evolutionair succesvol zijn.
-
-### Private vs. publieke rechtspraak
-Private rechtspraak kan efficiënter zijn dan staatsjustitie omdat private rechters prikkels hebben om klanten tevreden te stellen.
+### Eigendomsrechten als evolutionaire aanpassing
+Eigendom is geen sociale constructie maar een biologische noodzaak. Mensen zijn van nature territoriale wezens die middelen nodig hebben voor overleving — eigendomsrechten erkennen deze biologische realiteit.
 
 ### Spontane rechtsorde
-Rechtsnormen kunnen spontaan ontstaan uit herhaalde interacties tussen individuen, zonder centrale planning.
+Rechtssystemen evolueren zoals talen: zonder centrale planning, door ontelbare individuele interacties. De beste wetten worden niet bedacht door filosofen maar ontdekt door praktijk.
 
-### Common law vs. statutory law
-Het common law systeem, dat evolueert door precedenten, is superieur aan statute law dat wordt opgelegd door wetgevers.
+### Kritiek op legal positivism
+Recht is meer dan de bevelen van wie toevallig de macht heeft. Echte rechtsnormen wortelen in universele aspecten van menselijke natuur die alle culturen en tijdperken overstijgen.
 
-## Zijn kritiek op de moderne staat
+### Aristotelische libertarisme
+Van Dun combineerde Aristoteles' teleologische mensbeeld met moderne vrijheidsfilosofie: mensen hebben natuurlijke doelen die ze alleen kunnen bereiken in vrijheid van dwang.
 
-### Staat als artificiële constructie
-Van Dun beschouwt de moderne staat als een kunstmatige constructie die niet gebaseerd is op natuurlijke sociale banden.
+## The Economics of Law
+Evolutionaire rechtsfilosofie in praktijk
 
-### Democratie en legitimiteit
-Democratische legitimiteit is een illusie — meerderheidsheerschappij kan geen echte legitimiteit verschaffen voor dwang.
+Van Dun paste evolutionaire logica toe op rechtssystemen om te verklaren waarom sommige rechtstradities succesvol zijn en andere falen. Rechtssystemen die aansluiten bij menselijke natuur overleven, systemen die daartegenin gaan verdwijnen.
 
-### Bureaucratische pathologieën
-Bureaucratieën ontwikkelen eigenbelangen die conflicteren met hun vermeende functies.
+### Kernargumenten
 
-### Centralisatie vs. decentralisatie
-Centralisatie van macht leidt onvermijdelijk tot inefficiëntie en onderdrukking.
+- **Recht als evolutionair product**  
+  Succesvolle rechtssystemen evolueren door een proces van variatie en selectie, net zoals biologische soorten.
 
-### Alternative legal systems
-Van Dun onderzoekt historische voorbeelden van samenlevingen die functioneerden zonder gecentraliseerde staten.
+- **Concurrentie tussen rechtssystemen**  
+  Verschillende rechtsstelsels concurreren om mensen te dienen — de beste systemen trekken mensen aan, slechte systems stoten ze af.
 
-## Aristotelaanse invloeden
+- **Private vs. publieke rechtspraak**  
+  Private rechters hebben prikkels om eerlijk en efficiënt te zijn omdat klanten kunnen weglopen naar concurrenten.
 
-### Teleologische benadering
-Van Dun's filosofie is teleologisch — mensen hebben natuurlijke doelen die hun gedrag dirigeren.
+- **Common law superioriteit**  
+  Rechtssystemen die evolueren door precedenten zijn flexibeler en wijzer dan rechtssystemen die door wetgevers worden opgelegd.
 
-### Deugdenethiek
-Niet alleen handelingen maar ook karaktertrekken hebben morele significantie.
+## Waarom Van Dun Europa's meest onderschatte libertariër is
 
-### Politieke aard van de mens
-Mensen zijn van nature sociale wezens, maar dit rechtvaardigt geen dwang door politieke instituties.
+Van Dun bewees dat libertarisme geen Amerikaanse import is maar een universele menselijke waarheid die in elke cultuur kan wortelen.
 
-### Practical wisdom
-Phronesis (praktische wijsheid) is nodig om ethische principes toe te passen in concrete situaties.
+Zijn natuurrechtelijke benadering biedt een alternatief voor zowel religieus conservatisme als relativistisch progressivisme — gebaseerd op feiten, niet op geloof of mode.
 
-### Natural law tradition
-Van Dun plaatst zijn werk in de traditie van Thomas van Aquino en andere natuurrechtdenkers.
-
-## Libertariaanse rechtstheorie
-
-### Self-ownership
-Mensen bezitten zichzelf in de zin dat zij autonome agents zijn die verantwoordelijk zijn voor hun handelingen.
-
-### Original appropriation
-Van Dun ontwikkelt een theorie over hoe mensen oorspronkelijk eigenaar kunnen worden van externe objecten.
-
-### Non-aggression principle
-Het principe van non-aggressie volgt logisch uit de erkenning van individuele autonomie.
-
-### Contract en consent
-Legitieme sociale arrangements moeten gebaseerd zijn op werkelijke instemming, niet op veronderstelde consent.
-
-### Remedial justice
-Rechtvaardigheid vereist herstel van schade, niet straf van daders.
-
-## Zijn werk over evolutie en recht
-
-### Legal evolution
-Rechtssystemen evolueren door processen van variatie, selectie en transmission.
-
-### Cultural transmission
-Rechtsnormen worden overgedragen door culturele in plaats van genetische mechanismen.
-
-### Group selection
-Groepen met superieure rechtsinstellingen hebben voordelen in inter-groep competitie.
-
-### Path dependence
-Historische ontwikkelingen beïnvloeden welke rechtssystemen mogelijk zijn in bepaalde contexten.
-
-### Spontaneous order
-Complexe rechtssystemen kunnen ontstaan zonder centraal ontwerp door processen van spontane ordening.
-
-## Internationale betrekkingen
-
-### Sovereign states system
-Het moderne systeem van soevereine staten is historisch contingent en niet noodzakelijk.
-
-### International law
-Internationaal recht kan ontstaan door herhaalde interacties tussen verschillende rechtssystemen.
-
-### Conflict resolution
-Conflicten kunnen opgelost worden door arbitrage en bemiddeling zonder supranationale autoriteit.
-
-### Free trade
-Internationale handel creëert wederzijdse afhankelijkheden die oorlog minder waarschijnlijk maken.
-
-### Migration and law
-Migratie kan leiden tot competitie tussen verschillende rechtssystemen.
-
-## Methodologische benadering
-
-### Philosophical anthropology
-Van Dun begint met een analyse van de menselijke natuur als basis voor sociale theorie.
-
-### Historical analysis
-Hij gebruikt historische voorbeelden om zijn theoretische punten te illustreren.
-
-### Comparative law
-Verschillende rechtssystemen worden vergeleken om hun relatieve voor- en nadelen te evalueren.
-
-### Interdisciplinaire aanpak
-Van Dun integreert inzichten uit filosofie, economie, anthropologie en biologie.
-
-### Continental vs. analytical tradition
-Hij combineert continentale filosofische diepgang met analytische helderheid.
-
-## Zijn invloed
-
-### European libertarianism
-Van Dun heeft geholpen bij het ontwikkelen van libertarisme in Europa, waar het minder ontwikkeld was dan in Amerika.
-
-### Natural law revival
-Zijn werk heeft bijgedragen aan hernieuwde interesse in natuurrechtelijke benaderingen.
-
-### Academic networks
-Hij heeft internationale netwerken van libertarische academici geholpen opbouwen.
-
-### Policy influence
-Hoewel primair theoretisch, heeft zijn werk praktische implicaties voor rechtshervorming.
-
-### Student influence
-Van Dun heeft vele studenten beïnvloed die zijn ideeën verder ontwikkelen.
-
-## Kritiek en uitdagingen
-
-### Naturalistic fallacy
-Critici beweren dat Van Dun onterecht overgaat van beschrijvende naar normatieve claims.
-
-### Cultural relativism
-Zijn nadruk op natuurlijke principes lijkt in conflict met culturele diversiteit.
-
-### Practical feasibility
-Vragen over hoe zijn ideale rechtssystemen zouden functioneren in de praktijk.
-
-### Evolutionary determinism
-Risico dat evolutionaire verklaringen de rol van menselijke agency onderschatten.
-
-### Academic isolation
-Zijn libertarische standpunten hebben hem soms geïsoleerd van mainstream academia.
-
-## Waarom Van Dun vandaag relevant is
-
-Zijn natuurrechtelijke benadering biedt een alternatief voor zowel legal positivism als cultural relativism.
-
-Zijn evolutionaire perspectief helpt bij het begrijpen van institutionele verandering.
-
-Zijn kritiek op de staat resoneert met mensen die gefrustreerd zijn over bureaucratische inefficiëntie.
+Zijn werk toont aan dat individuele vrijheid en sociale orde elkaar niet tegenspreken maar versterken, omdat beide wortelen in dezelfde biologische en psychologische realiteiten die alle mensen delen.
 
 Van Dun's synthese van libertarisme en Europese filosofie toont aan dat individualistic niet culturally bepaald hoeft te zijn.
 

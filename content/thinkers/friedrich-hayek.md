@@ -31,7 +31,7 @@ Hayek zag in collectieve systemen een glijdende schaal richting autoritarisme, h
 ## The Road to Serfdom (1944)
 Een waarschuwing voor de sluipende logica van dwang.
 
-Hayeks bekendste werk, *The Road to Serfdom*, is een politiek-filosofisch manifest tegen centrale planning. Het boek stelt dat economische centralisatie onvermijdelijk leidt tot verlies van individuele vrijheden.
+Hayeks bekendste werk, [*The Road to Serfdom*](/bibliotheek/the-road-to-serfdom), is een politiek-filosofisch manifest tegen centrale planning. Het boek stelt dat economische centralisatie onvermijdelijk leidt tot verlies van individuele vrijheden.
 
 ### Kernpunten uit The Road to Serfdom
 
