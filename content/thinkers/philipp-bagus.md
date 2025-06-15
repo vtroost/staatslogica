@@ -29,6 +29,18 @@ In zijn meesterwerk voorspelde Bagus de eurocrisis jaren voordat die uitbrak. [*
 
 Het boek onthult hoe de ECB's geldcreatie een vorm van belasting is op spaarders ten gunste van schuldenaars. Terwijl politici spreken over 'solidariteit', beschrijft Bagus het als legale diefstal: Duitse spaarders financieren Griekse uitgaven via inflatie die hun koopkracht vernietigt.
 
+## [*Small States - Big Possibilities*](/bibliotheek/small-states-big-possibilities) (2022)
+
+Samen met Andreas Marquart toont Bagus aan dat kleine staten systematisch beter presteren dan superstaten op vrijwel alle gebieden: economische welvaart, persoonlijke vrijheid, democratische controle en vrede. Een overtuigend pleidooi tegen de EU-doctrine dat "groter altijd beter is".
+
+## [*Deep Freeze: Iceland's Economic Collapse*](/bibliotheek/deep-freeze) (2011)
+
+Samen met David Howden analyseert Bagus de IJslandse economische ineenstorting van 2008 en toont aan dat deze crisis geen marktfalen was, maar het gevolg van centrale bankinterventie en kunstmatig lage rentes. Een perfecte illustratie van de Oostenrijkse conjunctuurtheorie.
+
+## [*Blind Robbery! How the Fed, Banks and Government Steal Our Money*](/bibliotheek/blind-robbery) (2016)
+
+Samen met Andreas Marquart levert Bagus een toegankelijke introductie tot de Oostenrijkse geldtheorie, waarin wordt uitgelegd hoe ons fiatgeldsysteem een vorm van georganiseerde diefstal is die de gewone burger beroofd van zijn welvaart.
+
 ## Moderne Relevantie
 
 Stel je voor dat je een spaarrekening hebt waar je jarenlang voor hebt gewerkt, en de ECB besluit dat jouw geld 2% per jaar minder waard wordt — niet omdat de economie dat vereist, maar omdat Zuid-Europese regeringen hun schulden moeten financieren. Dit is precies wat Bagus voorspelde: een systeem waarin politieke besluiten in Frankfurt bepalen wat jouw geld waard is.

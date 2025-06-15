@@ -28,24 +28,28 @@ De mensheid evolueert van barbarij naar beschaving, en uiteindelijk naar een sam
 ### Vrijwillige associatie als basis
 Alle sociale organisaties moeten gebaseerd zijn op vrijwillige overeenkomsten tussen individuen. Dwang — zelfs "democratische" dwang — is een primitieve vorm van menselijke interactie.
 
-## The Production of Security (1849)
-Het eerste manifest van anarcho-kapitalisme
+## Les Soirées de la rue Saint-Lazare (1849)
+Het eerste complete manifest van anarcho-kapitalisme
 
-In dit korte maar revolutionaire essay paste de Molinari economische logica toe op de heiligste koe van de politiek: staatsveiligheid. Hij toonde aan dat "security" onderworpen is aan dezelfde economische wetten als brood, schoenen of entertainment.
+In [*De avonden in de Rue Saint-Lazar*](/bibliotheek/de-avonden-in-de-rue-saint-lazar) ontwikkelde de Molinari de meest radicale visie op de vrije markt die ooit was geschreven. Door middel van twaalf gesprekken tussen een Econoom, een Socialist en een Conservatief liet hij zien waarom alle overheidsfuncties — inclusief politie en defensie — beter door private bedrijven kunnen worden vervuld.
 
-### Kernpunten uit The Production of Security
+Het boek was geschreven als antwoord op de socialistische revolutie van 1848, maar ging veel verder dan de gebruikelijke verdediging van eigendomsrechten. De Molinari paste economische logica consequent toe: als concurrentie goed is voor brood, waarom niet voor veiligheid?
 
-- **Veiligheid als economisch goed**  
-  Bescherming is een dienst zoals elke andere en moet geproduceerd worden door degenen die het het beste en goedkoopst kunnen leveren.
+### Kernargumenten uit Les Soirées
 
-- **Monopolie leidt tot uitbuiting**  
-  Het staatsmonopolie op veiligheid resulteert in hoge "prijzen" (belastingen), slechte service (criminaliteit) en klantenmishandeling (politiegeweld).
+- **Natuurlijke economische wetten**  
+  De samenleving wordt beheerst door onveranderlijke wetten die niet genegeerd kunnen worden door politici van welke signatuur dan ook.
 
-- **Concurrentie verbetert kwaliteit**  
-  Concurrerende veiligheidsbedrijven zouden vechten om klanten met betere bescherming, lagere prijzen en vriendelijkere service.
+- **Eigendom als basis van civilisatie**  
+  Zonder veilige eigendomsrechten heeft niemand prikkels om te produceren, sparen of investeren — de basis van alle vooruitgang.
 
-- **Consumentensouvereiniteit**  
-  Individuen moeten kunnen kiezen welk beveiligingsbedrijf zij willen gebruiken, net zoals zij hun eigen dokter, advocaat of architect kunnen kiezen.
+- **Concurrentie in alle sectoren**  
+  Het onderscheid tussen "publieke" en "private" goederen is kunstmatig — alle menselijke behoeften kunnen beter door markten worden vervuld.
+
+- **De productie van veiligheid**  
+  Verschillende beveiligingsbedrijven zouden concurreren om klanten te beschermen, net zoals restaurants concurreren om gasten.
+
+Het boek had onmiddellijke impact: zelfs de andere economen van de Guillaumin-groep verwierpen Molinari's ideeën als te radicaal. Pas meer dan een eeuw later zou Murray Rothbard Molinari erkennen als de eerste anarcho-kapitalist.
 
 ## Waarom de Molinari de meest onderschatte revolutionair is
 

@@ -28,12 +28,12 @@ Alle economische en ethische problemen zijn terug te voeren op eigendomsrechten.
 ### Kritiek op mainstream economie
 Block toont systematisch aan hoe Keynesiaanse en neoklassieke economische modellen gebaseerd zijn op foute aannames over menselijk gedrag en marktwerking.
 
-## Defending the Undefendable (1976)
+[*Defending the Undefendable*](/bibliotheek/defending-the-undefendable) (1976)
 Een provocatieve verdediging van controversiële beroepen en praktijken
 
 Blocks bekendste werk verdedigt prostituees, woekeraars, drugsdealers, kinderarbeiders en andere figuren die door de samenleving worden veroordeeld. Niet omdat hij hun activiteiten moreel goedkeurt, maar omdat hij laat zien dat hun handelingen — mits vrijwillig — economisch nuttig zijn en geen geweld inhouden.
 
-### Kernargumenten uit Defending the Undefendable
+### Kernargumenten uit [*Defending the Undefendable*](/bibliotheek/defending-the-undefendable)
 
 - **Prostitutie is gewoon dienstverlening**  
   Zolang beide partijen vrijwillig instemmen, verschilt prostitutie niet van andere diensten. Verboden maken creëert alleen maar zwarte markten.

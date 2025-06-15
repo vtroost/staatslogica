@@ -28,7 +28,7 @@ In plaats van een complex systeem van uitkeringen, stelde Friedman een negatieve
 ### Flexibele wisselkoersen
 Friedman voorspelde de ineenstorting van het Bretton Woods-systeem en pleitte voor zwevende wisselkoersen, die automatisch handelsbalansen corrigeren.
 
-## Capitalism and Freedom (1962)
+## [*Capitalism and Freedom*](/bibliotheek/capitalism-and-freedom) (1962)
 Een heldere uiteenzetting van hoe economische en politieke vrijheid met elkaar samenhangen
 
 Dit boek maakte Friedman tot een publiek intellectueel. Hij legt uit waarom kapitalisme niet alleen efficiënt is, maar ook noodzakelijk voor politieke vrijheid. Economische macht moet verspreid zijn, anders concentreert politieke macht zich in handen van weinigen.

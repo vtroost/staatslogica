@@ -45,9 +45,13 @@ Sinds 2003 voert Horton duizenden interviews met:
 - **Consistente principes**: Geen oorlog is de uitzondering
 - **Actuele relevantie**: Verbindt historische patronen met hedendaagse conflicten
 
-## Fool's Errand: Time to End the War in Afghanistan (2017)
+## [*Fool's Errand: Time to End the War in Afghanistan*](/bibliotheek/fools-errand) (2017)
 
 Horton's meesterwerk over de Afghanistan-oorlog, geschreven jaren voordat het fiasco van de Amerikaanse terugtrekking in 2021 zijn gelijk bewees.
+
+## [*Enough Already: Time to End the War on Terrorism*](/bibliotheek/enough-already) (2021)
+
+Horton's meest ambitieuze werk dat de volledige geschiedenis van Amerika's 'War on Terror' documeteert — van de Afghan trap van 1979 tot de chaotische terugtrekking uit Afghanistan in 2021. Het boek toont aan hoe elke interventie meer terrorisme creëerde dan het uitroeide.
 
 ### Kernpunten uit Fool's Errand
 

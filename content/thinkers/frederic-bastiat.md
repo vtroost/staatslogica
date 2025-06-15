@@ -12,7 +12,7 @@ Bastiat stond bekend om zijn scherpe pen, zijn ironische stijl en zijn vermogen 
 ## Belangrijkste ideeën
 
 ### Onzichtbare gevolgen
-Bastiat's beroemdste essay *What is Seen and What is Not Seen* behandelt het idee dat economische handelingen niet alleen directe, zichtbare effecten hebben, maar ook onzichtbare, vaak genegeerde kosten (alternatieve kosten).
+Bastiat's beroemdste essay [*What is Seen and What is Not Seen*](/bibliotheek/what-is-seen-and-what-is-not-seen) behandelt het idee dat economische handelingen niet alleen directe, zichtbare effecten hebben, maar ook onzichtbare, vaak genegeerde kosten (alternatieve kosten).
 
 > "That which is not seen" is in zijn ogen vaak belangrijker dan wat wél gezien wordt — een principe dat veel overheidsbeleid ontmaskert.
 
@@ -66,6 +66,27 @@ In dit korte maar krachtige essay definieert Bastiat de staat als "de grote fict
 
 - **Politieke economie van herverdeling**  
   Georganiseerde groepen exploiteren individuele burgers via het politieke systeem.
+
+## [Rechtvaardigheid en solidariteit](/bibliotheek/rechtvaardigheid-en-solidariteit) (1850)
+Een krachtige analyse van het verschil tussen echte rechtvaardigheid en gedwongen solidariteit
+
+In [*Rechtvaardigheid en solidariteit*](/bibliotheek/rechtvaardigheid-en-solidariteit) maakt Bastiat een scherp onderscheid tussen vrijwillige hulp en staatsdwang. Hij toont aan dat echte solidariteit alleen kan bestaan wanneer het vrijwillig geschiedt.
+
+### Kernpunten uit [Rechtvaardigheid en solidariteit](/bibliotheek/rechtvaardigheid-en-solidariteit)
+
+- **Twee soorten rechtvaardigheid**  
+  Negatieve rechtvaardigheid (respecteren van andermans rechten) versus positieve "rechtvaardigheid" (het opdragen van verplichtingen aan anderen).
+
+- **Vrijwillige versus gedwongen solidariteit**  
+  Echte broederschap komt uit het hart, niet uit de wet. Gedwongen solidariteit corrumpeert zowel gever als ontvanger.
+
+  > "Broederschap kan niet door de wet worden opgelegd zonder dat vrijheid en rechtvaardigheid worden vernietigd."
+
+- **De pervertering van fraterniteit**  
+  De Franse Revolutie proclameerde "fraternité", maar fraterniteit kan per definitie niet worden afgedwongen.
+
+- **Eigendomsrechten als basis**  
+  Eigendomsrechten vormen de basis van alle andere rechten. Zonder eigendom over jezelf en je arbeid zijn vrijheid en leven betekenisloos.
 
 ## Waarom Bastiat vandaag nog relevant is
 

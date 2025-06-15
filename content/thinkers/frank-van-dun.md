@@ -47,6 +47,15 @@ Van Dun paste evolutionaire logica toe op rechtssystemen om te verklaren waarom 
 - **Common law superioriteit**  
   Rechtssystemen die evolueren door precedenten zijn flexibeler en wijzer dan rechtssystemen die door wetgevers worden opgelegd.
 
+## De utopische verleiding
+Waarschuwing tegen maakbaarheidsdenken
+
+Samen met Hans Crombag schreef Van Dun [*De utopische verleiding*](/bibliotheek/de-utopische-verleiding) (2012), een scherpe kritiek op het geloof in perfecte samenlevingen. Het boek toont aan waarom elke poging om utopieën te verwezenlijken eindigt in tirannie.
+
+Van Dun waarschuwt voor de gevaarlijke aantrekkingskracht van politieke planners die beloven alle menselijke problemen op te lossen. In werkelijkheid ontkent het utopistische denken de essentiële diversiteit van mensen en vernietigt het de spontane processen waarop echte vooruitgang berust.
+
+Het boek analyseert hoe moderne ideologieën — van socialisme tot klimaatactivisme — dezelfde utopische verleiding belichamen: de drang om het leven te vervangen door een theorie over het leven. Van Dun toont aan dat de grootste bedreiging voor vrijheid niet komt van openlijke tirannen, maar van welwillende planners.
+
 ## Waarom Van Dun Europa's meest onderschatte libertariër is
 
 Van Dun bewees dat libertarisme geen Amerikaanse import is maar een universele menselijke waarheid die in elke cultuur kan wortelen.
