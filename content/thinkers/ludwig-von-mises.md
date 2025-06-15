@@ -28,12 +28,12 @@ Overheidsingrijpen in de economie — bijvoorbeeld prijscontroles of subsidies �
 ### De kracht van ideeën
 Mises was geen technocraat. Voor hem was economie een onderdeel van een bredere strijd: die van ideeën. Foute economische theorieën leiden tot rampzalig beleid. Vrijheid vereist dus intellectuele verdediging.
 
-## Human Action (1949)
+## [Human Action](/bibliotheek/human-action) (1949)
 Een monumentale verdediging van de vrije markt en menselijke rationaliteit
 
-Zijn magnum opus, Human Action, is een 900-pagina's tellende encyclopedie van economische logica. Het boek is geen samenvatting van eerdere theorieën — het is een fundamentele herdefinitie van economie als de logische studie van menselijk handelen.
+Zijn magnum opus, [Human Action](/bibliotheek/human-action), is een 900-pagina's tellende encyclopedie van economische logica. Het boek is geen samenvatting van eerdere theorieën — het is een fundamentele herdefinitie van economie als de logische studie van menselijk handelen.
 
-### Kernpunten uit Human Action
+### Kernpunten uit [Human Action](/bibliotheek/human-action)
 
 - **Praxeologie als methode**  
   Mises stelt dat economische wetten a priori zijn afleidbaar uit de aard van menselijk handelen, en niet afhankelijk zijn van statistiek of experimenten zoals in natuurwetenschappen.

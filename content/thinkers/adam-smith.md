@@ -28,12 +28,12 @@ Concurrerende ondernemers moeten constant innoveren en prijzen verlagen om klant
 ### Marktprijzen als informatiesysteem
 Prijzen communiceren schaarse informatie over vraag en aanbod. Ze coördineren economische activiteit zonder dat iemand de leiding hoeft te nemen.
 
-## The Wealth of Nations (1776)
+## [The Wealth of Nations](/bibliotheek/the-wealth-of-nations) (1776)
 Het boek dat de kapitalistische revolutie startte
 
 Smith's magnum opus verscheen in hetzelfde jaar als de Amerikaanse Onafhankelijkheidsverklaring — geen toeval. Beide documenten waren revolutionaire pleidooien voor vrijheid: politieke en economische. Smith toont aan dat naties rijk worden niet door goud te hamsteren, maar door productief te zijn.
 
-### Kernargumenten uit The Wealth of Nations
+### Kernargumenten uit [The Wealth of Nations](/bibliotheek/the-wealth-of-nations)
 
 - **Arbeidsdeling is de motor van vooruitgang**  
   Smith's beroemde speldenfabriek laat zien hoe specialisatie de productiviteit verhoogt van enkele spelden per dag naar duizenden.

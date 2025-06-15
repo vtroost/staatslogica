@@ -7,7 +7,7 @@ Amerikaans schrijver, anarcho-libertariër en onvermoeibare ontheiligingskampioe
 
 Larken Rose is geen academische denker, geen universiteitsprofessor en al helemaal geen compromissensmid. Hij is een autodidactisch radicaal — een man met een scherpe tong, een nog scherpere pen en een onbuigzaam geloof in de volstrekte illegitimiteit van heerschappij. In de wereld van libertarisme en vrijwilligheid staat hij als een baken van morele helderheid: onbeschaamd, onvermijdelijk en niet te negeren.
 
-Rose werd bekend met zijn boek *The Most Dangerous Superstition*, waarin hij stelt dat het geloof in "legitiem gezag" de fundamentele bron is van vrijwel alle grootschalige onderdrukking in de geschiedenis. Waar anderen libertarisme verdedigen op economische of pragmatische gronden, grijpt Rose het bij de keel: de kernvraag is moreel, niet technisch.
+Rose werd bekend met zijn boek [*The Most Dangerous Superstition*](/bibliotheek/the-most-dangerous-superstition), waarin hij stelt dat het geloof in "legitiem gezag" de fundamentele bron is van vrijwel alle grootschalige onderdrukking in de geschiedenis. Waar anderen libertarisme verdedigen op economische of pragmatische gronden, grijpt Rose het bij de keel: de kernvraag is moreel, niet technisch.
 
 ## Belangrijkste ideeën
 
@@ -30,12 +30,12 @@ Rose laat geen ruimte voor nuance: belasting is diefstal, oorlog is moord, wetge
 ### Mentale bevrijding gaat vóór politieke verandering
 In plaats van te stemmen of te lobbyen, pleit Rose voor mentale ontworsteling. Zodra genoeg mensen de 'autoriteitsmythe' doorzien, verdwijnt de legitimiteit van de staat als een zeepbel in de zon.
 
-## The Most Dangerous Superstition (2011)
+## [The Most Dangerous Superstition](/bibliotheek/the-most-dangerous-superstition) (2011)
 Een onverbiddelijke aanval op het geloof in gezag.
 
 In zijn bekendste werk rekent Rose af met de diepgewortelde overtuiging dat sommige mensen 'gezag' over anderen mogen uitoefenen. Hij stelt dat deze denkfout de rechtvaardiging vormt voor alle systematische onderdrukking: slavernij, dictatuur, oorlog, belasting, censuur, politiegeweld — alles begint met het geloof dat dit 'legitiem' kan zijn.
 
-### Kernpunten uit The Most Dangerous Superstition
+### Kernpunten uit [The Most Dangerous Superstition](/bibliotheek/the-most-dangerous-superstition)
 
 - **Gezag bestaat niet — behalve als geloof**  
   Niemand heeft op natuurlijke wijze gezag over een ander. Alleen via indoctrinatie gaan mensen dit als 'normaal' beschouwen.

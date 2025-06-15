@@ -22,12 +22,12 @@ Een klassieke illustratie van foutieve economische redenering: het idee dat het 
 ### Kritiek op protectionisme
 In *The Candlemakers' Petition* schrijft hij een satirische brief van kaarsenmakers aan de regering met het verzoek om de zon te blokkeren — zodat kaarsen beter verkocht kunnen worden. Hiermee fileert hij de absurditeit van protectionistische argumenten.
 
-## The Law (1850)
+## [The Law](/bibliotheek/the-law) (1850)
 Een vlijmscherpe verdediging van individuele vrijheid en eigendomsrechten.
 
-*The Law* is Bastiat's meest invloedrijke werk, geschreven kort voor zijn dood aan tuberculose. Het is een vurige aanklacht tegen staatsdwang en een pleidooi voor de natuurlijke rechten van de mens.
+[*The Law*](/bibliotheek/the-law) is Bastiat's meest invloedrijke werk, geschreven kort voor zijn dood aan tuberculose. Het is een vurige aanklacht tegen staatsdwang en een pleidooi voor de natuurlijke rechten van de mens.
 
-### Kernpunten uit The Law
+### Kernpunten uit [The Law](/bibliotheek/the-law)
 
 - **Het doel van de wet**  
   Bastiat stelt dat de wet er uitsluitend is om natuurlijke rechten te beschermen: leven, vrijheid en eigendom.
@@ -47,6 +47,25 @@ Een vlijmscherpe verdediging van individuele vrijheid en eigendomsrechten.
   Bastiat benadrukt dat mensen zelfstandig morele wezens zijn, geen kneedbare massa. Hij verzet zich tegen het idee dat de overheid mensen 'moet vormen'.
 
   > "The mission of the law is not to oppress persons and plunder them of their property… Its mission is to protect property and liberty."
+
+## [The State](/bibliotheek/the-state) (1848)
+De ontmaskering van de staat als collectieve illusie
+
+In dit korte maar krachtige essay definieert Bastiat de staat als "de grote fictie waarbij iedereen probeert te leven ten koste van iedereen anders." [*The State*](/bibliotheek/the-state) onthult de fundamentele illusie van moderne politiek: het idee dat de staat een magische bron van welvaart is.
+
+### Kernpunten uit [The State](/bibliotheek/the-state)
+
+- **De staat creëert geen welvaart**  
+  Elke euro die de staat uitgeeft, moet eerst weggenomen worden van burgers die hem verdiend hebben.
+
+- **Collectieve zelfbedrog**  
+  Iedereen denkt dat hij meer van de staat kan krijgen dan hij erin stopt - een wiskundige onmogelijkheid.
+
+- **Verdrongen private sector**  
+  Overheidsuitgaven verdringen private investeringen, meestal van productieve naar minder productieve doelen.
+
+- **Politieke economie van herverdeling**  
+  Georganiseerde groepen exploiteren individuele burgers via het politieke systeem.
 
 ## Waarom Bastiat vandaag nog relevant is
 

@@ -47,6 +47,25 @@ Rothbard's *For a New Liberty* is het onofficiële anarcho-kapitalistisch manife
 - **Vrijheid is geen utopie, dwang is dat wel**  
   Rothbard draait het script om: het is niet de anarchist die naïef is, maar degene die denkt dat een gecentraliseerde staat goed, rechtvaardig en efficiënt kan blijven.
 
+## [What Has Government Done to Our Money?](/bibliotheek/what-has-government-done-to-our-money) (1963)
+De ontmaskering van het monetaire bedrog
+
+Rothbard's briljante analyse van hoe overheden het geld hebben gecorrumpeerd en waarom een terugkeer naar de goudstandaard noodzakelijk is. [*What Has Government Done to Our Money?*](/bibliotheek/what-has-government-done-to-our-money) legt in heldere taal uit hoe geld ontstaat op vrije markten en hoe overheidsingrijpen leidt tot inflatie en economische instabiliteit.
+
+### Kernpunten uit [What Has Government Done to Our Money?](/bibliotheek/what-has-government-done-to-our-money)
+
+- **Geld ontstaat spontaan op markten**  
+  Goud en zilver werden door vrije markten gekozen vanwege hun superieure eigenschappen, niet door overheidsdecreten.
+
+- **Centrale banken zijn georganiseerde fraude**  
+  Ze ontstonden om overheden te helpen oorlogen te financieren, niet om de economie te stabiliseren.
+
+- **Inflatie is verborgen belasting**  
+  Geldcreatie herverdeelt welvaart van spaarders naar overheden en banken.
+
+- **100% goudstandaard als oplossing**  
+  Rothbard pleit voor eliminatie van centrale banken en terugkeer naar volledig goudgedekt geld.
+
 ## Waarom Rothbard vandaag nog relevant is
 
 Hij biedt een totaalvisie op vrijheid — niet als beleidsoptie, maar als levensfilosofie.

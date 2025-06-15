@@ -23,12 +23,12 @@ Voor Ammous is Bitcoin meer dan een technologie; het is een terugkeer naar gezon
 ### Keynes als architect van de moderne schuldenslawernij
 Ammous ziet het Keynesiaanse denken als de intellectuele onderbouwing van het huidige systeem van geldmanipulatie. Waar Keynes "liquiditeitspreferentie" verheerlijkte, toont Ammous aan hoe dit kortetermijndenken de samenleving corrumpeert.
 
-## The Bitcoin Standard (2018)
+## [The Bitcoin Standard](/bibliotheek/the-bitcoin-standard) (2018)
 Het manifest voor een terugkeer naar gezond geld in het digitale tijdperk.
 
 In dit baanbrekende werk legt Ammous uit waarom Bitcoin de monetaire revolutie kan zijn die de wereld nodig heeft. Hij analyseert de geschiedenis van geld — van goud tot fiatgeld — en toont aan hoe elk systeem menselijk gedrag vormgeeft.
 
-### Kernpunten uit The Bitcoin Standard
+### Kernpunten uit [The Bitcoin Standard](/bibliotheek/the-bitcoin-standard)
 
 - **Gezond geld creëert gezonde beschaving**  
   Stabiele waardebewaarmiddelen maken langetermijnplanning mogelijk en bevorderen sparen, investeren en familievorming.
@@ -39,12 +39,12 @@ In dit baanbrekende werk legt Ammous uit waarom Bitcoin de monetaire revolutie k
 - **Bitcoin heeft de eigenschappen van ideaal geld**  
   Schaarsheid, deelbaarheid, overdraagbaarheid en duurzaamheid — Bitcoin verenigt de voordelen van goud met de efficiëntie van digitale uitwisseling.
 
-## The Fiat Standard (2021)
+## [The Fiat Standard](/bibliotheek/the-fiat-standard) (2021)
 Een vernietigende analyse van het huidige monetaire systeem en zijn maatschappelijke gevolgen.
 
 In dit vervolgwerk richt Ammous zich op de destructieve effecten van het fiatgeldsysteem op alle aspecten van menselijk leven: van educatie tot voeding, van kunst tot familieleven.
 
-### Kernpunten uit The Fiat Standard
+### Kernpunten uit [The Fiat Standard](/bibliotheek/the-fiat-standard)
 
 - **Fiatgeld corrumpeert incentives**  
   Wanneer geld gemanipuleerd kan worden, worden productieve activiteiten vervangen door politieke spelletjes en subsidiejacht.

@@ -1,5 +1,6 @@
 import { getAllArticles } from '@/lib/articles';
 import { getAllThinkers, getThinkerBySlug } from '@/lib/thinkers';
+import { getBooksByAuthor } from '@/lib/books';
 import { getStromingBySlug } from '@/lib/stromingen';
 import StromingBadge from '@/components/StromingBadge';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -75,6 +76,9 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
     article.thinkers && article.thinkers.includes(slug)
   );
   thinkerArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // Get books by this author
+  const thinkerBooks = getBooksByAuthor(slug);
 
   // Extract name and years from the title in the frontmatter
   let displayName = thinker.name;
@@ -168,29 +172,55 @@ export default function ThinkerPage({ params }: ThinkerPageProps) {
           </div>
         </div>
 
-        {/* Sticky Sidebar: Article List */}
+        {/* Sticky Sidebar: Books and Article List */}
         <aside className="w-full lg:w-64 flex-shrink-0 lg:pl-6">
-          <div className="lg:sticky lg:top-24">
-            <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
-            {thinkerArticles.length > 0 ? (
-              <ul className="space-y-4">
-                {thinkerArticles.map(article => (
-                  <li key={article.slug}>
-                    <Link href={`/articles/${article.slug}`} className="block group">
-                      <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-                        {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
-                      </span>
-                      <br />
-                      <span className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-700 transition-colors">
-                        {article.title}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">Geen artikelen gevonden die aansluiten bij het gedachtegoed van {thinker.name}.</p>
+          <div className="lg:sticky lg:top-24 space-y-8">
+            
+            {/* Books Section */}
+            {thinkerBooks.length > 0 && (
+              <div>
+                <h2 className="text-xl font-semibold mb-4 border-b pb-2">Boeken van {thinker.name}</h2>
+                <ul className="space-y-4">
+                  {thinkerBooks.map(book => (
+                    <li key={book.slug}>
+                      <Link href={`/bibliotheek/${book.slug}`} className="block group">
+                        <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
+                          {book.publishYear}
+                        </span>
+                        <br />
+                        <span className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-700 transition-colors">
+                          {book.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
+
+            {/* Articles Section */}
+            <div>
+              <h2 className="text-xl font-semibold mb-4 border-b pb-2">Artikelen in de geest van {thinker.name}</h2>
+              {thinkerArticles.length > 0 ? (
+                <ul className="space-y-4">
+                  {thinkerArticles.map(article => (
+                    <li key={article.slug}>
+                      <Link href={`/articles/${article.slug}`} className="block group">
+                        <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
+                          {new Date(article.date).toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </span>
+                        <br />
+                        <span className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-700 transition-colors">
+                          {article.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-500">Geen artikelen gevonden die aansluiten bij het gedachtegoed van {thinker.name}.</p>
+              )}
+            </div>
           </div>
         </aside>
         </div>

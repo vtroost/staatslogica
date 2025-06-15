@@ -12,7 +12,7 @@ Hazlitt stond in de traditie van Bastiat: hij kon met één zin door een heel ov
 ## Belangrijkste ideeën
 
 ### De les die iedereen moet leren
-In *Economics in One Lesson* stelt Hazlitt dat economische analyse altijd twee dingen vereist: 1) aandacht voor de gehele keten van gevolgen, en 2) aandacht voor alle groepen in de samenleving, niet alleen de zichtbare begunstigden van beleid.
+In [*Economics in One Lesson*](/bibliotheek/economics-in-one-lesson) stelt Hazlitt dat economische analyse altijd twee dingen vereist: 1) aandacht voor de gehele keten van gevolgen, en 2) aandacht voor alle groepen in de samenleving, niet alleen de zichtbare begunstigden van beleid.
 
 ### Wat men ziet… en wat men níét ziet
 Hazlitt borduurt rechtstreeks voort op Bastiat. Hij waarschuwt dat politici en burgers zich blindstaren op de onmiddellijke voordelen van overheidsingrijpen, terwijl ze de onzichtbare kosten negeren: verspilde kansen, hogere belastingen, verstoorde productie.
@@ -26,14 +26,14 @@ Hazlitt verwerpt het idee dat "banen creëren" op zich een nobel doel is. Produc
 ### Vrijheid vereist begrip
 Voor Hazlitt is economische geletterdheid een burgerplicht. Vrijheid kan alleen verdedigd worden door mensen die begrijpen hoe vrijheid werkt.
 
-## Economics in One Lesson (1946)
+## [Economics in One Lesson](/bibliotheek/economics-in-one-lesson) (1946)
 Een krachtig pamflet tegen economische domheid in één simpele les.
 
 Hazlitt's bekendste boek is een logisch en didactisch meesterwerk. Hij fileert tientallen populaire economische misverstanden — van prijscontroles tot minimumlonen, van subsidies tot handelsrestricties — met één centrale waarheid als leidraad:
 
 > "The art of economics consists in looking not merely at the immediate but at the longer effects of any act or policy; it consists in tracing the consequences of that policy not merely for one group but for all groups."
 
-### Kernpunten uit Economics in One Lesson
+### Kernpunten uit [Economics in One Lesson](/bibliotheek/economics-in-one-lesson)
 
 - **Prijzen zijn signalen, geen problemen**  
   Prijsmechanismen geven informatie over schaarste en voorkeuren. Overheidsingrijpen daarin leidt tot verwarring, verspilling en tekorten.
